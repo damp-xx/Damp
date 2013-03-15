@@ -1,0 +1,21 @@
+<Damp>
+  <Game>
+    <Title>Counter-Strike 1.6</Title>
+    <Description>The awesomemost game in da univase YOLO!!</Description>
+    <Picture  hash="ebcd903ebe8e4452e43ecef137e7ac10b43f7d93">cover.jpg</Picture>
+    <Genre>first person shooter</Genre>
+    <Resume>køb gun, skyd fjende i hoved, win!</Resume>
+    <RecommendedAge>9</RecommendedAge>
+    <Developer>Valve</Developer>
+    <Archivements>
+      <Archivement>
+        <Title>Skyd en i hoved!</Title>
+        <Description>A skyd e i a hoved og han død!!</Description>
+        <Icon hash="d874060935fcb30eb77a09c6f0222bbe8b144be5">billede.jpg</Icon>
+      </Archivement>
+    </Archivements>
+  </Game>
+<Files>
+  <File hash="f3ec96847ad2f8ac5ea109b010791543983f08ec" type="installer">HashMyFiles.exe</File>
+</Files>
+</Damp>
