@@ -7,6 +7,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Web;
 using System.Xml;
+using System.Threading.Tasks;
 
 namespace DampCS
 {
@@ -49,7 +50,7 @@ namespace DampCS
 
         public bool Login(string username, string password)
         {
-            var xml= SendRequest("Login", new Dictionary<string, string> {{"Username", username}, {"Password", password}});
+            var xml = SendRequest("Login", new Dictionary<string, string> {{"Username", username}, {"Password", password}});
 
             if (xml.Name.Equals("Status"))
             {
@@ -65,11 +66,9 @@ namespace DampCS
             return false;
         }
 
-
         public void Listen()
         {
-            // @TODO run in seperate thread
-            Run();
+            Task ListenToServerTask = Task.Factory.StartNew(Run);
         }
 
 
