@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Net.Security;
 using System.Net.Sockets;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Web;
 using System.Xml;
@@ -16,6 +18,25 @@ namespace DampCS
 
         private readonly static object _lock = new object();
         private static string _authToken = "1337";
+
+
+        // The following method is invoked by the RemoteCertificateValidationDelegate. 
+        public static bool ValidateServerCertificate(
+              object sender,
+              X509Certificate certificate,
+              X509Chain chain,
+              SslPolicyErrors sslPolicyErrors)
+        {
+            if (sslPolicyErrors == SslPolicyErrors.None)
+                return true;
+
+            Console.WriteLine("Certificate error: {0}", sslPolicyErrors);
+
+            // Do not allow this client to communicate with unauthenticated servers. 
+         // return false;
+
+            return true;
+        }
 
         public DampServerClient(string host, int port = 1337)
         {
@@ -96,8 +117,23 @@ namespace DampCS
 
                
                 tcp.Connect(_host, _port);
-                var stream = tcp.GetStream();
-                
+                var stream = new SslStream(
+                             tcp.GetStream(),
+                             false,
+                             new RemoteCertificateValidationCallback(ValidateServerCertificate),
+                             null
+                             );
+
+
+                try
+                {
+                    stream.AuthenticateAsClient("*");
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    Console.ReadKey();
+                }    
 
                 var sw = new StreamWriter(stream) {AutoFlush = true};
                 string qq = HttpUtility.UrlPathEncode("/" + query);
@@ -134,6 +170,7 @@ namespace DampCS
                 {
                     contentLenght = int.Parse(ll[1]);
                 }
+
                 if (ll[0].Equals("Content-Type")) contentType = ll[1];
             }
 
@@ -153,7 +190,6 @@ namespace DampCS
             var element = xDoc.DocumentElement;
 
             return element;
-
         }
     }
 }
