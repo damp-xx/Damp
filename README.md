@@ -1,5 +1,4 @@
 Damp
 ====
 
-
-Sut Min Dala
+Minsdf
