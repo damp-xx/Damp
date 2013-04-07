@@ -3,6 +3,6 @@
     public class Connection
     {
         public User UserProfile { get; set; }
-        public Http UserHttp { get; set; }
+        public ICommandArgument UserHttp { get; set; }
     }
 }

@@ -10,7 +10,7 @@ namespace Damp
 {
     public class UserCommands : IServerCommand
     {
-        private Http _http;
+        private ICommandArgument _http;
 
         public UserCommands()
         {
@@ -23,14 +23,14 @@ namespace Damp
             return cmd.Equals("GetUser") || (cmd.Equals("GetMyUser"));
         }
 
-        public void HandleCommand(Http http, string cmd)
+        public void Execute(ICommandArgument http, string cmd)
         {
             _http = http;
 
 
-            if (!cmd.Equals("GetMyUser") && string.IsNullOrEmpty(_http.Query.Get("userId")))
+            if (cmd.Equals("GetMyUser") && string.IsNullOrEmpty(_http.Query.Get("authToken")))
             {
-                _http.SendXmlResponse(new ErrorXmlResponse {Message = "Invalid arguments"});
+                _http.SendXmlResponse(new ErrorXmlResponse {Message = "Invalid arguments #12"});
                 return;
             }
 
@@ -42,7 +42,7 @@ namespace Damp
             }
             else
             {
-                user.UserId = int.Parse(_http.Query.Get("authToken"));
+                user.UserId = int.Parse(_http.Query.Get("userId"));
             }
 
             Database db = new Database();

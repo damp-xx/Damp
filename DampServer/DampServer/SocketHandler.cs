@@ -18,8 +18,9 @@ namespace Damp
 
             while (true)
             {
-                Socket s = _tcp.AcceptSocket();
-                CommandProcessor commandProcessor = new CommandProcessor(s);
+                var s = _tcp.AcceptTcpClient();
+                new RequestProcessor(s);
+
             }
 // ReSharper disable FunctionNeverReturns
         }

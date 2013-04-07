@@ -28,13 +28,13 @@ namespace Damp
             return cmd.Equals("Login");
         }
 
-        public void HandleCommand(Http http, string cmd = null)
+        public void Execute(ICommandArgument http, string cmd = null)
         {
             // @TODO PROPER VALIDATION
 
             if (string.IsNullOrEmpty(http.Query.Get("Username")) && string.IsNullOrEmpty(http.Query.Get("Password")))
             {
-                http.SendXmlResponse(new ErrorXmlResponse {Message = "Missing arguments!"});
+                http.SendXmlResponse(new ErrorXmlResponse {Message = "Missing arguments #1112!"});
                 return;
             }
 
@@ -54,7 +54,18 @@ namespace Damp
             sqlCmd.Parameters.Add("@username", SqlDbType.NVarChar).Value = http.Query.Get("Username");
             sqlCmd.Parameters.Add("@password", SqlDbType.NVarChar).Value = http.Query.Get("Password");
 
-            SqlDataReader r = sqlCmd.ExecuteReader();
+            SqlDataReader r = null;
+
+            try
+            {
+                r = sqlCmd.ExecuteReader();
+            }
+            catch (InvalidOperationException e)
+            {
+                Logger.Log(e.Message);
+                http.SendXmlResponse(new ErrorXmlResponse {Message = "Internal Server Error!!"});
+                return;
+            }
 
 
             if (r.HasRows)

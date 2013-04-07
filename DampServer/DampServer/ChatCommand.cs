@@ -19,7 +19,7 @@ namespace Damp
             return s.Equals("Chat");
         }
 
-        public void HandleCommand(Http http, string cmd = null)
+        public void Execute(ICommandArgument http, string cmd = null)
         {
             if (string.IsNullOrEmpty(http.Query.Get("To")) ||
                 string.IsNullOrEmpty(http.Query.Get("Message")))

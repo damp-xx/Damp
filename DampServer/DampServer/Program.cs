@@ -10,9 +10,9 @@ namespace Damp
     {
         private static void Main(string[] args)
         {
-            //SocketHandler s = new SocketHandler();
+             SocketHandler s = new SocketHandler();
 
-            var gameHandler = new GameHandler("cs11.zip");
+           // var gameHandler = new GameHandler("cs11.zip");
 
 
             Console.Read();

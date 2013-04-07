@@ -13,7 +13,7 @@
             return cmd.Equals("Live");
         }
 
-        public void HandleCommand(Http http, string cmd = null)
+        public void Execute(ICommandArgument http, string cmd = null)
         {
             ConnectionManager connectionManager = ConnectionManager.GetConnectionManager();
             User userProfile = UserManagement.GetUser(http.Query.Get("authToken"));

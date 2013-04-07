@@ -13,7 +13,7 @@
             return cmd.Equals("Download");
         }
 
-        public void HandleCommand(Http http, string cmd = null)
+        public void Execute(ICommandArgument http, string cmd = null)
         {
             http.SendFileResponse("download.txt");
         }

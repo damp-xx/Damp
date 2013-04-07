@@ -3,10 +3,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Sockets;
 using System.Threading;
 
 #endregion
+
+// @TODO MAKE THREAD SAFE!!
 
 namespace Damp
 {
@@ -17,7 +18,7 @@ namespace Damp
 
         public ConnectionManager()
         {
-            Thread newThread = new Thread(Run);
+            var newThread = new Thread(Run);
             newThread.Start();
         }
 
@@ -27,18 +28,19 @@ namespace Damp
             {
                 try
                 {
-                    foreach (
-                        Connection connection in
-                            _connections.Where(connection => !IsConnected(connection.UserHttp.Socket)))
+                    foreach ( var connection in _connections)
                     {
-                        Console.WriteLine("User disconnected, removing user: {0}", connection.UserProfile.Username);
-                        RemoveConnection(connection);
+                        if (!connection.UserHttp.IsConnected)
+                        {
+                            Console.WriteLine("User disconnected, removing user: {0}", connection.UserProfile.Username);
+                            RemoveConnection(connection);
+                        }
                     }
                 }
-                catch (Exception e)
+                catch
                 {
                     // @TODO FIX THIS EXCEPTION!
-                    Console.WriteLine("Exception 1234: {0}", e.Message);
+                    // Console.WriteLine("Exception 1234: {0}", e.Message);
                 }
 
 
@@ -46,17 +48,7 @@ namespace Damp
             }
         }
 
-        public static bool IsConnected(Socket socket)
-        {
-            try
-            {
-                return !(socket.Poll(1, SelectMode.SelectRead) && socket.Available == 0);
-            }
-            catch (SocketException)
-            {
-                return false;
-            }
-        }
+
 
         public static ConnectionManager GetConnectionManager()
         {
@@ -70,6 +62,7 @@ namespace Damp
 
         public void AddConnection(Connection con)
         {
+            Logger.Log("User online");
             _connections.Add(con);
         }
 
