@@ -1,5 +1,6 @@
 ﻿#region
 
+using System;
 using System.Net;
 using System.Net.Sockets;
 using DampServer;
@@ -15,7 +16,16 @@ namespace DampServer
 
         public SocketHandler()
         {
-            _tcp.Start();
+            try
+            {
+                _tcp.Start();
+
+            }
+            catch (SocketException e)
+            {
+                Console.WriteLine(e.Message);
+                return;
+            }
 
             while (true)
             {
