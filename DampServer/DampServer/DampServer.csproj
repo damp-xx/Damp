@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>.\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,8 +44,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Archivement.cs" />
+    <Compile Include="ChatCommand.cs" />
+    <Compile Include="ChatXmlResponse.cs" />
+    <Compile Include="CommandNotFoundException.cs" />
+    <Compile Include="CommandProcessor.cs" />
+    <Compile Include="Connection.cs" />
+    <Compile Include="ConnectionManager.cs" />
+    <Compile Include="Database.cs" />
+    <Compile Include="DownloadCommand.cs" />
+    <Compile Include="ErrorXmlResponse.cs" />
+    <Compile Include="Game.cs" />
+    <Compile Include="GameHandler.cs" />
+    <Compile Include="Http.cs" />
+    <Compile Include="ICommandArgument.cs" />
+    <Compile Include="InvalidFileHashException.cs" />
+    <Compile Include="InvalidHttpRequestException.cs" />
+    <Compile Include="IServerCommand.cs" />
+    <Compile Include="LiveCommand.cs" />
+    <Compile Include="Log.cs" />
+    <Compile Include="LoginCommand.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RequestProcessor.cs" />
+    <Compile Include="SocketHandler.cs" />
+    <Compile Include="StatusXmlResponse.cs" />
+    <Compile Include="UploadGameCommand.cs" />
+    <Compile Include="User.cs" />
+    <Compile Include="UserCommands.cs" />
+    <Compile Include="UserManagement.cs" />
+    <Compile Include="XmlResponse.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

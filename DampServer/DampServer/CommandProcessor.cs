@@ -27,7 +27,7 @@ namespace Damp
 
         private readonly Socket _socket;
 
-        public CommandProcessor(Socket s)
+        public CommandProcessor(TcpClient s)
         {
             _socket = s;
 
@@ -91,7 +91,7 @@ namespace Damp
 
                     try
                     {
-                        serverCommand.HandleCommand(hp, hp.Path);
+                        serverCommand.Execute(hp, hp.Path);
                     }
                     catch (InvalidHttpRequestException e)
                     {
