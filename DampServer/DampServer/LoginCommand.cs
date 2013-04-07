@@ -8,7 +8,7 @@ using System.Text;
 
 #endregion
 
-namespace Damp
+namespace DampServer
 {
     /**
      * LoginCommand

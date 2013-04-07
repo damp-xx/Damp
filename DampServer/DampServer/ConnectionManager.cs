@@ -9,7 +9,7 @@ using System.Threading;
 
 // @TODO MAKE THREAD SAFE!!
 
-namespace Damp
+namespace DampServer
 {
     public class ConnectionManager
     {

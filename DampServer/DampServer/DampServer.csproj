@@ -37,6 +37,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -48,7 +49,6 @@
     <Compile Include="ChatCommand.cs" />
     <Compile Include="ChatXmlResponse.cs" />
     <Compile Include="CommandNotFoundException.cs" />
-    <Compile Include="CommandProcessor.cs" />
     <Compile Include="Connection.cs" />
     <Compile Include="ConnectionManager.cs" />
     <Compile Include="Database.cs" />

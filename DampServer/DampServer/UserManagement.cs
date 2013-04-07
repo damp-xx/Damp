@@ -6,7 +6,7 @@ using System.Data.SqlClient;
 
 #endregion
 
-namespace Damp
+namespace DampServer
 {
     public class UserManagement
     {

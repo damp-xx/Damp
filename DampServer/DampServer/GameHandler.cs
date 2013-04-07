@@ -11,7 +11,7 @@ using ICSharpCode.SharpZipLib.Zip;
 
 #endregion
 
-namespace Damp
+namespace DampServer
 {
     public class GameHandler
     {

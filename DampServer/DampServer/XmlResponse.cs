@@ -5,7 +5,7 @@ using System.Xml.Serialization;
 
 #endregion
 
-namespace Damp
+namespace DampServer
 {
     [Serializable]
     [XmlRoot(ElementName = "Damp")]

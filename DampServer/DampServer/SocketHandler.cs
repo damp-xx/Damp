@@ -2,10 +2,11 @@
 
 using System.Net;
 using System.Net.Sockets;
+using DampServer;
 
 #endregion
 
-namespace Damp
+namespace DampServer
 {
     public class SocketHandler
     {
