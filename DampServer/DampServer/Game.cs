@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using DampServer;
 
-namespace Damp
+namespace DampServer
 {
     public class Game : XmlResponse
     {

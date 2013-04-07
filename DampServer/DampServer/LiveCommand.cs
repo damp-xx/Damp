@@ -1,4 +1,4 @@
-﻿namespace Damp
+﻿namespace DampServer
 {
     public class LiveCommand : IServerCommand
     {

@@ -4,7 +4,7 @@ using System.Xml.Serialization;
 
 #endregion
 
-namespace Damp
+namespace DampServer
 {
     [XmlRoot(ElementName = "Error")]
     public class ErrorXmlResponse : XmlResponse

@@ -4,7 +4,7 @@ using System;
 
 #endregion
 
-namespace Damp
+namespace DampServer
 {
     public class ChatCommand : IServerCommand
     {

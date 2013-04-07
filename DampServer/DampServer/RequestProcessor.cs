@@ -14,7 +14,7 @@ using System.Threading;
 
 #endregion
 
-namespace Damp
+namespace DampServer
 {
     /**
     * @brief RequestProcessor Constructor

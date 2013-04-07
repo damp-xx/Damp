@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Damp
+namespace DampServer
 {
     public class CommandNotFoundException : Exception
     {

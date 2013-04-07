@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 #endregion
 
-namespace Damp
+namespace DampServer
 {
     public class User : XmlResponse
     {
