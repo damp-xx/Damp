@@ -1,0 +1,294 @@
+\contentsline {chapter}{\numberline {1}Namespace Index}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}Packages}{1}{section.1.1}
+\contentsline {chapter}{\numberline {2}Hierarchical Index}{3}{chapter.2}
+\contentsline {section}{\numberline {2.1}Class Hierarchy}{3}{section.2.1}
+\contentsline {chapter}{\numberline {3}Class Index}{5}{chapter.3}
+\contentsline {section}{\numberline {3.1}Class List}{5}{section.3.1}
+\contentsline {chapter}{\numberline {4}File Index}{7}{chapter.4}
+\contentsline {section}{\numberline {4.1}File List}{7}{section.4.1}
+\contentsline {chapter}{\numberline {5}Namespace Documentation}{9}{chapter.5}
+\contentsline {section}{\numberline {5.1}Package Damp\discretionary {-}{}{}Server}{9}{section.5.1}
+\contentsline {subsection}{\numberline {5.1.1}Enumeration Type Documentation}{10}{subsection.5.1.1}
+\contentsline {subsubsection}{\numberline {5.1.1.1}Log\discretionary {-}{}{}Level}{10}{subsubsection.5.1.1.1}
+\contentsline {chapter}{\numberline {6}Class Documentation}{11}{chapter.6}
+\contentsline {section}{\numberline {6.1}Damp\discretionary {-}{}{}Server.\discretionary {-}{}{}Archivement Class Reference}{11}{section.6.1}
+\contentsline {subsection}{\numberline {6.1.1}Detailed Description}{12}{subsection.6.1.1}
+\contentsline {subsection}{\numberline {6.1.2}Property Documentation}{12}{subsection.6.1.2}
+\contentsline {subsubsection}{\numberline {6.1.2.1}Description}{12}{subsubsection.6.1.2.1}
+\contentsline {subsubsection}{\numberline {6.1.2.2}Icon}{12}{subsubsection.6.1.2.2}
+\contentsline {subsubsection}{\numberline {6.1.2.3}Title}{12}{subsubsection.6.1.2.3}
+\contentsline {section}{\numberline {6.2}Damp\discretionary {-}{}{}Server.\discretionary {-}{}{}Chat\discretionary {-}{}{}Command Class Reference}{13}{section.6.2}
+\contentsline {subsection}{\numberline {6.2.1}Detailed Description}{14}{subsection.6.2.1}
+\contentsline {subsection}{\numberline {6.2.2}Constructor \& Destructor Documentation}{14}{subsection.6.2.2}
+\contentsline {subsubsection}{\numberline {6.2.2.1}Chat\discretionary {-}{}{}Command}{14}{subsubsection.6.2.2.1}
+\contentsline {subsection}{\numberline {6.2.3}Member Function Documentation}{14}{subsection.6.2.3}
+\contentsline {subsubsection}{\numberline {6.2.3.1}Can\discretionary {-}{}{}Handle\discretionary {-}{}{}Command}{14}{subsubsection.6.2.3.1}
+\contentsline {subsubsection}{\numberline {6.2.3.2}Execute}{14}{subsubsection.6.2.3.2}
+\contentsline {subsection}{\numberline {6.2.4}Property Documentation}{14}{subsection.6.2.4}
+\contentsline {subsubsection}{\numberline {6.2.4.1}Is\discretionary {-}{}{}Persistant}{14}{subsubsection.6.2.4.1}
+\contentsline {subsubsection}{\numberline {6.2.4.2}Needs\discretionary {-}{}{}Authcatication}{14}{subsubsection.6.2.4.2}
+\contentsline {section}{\numberline {6.3}Damp\discretionary {-}{}{}Server.\discretionary {-}{}{}Chat\discretionary {-}{}{}Xml\discretionary {-}{}{}Response Class Reference}{15}{section.6.3}
+\contentsline {subsection}{\numberline {6.3.1}Detailed Description}{16}{subsection.6.3.1}
+\contentsline {subsection}{\numberline {6.3.2}Property Documentation}{16}{subsection.6.3.2}
+\contentsline {subsubsection}{\numberline {6.3.2.1}From}{16}{subsubsection.6.3.2.1}
+\contentsline {subsubsection}{\numberline {6.3.2.2}Message}{16}{subsubsection.6.3.2.2}
+\contentsline {subsubsection}{\numberline {6.3.2.3}To}{16}{subsubsection.6.3.2.3}
+\contentsline {section}{\numberline {6.4}Damp\discretionary {-}{}{}Server.\discretionary {-}{}{}Command\discretionary {-}{}{}Not\discretionary {-}{}{}Found\discretionary {-}{}{}Exception Class Reference}{16}{section.6.4}
+\contentsline {subsection}{\numberline {6.4.1}Detailed Description}{17}{subsection.6.4.1}
+\contentsline {subsection}{\numberline {6.4.2}Constructor \& Destructor Documentation}{17}{subsection.6.4.2}
+\contentsline {subsubsection}{\numberline {6.4.2.1}Command\discretionary {-}{}{}Not\discretionary {-}{}{}Found\discretionary {-}{}{}Exception}{17}{subsubsection.6.4.2.1}
+\contentsline {section}{\numberline {6.5}Damp\discretionary {-}{}{}Server.\discretionary {-}{}{}Connection Class Reference}{18}{section.6.5}
+\contentsline {subsection}{\numberline {6.5.1}Detailed Description}{18}{subsection.6.5.1}
+\contentsline {subsection}{\numberline {6.5.2}Property Documentation}{18}{subsection.6.5.2}
+\contentsline {subsubsection}{\numberline {6.5.2.1}User\discretionary {-}{}{}Http}{18}{subsubsection.6.5.2.1}
+\contentsline {subsubsection}{\numberline {6.5.2.2}User\discretionary {-}{}{}Profile}{18}{subsubsection.6.5.2.2}
+\contentsline {section}{\numberline {6.6}Damp\discretionary {-}{}{}Server.\discretionary {-}{}{}Connection\discretionary {-}{}{}Manager Class Reference}{19}{section.6.6}
+\contentsline {subsection}{\numberline {6.6.1}Detailed Description}{19}{subsection.6.6.1}
+\contentsline {subsection}{\numberline {6.6.2}Constructor \& Destructor Documentation}{19}{subsection.6.6.2}
+\contentsline {subsubsection}{\numberline {6.6.2.1}Connection\discretionary {-}{}{}Manager}{19}{subsubsection.6.6.2.1}
+\contentsline {subsection}{\numberline {6.6.3}Member Function Documentation}{20}{subsection.6.6.3}
+\contentsline {subsubsection}{\numberline {6.6.3.1}Add\discretionary {-}{}{}Connection}{20}{subsubsection.6.6.3.1}
+\contentsline {subsubsection}{\numberline {6.6.3.2}Get\discretionary {-}{}{}Connection\discretionary {-}{}{}By\discretionary {-}{}{}Auth\discretionary {-}{}{}Token}{20}{subsubsection.6.6.3.2}
+\contentsline {subsubsection}{\numberline {6.6.3.3}Get\discretionary {-}{}{}Connection\discretionary {-}{}{}By\discretionary {-}{}{}User\discretionary {-}{}{}Id}{20}{subsubsection.6.6.3.3}
+\contentsline {subsubsection}{\numberline {6.6.3.4}Get\discretionary {-}{}{}Connection\discretionary {-}{}{}Manager}{20}{subsubsection.6.6.3.4}
+\contentsline {subsubsection}{\numberline {6.6.3.5}Remove\discretionary {-}{}{}Connection}{20}{subsubsection.6.6.3.5}
+\contentsline {subsubsection}{\numberline {6.6.3.6}Run}{20}{subsubsection.6.6.3.6}
+\contentsline {subsection}{\numberline {6.6.4}Member Data Documentation}{20}{subsection.6.6.4}
+\contentsline {subsubsection}{\numberline {6.6.4.1}\discretionary {-}{}{}\_\discretionary {-}{}{}connections}{20}{subsubsection.6.6.4.1}
+\contentsline {subsubsection}{\numberline {6.6.4.2}Manager}{20}{subsubsection.6.6.4.2}
+\contentsline {section}{\numberline {6.7}Damp\discretionary {-}{}{}Server.\discretionary {-}{}{}Database Class Reference}{21}{section.6.7}
+\contentsline {subsection}{\numberline {6.7.1}Detailed Description}{21}{subsection.6.7.1}
+\contentsline {subsection}{\numberline {6.7.2}Member Function Documentation}{21}{subsection.6.7.2}
+\contentsline {subsubsection}{\numberline {6.7.2.1}Close}{21}{subsubsection.6.7.2.1}
+\contentsline {subsubsection}{\numberline {6.7.2.2}Get\discretionary {-}{}{}Command}{21}{subsubsection.6.7.2.2}
+\contentsline {subsubsection}{\numberline {6.7.2.3}Open}{21}{subsubsection.6.7.2.3}
+\contentsline {subsection}{\numberline {6.7.3}Member Data Documentation}{22}{subsection.6.7.3}
+\contentsline {subsubsection}{\numberline {6.7.3.1}\discretionary {-}{}{}\_\discretionary {-}{}{}sql\discretionary {-}{}{}Connection}{22}{subsubsection.6.7.3.1}
+\contentsline {subsubsection}{\numberline {6.7.3.2}Connection\discretionary {-}{}{}String}{22}{subsubsection.6.7.3.2}
+\contentsline {section}{\numberline {6.8}Damp\discretionary {-}{}{}Server.\discretionary {-}{}{}Download\discretionary {-}{}{}Command Class Reference}{22}{section.6.8}
+\contentsline {subsection}{\numberline {6.8.1}Detailed Description}{23}{subsection.6.8.1}
+\contentsline {subsection}{\numberline {6.8.2}Constructor \& Destructor Documentation}{23}{subsection.6.8.2}
+\contentsline {subsubsection}{\numberline {6.8.2.1}Download\discretionary {-}{}{}Command}{23}{subsubsection.6.8.2.1}
+\contentsline {subsection}{\numberline {6.8.3}Member Function Documentation}{23}{subsection.6.8.3}
+\contentsline {subsubsection}{\numberline {6.8.3.1}Can\discretionary {-}{}{}Handle\discretionary {-}{}{}Command}{23}{subsubsection.6.8.3.1}
+\contentsline {subsubsection}{\numberline {6.8.3.2}Execute}{24}{subsubsection.6.8.3.2}
+\contentsline {subsection}{\numberline {6.8.4}Property Documentation}{24}{subsection.6.8.4}
+\contentsline {subsubsection}{\numberline {6.8.4.1}Is\discretionary {-}{}{}Persistant}{24}{subsubsection.6.8.4.1}
+\contentsline {subsubsection}{\numberline {6.8.4.2}Needs\discretionary {-}{}{}Authcatication}{24}{subsubsection.6.8.4.2}
+\contentsline {section}{\numberline {6.9}Damp\discretionary {-}{}{}Server.\discretionary {-}{}{}Error\discretionary {-}{}{}Xml\discretionary {-}{}{}Response Class Reference}{24}{section.6.9}
+\contentsline {subsection}{\numberline {6.9.1}Detailed Description}{25}{subsection.6.9.1}
+\contentsline {subsection}{\numberline {6.9.2}Property Documentation}{25}{subsection.6.9.2}
+\contentsline {subsubsection}{\numberline {6.9.2.1}Message}{25}{subsubsection.6.9.2.1}
+\contentsline {section}{\numberline {6.10}Damp\discretionary {-}{}{}Server.\discretionary {-}{}{}Game Class Reference}{26}{section.6.10}
+\contentsline {subsection}{\numberline {6.10.1}Detailed Description}{27}{subsection.6.10.1}
+\contentsline {subsection}{\numberline {6.10.2}Member Function Documentation}{28}{subsection.6.10.2}
+\contentsline {subsubsection}{\numberline {6.10.2.1}To\discretionary {-}{}{}String}{28}{subsubsection.6.10.2.1}
+\contentsline {subsection}{\numberline {6.10.3}Property Documentation}{28}{subsection.6.10.3}
+\contentsline {subsubsection}{\numberline {6.10.3.1}Archivements}{28}{subsubsection.6.10.3.1}
+\contentsline {subsubsection}{\numberline {6.10.3.2}Description}{28}{subsubsection.6.10.3.2}
+\contentsline {subsubsection}{\numberline {6.10.3.3}Developer}{28}{subsubsection.6.10.3.3}
+\contentsline {subsubsection}{\numberline {6.10.3.4}Genre}{28}{subsubsection.6.10.3.4}
+\contentsline {subsubsection}{\numberline {6.10.3.5}Id}{28}{subsubsection.6.10.3.5}
+\contentsline {subsubsection}{\numberline {6.10.3.6}Path}{28}{subsubsection.6.10.3.6}
+\contentsline {subsubsection}{\numberline {6.10.3.7}Picture}{28}{subsubsection.6.10.3.7}
+\contentsline {subsubsection}{\numberline {6.10.3.8}Recommended\discretionary {-}{}{}Age}{28}{subsubsection.6.10.3.8}
+\contentsline {subsubsection}{\numberline {6.10.3.9}Title}{28}{subsubsection.6.10.3.9}
+\contentsline {section}{\numberline {6.11}Damp\discretionary {-}{}{}Server.\discretionary {-}{}{}Game\discretionary {-}{}{}Handler Class Reference}{29}{section.6.11}
+\contentsline {subsection}{\numberline {6.11.1}Detailed Description}{30}{subsection.6.11.1}
+\contentsline {subsection}{\numberline {6.11.2}Constructor \& Destructor Documentation}{30}{subsection.6.11.2}
+\contentsline {subsubsection}{\numberline {6.11.2.1}Game\discretionary {-}{}{}Handler}{30}{subsubsection.6.11.2.1}
+\contentsline {subsection}{\numberline {6.11.3}Member Function Documentation}{30}{subsection.6.11.3}
+\contentsline {subsubsection}{\numberline {6.11.3.1}Extract}{30}{subsubsection.6.11.3.1}
+\contentsline {subsubsection}{\numberline {6.11.3.2}Insert\discretionary {-}{}{}Game\discretionary {-}{}{}Into\discretionary {-}{}{}Db}{30}{subsubsection.6.11.3.2}
+\contentsline {subsubsection}{\numberline {6.11.3.3}Parse\discretionary {-}{}{}Files}{30}{subsubsection.6.11.3.3}
+\contentsline {subsubsection}{\numberline {6.11.3.4}Parse\discretionary {-}{}{}Game}{30}{subsubsection.6.11.3.4}
+\contentsline {subsubsection}{\numberline {6.11.3.5}Parse\discretionary {-}{}{}Manifest}{30}{subsubsection.6.11.3.5}
+\contentsline {subsection}{\numberline {6.11.4}Member Data Documentation}{30}{subsection.6.11.4}
+\contentsline {subsubsection}{\numberline {6.11.4.1}\discretionary {-}{}{}\_\discretionary {-}{}{}filefolder}{30}{subsubsection.6.11.4.1}
+\contentsline {subsubsection}{\numberline {6.11.4.2}\discretionary {-}{}{}\_\discretionary {-}{}{}filename}{30}{subsubsection.6.11.4.2}
+\contentsline {subsubsection}{\numberline {6.11.4.3}\discretionary {-}{}{}\_\discretionary {-}{}{}filepath}{30}{subsubsection.6.11.4.3}
+\contentsline {subsubsection}{\numberline {6.11.4.4}\discretionary {-}{}{}\_\discretionary {-}{}{}files}{30}{subsubsection.6.11.4.4}
+\contentsline {subsubsection}{\numberline {6.11.4.5}\discretionary {-}{}{}\_\discretionary {-}{}{}manifest}{31}{subsubsection.6.11.4.5}
+\contentsline {subsubsection}{\numberline {6.11.4.6}\discretionary {-}{}{}\_\discretionary {-}{}{}zip\discretionary {-}{}{}Stream}{31}{subsubsection.6.11.4.6}
+\contentsline {subsubsection}{\numberline {6.11.4.7}Game\discretionary {-}{}{}Pre\discretionary {-}{}{}Fix}{31}{subsubsection.6.11.4.7}
+\contentsline {subsubsection}{\numberline {6.11.4.8}Games\discretionary {-}{}{}Folder}{31}{subsubsection.6.11.4.8}
+\contentsline {subsection}{\numberline {6.11.5}Property Documentation}{31}{subsection.6.11.5}
+\contentsline {subsubsection}{\numberline {6.11.5.1}Game}{31}{subsubsection.6.11.5.1}
+\contentsline {section}{\numberline {6.12}Damp\discretionary {-}{}{}Server.\discretionary {-}{}{}Http Class Reference}{31}{section.6.12}
+\contentsline {subsection}{\numberline {6.12.1}Detailed Description}{34}{subsection.6.12.1}
+\contentsline {subsection}{\numberline {6.12.2}Constructor \& Destructor Documentation}{34}{subsection.6.12.2}
+\contentsline {subsubsection}{\numberline {6.12.2.1}Http}{34}{subsubsection.6.12.2.1}
+\contentsline {subsection}{\numberline {6.12.3}Member Function Documentation}{35}{subsection.6.12.3}
+\contentsline {subsubsection}{\numberline {6.12.3.1}Add\discretionary {-}{}{}Header}{35}{subsubsection.6.12.3.1}
+\contentsline {subsubsection}{\numberline {6.12.3.2}Get\discretionary {-}{}{}Header}{35}{subsubsection.6.12.3.2}
+\contentsline {subsubsection}{\numberline {6.12.3.3}Parse\discretionary {-}{}{}Get}{35}{subsubsection.6.12.3.3}
+\contentsline {subsubsection}{\numberline {6.12.3.4}Parse\discretionary {-}{}{}Post}{35}{subsubsection.6.12.3.4}
+\contentsline {subsubsection}{\numberline {6.12.3.5}Send\discretionary {-}{}{}File\discretionary {-}{}{}Response}{35}{subsubsection.6.12.3.5}
+\contentsline {subsubsection}{\numberline {6.12.3.6}Send\discretionary {-}{}{}Response\discretionary {-}{}{}Header}{35}{subsubsection.6.12.3.6}
+\contentsline {subsubsection}{\numberline {6.12.3.7}Send\discretionary {-}{}{}Xml\discretionary {-}{}{}Response}{35}{subsubsection.6.12.3.7}
+\contentsline {subsubsection}{\numberline {6.12.3.8}Socket\discretionary {-}{}{}Connected}{36}{subsubsection.6.12.3.8}
+\contentsline {subsection}{\numberline {6.12.4}Member Data Documentation}{36}{subsection.6.12.4}
+\contentsline {subsubsection}{\numberline {6.12.4.1}\discretionary {-}{}{}\_\discretionary {-}{}{}headers}{36}{subsubsection.6.12.4.1}
+\contentsline {subsubsection}{\numberline {6.12.4.2}\discretionary {-}{}{}\_\discretionary {-}{}{}headers\discretionary {-}{}{}To\discretionary {-}{}{}Send}{36}{subsubsection.6.12.4.2}
+\contentsline {subsubsection}{\numberline {6.12.4.3}\discretionary {-}{}{}\_\discretionary {-}{}{}network}{36}{subsubsection.6.12.4.3}
+\contentsline {subsubsection}{\numberline {6.12.4.4}\discretionary {-}{}{}\_\discretionary {-}{}{}socket}{36}{subsubsection.6.12.4.4}
+\contentsline {subsubsection}{\numberline {6.12.4.5}Server\discretionary {-}{}{}Certificate}{36}{subsubsection.6.12.4.5}
+\contentsline {subsection}{\numberline {6.12.5}Property Documentation}{36}{subsection.6.12.5}
+\contentsline {subsubsection}{\numberline {6.12.5.1}Content}{36}{subsubsection.6.12.5.1}
+\contentsline {subsubsection}{\numberline {6.12.5.2}Http\discretionary {-}{}{}Version}{36}{subsubsection.6.12.5.2}
+\contentsline {subsubsection}{\numberline {6.12.5.3}Is\discretionary {-}{}{}Connected}{36}{subsubsection.6.12.5.3}
+\contentsline {subsubsection}{\numberline {6.12.5.4}Length}{37}{subsubsection.6.12.5.4}
+\contentsline {subsubsection}{\numberline {6.12.5.5}Path}{37}{subsubsection.6.12.5.5}
+\contentsline {subsubsection}{\numberline {6.12.5.6}Query}{37}{subsubsection.6.12.5.6}
+\contentsline {subsubsection}{\numberline {6.12.5.7}Status}{37}{subsubsection.6.12.5.7}
+\contentsline {subsubsection}{\numberline {6.12.5.8}Type}{37}{subsubsection.6.12.5.8}
+\contentsline {section}{\numberline {6.13}Damp\discretionary {-}{}{}Server.\discretionary {-}{}{}I\discretionary {-}{}{}Command\discretionary {-}{}{}Argument Interface Reference}{38}{section.6.13}
+\contentsline {subsection}{\numberline {6.13.1}Detailed Description}{39}{subsection.6.13.1}
+\contentsline {subsection}{\numberline {6.13.2}Member Function Documentation}{39}{subsection.6.13.2}
+\contentsline {subsubsection}{\numberline {6.13.2.1}Send\discretionary {-}{}{}File\discretionary {-}{}{}Response}{39}{subsubsection.6.13.2.1}
+\contentsline {subsubsection}{\numberline {6.13.2.2}Send\discretionary {-}{}{}Xml\discretionary {-}{}{}Response}{39}{subsubsection.6.13.2.2}
+\contentsline {subsection}{\numberline {6.13.3}Property Documentation}{39}{subsection.6.13.3}
+\contentsline {subsubsection}{\numberline {6.13.3.1}Is\discretionary {-}{}{}Connected}{39}{subsubsection.6.13.3.1}
+\contentsline {subsubsection}{\numberline {6.13.3.2}Query}{39}{subsubsection.6.13.3.2}
+\contentsline {section}{\numberline {6.14}Damp\discretionary {-}{}{}Server.\discretionary {-}{}{}Invalid\discretionary {-}{}{}File\discretionary {-}{}{}Hash\discretionary {-}{}{}Exception Class Reference}{40}{section.6.14}
+\contentsline {subsection}{\numberline {6.14.1}Detailed Description}{40}{subsection.6.14.1}
+\contentsline {section}{\numberline {6.15}Damp\discretionary {-}{}{}Server.\discretionary {-}{}{}Invalid\discretionary {-}{}{}Http\discretionary {-}{}{}Request\discretionary {-}{}{}Exception Class Reference}{41}{section.6.15}
+\contentsline {subsection}{\numberline {6.15.1}Detailed Description}{42}{subsection.6.15.1}
+\contentsline {subsection}{\numberline {6.15.2}Constructor \& Destructor Documentation}{42}{subsection.6.15.2}
+\contentsline {subsubsection}{\numberline {6.15.2.1}Invalid\discretionary {-}{}{}Http\discretionary {-}{}{}Request\discretionary {-}{}{}Exception}{42}{subsubsection.6.15.2.1}
+\contentsline {section}{\numberline {6.16}Damp\discretionary {-}{}{}Server.\discretionary {-}{}{}I\discretionary {-}{}{}Server\discretionary {-}{}{}Command Interface Reference}{42}{section.6.16}
+\contentsline {subsection}{\numberline {6.16.1}Detailed Description}{43}{subsection.6.16.1}
+\contentsline {subsection}{\numberline {6.16.2}Member Function Documentation}{43}{subsection.6.16.2}
+\contentsline {subsubsection}{\numberline {6.16.2.1}Can\discretionary {-}{}{}Handle\discretionary {-}{}{}Command}{43}{subsubsection.6.16.2.1}
+\contentsline {subsubsection}{\numberline {6.16.2.2}Execute}{43}{subsubsection.6.16.2.2}
+\contentsline {subsection}{\numberline {6.16.3}Property Documentation}{43}{subsection.6.16.3}
+\contentsline {subsubsection}{\numberline {6.16.3.1}Is\discretionary {-}{}{}Persistant}{43}{subsubsection.6.16.3.1}
+\contentsline {subsubsection}{\numberline {6.16.3.2}Needs\discretionary {-}{}{}Authcatication}{43}{subsubsection.6.16.3.2}
+\contentsline {section}{\numberline {6.17}Damp\discretionary {-}{}{}Server.\discretionary {-}{}{}Live\discretionary {-}{}{}Command Class Reference}{44}{section.6.17}
+\contentsline {subsection}{\numberline {6.17.1}Detailed Description}{45}{subsection.6.17.1}
+\contentsline {subsection}{\numberline {6.17.2}Constructor \& Destructor Documentation}{45}{subsection.6.17.2}
+\contentsline {subsubsection}{\numberline {6.17.2.1}Live\discretionary {-}{}{}Command}{45}{subsubsection.6.17.2.1}
+\contentsline {subsection}{\numberline {6.17.3}Member Function Documentation}{45}{subsection.6.17.3}
+\contentsline {subsubsection}{\numberline {6.17.3.1}Can\discretionary {-}{}{}Handle\discretionary {-}{}{}Command}{45}{subsubsection.6.17.3.1}
+\contentsline {subsubsection}{\numberline {6.17.3.2}Execute}{45}{subsubsection.6.17.3.2}
+\contentsline {subsection}{\numberline {6.17.4}Property Documentation}{45}{subsection.6.17.4}
+\contentsline {subsubsection}{\numberline {6.17.4.1}Is\discretionary {-}{}{}Persistant}{45}{subsubsection.6.17.4.1}
+\contentsline {subsubsection}{\numberline {6.17.4.2}Needs\discretionary {-}{}{}Authcatication}{45}{subsubsection.6.17.4.2}
+\contentsline {section}{\numberline {6.18}Damp\discretionary {-}{}{}Server.\discretionary {-}{}{}Logger Class Reference}{46}{section.6.18}
+\contentsline {subsection}{\numberline {6.18.1}Detailed Description}{46}{subsection.6.18.1}
+\contentsline {subsection}{\numberline {6.18.2}Member Function Documentation}{46}{subsection.6.18.2}
+\contentsline {subsubsection}{\numberline {6.18.2.1}Log}{46}{subsubsection.6.18.2.1}
+\contentsline {section}{\numberline {6.19}Damp\discretionary {-}{}{}Server.\discretionary {-}{}{}Login\discretionary {-}{}{}Command Class Reference}{47}{section.6.19}
+\contentsline {subsection}{\numberline {6.19.1}Detailed Description}{48}{subsection.6.19.1}
+\contentsline {subsection}{\numberline {6.19.2}Constructor \& Destructor Documentation}{48}{subsection.6.19.2}
+\contentsline {subsubsection}{\numberline {6.19.2.1}Login\discretionary {-}{}{}Command}{48}{subsubsection.6.19.2.1}
+\contentsline {subsection}{\numberline {6.19.3}Member Function Documentation}{48}{subsection.6.19.3}
+\contentsline {subsubsection}{\numberline {6.19.3.1}Can\discretionary {-}{}{}Handle\discretionary {-}{}{}Command}{48}{subsubsection.6.19.3.1}
+\contentsline {subsubsection}{\numberline {6.19.3.2}Execute}{48}{subsubsection.6.19.3.2}
+\contentsline {subsection}{\numberline {6.19.4}Property Documentation}{48}{subsection.6.19.4}
+\contentsline {subsubsection}{\numberline {6.19.4.1}Is\discretionary {-}{}{}Persistant}{48}{subsubsection.6.19.4.1}
+\contentsline {subsubsection}{\numberline {6.19.4.2}Needs\discretionary {-}{}{}Authcatication}{48}{subsubsection.6.19.4.2}
+\contentsline {section}{\numberline {6.20}Damp\discretionary {-}{}{}Server.\discretionary {-}{}{}Program Class Reference}{49}{section.6.20}
+\contentsline {subsection}{\numberline {6.20.1}Detailed Description}{49}{subsection.6.20.1}
+\contentsline {subsection}{\numberline {6.20.2}Member Function Documentation}{49}{subsection.6.20.2}
+\contentsline {subsubsection}{\numberline {6.20.2.1}Main}{49}{subsubsection.6.20.2.1}
+\contentsline {section}{\numberline {6.21}Damp\discretionary {-}{}{}Server.\discretionary {-}{}{}Request\discretionary {-}{}{}Processor Class Reference}{49}{section.6.21}
+\contentsline {subsection}{\numberline {6.21.1}Detailed Description}{50}{subsection.6.21.1}
+\contentsline {subsection}{\numberline {6.21.2}Constructor \& Destructor Documentation}{50}{subsection.6.21.2}
+\contentsline {subsubsection}{\numberline {6.21.2.1}Request\discretionary {-}{}{}Processor}{50}{subsubsection.6.21.2.1}
+\contentsline {subsection}{\numberline {6.21.3}Member Function Documentation}{51}{subsection.6.21.3}
+\contentsline {subsubsection}{\numberline {6.21.3.1}Check\discretionary {-}{}{}Authetication}{51}{subsubsection.6.21.3.1}
+\contentsline {subsubsection}{\numberline {6.21.3.2}Close\discretionary {-}{}{}Socket}{51}{subsubsection.6.21.3.2}
+\contentsline {subsubsection}{\numberline {6.21.3.3}Create\discretionary {-}{}{}Command}{51}{subsubsection.6.21.3.3}
+\contentsline {subsubsection}{\numberline {6.21.3.4}Run}{51}{subsubsection.6.21.3.4}
+\contentsline {subsection}{\numberline {6.21.4}Member Data Documentation}{51}{subsection.6.21.4}
+\contentsline {subsubsection}{\numberline {6.21.4.1}\discretionary {-}{}{}\_\discretionary {-}{}{}socket}{51}{subsubsection.6.21.4.1}
+\contentsline {section}{\numberline {6.22}Damp\discretionary {-}{}{}Server.\discretionary {-}{}{}Socket\discretionary {-}{}{}Handler Class Reference}{52}{section.6.22}
+\contentsline {subsection}{\numberline {6.22.1}Detailed Description}{52}{subsection.6.22.1}
+\contentsline {subsection}{\numberline {6.22.2}Constructor \& Destructor Documentation}{52}{subsection.6.22.2}
+\contentsline {subsubsection}{\numberline {6.22.2.1}Socket\discretionary {-}{}{}Handler}{52}{subsubsection.6.22.2.1}
+\contentsline {subsection}{\numberline {6.22.3}Member Data Documentation}{52}{subsection.6.22.3}
+\contentsline {subsubsection}{\numberline {6.22.3.1}\discretionary {-}{}{}\_\discretionary {-}{}{}tcp}{52}{subsubsection.6.22.3.1}
+\contentsline {section}{\numberline {6.23}Damp\discretionary {-}{}{}Server.\discretionary {-}{}{}Status\discretionary {-}{}{}Xml\discretionary {-}{}{}Response Class Reference}{53}{section.6.23}
+\contentsline {subsection}{\numberline {6.23.1}Detailed Description}{54}{subsection.6.23.1}
+\contentsline {subsection}{\numberline {6.23.2}Property Documentation}{54}{subsection.6.23.2}
+\contentsline {subsubsection}{\numberline {6.23.2.1}Code}{54}{subsubsection.6.23.2.1}
+\contentsline {subsubsection}{\numberline {6.23.2.2}Command}{54}{subsubsection.6.23.2.2}
+\contentsline {subsubsection}{\numberline {6.23.2.3}Message}{54}{subsubsection.6.23.2.3}
+\contentsline {section}{\numberline {6.24}Damp\discretionary {-}{}{}Server.\discretionary {-}{}{}Upload\discretionary {-}{}{}Game\discretionary {-}{}{}Command Class Reference}{54}{section.6.24}
+\contentsline {subsection}{\numberline {6.24.1}Detailed Description}{55}{subsection.6.24.1}
+\contentsline {subsection}{\numberline {6.24.2}Constructor \& Destructor Documentation}{55}{subsection.6.24.2}
+\contentsline {subsubsection}{\numberline {6.24.2.1}Upload\discretionary {-}{}{}Game\discretionary {-}{}{}Command}{55}{subsubsection.6.24.2.1}
+\contentsline {subsection}{\numberline {6.24.3}Member Function Documentation}{56}{subsection.6.24.3}
+\contentsline {subsubsection}{\numberline {6.24.3.1}Can\discretionary {-}{}{}Handle\discretionary {-}{}{}Command}{56}{subsubsection.6.24.3.1}
+\contentsline {subsubsection}{\numberline {6.24.3.2}Execute}{56}{subsubsection.6.24.3.2}
+\contentsline {subsubsection}{\numberline {6.24.3.3}Write\discretionary {-}{}{}Tofile}{56}{subsubsection.6.24.3.3}
+\contentsline {subsection}{\numberline {6.24.4}Property Documentation}{56}{subsection.6.24.4}
+\contentsline {subsubsection}{\numberline {6.24.4.1}Is\discretionary {-}{}{}Persistant}{56}{subsubsection.6.24.4.1}
+\contentsline {subsubsection}{\numberline {6.24.4.2}Needs\discretionary {-}{}{}Authcatication}{56}{subsubsection.6.24.4.2}
+\contentsline {section}{\numberline {6.25}Damp\discretionary {-}{}{}Server.\discretionary {-}{}{}User Class Reference}{57}{section.6.25}
+\contentsline {subsection}{\numberline {6.25.1}Detailed Description}{58}{subsection.6.25.1}
+\contentsline {subsection}{\numberline {6.25.2}Property Documentation}{58}{subsection.6.25.2}
+\contentsline {subsubsection}{\numberline {6.25.2.1}Auth\discretionary {-}{}{}Token}{58}{subsubsection.6.25.2.1}
+\contentsline {subsubsection}{\numberline {6.25.2.2}Email}{58}{subsubsection.6.25.2.2}
+\contentsline {subsubsection}{\numberline {6.25.2.3}Friends}{58}{subsubsection.6.25.2.3}
+\contentsline {subsubsection}{\numberline {6.25.2.4}Games}{58}{subsubsection.6.25.2.4}
+\contentsline {subsubsection}{\numberline {6.25.2.5}User\discretionary {-}{}{}Id}{58}{subsubsection.6.25.2.5}
+\contentsline {subsubsection}{\numberline {6.25.2.6}Username}{58}{subsubsection.6.25.2.6}
+\contentsline {section}{\numberline {6.26}Damp\discretionary {-}{}{}Server.\discretionary {-}{}{}User\discretionary {-}{}{}Commands Class Reference}{59}{section.6.26}
+\contentsline {subsection}{\numberline {6.26.1}Detailed Description}{60}{subsection.6.26.1}
+\contentsline {subsection}{\numberline {6.26.2}Constructor \& Destructor Documentation}{60}{subsection.6.26.2}
+\contentsline {subsubsection}{\numberline {6.26.2.1}User\discretionary {-}{}{}Commands}{60}{subsubsection.6.26.2.1}
+\contentsline {subsection}{\numberline {6.26.3}Member Function Documentation}{60}{subsection.6.26.3}
+\contentsline {subsubsection}{\numberline {6.26.3.1}Can\discretionary {-}{}{}Handle\discretionary {-}{}{}Command}{60}{subsubsection.6.26.3.1}
+\contentsline {subsubsection}{\numberline {6.26.3.2}Execute}{60}{subsubsection.6.26.3.2}
+\contentsline {subsection}{\numberline {6.26.4}Member Data Documentation}{60}{subsection.6.26.4}
+\contentsline {subsubsection}{\numberline {6.26.4.1}\discretionary {-}{}{}\_\discretionary {-}{}{}http}{60}{subsubsection.6.26.4.1}
+\contentsline {subsection}{\numberline {6.26.5}Property Documentation}{60}{subsection.6.26.5}
+\contentsline {subsubsection}{\numberline {6.26.5.1}Is\discretionary {-}{}{}Persistant}{60}{subsubsection.6.26.5.1}
+\contentsline {subsubsection}{\numberline {6.26.5.2}Needs\discretionary {-}{}{}Authcatication}{61}{subsubsection.6.26.5.2}
+\contentsline {section}{\numberline {6.27}Damp\discretionary {-}{}{}Server.\discretionary {-}{}{}User\discretionary {-}{}{}Management Class Reference}{61}{section.6.27}
+\contentsline {subsection}{\numberline {6.27.1}Detailed Description}{61}{subsection.6.27.1}
+\contentsline {subsection}{\numberline {6.27.2}Member Function Documentation}{61}{subsection.6.27.2}
+\contentsline {subsubsection}{\numberline {6.27.2.1}Get\discretionary {-}{}{}User}{61}{subsubsection.6.27.2.1}
+\contentsline {section}{\numberline {6.28}Damp\discretionary {-}{}{}Server.\discretionary {-}{}{}User\discretionary {-}{}{}Not\discretionary {-}{}{}Found\discretionary {-}{}{}Exception Class Reference}{62}{section.6.28}
+\contentsline {subsection}{\numberline {6.28.1}Detailed Description}{62}{subsection.6.28.1}
+\contentsline {section}{\numberline {6.29}Damp\discretionary {-}{}{}Server.\discretionary {-}{}{}Xml\discretionary {-}{}{}Response Class Reference}{63}{section.6.29}
+\contentsline {subsection}{\numberline {6.29.1}Detailed Description}{63}{subsection.6.29.1}
+\contentsline {subsection}{\numberline {6.29.2}Constructor \& Destructor Documentation}{63}{subsection.6.29.2}
+\contentsline {subsubsection}{\numberline {6.29.2.1}Xml\discretionary {-}{}{}Response}{63}{subsubsection.6.29.2.1}
+\contentsline {subsection}{\numberline {6.29.3}Property Documentation}{63}{subsection.6.29.3}
+\contentsline {subsubsection}{\numberline {6.29.3.1}Date}{64}{subsubsection.6.29.3.1}
+\contentsline {chapter}{\numberline {7}File Documentation}{65}{chapter.7}
+\contentsline {section}{\numberline {7.1}Damp\discretionary {-}{}{}Server/\discretionary {-}{}{}Archivement.cs File Reference}{65}{section.7.1}
+\contentsline {section}{\numberline {7.2}Damp\discretionary {-}{}{}Server/\discretionary {-}{}{}Chat\discretionary {-}{}{}Command.cs File Reference}{65}{section.7.2}
+\contentsline {section}{\numberline {7.3}Damp\discretionary {-}{}{}Server/\discretionary {-}{}{}Chat\discretionary {-}{}{}Xml\discretionary {-}{}{}Response.cs File Reference}{65}{section.7.3}
+\contentsline {section}{\numberline {7.4}Damp\discretionary {-}{}{}Server/\discretionary {-}{}{}Command\discretionary {-}{}{}Not\discretionary {-}{}{}Found\discretionary {-}{}{}Exception.cs File Reference}{65}{section.7.4}
+\contentsline {section}{\numberline {7.5}Damp\discretionary {-}{}{}Server/\discretionary {-}{}{}Connection.cs File Reference}{66}{section.7.5}
+\contentsline {section}{\numberline {7.6}Damp\discretionary {-}{}{}Server/\discretionary {-}{}{}Connection\discretionary {-}{}{}Manager.cs File Reference}{66}{section.7.6}
+\contentsline {section}{\numberline {7.7}Damp\discretionary {-}{}{}Server/\discretionary {-}{}{}Database.cs File Reference}{66}{section.7.7}
+\contentsline {section}{\numberline {7.8}Damp\discretionary {-}{}{}Server/\discretionary {-}{}{}Download\discretionary {-}{}{}Command.cs File Reference}{66}{section.7.8}
+\contentsline {section}{\numberline {7.9}Damp\discretionary {-}{}{}Server/\discretionary {-}{}{}Error\discretionary {-}{}{}Xml\discretionary {-}{}{}Response.cs File Reference}{67}{section.7.9}
+\contentsline {section}{\numberline {7.10}Damp\discretionary {-}{}{}Server/\discretionary {-}{}{}Game.cs File Reference}{67}{section.7.10}
+\contentsline {section}{\numberline {7.11}Damp\discretionary {-}{}{}Server/\discretionary {-}{}{}Game\discretionary {-}{}{}Handler.cs File Reference}{67}{section.7.11}
+\contentsline {section}{\numberline {7.12}Damp\discretionary {-}{}{}Server/\discretionary {-}{}{}Http.cs File Reference}{67}{section.7.12}
+\contentsline {section}{\numberline {7.13}Damp\discretionary {-}{}{}Server/\discretionary {-}{}{}I\discretionary {-}{}{}Command\discretionary {-}{}{}Argument.cs File Reference}{67}{section.7.13}
+\contentsline {section}{\numberline {7.14}Damp\discretionary {-}{}{}Server/\discretionary {-}{}{}Invalid\discretionary {-}{}{}File\discretionary {-}{}{}Hash\discretionary {-}{}{}Exception.cs File Reference}{68}{section.7.14}
+\contentsline {section}{\numberline {7.15}Damp\discretionary {-}{}{}Server/\discretionary {-}{}{}Invalid\discretionary {-}{}{}Http\discretionary {-}{}{}Request\discretionary {-}{}{}Exception.cs File Reference}{68}{section.7.15}
+\contentsline {section}{\numberline {7.16}Damp\discretionary {-}{}{}Server/\discretionary {-}{}{}I\discretionary {-}{}{}Server\discretionary {-}{}{}Command.cs File Reference}{68}{section.7.16}
+\contentsline {section}{\numberline {7.17}Damp\discretionary {-}{}{}Server/\discretionary {-}{}{}Live\discretionary {-}{}{}Command.cs File Reference}{68}{section.7.17}
+\contentsline {section}{\numberline {7.18}Damp\discretionary {-}{}{}Server/\discretionary {-}{}{}Log.cs File Reference}{69}{section.7.18}
+\contentsline {section}{\numberline {7.19}Damp\discretionary {-}{}{}Server/\discretionary {-}{}{}Login\discretionary {-}{}{}Command.cs File Reference}{69}{section.7.19}
+\contentsline {section}{\numberline {7.20}Damp\discretionary {-}{}{}Server/obj/\discretionary {-}{}{}Debug/\discretionary {-}{}{}Temporary\discretionary {-}{}{}Generated\discretionary {-}{}{}File\discretionary {-}{}{}\_\discretionary {-}{}{}036\discretionary {-}{}{}C0\discretionary {-}{}{}B5\discretionary {-}{}{}B-\/1481-\/4323-\/8\discretionary {-}{}{}D20-\/8\discretionary {-}{}{}F5\discretionary {-}{}{}A\discretionary {-}{}{}D\discretionary {-}{}{}C\discretionary {-}{}{}B23\discretionary {-}{}{}D92.cs File Reference}{69}{section.7.20}
+\contentsline {section}{\numberline {7.21}Damp\discretionary {-}{}{}Server/obj/\discretionary {-}{}{}Debug/\discretionary {-}{}{}Temporary\discretionary {-}{}{}Generated\discretionary {-}{}{}File\discretionary {-}{}{}\_\discretionary {-}{}{}5937a670-\/0e60-\/4077-\/877b-\/f7221da3dda1.cs File Reference}{69}{section.7.21}
+\contentsline {section}{\numberline {7.22}Damp\discretionary {-}{}{}Server/obj/\discretionary {-}{}{}Debug/\discretionary {-}{}{}Temporary\discretionary {-}{}{}Generated\discretionary {-}{}{}File\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}E7\discretionary {-}{}{}A71\discretionary {-}{}{}F73-\/0\discretionary {-}{}{}F8\discretionary {-}{}{}D-\/4\discretionary {-}{}{}B9\discretionary {-}{}{}B-\/\discretionary {-}{}{}B56\discretionary {-}{}{}E-\/8\discretionary {-}{}{}E70\discretionary {-}{}{}B10\discretionary {-}{}{}B\discretionary {-}{}{}C5\discretionary {-}{}{}D3.cs File Reference}{69}{section.7.22}
+\contentsline {section}{\numberline {7.23}Damp\discretionary {-}{}{}Server/\discretionary {-}{}{}Program.cs File Reference}{69}{section.7.23}
+\contentsline {section}{\numberline {7.24}Damp\discretionary {-}{}{}Server/\discretionary {-}{}{}Request\discretionary {-}{}{}Processor.cs File Reference}{70}{section.7.24}
+\contentsline {section}{\numberline {7.25}Damp\discretionary {-}{}{}Server/\discretionary {-}{}{}Socket\discretionary {-}{}{}Handler.cs File Reference}{70}{section.7.25}
+\contentsline {section}{\numberline {7.26}Damp\discretionary {-}{}{}Server/\discretionary {-}{}{}Status\discretionary {-}{}{}Xml\discretionary {-}{}{}Response.cs File Reference}{70}{section.7.26}
+\contentsline {section}{\numberline {7.27}Damp\discretionary {-}{}{}Server/\discretionary {-}{}{}Upload\discretionary {-}{}{}Game\discretionary {-}{}{}Command.cs File Reference}{70}{section.7.27}
+\contentsline {section}{\numberline {7.28}Damp\discretionary {-}{}{}Server/\discretionary {-}{}{}User.cs File Reference}{70}{section.7.28}
+\contentsline {section}{\numberline {7.29}Damp\discretionary {-}{}{}Server/\discretionary {-}{}{}User\discretionary {-}{}{}Commands.cs File Reference}{71}{section.7.29}
+\contentsline {section}{\numberline {7.30}Damp\discretionary {-}{}{}Server/\discretionary {-}{}{}User\discretionary {-}{}{}Management.cs File Reference}{71}{section.7.30}
+\contentsline {section}{\numberline {7.31}Damp\discretionary {-}{}{}Server/\discretionary {-}{}{}Xml\discretionary {-}{}{}Response.cs File Reference}{71}{section.7.31}
+\contentsline {part}{Index}{71}{section*.121}

@@ -1,0 +1,208 @@
+\hypertarget{class_damp_server_1_1_game_handler}{\section{Damp\-Server.\-Game\-Handler Class Reference}
+\label{class_damp_server_1_1_game_handler}\index{Damp\-Server.\-Game\-Handler@{Damp\-Server.\-Game\-Handler}}
+}
+
+
+Collaboration diagram for Damp\-Server.\-Game\-Handler\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=210pt]{class_damp_server_1_1_game_handler__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_damp_server_1_1_game_handler_a9eea31ed615bb0f249650455ce59d20a}{Game\-Handler} (string file\-\_\-)
+\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_damp_server_1_1_game}{Game} \hyperlink{class_damp_server_1_1_game_handler_ab35a15438022b146c719e7b00f653ada}{Game}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_damp_server_1_1_game_handler_a1cdbb4f91b67efd0b750721637ad73d1}{Insert\-Game\-Into\-Db} (\hyperlink{class_damp_server_1_1_game}{Game} game)
+\item 
+void \hyperlink{class_damp_server_1_1_game_handler_a2177a153b70306618155cd0535d3514e}{Parse\-Manifest} (Zip\-Entry entry)
+\item 
+bool \hyperlink{class_damp_server_1_1_game_handler_abe6280c9bcd1a6815cc0ce78f1925f2b}{Parse\-Files} (Xml\-Element xml\-Element)
+\item 
+\hyperlink{class_damp_server_1_1_game}{Game} \hyperlink{class_damp_server_1_1_game_handler_a531bc6a74d8291ba22e1e4403af882fd}{Parse\-Game} (Xml\-Element element)
+\item 
+void \hyperlink{class_damp_server_1_1_game_handler_adf76f6549104a4737a898770b0ddc135}{Extract} (string file)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+readonly List$<$ Zip\-Entry $>$ \hyperlink{class_damp_server_1_1_game_handler_a8ab83176adfebd24fec732d97f703781}{\-\_\-files} = new List$<$Zip\-Entry$>$()
+\item 
+readonly string \hyperlink{class_damp_server_1_1_game_handler_a0be2673effb948a69bb9929a15f01a43}{\-\_\-filefolder}
+\item 
+const string \hyperlink{class_damp_server_1_1_game_handler_a60786795ee435b622c26f2554d662070}{Games\-Folder} = \char`\"{}Games/\char`\"{}
+\item 
+const string \hyperlink{class_damp_server_1_1_game_handler_a05de78325b391198d3313cfeac1851cd}{Game\-Pre\-Fix} = \char`\"{}Tmp\-Games/\char`\"{}
+\item 
+readonly string \hyperlink{class_damp_server_1_1_game_handler_acd4f0283bf98752e252f0e3d641a90d0}{\-\_\-filename}
+\item 
+readonly string \hyperlink{class_damp_server_1_1_game_handler_a0109f82d3b22ceeeb99927ee0d584794}{\-\_\-filepath}
+\item 
+readonly Zip\-Entry \hyperlink{class_damp_server_1_1_game_handler_a4840e3bce5396e408f0169f8e8b9a3f8}{\-\_\-manifest}
+\item 
+Zip\-Input\-Stream \hyperlink{class_damp_server_1_1_game_handler_a30bafe4e4ca469e21f6fe3390df4976b}{\-\_\-zip\-Stream}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 16 of file Game\-Handler.\-cs.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_damp_server_1_1_game_handler_a9eea31ed615bb0f249650455ce59d20a}{\index{Damp\-Server\-::\-Game\-Handler@{Damp\-Server\-::\-Game\-Handler}!Game\-Handler@{Game\-Handler}}
+\index{Game\-Handler@{Game\-Handler}!DampServer::GameHandler@{Damp\-Server\-::\-Game\-Handler}}
+\subsubsection[{Game\-Handler}]{\setlength{\rightskip}{0pt plus 5cm}Damp\-Server.\-Game\-Handler.\-Game\-Handler (
+\begin{DoxyParamCaption}
+\item[{string}]{file\-\_\-}
+\end{DoxyParamCaption}
+)}}\label{class_damp_server_1_1_game_handler_a9eea31ed615bb0f249650455ce59d20a}
+
+
+Definition at line 28 of file Game\-Handler.\-cs.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_damp_server_1_1_game_handler_adf76f6549104a4737a898770b0ddc135}{\index{Damp\-Server\-::\-Game\-Handler@{Damp\-Server\-::\-Game\-Handler}!Extract@{Extract}}
+\index{Extract@{Extract}!DampServer::GameHandler@{Damp\-Server\-::\-Game\-Handler}}
+\subsubsection[{Extract}]{\setlength{\rightskip}{0pt plus 5cm}void Damp\-Server.\-Game\-Handler.\-Extract (
+\begin{DoxyParamCaption}
+\item[{string}]{file}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{class_damp_server_1_1_game_handler_adf76f6549104a4737a898770b0ddc135}
+
+
+Definition at line 174 of file Game\-Handler.\-cs.
+
+\hypertarget{class_damp_server_1_1_game_handler_a1cdbb4f91b67efd0b750721637ad73d1}{\index{Damp\-Server\-::\-Game\-Handler@{Damp\-Server\-::\-Game\-Handler}!Insert\-Game\-Into\-Db@{Insert\-Game\-Into\-Db}}
+\index{Insert\-Game\-Into\-Db@{Insert\-Game\-Into\-Db}!DampServer::GameHandler@{Damp\-Server\-::\-Game\-Handler}}
+\subsubsection[{Insert\-Game\-Into\-Db}]{\setlength{\rightskip}{0pt plus 5cm}void Damp\-Server.\-Game\-Handler.\-Insert\-Game\-Into\-Db (
+\begin{DoxyParamCaption}
+\item[{{\bf Game}}]{game}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{class_damp_server_1_1_game_handler_a1cdbb4f91b67efd0b750721637ad73d1}
+
+
+Definition at line 98 of file Game\-Handler.\-cs.
+
+\hypertarget{class_damp_server_1_1_game_handler_abe6280c9bcd1a6815cc0ce78f1925f2b}{\index{Damp\-Server\-::\-Game\-Handler@{Damp\-Server\-::\-Game\-Handler}!Parse\-Files@{Parse\-Files}}
+\index{Parse\-Files@{Parse\-Files}!DampServer::GameHandler@{Damp\-Server\-::\-Game\-Handler}}
+\subsubsection[{Parse\-Files}]{\setlength{\rightskip}{0pt plus 5cm}bool Damp\-Server.\-Game\-Handler.\-Parse\-Files (
+\begin{DoxyParamCaption}
+\item[{Xml\-Element}]{xml\-Element}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{class_damp_server_1_1_game_handler_abe6280c9bcd1a6815cc0ce78f1925f2b}
+
+
+Definition at line 141 of file Game\-Handler.\-cs.
+
+\hypertarget{class_damp_server_1_1_game_handler_a531bc6a74d8291ba22e1e4403af882fd}{\index{Damp\-Server\-::\-Game\-Handler@{Damp\-Server\-::\-Game\-Handler}!Parse\-Game@{Parse\-Game}}
+\index{Parse\-Game@{Parse\-Game}!DampServer::GameHandler@{Damp\-Server\-::\-Game\-Handler}}
+\subsubsection[{Parse\-Game}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Game} Damp\-Server.\-Game\-Handler.\-Parse\-Game (
+\begin{DoxyParamCaption}
+\item[{Xml\-Element}]{element}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{class_damp_server_1_1_game_handler_a531bc6a74d8291ba22e1e4403af882fd}
+
+
+Definition at line 164 of file Game\-Handler.\-cs.
+
+\hypertarget{class_damp_server_1_1_game_handler_a2177a153b70306618155cd0535d3514e}{\index{Damp\-Server\-::\-Game\-Handler@{Damp\-Server\-::\-Game\-Handler}!Parse\-Manifest@{Parse\-Manifest}}
+\index{Parse\-Manifest@{Parse\-Manifest}!DampServer::GameHandler@{Damp\-Server\-::\-Game\-Handler}}
+\subsubsection[{Parse\-Manifest}]{\setlength{\rightskip}{0pt plus 5cm}void Damp\-Server.\-Game\-Handler.\-Parse\-Manifest (
+\begin{DoxyParamCaption}
+\item[{Zip\-Entry}]{entry}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{class_damp_server_1_1_game_handler_a2177a153b70306618155cd0535d3514e}
+
+
+Definition at line 118 of file Game\-Handler.\-cs.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_damp_server_1_1_game_handler_a0be2673effb948a69bb9929a15f01a43}{\index{Damp\-Server\-::\-Game\-Handler@{Damp\-Server\-::\-Game\-Handler}!\-\_\-filefolder@{\-\_\-filefolder}}
+\index{\-\_\-filefolder@{\-\_\-filefolder}!DampServer::GameHandler@{Damp\-Server\-::\-Game\-Handler}}
+\subsubsection[{\-\_\-filefolder}]{\setlength{\rightskip}{0pt plus 5cm}readonly string Damp\-Server.\-Game\-Handler.\-\_\-filefolder\hspace{0.3cm}{\ttfamily [private]}}}\label{class_damp_server_1_1_game_handler_a0be2673effb948a69bb9929a15f01a43}
+
+
+Definition at line 20 of file Game\-Handler.\-cs.
+
+\hypertarget{class_damp_server_1_1_game_handler_acd4f0283bf98752e252f0e3d641a90d0}{\index{Damp\-Server\-::\-Game\-Handler@{Damp\-Server\-::\-Game\-Handler}!\-\_\-filename@{\-\_\-filename}}
+\index{\-\_\-filename@{\-\_\-filename}!DampServer::GameHandler@{Damp\-Server\-::\-Game\-Handler}}
+\subsubsection[{\-\_\-filename}]{\setlength{\rightskip}{0pt plus 5cm}readonly string Damp\-Server.\-Game\-Handler.\-\_\-filename\hspace{0.3cm}{\ttfamily [private]}}}\label{class_damp_server_1_1_game_handler_acd4f0283bf98752e252f0e3d641a90d0}
+
+
+Definition at line 23 of file Game\-Handler.\-cs.
+
+\hypertarget{class_damp_server_1_1_game_handler_a0109f82d3b22ceeeb99927ee0d584794}{\index{Damp\-Server\-::\-Game\-Handler@{Damp\-Server\-::\-Game\-Handler}!\-\_\-filepath@{\-\_\-filepath}}
+\index{\-\_\-filepath@{\-\_\-filepath}!DampServer::GameHandler@{Damp\-Server\-::\-Game\-Handler}}
+\subsubsection[{\-\_\-filepath}]{\setlength{\rightskip}{0pt plus 5cm}readonly string Damp\-Server.\-Game\-Handler.\-\_\-filepath\hspace{0.3cm}{\ttfamily [private]}}}\label{class_damp_server_1_1_game_handler_a0109f82d3b22ceeeb99927ee0d584794}
+
+
+Definition at line 24 of file Game\-Handler.\-cs.
+
+\hypertarget{class_damp_server_1_1_game_handler_a8ab83176adfebd24fec732d97f703781}{\index{Damp\-Server\-::\-Game\-Handler@{Damp\-Server\-::\-Game\-Handler}!\-\_\-files@{\-\_\-files}}
+\index{\-\_\-files@{\-\_\-files}!DampServer::GameHandler@{Damp\-Server\-::\-Game\-Handler}}
+\subsubsection[{\-\_\-files}]{\setlength{\rightskip}{0pt plus 5cm}readonly List$<$Zip\-Entry$>$ Damp\-Server.\-Game\-Handler.\-\_\-files = new List$<$Zip\-Entry$>$()\hspace{0.3cm}{\ttfamily [private]}}}\label{class_damp_server_1_1_game_handler_a8ab83176adfebd24fec732d97f703781}
+
+
+Definition at line 19 of file Game\-Handler.\-cs.
+
+\hypertarget{class_damp_server_1_1_game_handler_a4840e3bce5396e408f0169f8e8b9a3f8}{\index{Damp\-Server\-::\-Game\-Handler@{Damp\-Server\-::\-Game\-Handler}!\-\_\-manifest@{\-\_\-manifest}}
+\index{\-\_\-manifest@{\-\_\-manifest}!DampServer::GameHandler@{Damp\-Server\-::\-Game\-Handler}}
+\subsubsection[{\-\_\-manifest}]{\setlength{\rightskip}{0pt plus 5cm}readonly Zip\-Entry Damp\-Server.\-Game\-Handler.\-\_\-manifest\hspace{0.3cm}{\ttfamily [private]}}}\label{class_damp_server_1_1_game_handler_a4840e3bce5396e408f0169f8e8b9a3f8}
+
+
+Definition at line 25 of file Game\-Handler.\-cs.
+
+\hypertarget{class_damp_server_1_1_game_handler_a30bafe4e4ca469e21f6fe3390df4976b}{\index{Damp\-Server\-::\-Game\-Handler@{Damp\-Server\-::\-Game\-Handler}!\-\_\-zip\-Stream@{\-\_\-zip\-Stream}}
+\index{\-\_\-zip\-Stream@{\-\_\-zip\-Stream}!DampServer::GameHandler@{Damp\-Server\-::\-Game\-Handler}}
+\subsubsection[{\-\_\-zip\-Stream}]{\setlength{\rightskip}{0pt plus 5cm}Zip\-Input\-Stream Damp\-Server.\-Game\-Handler.\-\_\-zip\-Stream\hspace{0.3cm}{\ttfamily [private]}}}\label{class_damp_server_1_1_game_handler_a30bafe4e4ca469e21f6fe3390df4976b}
+
+
+Definition at line 26 of file Game\-Handler.\-cs.
+
+\hypertarget{class_damp_server_1_1_game_handler_a05de78325b391198d3313cfeac1851cd}{\index{Damp\-Server\-::\-Game\-Handler@{Damp\-Server\-::\-Game\-Handler}!Game\-Pre\-Fix@{Game\-Pre\-Fix}}
+\index{Game\-Pre\-Fix@{Game\-Pre\-Fix}!DampServer::GameHandler@{Damp\-Server\-::\-Game\-Handler}}
+\subsubsection[{Game\-Pre\-Fix}]{\setlength{\rightskip}{0pt plus 5cm}const string Damp\-Server.\-Game\-Handler.\-Game\-Pre\-Fix = \char`\"{}Tmp\-Games/\char`\"{}\hspace{0.3cm}{\ttfamily [private]}}}\label{class_damp_server_1_1_game_handler_a05de78325b391198d3313cfeac1851cd}
+
+
+Definition at line 22 of file Game\-Handler.\-cs.
+
+\hypertarget{class_damp_server_1_1_game_handler_a60786795ee435b622c26f2554d662070}{\index{Damp\-Server\-::\-Game\-Handler@{Damp\-Server\-::\-Game\-Handler}!Games\-Folder@{Games\-Folder}}
+\index{Games\-Folder@{Games\-Folder}!DampServer::GameHandler@{Damp\-Server\-::\-Game\-Handler}}
+\subsubsection[{Games\-Folder}]{\setlength{\rightskip}{0pt plus 5cm}const string Damp\-Server.\-Game\-Handler.\-Games\-Folder = \char`\"{}Games/\char`\"{}\hspace{0.3cm}{\ttfamily [private]}}}\label{class_damp_server_1_1_game_handler_a60786795ee435b622c26f2554d662070}
+
+
+Definition at line 21 of file Game\-Handler.\-cs.
+
+
+
+\subsection{Property Documentation}
+\hypertarget{class_damp_server_1_1_game_handler_ab35a15438022b146c719e7b00f653ada}{\index{Damp\-Server\-::\-Game\-Handler@{Damp\-Server\-::\-Game\-Handler}!Game@{Game}}
+\index{Game@{Game}!DampServer::GameHandler@{Damp\-Server\-::\-Game\-Handler}}
+\subsubsection[{Game}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Game} Damp\-Server.\-Game\-Handler.\-Game\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}}\label{class_damp_server_1_1_game_handler_ab35a15438022b146c719e7b00f653ada}
+
+
+Definition at line 18 of file Game\-Handler.\-cs.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+Damp\-Server/\hyperlink{_game_handler_8cs}{Game\-Handler.\-cs}\end{DoxyCompactItemize}

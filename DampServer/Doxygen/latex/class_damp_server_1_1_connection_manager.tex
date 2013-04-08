@@ -1,0 +1,155 @@
+\hypertarget{class_damp_server_1_1_connection_manager}{\section{Damp\-Server.\-Connection\-Manager Class Reference}
+\label{class_damp_server_1_1_connection_manager}\index{Damp\-Server.\-Connection\-Manager@{Damp\-Server.\-Connection\-Manager}}
+}
+
+
+Collaboration diagram for Damp\-Server.\-Connection\-Manager\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=300pt]{class_damp_server_1_1_connection_manager__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_damp_server_1_1_connection_manager_a47a5d6c7569388fb281b12d83370bbbd}{Connection\-Manager} ()
+\item 
+void \hyperlink{class_damp_server_1_1_connection_manager_a1eb90220b3c9c05db5aa960c5d91c23b}{Run} ()
+\item 
+void \hyperlink{class_damp_server_1_1_connection_manager_a8e5ee00184d575d1968d9e0e7dcd72cc}{Remove\-Connection} (\hyperlink{class_damp_server_1_1_connection}{Connection} con)
+\item 
+void \hyperlink{class_damp_server_1_1_connection_manager_a34518ddc1dbe52c9d7df0379ee59d478}{Add\-Connection} (\hyperlink{class_damp_server_1_1_connection}{Connection} con)
+\item 
+\hyperlink{class_damp_server_1_1_connection}{Connection} \hyperlink{class_damp_server_1_1_connection_manager_af7150629327d57e7873291bca69b651b}{Get\-Connection\-By\-User\-Id} (int userid)
+\item 
+\hyperlink{class_damp_server_1_1_connection}{Connection} \hyperlink{class_damp_server_1_1_connection_manager_acc4c53acd75bbc7e52c42d5c8438a96b}{Get\-Connection\-By\-Auth\-Token} (string auth\-Token)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_damp_server_1_1_connection_manager}{Connection\-Manager} \hyperlink{class_damp_server_1_1_connection_manager_ad3060d004e6fe69ff47de465db08753b}{Get\-Connection\-Manager} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+readonly List$<$ \hyperlink{class_damp_server_1_1_connection}{Connection} $>$ \hyperlink{class_damp_server_1_1_connection_manager_a399e1848e8b2f62f4ed170756227ddd4}{\-\_\-connections} = new List$<$\hyperlink{class_damp_server_1_1_connection}{Connection}$>$()
+\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static readonly \hyperlink{class_damp_server_1_1_connection_manager}{Connection\-Manager} \hyperlink{class_damp_server_1_1_connection_manager_abf0c702ab7680ad20f663fec2007dea5}{Manager} = new \hyperlink{class_damp_server_1_1_connection_manager}{Connection\-Manager}()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 14 of file Connection\-Manager.\-cs.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_damp_server_1_1_connection_manager_a47a5d6c7569388fb281b12d83370bbbd}{\index{Damp\-Server\-::\-Connection\-Manager@{Damp\-Server\-::\-Connection\-Manager}!Connection\-Manager@{Connection\-Manager}}
+\index{Connection\-Manager@{Connection\-Manager}!DampServer::ConnectionManager@{Damp\-Server\-::\-Connection\-Manager}}
+\subsubsection[{Connection\-Manager}]{\setlength{\rightskip}{0pt plus 5cm}Damp\-Server.\-Connection\-Manager.\-Connection\-Manager (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_damp_server_1_1_connection_manager_a47a5d6c7569388fb281b12d83370bbbd}
+
+
+Definition at line 19 of file Connection\-Manager.\-cs.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_damp_server_1_1_connection_manager_a34518ddc1dbe52c9d7df0379ee59d478}{\index{Damp\-Server\-::\-Connection\-Manager@{Damp\-Server\-::\-Connection\-Manager}!Add\-Connection@{Add\-Connection}}
+\index{Add\-Connection@{Add\-Connection}!DampServer::ConnectionManager@{Damp\-Server\-::\-Connection\-Manager}}
+\subsubsection[{Add\-Connection}]{\setlength{\rightskip}{0pt plus 5cm}void Damp\-Server.\-Connection\-Manager.\-Add\-Connection (
+\begin{DoxyParamCaption}
+\item[{{\bf Connection}}]{con}
+\end{DoxyParamCaption}
+)}}\label{class_damp_server_1_1_connection_manager_a34518ddc1dbe52c9d7df0379ee59d478}
+
+
+Definition at line 63 of file Connection\-Manager.\-cs.
+
+\hypertarget{class_damp_server_1_1_connection_manager_acc4c53acd75bbc7e52c42d5c8438a96b}{\index{Damp\-Server\-::\-Connection\-Manager@{Damp\-Server\-::\-Connection\-Manager}!Get\-Connection\-By\-Auth\-Token@{Get\-Connection\-By\-Auth\-Token}}
+\index{Get\-Connection\-By\-Auth\-Token@{Get\-Connection\-By\-Auth\-Token}!DampServer::ConnectionManager@{Damp\-Server\-::\-Connection\-Manager}}
+\subsubsection[{Get\-Connection\-By\-Auth\-Token}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Connection} Damp\-Server.\-Connection\-Manager.\-Get\-Connection\-By\-Auth\-Token (
+\begin{DoxyParamCaption}
+\item[{string}]{auth\-Token}
+\end{DoxyParamCaption}
+)}}\label{class_damp_server_1_1_connection_manager_acc4c53acd75bbc7e52c42d5c8438a96b}
+
+
+Definition at line 74 of file Connection\-Manager.\-cs.
+
+\hypertarget{class_damp_server_1_1_connection_manager_af7150629327d57e7873291bca69b651b}{\index{Damp\-Server\-::\-Connection\-Manager@{Damp\-Server\-::\-Connection\-Manager}!Get\-Connection\-By\-User\-Id@{Get\-Connection\-By\-User\-Id}}
+\index{Get\-Connection\-By\-User\-Id@{Get\-Connection\-By\-User\-Id}!DampServer::ConnectionManager@{Damp\-Server\-::\-Connection\-Manager}}
+\subsubsection[{Get\-Connection\-By\-User\-Id}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Connection} Damp\-Server.\-Connection\-Manager.\-Get\-Connection\-By\-User\-Id (
+\begin{DoxyParamCaption}
+\item[{int}]{userid}
+\end{DoxyParamCaption}
+)}}\label{class_damp_server_1_1_connection_manager_af7150629327d57e7873291bca69b651b}
+
+
+Definition at line 69 of file Connection\-Manager.\-cs.
+
+\hypertarget{class_damp_server_1_1_connection_manager_ad3060d004e6fe69ff47de465db08753b}{\index{Damp\-Server\-::\-Connection\-Manager@{Damp\-Server\-::\-Connection\-Manager}!Get\-Connection\-Manager@{Get\-Connection\-Manager}}
+\index{Get\-Connection\-Manager@{Get\-Connection\-Manager}!DampServer::ConnectionManager@{Damp\-Server\-::\-Connection\-Manager}}
+\subsubsection[{Get\-Connection\-Manager}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf Connection\-Manager} Damp\-Server.\-Connection\-Manager.\-Get\-Connection\-Manager (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_damp_server_1_1_connection_manager_ad3060d004e6fe69ff47de465db08753b}
+
+
+Definition at line 53 of file Connection\-Manager.\-cs.
+
+\hypertarget{class_damp_server_1_1_connection_manager_a8e5ee00184d575d1968d9e0e7dcd72cc}{\index{Damp\-Server\-::\-Connection\-Manager@{Damp\-Server\-::\-Connection\-Manager}!Remove\-Connection@{Remove\-Connection}}
+\index{Remove\-Connection@{Remove\-Connection}!DampServer::ConnectionManager@{Damp\-Server\-::\-Connection\-Manager}}
+\subsubsection[{Remove\-Connection}]{\setlength{\rightskip}{0pt plus 5cm}void Damp\-Server.\-Connection\-Manager.\-Remove\-Connection (
+\begin{DoxyParamCaption}
+\item[{{\bf Connection}}]{con}
+\end{DoxyParamCaption}
+)}}\label{class_damp_server_1_1_connection_manager_a8e5ee00184d575d1968d9e0e7dcd72cc}
+
+
+Definition at line 58 of file Connection\-Manager.\-cs.
+
+\hypertarget{class_damp_server_1_1_connection_manager_a1eb90220b3c9c05db5aa960c5d91c23b}{\index{Damp\-Server\-::\-Connection\-Manager@{Damp\-Server\-::\-Connection\-Manager}!Run@{Run}}
+\index{Run@{Run}!DampServer::ConnectionManager@{Damp\-Server\-::\-Connection\-Manager}}
+\subsubsection[{Run}]{\setlength{\rightskip}{0pt plus 5cm}void Damp\-Server.\-Connection\-Manager.\-Run (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_damp_server_1_1_connection_manager_a1eb90220b3c9c05db5aa960c5d91c23b}
+
+
+Definition at line 25 of file Connection\-Manager.\-cs.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_damp_server_1_1_connection_manager_a399e1848e8b2f62f4ed170756227ddd4}{\index{Damp\-Server\-::\-Connection\-Manager@{Damp\-Server\-::\-Connection\-Manager}!\-\_\-connections@{\-\_\-connections}}
+\index{\-\_\-connections@{\-\_\-connections}!DampServer::ConnectionManager@{Damp\-Server\-::\-Connection\-Manager}}
+\subsubsection[{\-\_\-connections}]{\setlength{\rightskip}{0pt plus 5cm}readonly List$<${\bf Connection}$>$ Damp\-Server.\-Connection\-Manager.\-\_\-connections = new List$<${\bf Connection}$>$()\hspace{0.3cm}{\ttfamily [private]}}}\label{class_damp_server_1_1_connection_manager_a399e1848e8b2f62f4ed170756227ddd4}
+
+
+Definition at line 17 of file Connection\-Manager.\-cs.
+
+\hypertarget{class_damp_server_1_1_connection_manager_abf0c702ab7680ad20f663fec2007dea5}{\index{Damp\-Server\-::\-Connection\-Manager@{Damp\-Server\-::\-Connection\-Manager}!Manager@{Manager}}
+\index{Manager@{Manager}!DampServer::ConnectionManager@{Damp\-Server\-::\-Connection\-Manager}}
+\subsubsection[{Manager}]{\setlength{\rightskip}{0pt plus 5cm}readonly {\bf Connection\-Manager} Damp\-Server.\-Connection\-Manager.\-Manager = new {\bf Connection\-Manager}()\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}}\label{class_damp_server_1_1_connection_manager_abf0c702ab7680ad20f663fec2007dea5}
+
+
+Definition at line 16 of file Connection\-Manager.\-cs.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+Damp\-Server/\hyperlink{_connection_manager_8cs}{Connection\-Manager.\-cs}\end{DoxyCompactItemize}

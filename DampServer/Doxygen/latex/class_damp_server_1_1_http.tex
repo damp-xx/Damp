@@ -1,0 +1,357 @@
+\hypertarget{class_damp_server_1_1_http}{\section{Damp\-Server.\-Http Class Reference}
+\label{class_damp_server_1_1_http}\index{Damp\-Server.\-Http@{Damp\-Server.\-Http}}
+}
+
+
+A class to handle all H\-T\-T\-P communication.  
+
+
+
+
+Inheritance diagram for Damp\-Server.\-Http\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=204pt]{class_damp_server_1_1_http__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Damp\-Server.\-Http\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=204pt]{class_damp_server_1_1_http__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_damp_server_1_1_http_a09ded9756839479231daff2b0055a2a5}{Http} (Tcp\-Client s)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+string \hyperlink{class_damp_server_1_1_http_ac816f6ae707b72a4e7df4a34f899968e}{Get\-Header} (string key)
+\begin{DoxyCompactList}\small\item\em Method to get a H\-T\-T\-P Header. \end{DoxyCompactList}\item 
+void \hyperlink{class_damp_server_1_1_http_affa878d115df40b55ffc4c8836757fe0}{Add\-Header} (string name, string value)
+\begin{DoxyCompactList}\small\item\em Method to add a H\-T\-T\-P header to the H\-T\-T\-P response. \end{DoxyCompactList}\item 
+void \hyperlink{class_damp_server_1_1_http_a0abfbc49b956c9f3c0a55a6f91121f85}{Send\-Xml\-Response} (\hyperlink{class_damp_server_1_1_xml_response}{Xml\-Response} obj)
+\begin{DoxyCompactList}\small\item\em method to send a X\-M\-L response object to the client \end{DoxyCompactList}\item 
+void \hyperlink{class_damp_server_1_1_http_a5d170a7d40519f9837e8c41592ab0155}{Send\-File\-Response} (string filename)
+\begin{DoxyCompactList}\small\item\em send a file to the client \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_damp_server_1_1_http_a90728ed8b720d4a1e4988aab6966def0}{Is\-Connected}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The property display if the client is connected to the H\-T\-T\-P/\-T\-C\-P Socket. \end{DoxyCompactList}\item 
+Byte\mbox{[}$\,$\mbox{]} \hyperlink{class_damp_server_1_1_http_a5eff225d340daeda680441cd92718235}{Content}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+string \hyperlink{class_damp_server_1_1_http_a2534b03e83104042dc674a4c397f85ad}{Type}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+string \hyperlink{class_damp_server_1_1_http_aae780a80b09ab272dd3f81a3c71f1424}{Path}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+string \hyperlink{class_damp_server_1_1_http_a596e999fb442757b904fdddb597029f7}{Http\-Version}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+long \hyperlink{class_damp_server_1_1_http_a3a8f75a3664306404d8c8d174e987832}{Length}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+string \hyperlink{class_damp_server_1_1_http_a9a9b29df4c279c6a1adb5f0de32977e7}{Status}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+Name\-Value\-Collection \hyperlink{class_damp_server_1_1_http_a1e9e9e3e91c917658aaa831190cac5b0}{Query}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_damp_server_1_1_http_a5f389e760d52203ee9d0966cf9656b4d}{Socket\-Connected} (Socket s)
+\item 
+void \hyperlink{class_damp_server_1_1_http_a0096cde5120e2e8e2c6eaf1fdba327f0}{Parse\-Get} ()
+\begin{DoxyCompactList}\small\item\em private method to parse H\-T\-T\-P G\-E\-T requests \end{DoxyCompactList}\item 
+void \hyperlink{class_damp_server_1_1_http_ac95fcecda6280063900b313b250bc3ca}{Parse\-Post} (Text\-Reader sr)
+\begin{DoxyCompactList}\small\item\em private method to parse H\-T\-T\-P P\-O\-S\-T requests \end{DoxyCompactList}\item 
+void \hyperlink{class_damp_server_1_1_http_a5dd8c388cedb0106c3c4a22b4fccbc54}{Send\-Response\-Header} ()
+\begin{DoxyCompactList}\small\item\em private helper method to send standard H\-T\-T\-P headers \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+readonly Dictionary$<$ string, \\*
+string $>$ \hyperlink{class_damp_server_1_1_http_a47b51d508ac52dd59858a1726b350ce5}{\-\_\-headers} = new Dictionary$<$string, string$>$()
+\item 
+readonly Dictionary$<$ string, \\*
+string $>$ \hyperlink{class_damp_server_1_1_http_aee9d41f017dce1a5fd6b1f14ae6f547a}{\-\_\-headers\-To\-Send} = new Dictionary$<$string, string$>$()
+\item 
+readonly Ssl\-Stream \hyperlink{class_damp_server_1_1_http_a0aa570b59e1abbf1e2ac7efd5645fa50}{\-\_\-network}
+\item 
+readonly Tcp\-Client \hyperlink{class_damp_server_1_1_http_a71888e437700b492e514a4cbe623d428}{\-\_\-socket}
+\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static readonly X509\-Certificate \hyperlink{class_damp_server_1_1_http_a76555ab9a02fa95b58c8fc4eb60d933f}{Server\-Certificate} = X509\-Certificate.\-Create\-From\-Cert\-File(\char`\"{}leserver.\-cer\char`\"{})
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A class to handle all H\-T\-T\-P communication. 
+
+\hyperlink{class_damp_server_1_1_http}{Http} 
+
+Definition at line 32 of file Http.\-cs.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_damp_server_1_1_http_a09ded9756839479231daff2b0055a2a5}{\index{Damp\-Server\-::\-Http@{Damp\-Server\-::\-Http}!Http@{Http}}
+\index{Http@{Http}!DampServer::Http@{Damp\-Server\-::\-Http}}
+\subsubsection[{Http}]{\setlength{\rightskip}{0pt plus 5cm}Damp\-Server.\-Http.\-Http (
+\begin{DoxyParamCaption}
+\item[{Tcp\-Client}]{s}
+\end{DoxyParamCaption}
+)}}\label{class_damp_server_1_1_http_a09ded9756839479231daff2b0055a2a5}
+
+
+Constructor. 
+
+\hyperlink{class_damp_server_1_1_http}{Http}
+
+
+\begin{DoxyParams}{Parameters}
+{\em Tcp\-Client} & A Tcp\-Client connected to a client \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 66 of file Http.\-cs.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_damp_server_1_1_http_affa878d115df40b55ffc4c8836757fe0}{\index{Damp\-Server\-::\-Http@{Damp\-Server\-::\-Http}!Add\-Header@{Add\-Header}}
+\index{Add\-Header@{Add\-Header}!DampServer::Http@{Damp\-Server\-::\-Http}}
+\subsubsection[{Add\-Header}]{\setlength{\rightskip}{0pt plus 5cm}void Damp\-Server.\-Http.\-Add\-Header (
+\begin{DoxyParamCaption}
+\item[{string}]{name, }
+\item[{string}]{value}
+\end{DoxyParamCaption}
+)}}\label{class_damp_server_1_1_http_affa878d115df40b55ffc4c8836757fe0}
+
+
+Method to add a H\-T\-T\-P header to the H\-T\-T\-P response. 
+
+Add\-Header 
+
+Definition at line 112 of file Http.\-cs.
+
+\hypertarget{class_damp_server_1_1_http_ac816f6ae707b72a4e7df4a34f899968e}{\index{Damp\-Server\-::\-Http@{Damp\-Server\-::\-Http}!Get\-Header@{Get\-Header}}
+\index{Get\-Header@{Get\-Header}!DampServer::Http@{Damp\-Server\-::\-Http}}
+\subsubsection[{Get\-Header}]{\setlength{\rightskip}{0pt plus 5cm}string Damp\-Server.\-Http.\-Get\-Header (
+\begin{DoxyParamCaption}
+\item[{string}]{key}
+\end{DoxyParamCaption}
+)}}\label{class_damp_server_1_1_http_ac816f6ae707b72a4e7df4a34f899968e}
+
+
+Method to get a H\-T\-T\-P Header. 
+
+Get\-Header 
+
+Definition at line 102 of file Http.\-cs.
+
+\hypertarget{class_damp_server_1_1_http_a0096cde5120e2e8e2c6eaf1fdba327f0}{\index{Damp\-Server\-::\-Http@{Damp\-Server\-::\-Http}!Parse\-Get@{Parse\-Get}}
+\index{Parse\-Get@{Parse\-Get}!DampServer::Http@{Damp\-Server\-::\-Http}}
+\subsubsection[{Parse\-Get}]{\setlength{\rightskip}{0pt plus 5cm}void Damp\-Server.\-Http.\-Parse\-Get (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{class_damp_server_1_1_http_a0096cde5120e2e8e2c6eaf1fdba327f0}
+
+
+private method to parse H\-T\-T\-P G\-E\-T requests 
+
+Parse\-Get 
+
+Definition at line 122 of file Http.\-cs.
+
+\hypertarget{class_damp_server_1_1_http_ac95fcecda6280063900b313b250bc3ca}{\index{Damp\-Server\-::\-Http@{Damp\-Server\-::\-Http}!Parse\-Post@{Parse\-Post}}
+\index{Parse\-Post@{Parse\-Post}!DampServer::Http@{Damp\-Server\-::\-Http}}
+\subsubsection[{Parse\-Post}]{\setlength{\rightskip}{0pt plus 5cm}void Damp\-Server.\-Http.\-Parse\-Post (
+\begin{DoxyParamCaption}
+\item[{Text\-Reader}]{sr}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{class_damp_server_1_1_http_ac95fcecda6280063900b313b250bc3ca}
+
+
+private method to parse H\-T\-T\-P P\-O\-S\-T requests 
+
+Parse\-Post 
+
+Definition at line 183 of file Http.\-cs.
+
+\hypertarget{class_damp_server_1_1_http_a5d170a7d40519f9837e8c41592ab0155}{\index{Damp\-Server\-::\-Http@{Damp\-Server\-::\-Http}!Send\-File\-Response@{Send\-File\-Response}}
+\index{Send\-File\-Response@{Send\-File\-Response}!DampServer::Http@{Damp\-Server\-::\-Http}}
+\subsubsection[{Send\-File\-Response}]{\setlength{\rightskip}{0pt plus 5cm}void Damp\-Server.\-Http.\-Send\-File\-Response (
+\begin{DoxyParamCaption}
+\item[{string}]{filename}
+\end{DoxyParamCaption}
+)}}\label{class_damp_server_1_1_http_a5d170a7d40519f9837e8c41592ab0155}
+
+
+send a file to the client 
+
+Send\-File\-Response 
+
+Implements \hyperlink{interface_damp_server_1_1_i_command_argument_aecf055c992815f9dcc714e38e0d9880e}{Damp\-Server.\-I\-Command\-Argument}.
+
+
+
+Definition at line 273 of file Http.\-cs.
+
+\hypertarget{class_damp_server_1_1_http_a5dd8c388cedb0106c3c4a22b4fccbc54}{\index{Damp\-Server\-::\-Http@{Damp\-Server\-::\-Http}!Send\-Response\-Header@{Send\-Response\-Header}}
+\index{Send\-Response\-Header@{Send\-Response\-Header}!DampServer::Http@{Damp\-Server\-::\-Http}}
+\subsubsection[{Send\-Response\-Header}]{\setlength{\rightskip}{0pt plus 5cm}void Damp\-Server.\-Http.\-Send\-Response\-Header (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{class_damp_server_1_1_http_a5dd8c388cedb0106c3c4a22b4fccbc54}
+
+
+private helper method to send standard H\-T\-T\-P headers 
+
+Send\-Response\-Header 
+
+Definition at line 234 of file Http.\-cs.
+
+\hypertarget{class_damp_server_1_1_http_a0abfbc49b956c9f3c0a55a6f91121f85}{\index{Damp\-Server\-::\-Http@{Damp\-Server\-::\-Http}!Send\-Xml\-Response@{Send\-Xml\-Response}}
+\index{Send\-Xml\-Response@{Send\-Xml\-Response}!DampServer::Http@{Damp\-Server\-::\-Http}}
+\subsubsection[{Send\-Xml\-Response}]{\setlength{\rightskip}{0pt plus 5cm}void Damp\-Server.\-Http.\-Send\-Xml\-Response (
+\begin{DoxyParamCaption}
+\item[{{\bf Xml\-Response}}]{obj}
+\end{DoxyParamCaption}
+)}}\label{class_damp_server_1_1_http_a0abfbc49b956c9f3c0a55a6f91121f85}
+
+
+method to send a X\-M\-L response object to the client 
+
+Send\-Xml\-Response 
+
+Implements \hyperlink{interface_damp_server_1_1_i_command_argument_a97b7aad7b51ba0214126251bb5863112}{Damp\-Server.\-I\-Command\-Argument}.
+
+
+
+Definition at line 203 of file Http.\-cs.
+
+\hypertarget{class_damp_server_1_1_http_a5f389e760d52203ee9d0966cf9656b4d}{\index{Damp\-Server\-::\-Http@{Damp\-Server\-::\-Http}!Socket\-Connected@{Socket\-Connected}}
+\index{Socket\-Connected@{Socket\-Connected}!DampServer::Http@{Damp\-Server\-::\-Http}}
+\subsubsection[{Socket\-Connected}]{\setlength{\rightskip}{0pt plus 5cm}bool Damp\-Server.\-Http.\-Socket\-Connected (
+\begin{DoxyParamCaption}
+\item[{Socket}]{s}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{class_damp_server_1_1_http_a5f389e760d52203ee9d0966cf9656b4d}
+
+
+Definition at line 40 of file Http.\-cs.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_damp_server_1_1_http_a47b51d508ac52dd59858a1726b350ce5}{\index{Damp\-Server\-::\-Http@{Damp\-Server\-::\-Http}!\-\_\-headers@{\-\_\-headers}}
+\index{\-\_\-headers@{\-\_\-headers}!DampServer::Http@{Damp\-Server\-::\-Http}}
+\subsubsection[{\-\_\-headers}]{\setlength{\rightskip}{0pt plus 5cm}readonly Dictionary$<$string, string$>$ Damp\-Server.\-Http.\-\_\-headers = new Dictionary$<$string, string$>$()\hspace{0.3cm}{\ttfamily [private]}}}\label{class_damp_server_1_1_http_a47b51d508ac52dd59858a1726b350ce5}
+
+
+Definition at line 34 of file Http.\-cs.
+
+\hypertarget{class_damp_server_1_1_http_aee9d41f017dce1a5fd6b1f14ae6f547a}{\index{Damp\-Server\-::\-Http@{Damp\-Server\-::\-Http}!\-\_\-headers\-To\-Send@{\-\_\-headers\-To\-Send}}
+\index{\-\_\-headers\-To\-Send@{\-\_\-headers\-To\-Send}!DampServer::Http@{Damp\-Server\-::\-Http}}
+\subsubsection[{\-\_\-headers\-To\-Send}]{\setlength{\rightskip}{0pt plus 5cm}readonly Dictionary$<$string, string$>$ Damp\-Server.\-Http.\-\_\-headers\-To\-Send = new Dictionary$<$string, string$>$()\hspace{0.3cm}{\ttfamily [private]}}}\label{class_damp_server_1_1_http_aee9d41f017dce1a5fd6b1f14ae6f547a}
+
+
+Definition at line 35 of file Http.\-cs.
+
+\hypertarget{class_damp_server_1_1_http_a0aa570b59e1abbf1e2ac7efd5645fa50}{\index{Damp\-Server\-::\-Http@{Damp\-Server\-::\-Http}!\-\_\-network@{\-\_\-network}}
+\index{\-\_\-network@{\-\_\-network}!DampServer::Http@{Damp\-Server\-::\-Http}}
+\subsubsection[{\-\_\-network}]{\setlength{\rightskip}{0pt plus 5cm}readonly Ssl\-Stream Damp\-Server.\-Http.\-\_\-network\hspace{0.3cm}{\ttfamily [private]}}}\label{class_damp_server_1_1_http_a0aa570b59e1abbf1e2ac7efd5645fa50}
+
+
+Definition at line 36 of file Http.\-cs.
+
+\hypertarget{class_damp_server_1_1_http_a71888e437700b492e514a4cbe623d428}{\index{Damp\-Server\-::\-Http@{Damp\-Server\-::\-Http}!\-\_\-socket@{\-\_\-socket}}
+\index{\-\_\-socket@{\-\_\-socket}!DampServer::Http@{Damp\-Server\-::\-Http}}
+\subsubsection[{\-\_\-socket}]{\setlength{\rightskip}{0pt plus 5cm}readonly Tcp\-Client Damp\-Server.\-Http.\-\_\-socket\hspace{0.3cm}{\ttfamily [private]}}}\label{class_damp_server_1_1_http_a71888e437700b492e514a4cbe623d428}
+
+
+Definition at line 37 of file Http.\-cs.
+
+\hypertarget{class_damp_server_1_1_http_a76555ab9a02fa95b58c8fc4eb60d933f}{\index{Damp\-Server\-::\-Http@{Damp\-Server\-::\-Http}!Server\-Certificate@{Server\-Certificate}}
+\index{Server\-Certificate@{Server\-Certificate}!DampServer::Http@{Damp\-Server\-::\-Http}}
+\subsubsection[{Server\-Certificate}]{\setlength{\rightskip}{0pt plus 5cm}readonly X509\-Certificate Damp\-Server.\-Http.\-Server\-Certificate = X509\-Certificate.\-Create\-From\-Cert\-File(\char`\"{}leserver.\-cer\char`\"{})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}}\label{class_damp_server_1_1_http_a76555ab9a02fa95b58c8fc4eb60d933f}
+
+
+Definition at line 38 of file Http.\-cs.
+
+
+
+\subsection{Property Documentation}
+\hypertarget{class_damp_server_1_1_http_a5eff225d340daeda680441cd92718235}{\index{Damp\-Server\-::\-Http@{Damp\-Server\-::\-Http}!Content@{Content}}
+\index{Content@{Content}!DampServer::Http@{Damp\-Server\-::\-Http}}
+\subsubsection[{Content}]{\setlength{\rightskip}{0pt plus 5cm}Byte \mbox{[}$\,$\mbox{]} Damp\-Server.\-Http.\-Content\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}}\label{class_damp_server_1_1_http_a5eff225d340daeda680441cd92718235}
+
+
+Definition at line 89 of file Http.\-cs.
+
+\hypertarget{class_damp_server_1_1_http_a596e999fb442757b904fdddb597029f7}{\index{Damp\-Server\-::\-Http@{Damp\-Server\-::\-Http}!Http\-Version@{Http\-Version}}
+\index{Http\-Version@{Http\-Version}!DampServer::Http@{Damp\-Server\-::\-Http}}
+\subsubsection[{Http\-Version}]{\setlength{\rightskip}{0pt plus 5cm}string Damp\-Server.\-Http.\-Http\-Version\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}}\label{class_damp_server_1_1_http_a596e999fb442757b904fdddb597029f7}
+
+
+Definition at line 92 of file Http.\-cs.
+
+\hypertarget{class_damp_server_1_1_http_a90728ed8b720d4a1e4988aab6966def0}{\index{Damp\-Server\-::\-Http@{Damp\-Server\-::\-Http}!Is\-Connected@{Is\-Connected}}
+\index{Is\-Connected@{Is\-Connected}!DampServer::Http@{Damp\-Server\-::\-Http}}
+\subsubsection[{Is\-Connected}]{\setlength{\rightskip}{0pt plus 5cm}bool Damp\-Server.\-Http.\-Is\-Connected\hspace{0.3cm}{\ttfamily [get]}}}\label{class_damp_server_1_1_http_a90728ed8b720d4a1e4988aab6966def0}
+
+
+The property display if the client is connected to the H\-T\-T\-P/\-T\-C\-P Socket. 
+
+Is\-Connected 
+
+Definition at line 56 of file Http.\-cs.
+
+\hypertarget{class_damp_server_1_1_http_a3a8f75a3664306404d8c8d174e987832}{\index{Damp\-Server\-::\-Http@{Damp\-Server\-::\-Http}!Length@{Length}}
+\index{Length@{Length}!DampServer::Http@{Damp\-Server\-::\-Http}}
+\subsubsection[{Length}]{\setlength{\rightskip}{0pt plus 5cm}long Damp\-Server.\-Http.\-Length\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}}\label{class_damp_server_1_1_http_a3a8f75a3664306404d8c8d174e987832}
+
+
+Definition at line 93 of file Http.\-cs.
+
+\hypertarget{class_damp_server_1_1_http_aae780a80b09ab272dd3f81a3c71f1424}{\index{Damp\-Server\-::\-Http@{Damp\-Server\-::\-Http}!Path@{Path}}
+\index{Path@{Path}!DampServer::Http@{Damp\-Server\-::\-Http}}
+\subsubsection[{Path}]{\setlength{\rightskip}{0pt plus 5cm}string Damp\-Server.\-Http.\-Path\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}}\label{class_damp_server_1_1_http_aae780a80b09ab272dd3f81a3c71f1424}
+
+
+Definition at line 91 of file Http.\-cs.
+
+\hypertarget{class_damp_server_1_1_http_a1e9e9e3e91c917658aaa831190cac5b0}{\index{Damp\-Server\-::\-Http@{Damp\-Server\-::\-Http}!Query@{Query}}
+\index{Query@{Query}!DampServer::Http@{Damp\-Server\-::\-Http}}
+\subsubsection[{Query}]{\setlength{\rightskip}{0pt plus 5cm}Name\-Value\-Collection Damp\-Server.\-Http.\-Query\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}}\label{class_damp_server_1_1_http_a1e9e9e3e91c917658aaa831190cac5b0}
+
+
+Definition at line 95 of file Http.\-cs.
+
+\hypertarget{class_damp_server_1_1_http_a9a9b29df4c279c6a1adb5f0de32977e7}{\index{Damp\-Server\-::\-Http@{Damp\-Server\-::\-Http}!Status@{Status}}
+\index{Status@{Status}!DampServer::Http@{Damp\-Server\-::\-Http}}
+\subsubsection[{Status}]{\setlength{\rightskip}{0pt plus 5cm}string Damp\-Server.\-Http.\-Status\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}}\label{class_damp_server_1_1_http_a9a9b29df4c279c6a1adb5f0de32977e7}
+
+
+Definition at line 94 of file Http.\-cs.
+
+\hypertarget{class_damp_server_1_1_http_a2534b03e83104042dc674a4c397f85ad}{\index{Damp\-Server\-::\-Http@{Damp\-Server\-::\-Http}!Type@{Type}}
+\index{Type@{Type}!DampServer::Http@{Damp\-Server\-::\-Http}}
+\subsubsection[{Type}]{\setlength{\rightskip}{0pt plus 5cm}string Damp\-Server.\-Http.\-Type\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}}\label{class_damp_server_1_1_http_a2534b03e83104042dc674a4c397f85ad}
+
+
+Definition at line 90 of file Http.\-cs.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+Damp\-Server/\hyperlink{_http_8cs}{Http.\-cs}\end{DoxyCompactItemize}

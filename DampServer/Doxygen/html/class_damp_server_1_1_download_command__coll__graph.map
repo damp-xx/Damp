@@ -1,0 +1,3 @@
+<map id="DampServer.DownloadCommand" name="DampServer.DownloadCommand">
+<area shape="rect" id="node2" href="$interface_damp_server_1_1_i_server_command.html" title="{IServerCommand\n|+ NeedsAuthcatication\l+ IsPersistant\l|+ CanHandleCommand()\l+ Execute()\l}" alt="" coords="29,5,192,112"/>
+</map>

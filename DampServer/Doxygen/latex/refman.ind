@@ -1,0 +1,766 @@
+\begin{theindex}
+
+  \item {\discretionary {-}{}{}\_\discretionary {-}{}{}connections}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Connection\discretionary {-}{}{}Manager}, 
+		\hyperpage{20}
+  \item {\discretionary {-}{}{}\_\discretionary {-}{}{}filefolder}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Game\discretionary {-}{}{}Handler}, 
+		\hyperpage{30}
+  \item {\discretionary {-}{}{}\_\discretionary {-}{}{}filename}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Game\discretionary {-}{}{}Handler}, 
+		\hyperpage{30}
+  \item {\discretionary {-}{}{}\_\discretionary {-}{}{}filepath}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Game\discretionary {-}{}{}Handler}, 
+		\hyperpage{30}
+  \item {\discretionary {-}{}{}\_\discretionary {-}{}{}files}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Game\discretionary {-}{}{}Handler}, 
+		\hyperpage{30}
+  \item {\discretionary {-}{}{}\_\discretionary {-}{}{}headers}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Http}, 
+		\hyperpage{36}
+  \item {\discretionary {-}{}{}\_\discretionary {-}{}{}headers\discretionary {-}{}{}To\discretionary {-}{}{}Send}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Http}, 
+		\hyperpage{36}
+  \item {\discretionary {-}{}{}\_\discretionary {-}{}{}http}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}User\discretionary {-}{}{}Commands}, 
+		\hyperpage{60}
+  \item {\discretionary {-}{}{}\_\discretionary {-}{}{}manifest}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Game\discretionary {-}{}{}Handler}, 
+		\hyperpage{30}
+  \item {\discretionary {-}{}{}\_\discretionary {-}{}{}network}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Http}, 
+		\hyperpage{36}
+  \item {\discretionary {-}{}{}\_\discretionary {-}{}{}socket}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Http}, 
+		\hyperpage{36}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Request\discretionary {-}{}{}Processor}, 
+		\hyperpage{51}
+  \item {\discretionary {-}{}{}\_\discretionary {-}{}{}sql\discretionary {-}{}{}Connection}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Database}, 
+		\hyperpage{22}
+  \item {\discretionary {-}{}{}\_\discretionary {-}{}{}tcp}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Socket\discretionary {-}{}{}Handler}, 
+		\hyperpage{52}
+  \item {\discretionary {-}{}{}\_\discretionary {-}{}{}zip\discretionary {-}{}{}Stream}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Game\discretionary {-}{}{}Handler}, 
+		\hyperpage{31}
+
+  \indexspace
+
+  \item {Add\discretionary {-}{}{}Connection}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Connection\discretionary {-}{}{}Manager}, 
+		\hyperpage{20}
+  \item {Add\discretionary {-}{}{}Header}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Http}, 
+		\hyperpage{35}
+  \item {Archivements}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Game}, 
+		\hyperpage{28}
+  \item {Auth\discretionary {-}{}{}Token}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}User}, 
+		\hyperpage{58}
+
+  \indexspace
+
+  \item {Can\discretionary {-}{}{}Handle\discretionary {-}{}{}Command}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Chat\discretionary {-}{}{}Command}, 
+		\hyperpage{14}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Download\discretionary {-}{}{}Command}, 
+		\hyperpage{23}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}I\discretionary {-}{}{}Server\discretionary {-}{}{}Command}, 
+		\hyperpage{43}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Live\discretionary {-}{}{}Command}, 
+		\hyperpage{45}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Login\discretionary {-}{}{}Command}, 
+		\hyperpage{48}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Upload\discretionary {-}{}{}Game\discretionary {-}{}{}Command}, 
+		\hyperpage{56}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}User\discretionary {-}{}{}Commands}, 
+		\hyperpage{60}
+  \item {Chat\discretionary {-}{}{}Command}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Chat\discretionary {-}{}{}Command}, 
+		\hyperpage{14}
+  \item {Check\discretionary {-}{}{}Authetication}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Request\discretionary {-}{}{}Processor}, 
+		\hyperpage{51}
+  \item {Close}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Database}, 
+		\hyperpage{21}
+  \item {Close\discretionary {-}{}{}Socket}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Request\discretionary {-}{}{}Processor}, 
+		\hyperpage{51}
+  \item {Code}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Status\discretionary {-}{}{}Xml\discretionary {-}{}{}Response}, 
+		\hyperpage{54}
+  \item {Command}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Status\discretionary {-}{}{}Xml\discretionary {-}{}{}Response}, 
+		\hyperpage{54}
+  \item {Command\discretionary {-}{}{}Not\discretionary {-}{}{}Found\discretionary {-}{}{}Exception}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Command\discretionary {-}{}{}Not\discretionary {-}{}{}Found\discretionary {-}{}{}Exception}, 
+		\hyperpage{17}
+  \item {Connection\discretionary {-}{}{}Manager}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Connection\discretionary {-}{}{}Manager}, 
+		\hyperpage{19}
+  \item {Connection\discretionary {-}{}{}String}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Database}, 
+		\hyperpage{22}
+  \item {Content}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Http}, 
+		\hyperpage{36}
+  \item {Create\discretionary {-}{}{}Command}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Request\discretionary {-}{}{}Processor}, 
+		\hyperpage{51}
+  \item {Critical}
+    \subitem {Damp\-Server}, \hyperpage{10}
+
+  \indexspace
+
+  \item {Damp\-Server}
+    \subitem {Critical}, \hyperpage{10}
+    \subitem {Minor}, \hyperpage{10}
+    \subitem {Normal}, \hyperpage{10}
+  \item {Damp\discretionary {-}{}{}Server}, \hyperpage{9}
+    \subitem {Log\discretionary {-}{}{}Level}, \hyperpage{10}
+  \item {Damp\discretionary {-}{}{}Server.\discretionary {-}{}{}Archivement}, 
+		\hyperpage{11}
+  \item {Damp\discretionary {-}{}{}Server.\discretionary {-}{}{}Chat\discretionary {-}{}{}Command}, 
+		\hyperpage{13}
+  \item {Damp\discretionary {-}{}{}Server.\discretionary {-}{}{}Chat\discretionary {-}{}{}Xml\discretionary {-}{}{}Response}, 
+		\hyperpage{15}
+  \item {Damp\discretionary {-}{}{}Server.\discretionary {-}{}{}Command\discretionary {-}{}{}Not\discretionary {-}{}{}Found\discretionary {-}{}{}Exception}, 
+		\hyperpage{16}
+  \item {Damp\discretionary {-}{}{}Server.\discretionary {-}{}{}Connection}, 
+		\hyperpage{18}
+  \item {Damp\discretionary {-}{}{}Server.\discretionary {-}{}{}Connection\discretionary {-}{}{}Manager}, 
+		\hyperpage{19}
+  \item {Damp\discretionary {-}{}{}Server.\discretionary {-}{}{}Database}, 
+		\hyperpage{21}
+  \item {Damp\discretionary {-}{}{}Server.\discretionary {-}{}{}Download\discretionary {-}{}{}Command}, 
+		\hyperpage{22}
+  \item {Damp\discretionary {-}{}{}Server.\discretionary {-}{}{}Error\discretionary {-}{}{}Xml\discretionary {-}{}{}Response}, 
+		\hyperpage{24}
+  \item {Damp\discretionary {-}{}{}Server.\discretionary {-}{}{}Game}, 
+		\hyperpage{26}
+  \item {Damp\discretionary {-}{}{}Server.\discretionary {-}{}{}Game\discretionary {-}{}{}Handler}, 
+		\hyperpage{29}
+  \item {Damp\discretionary {-}{}{}Server.\discretionary {-}{}{}Http}, 
+		\hyperpage{31}
+  \item {Damp\discretionary {-}{}{}Server.\discretionary {-}{}{}I\discretionary {-}{}{}Command\discretionary {-}{}{}Argument}, 
+		\hyperpage{38}
+  \item {Damp\discretionary {-}{}{}Server.\discretionary {-}{}{}I\discretionary {-}{}{}Server\discretionary {-}{}{}Command}, 
+		\hyperpage{42}
+  \item {Damp\discretionary {-}{}{}Server.\discretionary {-}{}{}Invalid\discretionary {-}{}{}File\discretionary {-}{}{}Hash\discretionary {-}{}{}Exception}, 
+		\hyperpage{40}
+  \item {Damp\discretionary {-}{}{}Server.\discretionary {-}{}{}Invalid\discretionary {-}{}{}Http\discretionary {-}{}{}Request\discretionary {-}{}{}Exception}, 
+		\hyperpage{41}
+  \item {Damp\discretionary {-}{}{}Server.\discretionary {-}{}{}Live\discretionary {-}{}{}Command}, 
+		\hyperpage{44}
+  \item {Damp\discretionary {-}{}{}Server.\discretionary {-}{}{}Logger}, 
+		\hyperpage{46}
+  \item {Damp\discretionary {-}{}{}Server.\discretionary {-}{}{}Login\discretionary {-}{}{}Command}, 
+		\hyperpage{47}
+  \item {Damp\discretionary {-}{}{}Server.\discretionary {-}{}{}Program}, 
+		\hyperpage{49}
+  \item {Damp\discretionary {-}{}{}Server.\discretionary {-}{}{}Request\discretionary {-}{}{}Processor}, 
+		\hyperpage{49}
+  \item {Damp\discretionary {-}{}{}Server.\discretionary {-}{}{}Socket\discretionary {-}{}{}Handler}, 
+		\hyperpage{52}
+  \item {Damp\discretionary {-}{}{}Server.\discretionary {-}{}{}Status\discretionary {-}{}{}Xml\discretionary {-}{}{}Response}, 
+		\hyperpage{53}
+  \item {Damp\discretionary {-}{}{}Server.\discretionary {-}{}{}Upload\discretionary {-}{}{}Game\discretionary {-}{}{}Command}, 
+		\hyperpage{54}
+  \item {Damp\discretionary {-}{}{}Server.\discretionary {-}{}{}User}, 
+		\hyperpage{57}
+  \item {Damp\discretionary {-}{}{}Server.\discretionary {-}{}{}User\discretionary {-}{}{}Commands}, 
+		\hyperpage{59}
+  \item {Damp\discretionary {-}{}{}Server.\discretionary {-}{}{}User\discretionary {-}{}{}Management}, 
+		\hyperpage{61}
+  \item {Damp\discretionary {-}{}{}Server.\discretionary {-}{}{}User\discretionary {-}{}{}Not\discretionary {-}{}{}Found\discretionary {-}{}{}Exception}, 
+		\hyperpage{62}
+  \item {Damp\discretionary {-}{}{}Server.\discretionary {-}{}{}Xml\discretionary {-}{}{}Response}, 
+		\hyperpage{63}
+  \item {Damp\discretionary {-}{}{}Server/\discretionary {-}{}{}Archivement.\discretionary {-}{}{}cs}, 
+		\hyperpage{65}
+  \item {Damp\discretionary {-}{}{}Server/\discretionary {-}{}{}Chat\discretionary {-}{}{}Command.\discretionary {-}{}{}cs}, 
+		\hyperpage{65}
+  \item {Damp\discretionary {-}{}{}Server/\discretionary {-}{}{}Chat\discretionary {-}{}{}Xml\discretionary {-}{}{}Response.\discretionary {-}{}{}cs}, 
+		\hyperpage{65}
+  \item {Damp\discretionary {-}{}{}Server/\discretionary {-}{}{}Command\discretionary {-}{}{}Not\discretionary {-}{}{}Found\discretionary {-}{}{}Exception.\discretionary {-}{}{}cs}, 
+		\hyperpage{65}
+  \item {Damp\discretionary {-}{}{}Server/\discretionary {-}{}{}Connection.\discretionary {-}{}{}cs}, 
+		\hyperpage{66}
+  \item {Damp\discretionary {-}{}{}Server/\discretionary {-}{}{}Connection\discretionary {-}{}{}Manager.\discretionary {-}{}{}cs}, 
+		\hyperpage{66}
+  \item {Damp\discretionary {-}{}{}Server/\discretionary {-}{}{}Database.\discretionary {-}{}{}cs}, 
+		\hyperpage{66}
+  \item {Damp\discretionary {-}{}{}Server/\discretionary {-}{}{}Download\discretionary {-}{}{}Command.\discretionary {-}{}{}cs}, 
+		\hyperpage{66}
+  \item {Damp\discretionary {-}{}{}Server/\discretionary {-}{}{}Error\discretionary {-}{}{}Xml\discretionary {-}{}{}Response.\discretionary {-}{}{}cs}, 
+		\hyperpage{67}
+  \item {Damp\discretionary {-}{}{}Server/\discretionary {-}{}{}Game.\discretionary {-}{}{}cs}, 
+		\hyperpage{67}
+  \item {Damp\discretionary {-}{}{}Server/\discretionary {-}{}{}Game\discretionary {-}{}{}Handler.\discretionary {-}{}{}cs}, 
+		\hyperpage{67}
+  \item {Damp\discretionary {-}{}{}Server/\discretionary {-}{}{}Http.\discretionary {-}{}{}cs}, 
+		\hyperpage{67}
+  \item {Damp\discretionary {-}{}{}Server/\discretionary {-}{}{}I\discretionary {-}{}{}Command\discretionary {-}{}{}Argument.\discretionary {-}{}{}cs}, 
+		\hyperpage{67}
+  \item {Damp\discretionary {-}{}{}Server/\discretionary {-}{}{}I\discretionary {-}{}{}Server\discretionary {-}{}{}Command.\discretionary {-}{}{}cs}, 
+		\hyperpage{68}
+  \item {Damp\discretionary {-}{}{}Server/\discretionary {-}{}{}Invalid\discretionary {-}{}{}File\discretionary {-}{}{}Hash\discretionary {-}{}{}Exception.\discretionary {-}{}{}cs}, 
+		\hyperpage{68}
+  \item {Damp\discretionary {-}{}{}Server/\discretionary {-}{}{}Invalid\discretionary {-}{}{}Http\discretionary {-}{}{}Request\discretionary {-}{}{}Exception.\discretionary {-}{}{}cs}, 
+		\hyperpage{68}
+  \item {Damp\discretionary {-}{}{}Server/\discretionary {-}{}{}Live\discretionary {-}{}{}Command.\discretionary {-}{}{}cs}, 
+		\hyperpage{68}
+  \item {Damp\discretionary {-}{}{}Server/\discretionary {-}{}{}Log.\discretionary {-}{}{}cs}, 
+		\hyperpage{69}
+  \item {Damp\discretionary {-}{}{}Server/\discretionary {-}{}{}Login\discretionary {-}{}{}Command.\discretionary {-}{}{}cs}, 
+		\hyperpage{69}
+  \item {Damp\discretionary {-}{}{}Server/\discretionary {-}{}{}Program.\discretionary {-}{}{}cs}, 
+		\hyperpage{69}
+  \item {Damp\discretionary {-}{}{}Server/\discretionary {-}{}{}Request\discretionary {-}{}{}Processor.\discretionary {-}{}{}cs}, 
+		\hyperpage{70}
+  \item {Damp\discretionary {-}{}{}Server/\discretionary {-}{}{}Socket\discretionary {-}{}{}Handler.\discretionary {-}{}{}cs}, 
+		\hyperpage{70}
+  \item {Damp\discretionary {-}{}{}Server/\discretionary {-}{}{}Status\discretionary {-}{}{}Xml\discretionary {-}{}{}Response.\discretionary {-}{}{}cs}, 
+		\hyperpage{70}
+  \item {Damp\discretionary {-}{}{}Server/\discretionary {-}{}{}Upload\discretionary {-}{}{}Game\discretionary {-}{}{}Command.\discretionary {-}{}{}cs}, 
+		\hyperpage{70}
+  \item {Damp\discretionary {-}{}{}Server/\discretionary {-}{}{}User.\discretionary {-}{}{}cs}, 
+		\hyperpage{70}
+  \item {Damp\discretionary {-}{}{}Server/\discretionary {-}{}{}User\discretionary {-}{}{}Commands.\discretionary {-}{}{}cs}, 
+		\hyperpage{71}
+  \item {Damp\discretionary {-}{}{}Server/\discretionary {-}{}{}User\discretionary {-}{}{}Management.\discretionary {-}{}{}cs}, 
+		\hyperpage{71}
+  \item {Damp\discretionary {-}{}{}Server/\discretionary {-}{}{}Xml\discretionary {-}{}{}Response.\discretionary {-}{}{}cs}, 
+		\hyperpage{71}
+  \item {Damp\discretionary {-}{}{}Server/obj/\discretionary {-}{}{}Debug/\discretionary {-}{}{}Temporary\discretionary {-}{}{}Generated\discretionary {-}{}{}File\discretionary {-}{}{}\_\discretionary {-}{}{}036\discretionary {-}{}{}C0\discretionary {-}{}{}B5\discretionary {-}{}{}B-\/1481-\/4323-\/8\discretionary {-}{}{}D20-\/8\discretionary {-}{}{}F5\discretionary {-}{}{}A\discretionary {-}{}{}D\discretionary {-}{}{}C\discretionary {-}{}{}B23\discretionary {-}{}{}D92.\discretionary {-}{}{}cs}, 
+		\hyperpage{69}
+  \item {Damp\discretionary {-}{}{}Server/obj/\discretionary {-}{}{}Debug/\discretionary {-}{}{}Temporary\discretionary {-}{}{}Generated\discretionary {-}{}{}File\discretionary {-}{}{}\_\discretionary {-}{}{}5937a670-\/0e60-\/4077-\/877b-\/f7221da3dda1.\discretionary {-}{}{}cs}, 
+		\hyperpage{69}
+  \item {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Archivement}
+    \subitem {Description}, \hyperpage{12}
+    \subitem {Icon}, \hyperpage{12}
+    \subitem {Title}, \hyperpage{12}
+  \item {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Chat\discretionary {-}{}{}Command}
+    \subitem {Can\discretionary {-}{}{}Handle\discretionary {-}{}{}Command}, 
+		\hyperpage{14}
+    \subitem {Chat\discretionary {-}{}{}Command}, \hyperpage{14}
+    \subitem {Execute}, \hyperpage{14}
+    \subitem {Is\discretionary {-}{}{}Persistant}, \hyperpage{14}
+    \subitem {Needs\discretionary {-}{}{}Authcatication}, 
+		\hyperpage{14}
+  \item {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Chat\discretionary {-}{}{}Xml\discretionary {-}{}{}Response}
+    \subitem {From}, \hyperpage{16}
+    \subitem {Message}, \hyperpage{16}
+    \subitem {To}, \hyperpage{16}
+  \item {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Command\discretionary {-}{}{}Not\discretionary {-}{}{}Found\discretionary {-}{}{}Exception}
+    \subitem {Command\discretionary {-}{}{}Not\discretionary {-}{}{}Found\discretionary {-}{}{}Exception}, 
+		\hyperpage{17}
+  \item {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Connection}
+    \subitem {User\discretionary {-}{}{}Http}, \hyperpage{18}
+    \subitem {User\discretionary {-}{}{}Profile}, \hyperpage{18}
+  \item {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Connection\discretionary {-}{}{}Manager}
+    \subitem {\discretionary {-}{}{}\_\discretionary {-}{}{}connections}, 
+		\hyperpage{20}
+    \subitem {Add\discretionary {-}{}{}Connection}, \hyperpage{20}
+    \subitem {Connection\discretionary {-}{}{}Manager}, \hyperpage{19}
+    \subitem {Get\discretionary {-}{}{}Connection\discretionary {-}{}{}By\discretionary {-}{}{}Auth\discretionary {-}{}{}Token}, 
+		\hyperpage{20}
+    \subitem {Get\discretionary {-}{}{}Connection\discretionary {-}{}{}By\discretionary {-}{}{}User\discretionary {-}{}{}Id}, 
+		\hyperpage{20}
+    \subitem {Get\discretionary {-}{}{}Connection\discretionary {-}{}{}Manager}, 
+		\hyperpage{20}
+    \subitem {Manager}, \hyperpage{20}
+    \subitem {Remove\discretionary {-}{}{}Connection}, \hyperpage{20}
+    \subitem {Run}, \hyperpage{20}
+  \item {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Database}
+    \subitem {\discretionary {-}{}{}\_\discretionary {-}{}{}sql\discretionary {-}{}{}Connection}, 
+		\hyperpage{22}
+    \subitem {Close}, \hyperpage{21}
+    \subitem {Connection\discretionary {-}{}{}String}, \hyperpage{22}
+    \subitem {Get\discretionary {-}{}{}Command}, \hyperpage{21}
+    \subitem {Open}, \hyperpage{21}
+  \item {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Download\discretionary {-}{}{}Command}
+    \subitem {Can\discretionary {-}{}{}Handle\discretionary {-}{}{}Command}, 
+		\hyperpage{23}
+    \subitem {Download\discretionary {-}{}{}Command}, \hyperpage{23}
+    \subitem {Execute}, \hyperpage{24}
+    \subitem {Is\discretionary {-}{}{}Persistant}, \hyperpage{24}
+    \subitem {Needs\discretionary {-}{}{}Authcatication}, 
+		\hyperpage{24}
+  \item {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Error\discretionary {-}{}{}Xml\discretionary {-}{}{}Response}
+    \subitem {Message}, \hyperpage{25}
+  \item {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Game}
+    \subitem {Archivements}, \hyperpage{28}
+    \subitem {Description}, \hyperpage{28}
+    \subitem {Developer}, \hyperpage{28}
+    \subitem {Genre}, \hyperpage{28}
+    \subitem {Id}, \hyperpage{28}
+    \subitem {Path}, \hyperpage{28}
+    \subitem {Picture}, \hyperpage{28}
+    \subitem {Recommended\discretionary {-}{}{}Age}, \hyperpage{28}
+    \subitem {Title}, \hyperpage{28}
+    \subitem {To\discretionary {-}{}{}String}, \hyperpage{28}
+  \item {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Game\discretionary {-}{}{}Handler}
+    \subitem {\discretionary {-}{}{}\_\discretionary {-}{}{}filefolder}, 
+		\hyperpage{30}
+    \subitem {\discretionary {-}{}{}\_\discretionary {-}{}{}filename}, 
+		\hyperpage{30}
+    \subitem {\discretionary {-}{}{}\_\discretionary {-}{}{}filepath}, 
+		\hyperpage{30}
+    \subitem {\discretionary {-}{}{}\_\discretionary {-}{}{}files}, 
+		\hyperpage{30}
+    \subitem {\discretionary {-}{}{}\_\discretionary {-}{}{}manifest}, 
+		\hyperpage{30}
+    \subitem {\discretionary {-}{}{}\_\discretionary {-}{}{}zip\discretionary {-}{}{}Stream}, 
+		\hyperpage{31}
+    \subitem {Extract}, \hyperpage{30}
+    \subitem {Game}, \hyperpage{31}
+    \subitem {Game\discretionary {-}{}{}Handler}, \hyperpage{30}
+    \subitem {Game\discretionary {-}{}{}Pre\discretionary {-}{}{}Fix}, 
+		\hyperpage{31}
+    \subitem {Games\discretionary {-}{}{}Folder}, \hyperpage{31}
+    \subitem {Insert\discretionary {-}{}{}Game\discretionary {-}{}{}Into\discretionary {-}{}{}Db}, 
+		\hyperpage{30}
+    \subitem {Parse\discretionary {-}{}{}Files}, \hyperpage{30}
+    \subitem {Parse\discretionary {-}{}{}Game}, \hyperpage{30}
+    \subitem {Parse\discretionary {-}{}{}Manifest}, \hyperpage{30}
+  \item {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Http}
+    \subitem {\discretionary {-}{}{}\_\discretionary {-}{}{}headers}, 
+		\hyperpage{36}
+    \subitem {\discretionary {-}{}{}\_\discretionary {-}{}{}headers\discretionary {-}{}{}To\discretionary {-}{}{}Send}, 
+		\hyperpage{36}
+    \subitem {\discretionary {-}{}{}\_\discretionary {-}{}{}network}, 
+		\hyperpage{36}
+    \subitem {\discretionary {-}{}{}\_\discretionary {-}{}{}socket}, 
+		\hyperpage{36}
+    \subitem {Add\discretionary {-}{}{}Header}, \hyperpage{35}
+    \subitem {Content}, \hyperpage{36}
+    \subitem {Get\discretionary {-}{}{}Header}, \hyperpage{35}
+    \subitem {Http}, \hyperpage{34}
+    \subitem {Http\discretionary {-}{}{}Version}, \hyperpage{36}
+    \subitem {Is\discretionary {-}{}{}Connected}, \hyperpage{36}
+    \subitem {Length}, \hyperpage{36}
+    \subitem {Parse\discretionary {-}{}{}Get}, \hyperpage{35}
+    \subitem {Parse\discretionary {-}{}{}Post}, \hyperpage{35}
+    \subitem {Path}, \hyperpage{37}
+    \subitem {Query}, \hyperpage{37}
+    \subitem {Send\discretionary {-}{}{}File\discretionary {-}{}{}Response}, 
+		\hyperpage{35}
+    \subitem {Send\discretionary {-}{}{}Response\discretionary {-}{}{}Header}, 
+		\hyperpage{35}
+    \subitem {Send\discretionary {-}{}{}Xml\discretionary {-}{}{}Response}, 
+		\hyperpage{35}
+    \subitem {Server\discretionary {-}{}{}Certificate}, \hyperpage{36}
+    \subitem {Socket\discretionary {-}{}{}Connected}, \hyperpage{36}
+    \subitem {Status}, \hyperpage{37}
+    \subitem {Type}, \hyperpage{37}
+  \item {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}I\discretionary {-}{}{}Command\discretionary {-}{}{}Argument}
+    \subitem {Is\discretionary {-}{}{}Connected}, \hyperpage{39}
+    \subitem {Query}, \hyperpage{39}
+    \subitem {Send\discretionary {-}{}{}File\discretionary {-}{}{}Response}, 
+		\hyperpage{39}
+    \subitem {Send\discretionary {-}{}{}Xml\discretionary {-}{}{}Response}, 
+		\hyperpage{39}
+  \item {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}I\discretionary {-}{}{}Server\discretionary {-}{}{}Command}
+    \subitem {Can\discretionary {-}{}{}Handle\discretionary {-}{}{}Command}, 
+		\hyperpage{43}
+    \subitem {Execute}, \hyperpage{43}
+    \subitem {Is\discretionary {-}{}{}Persistant}, \hyperpage{43}
+    \subitem {Needs\discretionary {-}{}{}Authcatication}, 
+		\hyperpage{43}
+  \item {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Invalid\discretionary {-}{}{}Http\discretionary {-}{}{}Request\discretionary {-}{}{}Exception}
+    \subitem {Invalid\discretionary {-}{}{}Http\discretionary {-}{}{}Request\discretionary {-}{}{}Exception}, 
+		\hyperpage{42}
+  \item {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Live\discretionary {-}{}{}Command}
+    \subitem {Can\discretionary {-}{}{}Handle\discretionary {-}{}{}Command}, 
+		\hyperpage{45}
+    \subitem {Execute}, \hyperpage{45}
+    \subitem {Is\discretionary {-}{}{}Persistant}, \hyperpage{45}
+    \subitem {Live\discretionary {-}{}{}Command}, \hyperpage{45}
+    \subitem {Needs\discretionary {-}{}{}Authcatication}, 
+		\hyperpage{45}
+  \item {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Logger}
+    \subitem {Log}, \hyperpage{46}
+  \item {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Login\discretionary {-}{}{}Command}
+    \subitem {Can\discretionary {-}{}{}Handle\discretionary {-}{}{}Command}, 
+		\hyperpage{48}
+    \subitem {Execute}, \hyperpage{48}
+    \subitem {Is\discretionary {-}{}{}Persistant}, \hyperpage{48}
+    \subitem {Login\discretionary {-}{}{}Command}, \hyperpage{48}
+    \subitem {Needs\discretionary {-}{}{}Authcatication}, 
+		\hyperpage{48}
+  \item {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Program}
+    \subitem {Main}, \hyperpage{49}
+  \item {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Request\discretionary {-}{}{}Processor}
+    \subitem {\discretionary {-}{}{}\_\discretionary {-}{}{}socket}, 
+		\hyperpage{51}
+    \subitem {Check\discretionary {-}{}{}Authetication}, \hyperpage{51}
+    \subitem {Close\discretionary {-}{}{}Socket}, \hyperpage{51}
+    \subitem {Create\discretionary {-}{}{}Command}, \hyperpage{51}
+    \subitem {Request\discretionary {-}{}{}Processor}, \hyperpage{50}
+    \subitem {Run}, \hyperpage{51}
+  \item {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Socket\discretionary {-}{}{}Handler}
+    \subitem {\discretionary {-}{}{}\_\discretionary {-}{}{}tcp}, 
+		\hyperpage{52}
+    \subitem {Socket\discretionary {-}{}{}Handler}, \hyperpage{52}
+  \item {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Status\discretionary {-}{}{}Xml\discretionary {-}{}{}Response}
+    \subitem {Code}, \hyperpage{54}
+    \subitem {Command}, \hyperpage{54}
+    \subitem {Message}, \hyperpage{54}
+  \item {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Upload\discretionary {-}{}{}Game\discretionary {-}{}{}Command}
+    \subitem {Can\discretionary {-}{}{}Handle\discretionary {-}{}{}Command}, 
+		\hyperpage{56}
+    \subitem {Execute}, \hyperpage{56}
+    \subitem {Is\discretionary {-}{}{}Persistant}, \hyperpage{56}
+    \subitem {Needs\discretionary {-}{}{}Authcatication}, 
+		\hyperpage{56}
+    \subitem {Upload\discretionary {-}{}{}Game\discretionary {-}{}{}Command}, 
+		\hyperpage{55}
+    \subitem {Write\discretionary {-}{}{}Tofile}, \hyperpage{56}
+  \item {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}User}
+    \subitem {Auth\discretionary {-}{}{}Token}, \hyperpage{58}
+    \subitem {Email}, \hyperpage{58}
+    \subitem {Friends}, \hyperpage{58}
+    \subitem {Games}, \hyperpage{58}
+    \subitem {User\discretionary {-}{}{}Id}, \hyperpage{58}
+    \subitem {Username}, \hyperpage{58}
+  \item {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}User\discretionary {-}{}{}Commands}
+    \subitem {\discretionary {-}{}{}\_\discretionary {-}{}{}http}, 
+		\hyperpage{60}
+    \subitem {Can\discretionary {-}{}{}Handle\discretionary {-}{}{}Command}, 
+		\hyperpage{60}
+    \subitem {Execute}, \hyperpage{60}
+    \subitem {Is\discretionary {-}{}{}Persistant}, \hyperpage{60}
+    \subitem {Needs\discretionary {-}{}{}Authcatication}, 
+		\hyperpage{60}
+    \subitem {User\discretionary {-}{}{}Commands}, \hyperpage{60}
+  \item {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}User\discretionary {-}{}{}Management}
+    \subitem {Get\discretionary {-}{}{}User}, \hyperpage{61}
+  \item {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Xml\discretionary {-}{}{}Response}
+    \subitem {Date}, \hyperpage{63}
+    \subitem {Xml\discretionary {-}{}{}Response}, \hyperpage{63}
+  \item {Date}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Xml\discretionary {-}{}{}Response}, 
+		\hyperpage{63}
+  \item {Description}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Archivement}, 
+		\hyperpage{12}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Game}, 
+		\hyperpage{28}
+  \item {Developer}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Game}, 
+		\hyperpage{28}
+  \item {Download\discretionary {-}{}{}Command}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Download\discretionary {-}{}{}Command}, 
+		\hyperpage{23}
+
+  \indexspace
+
+  \item {Email}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}User}, 
+		\hyperpage{58}
+  \item {Execute}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Chat\discretionary {-}{}{}Command}, 
+		\hyperpage{14}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Download\discretionary {-}{}{}Command}, 
+		\hyperpage{24}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}I\discretionary {-}{}{}Server\discretionary {-}{}{}Command}, 
+		\hyperpage{43}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Live\discretionary {-}{}{}Command}, 
+		\hyperpage{45}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Login\discretionary {-}{}{}Command}, 
+		\hyperpage{48}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Upload\discretionary {-}{}{}Game\discretionary {-}{}{}Command}, 
+		\hyperpage{56}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}User\discretionary {-}{}{}Commands}, 
+		\hyperpage{60}
+  \item {Extract}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Game\discretionary {-}{}{}Handler}, 
+		\hyperpage{30}
+
+  \indexspace
+
+  \item {Friends}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}User}, 
+		\hyperpage{58}
+  \item {From}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Chat\discretionary {-}{}{}Xml\discretionary {-}{}{}Response}, 
+		\hyperpage{16}
+
+  \indexspace
+
+  \item {Game}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Game\discretionary {-}{}{}Handler}, 
+		\hyperpage{31}
+  \item {Game\discretionary {-}{}{}Handler}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Game\discretionary {-}{}{}Handler}, 
+		\hyperpage{30}
+  \item {Game\discretionary {-}{}{}Pre\discretionary {-}{}{}Fix}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Game\discretionary {-}{}{}Handler}, 
+		\hyperpage{31}
+  \item {Games}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}User}, 
+		\hyperpage{58}
+  \item {Games\discretionary {-}{}{}Folder}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Game\discretionary {-}{}{}Handler}, 
+		\hyperpage{31}
+  \item {Genre}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Game}, 
+		\hyperpage{28}
+  \item {Get\discretionary {-}{}{}Command}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Database}, 
+		\hyperpage{21}
+  \item {Get\discretionary {-}{}{}Connection\discretionary {-}{}{}By\discretionary {-}{}{}Auth\discretionary {-}{}{}Token}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Connection\discretionary {-}{}{}Manager}, 
+		\hyperpage{20}
+  \item {Get\discretionary {-}{}{}Connection\discretionary {-}{}{}By\discretionary {-}{}{}User\discretionary {-}{}{}Id}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Connection\discretionary {-}{}{}Manager}, 
+		\hyperpage{20}
+  \item {Get\discretionary {-}{}{}Connection\discretionary {-}{}{}Manager}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Connection\discretionary {-}{}{}Manager}, 
+		\hyperpage{20}
+  \item {Get\discretionary {-}{}{}Header}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Http}, 
+		\hyperpage{35}
+  \item {Get\discretionary {-}{}{}User}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}User\discretionary {-}{}{}Management}, 
+		\hyperpage{61}
+
+  \indexspace
+
+  \item {Http}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Http}, 
+		\hyperpage{34}
+  \item {Http\discretionary {-}{}{}Version}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Http}, 
+		\hyperpage{36}
+
+  \indexspace
+
+  \item {Icon}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Archivement}, 
+		\hyperpage{12}
+  \item {Id}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Game}, 
+		\hyperpage{28}
+  \item {Insert\discretionary {-}{}{}Game\discretionary {-}{}{}Into\discretionary {-}{}{}Db}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Game\discretionary {-}{}{}Handler}, 
+		\hyperpage{30}
+  \item {Invalid\discretionary {-}{}{}Http\discretionary {-}{}{}Request\discretionary {-}{}{}Exception}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Invalid\discretionary {-}{}{}Http\discretionary {-}{}{}Request\discretionary {-}{}{}Exception}, 
+		\hyperpage{42}
+  \item {Is\discretionary {-}{}{}Connected}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Http}, 
+		\hyperpage{36}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}I\discretionary {-}{}{}Command\discretionary {-}{}{}Argument}, 
+		\hyperpage{39}
+  \item {Is\discretionary {-}{}{}Persistant}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Chat\discretionary {-}{}{}Command}, 
+		\hyperpage{14}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Download\discretionary {-}{}{}Command}, 
+		\hyperpage{24}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}I\discretionary {-}{}{}Server\discretionary {-}{}{}Command}, 
+		\hyperpage{43}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Live\discretionary {-}{}{}Command}, 
+		\hyperpage{45}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Login\discretionary {-}{}{}Command}, 
+		\hyperpage{48}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Upload\discretionary {-}{}{}Game\discretionary {-}{}{}Command}, 
+		\hyperpage{56}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}User\discretionary {-}{}{}Commands}, 
+		\hyperpage{60}
+
+  \indexspace
+
+  \item {Length}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Http}, 
+		\hyperpage{36}
+  \item {Live\discretionary {-}{}{}Command}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Live\discretionary {-}{}{}Command}, 
+		\hyperpage{45}
+  \item {Log}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Logger}, 
+		\hyperpage{46}
+  \item {Log\discretionary {-}{}{}Level}
+    \subitem {Damp\discretionary {-}{}{}Server}, \hyperpage{10}
+  \item {Login\discretionary {-}{}{}Command}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Login\discretionary {-}{}{}Command}, 
+		\hyperpage{48}
+
+  \indexspace
+
+  \item {Main}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Program}, 
+		\hyperpage{49}
+  \item {Manager}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Connection\discretionary {-}{}{}Manager}, 
+		\hyperpage{20}
+  \item {Message}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Chat\discretionary {-}{}{}Xml\discretionary {-}{}{}Response}, 
+		\hyperpage{16}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Error\discretionary {-}{}{}Xml\discretionary {-}{}{}Response}, 
+		\hyperpage{25}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Status\discretionary {-}{}{}Xml\discretionary {-}{}{}Response}, 
+		\hyperpage{54}
+  \item {Minor}
+    \subitem {Damp\-Server}, \hyperpage{10}
+
+  \indexspace
+
+  \item {Needs\discretionary {-}{}{}Authcatication}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Chat\discretionary {-}{}{}Command}, 
+		\hyperpage{14}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Download\discretionary {-}{}{}Command}, 
+		\hyperpage{24}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}I\discretionary {-}{}{}Server\discretionary {-}{}{}Command}, 
+		\hyperpage{43}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Live\discretionary {-}{}{}Command}, 
+		\hyperpage{45}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Login\discretionary {-}{}{}Command}, 
+		\hyperpage{48}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Upload\discretionary {-}{}{}Game\discretionary {-}{}{}Command}, 
+		\hyperpage{56}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}User\discretionary {-}{}{}Commands}, 
+		\hyperpage{60}
+  \item {Normal}
+    \subitem {Damp\-Server}, \hyperpage{10}
+
+  \indexspace
+
+  \item {Open}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Database}, 
+		\hyperpage{21}
+
+  \indexspace
+
+  \item {Parse\discretionary {-}{}{}Files}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Game\discretionary {-}{}{}Handler}, 
+		\hyperpage{30}
+  \item {Parse\discretionary {-}{}{}Game}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Game\discretionary {-}{}{}Handler}, 
+		\hyperpage{30}
+  \item {Parse\discretionary {-}{}{}Get}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Http}, 
+		\hyperpage{35}
+  \item {Parse\discretionary {-}{}{}Manifest}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Game\discretionary {-}{}{}Handler}, 
+		\hyperpage{30}
+  \item {Parse\discretionary {-}{}{}Post}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Http}, 
+		\hyperpage{35}
+  \item {Path}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Game}, 
+		\hyperpage{28}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Http}, 
+		\hyperpage{37}
+  \item {Picture}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Game}, 
+		\hyperpage{28}
+
+  \indexspace
+
+  \item {Query}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Http}, 
+		\hyperpage{37}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}I\discretionary {-}{}{}Command\discretionary {-}{}{}Argument}, 
+		\hyperpage{39}
+
+  \indexspace
+
+  \item {Recommended\discretionary {-}{}{}Age}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Game}, 
+		\hyperpage{28}
+  \item {Remove\discretionary {-}{}{}Connection}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Connection\discretionary {-}{}{}Manager}, 
+		\hyperpage{20}
+  \item {Request\discretionary {-}{}{}Processor}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Request\discretionary {-}{}{}Processor}, 
+		\hyperpage{50}
+  \item {Run}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Connection\discretionary {-}{}{}Manager}, 
+		\hyperpage{20}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Request\discretionary {-}{}{}Processor}, 
+		\hyperpage{51}
+
+  \indexspace
+
+  \item {Send\discretionary {-}{}{}File\discretionary {-}{}{}Response}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Http}, 
+		\hyperpage{35}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}I\discretionary {-}{}{}Command\discretionary {-}{}{}Argument}, 
+		\hyperpage{39}
+  \item {Send\discretionary {-}{}{}Response\discretionary {-}{}{}Header}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Http}, 
+		\hyperpage{35}
+  \item {Send\discretionary {-}{}{}Xml\discretionary {-}{}{}Response}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Http}, 
+		\hyperpage{35}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}I\discretionary {-}{}{}Command\discretionary {-}{}{}Argument}, 
+		\hyperpage{39}
+  \item {Server\discretionary {-}{}{}Certificate}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Http}, 
+		\hyperpage{36}
+  \item {Socket\discretionary {-}{}{}Connected}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Http}, 
+		\hyperpage{36}
+  \item {Socket\discretionary {-}{}{}Handler}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Socket\discretionary {-}{}{}Handler}, 
+		\hyperpage{52}
+  \item {Status}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Http}, 
+		\hyperpage{37}
+
+  \indexspace
+
+  \item {Title}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Archivement}, 
+		\hyperpage{12}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Game}, 
+		\hyperpage{28}
+  \item {To}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Chat\discretionary {-}{}{}Xml\discretionary {-}{}{}Response}, 
+		\hyperpage{16}
+  \item {To\discretionary {-}{}{}String}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Game}, 
+		\hyperpage{28}
+  \item {Type}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Http}, 
+		\hyperpage{37}
+
+  \indexspace
+
+  \item {Upload\discretionary {-}{}{}Game\discretionary {-}{}{}Command}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Upload\discretionary {-}{}{}Game\discretionary {-}{}{}Command}, 
+		\hyperpage{55}
+  \item {User\discretionary {-}{}{}Commands}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}User\discretionary {-}{}{}Commands}, 
+		\hyperpage{60}
+  \item {User\discretionary {-}{}{}Http}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Connection}, 
+		\hyperpage{18}
+  \item {User\discretionary {-}{}{}Id}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}User}, 
+		\hyperpage{58}
+  \item {User\discretionary {-}{}{}Profile}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Connection}, 
+		\hyperpage{18}
+  \item {Username}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}User}, 
+		\hyperpage{58}
+
+  \indexspace
+
+  \item {Write\discretionary {-}{}{}Tofile}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Upload\discretionary {-}{}{}Game\discretionary {-}{}{}Command}, 
+		\hyperpage{56}
+
+  \indexspace
+
+  \item {Xml\discretionary {-}{}{}Response}
+    \subitem {Damp\discretionary {-}{}{}Server\discretionary {-}{}{}::\discretionary {-}{}{}Xml\discretionary {-}{}{}Response}, 
+		\hyperpage{63}
+
+\end{theindex}

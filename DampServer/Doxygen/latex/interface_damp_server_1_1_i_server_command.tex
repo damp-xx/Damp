@@ -1,0 +1,91 @@
+\hypertarget{interface_damp_server_1_1_i_server_command}{\section{Damp\-Server.\-I\-Server\-Command Interface Reference}
+\label{interface_damp_server_1_1_i_server_command}\index{Damp\-Server.\-I\-Server\-Command@{Damp\-Server.\-I\-Server\-Command}}
+}
+
+
+Inheritance diagram for Damp\-Server.\-I\-Server\-Command\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{interface_damp_server_1_1_i_server_command__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Damp\-Server.\-I\-Server\-Command\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=226pt]{interface_damp_server_1_1_i_server_command__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{interface_damp_server_1_1_i_server_command_a260322b35ee861d9b355476a78af56eb}{Can\-Handle\-Command} (string cmd)
+\item 
+void \hyperlink{interface_damp_server_1_1_i_server_command_a082eb85010846122c9d8413bc9231c00}{Execute} (\hyperlink{interface_damp_server_1_1_i_command_argument}{I\-Command\-Argument} http, string cmd=null)
+\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{interface_damp_server_1_1_i_server_command_ac0c06b3f2ab47f29902ffb507c8e1019}{Needs\-Authcatication}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+bool \hyperlink{interface_damp_server_1_1_i_server_command_a5a6d5ec50a2484003eed027efd78e230}{Is\-Persistant}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 3 of file I\-Server\-Command.\-cs.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{interface_damp_server_1_1_i_server_command_a260322b35ee861d9b355476a78af56eb}{\index{Damp\-Server\-::\-I\-Server\-Command@{Damp\-Server\-::\-I\-Server\-Command}!Can\-Handle\-Command@{Can\-Handle\-Command}}
+\index{Can\-Handle\-Command@{Can\-Handle\-Command}!DampServer::IServerCommand@{Damp\-Server\-::\-I\-Server\-Command}}
+\subsubsection[{Can\-Handle\-Command}]{\setlength{\rightskip}{0pt plus 5cm}bool Damp\-Server.\-I\-Server\-Command.\-Can\-Handle\-Command (
+\begin{DoxyParamCaption}
+\item[{string}]{cmd}
+\end{DoxyParamCaption}
+)}}\label{interface_damp_server_1_1_i_server_command_a260322b35ee861d9b355476a78af56eb}
+
+
+Implemented in \hyperlink{class_damp_server_1_1_login_command_a90d3b9680805f0023dde18d11b17d9b5}{Damp\-Server.\-Login\-Command}, \hyperlink{class_damp_server_1_1_user_commands_aad1c2749313df8161a3a7c09a1f7e78e}{Damp\-Server.\-User\-Commands}, \hyperlink{class_damp_server_1_1_chat_command_a72f7769b055b812d8e54b2c3bf8e11b7}{Damp\-Server.\-Chat\-Command}, \hyperlink{class_damp_server_1_1_upload_game_command_a4b279126d4ae69a0eaa185e614e77209}{Damp\-Server.\-Upload\-Game\-Command}, \hyperlink{class_damp_server_1_1_download_command_a6ee736d62eca1689e8d144c7bb9ac367}{Damp\-Server.\-Download\-Command}, and \hyperlink{class_damp_server_1_1_live_command_a252e82cb8724d030d5ac984fc6bd4b75}{Damp\-Server.\-Live\-Command}.
+
+\hypertarget{interface_damp_server_1_1_i_server_command_a082eb85010846122c9d8413bc9231c00}{\index{Damp\-Server\-::\-I\-Server\-Command@{Damp\-Server\-::\-I\-Server\-Command}!Execute@{Execute}}
+\index{Execute@{Execute}!DampServer::IServerCommand@{Damp\-Server\-::\-I\-Server\-Command}}
+\subsubsection[{Execute}]{\setlength{\rightskip}{0pt plus 5cm}void Damp\-Server.\-I\-Server\-Command.\-Execute (
+\begin{DoxyParamCaption}
+\item[{{\bf I\-Command\-Argument}}]{http, }
+\item[{string}]{cmd = {\ttfamily null}}
+\end{DoxyParamCaption}
+)}}\label{interface_damp_server_1_1_i_server_command_a082eb85010846122c9d8413bc9231c00}
+
+
+Implemented in \hyperlink{class_damp_server_1_1_login_command_aacc9a0a62980ba23d38c6173b8126786}{Damp\-Server.\-Login\-Command}, \hyperlink{class_damp_server_1_1_user_commands_a5ddd3430091d6453079e689ca868d5ef}{Damp\-Server.\-User\-Commands}, \hyperlink{class_damp_server_1_1_chat_command_aa1e6992b747ef3b7e64c282dd59c3e62}{Damp\-Server.\-Chat\-Command}, \hyperlink{class_damp_server_1_1_upload_game_command_ad8731ab5e608034cd00ece1c7224710e}{Damp\-Server.\-Upload\-Game\-Command}, \hyperlink{class_damp_server_1_1_download_command_ae54ea7b474548b62c606fe9b943adcd0}{Damp\-Server.\-Download\-Command}, and \hyperlink{class_damp_server_1_1_live_command_a3e8bea04db2bc9a579b37def36ee04a8}{Damp\-Server.\-Live\-Command}.
+
+
+
+\subsection{Property Documentation}
+\hypertarget{interface_damp_server_1_1_i_server_command_a5a6d5ec50a2484003eed027efd78e230}{\index{Damp\-Server\-::\-I\-Server\-Command@{Damp\-Server\-::\-I\-Server\-Command}!Is\-Persistant@{Is\-Persistant}}
+\index{Is\-Persistant@{Is\-Persistant}!DampServer::IServerCommand@{Damp\-Server\-::\-I\-Server\-Command}}
+\subsubsection[{Is\-Persistant}]{\setlength{\rightskip}{0pt plus 5cm}bool Damp\-Server.\-I\-Server\-Command.\-Is\-Persistant\hspace{0.3cm}{\ttfamily [get]}}}\label{interface_damp_server_1_1_i_server_command_a5a6d5ec50a2484003eed027efd78e230}
+
+
+Definition at line 6 of file I\-Server\-Command.\-cs.
+
+\hypertarget{interface_damp_server_1_1_i_server_command_ac0c06b3f2ab47f29902ffb507c8e1019}{\index{Damp\-Server\-::\-I\-Server\-Command@{Damp\-Server\-::\-I\-Server\-Command}!Needs\-Authcatication@{Needs\-Authcatication}}
+\index{Needs\-Authcatication@{Needs\-Authcatication}!DampServer::IServerCommand@{Damp\-Server\-::\-I\-Server\-Command}}
+\subsubsection[{Needs\-Authcatication}]{\setlength{\rightskip}{0pt plus 5cm}bool Damp\-Server.\-I\-Server\-Command.\-Needs\-Authcatication\hspace{0.3cm}{\ttfamily [get]}}}\label{interface_damp_server_1_1_i_server_command_ac0c06b3f2ab47f29902ffb507c8e1019}
+
+
+Definition at line 5 of file I\-Server\-Command.\-cs.
+
+
+
+The documentation for this interface was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+Damp\-Server/\hyperlink{_i_server_command_8cs}{I\-Server\-Command.\-cs}\end{DoxyCompactItemize}
