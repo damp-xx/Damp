@@ -14,7 +14,7 @@ namespace DampServerTest
         [ExpectedException]
         public void TestTestTest()
         {
-            Console.WriteLine("Hej Hej  3");
+            Console.WriteLine("Hej Hej  5");
             throw new Exception();
         }
     }
