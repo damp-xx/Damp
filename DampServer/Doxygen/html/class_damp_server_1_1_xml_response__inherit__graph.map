@@ -1,8 +1,0 @@
-<map id="DampServer.XmlResponse" name="DampServer.XmlResponse">
-<area shape="rect" id="node2" href="$class_damp_server_1_1_archivement.html" title="{DampServer.Archivement\n|+ Title\l+ Description\l+ Icon\l|}" alt="" coords="5,175,171,281"/>
-<area shape="rect" id="node3" href="$class_damp_server_1_1_chat_xml_response.html" title="{DampServer.ChatXmlResponse\n|+ Message\l+ From\l+ To\l|}" alt="" coords="196,175,399,281"/>
-<area shape="rect" id="node4" href="$class_damp_server_1_1_error_xml_response.html" title="{DampServer.ErrorXmlResponse\n|+ Message\l|}" alt="" coords="423,189,625,267"/>
-<area shape="rect" id="node5" href="$class_damp_server_1_1_game.html" title="{DampServer.Game\n|+ Title\l+ Description\l+ Id\l+ Picture\l+ Genre\l+ RecommendedAge\l+ Developer\l+ Archivements\l+ Path\l|+ ToString()\l}" alt="" coords="649,131,793,325"/>
-<area shape="rect" id="node6" href="$class_damp_server_1_1_status_xml_response.html" title="{DampServer.StatusXmlResponse\n|+ Code\l+ Message\l+ Command\l|}" alt="" coords="817,175,1031,281"/>
-<area shape="rect" id="node7" href="$class_damp_server_1_1_user.html" title="{DampServer.User\n|+ UserId\l+ Username\l+ Games\l+ Friends\l+ AuthToken\l+ Email\l|}" alt="" coords="1055,153,1177,303"/>
-</map>

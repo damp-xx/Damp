@@ -1,5 +1,0 @@
-var searchData=
-[
-  ['needsauthcatication',['NeedsAuthcatication',['../class_damp_server_1_1_chat_command.html#a98c860e6298a3b9b1b153c03b56ea55a',1,'DampServer.ChatCommand.NeedsAuthcatication()'],['../class_damp_server_1_1_download_command.html#a7eeac316a894ce7c03f3d9c73a4e4e4f',1,'DampServer.DownloadCommand.NeedsAuthcatication()'],['../interface_damp_server_1_1_i_server_command.html#ac0c06b3f2ab47f29902ffb507c8e1019',1,'DampServer.IServerCommand.NeedsAuthcatication()'],['../class_damp_server_1_1_live_command.html#a155d5c4cd08602357cc8202adc13d6ad',1,'DampServer.LiveCommand.NeedsAuthcatication()'],['../class_damp_server_1_1_login_command.html#ad3ddf0c5e9e9537a24d5c7255274c51f',1,'DampServer.LoginCommand.NeedsAuthcatication()'],['../class_damp_server_1_1_upload_game_command.html#a0ec840140ed2fc3f004a060c1d638cd2',1,'DampServer.UploadGameCommand.NeedsAuthcatication()'],['../class_damp_server_1_1_user_commands.html#ae868b059adcb74a836a6a5803613ce98',1,'DampServer.UserCommands.NeedsAuthcatication()']]],
-  ['normal',['Normal',['../namespace_damp_server.html#aa917b4f462dd83f2284f818f2dc7729fa960b44c579bc2f6818d2daaf9e4c16f0',1,'DampServer']]]
-];

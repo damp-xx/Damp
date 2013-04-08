@@ -1,8 +1,0 @@
-<map id="DampServer.IServerCommand" name="DampServer.IServerCommand">
-<area shape="rect" id="node2" href="$class_damp_server_1_1_chat_command.html" title="{DampServer.ChatCommand\n|+ NeedsAuthcatication\l+ IsPersistant\l|+ ChatCommand()\l+ CanHandleCommand()\l+ Execute()\l}" alt="" coords="5,167,187,289"/>
-<area shape="rect" id="node3" href="$class_damp_server_1_1_download_command.html" title="{DampServer.DownloadCommand\n|+ NeedsAuthcatication\l+ IsPersistant\l|+ DownloadCommand()\l+ CanHandleCommand()\l+ Execute()\l}" alt="" coords="212,167,423,289"/>
-<area shape="rect" id="node4" href="$class_damp_server_1_1_live_command.html" title="{DampServer.LiveCommand\n|+ NeedsAuthcatication\l+ IsPersistant\l|+ LiveCommand()\l+ CanHandleCommand()\l+ Execute()\l}" alt="" coords="447,167,624,289"/>
-<area shape="rect" id="node5" href="$class_damp_server_1_1_login_command.html" title="{DampServer.LoginCommand\n|+ NeedsAuthcatication\l+ IsPersistant\l|+ LoginCommand()\l+ CanHandleCommand()\l+ Execute()\l}" alt="" coords="649,167,836,289"/>
-<area shape="rect" id="node6" href="$class_damp_server_1_1_upload_game_command.html" title="{DampServer.UploadGameCommand\n|+ NeedsAuthcatication\l+ IsPersistant\l|+ UploadGameCommand()\l+ CanHandleCommand()\l+ Execute()\l&#45; WriteTofile()\l}" alt="" coords="861,160,1091,296"/>
-<area shape="rect" id="node7" href="$class_damp_server_1_1_user_commands.html" title="{DampServer.UserCommands\n|+ NeedsAuthcatication\l+ IsPersistant\l&#45; _http\l|+ UserCommands()\l+ CanHandleCommand()\l+ Execute()\l}" alt="" coords="1116,160,1305,296"/>
-</map>
