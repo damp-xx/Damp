@@ -35,7 +35,7 @@ namespace DampServer
         private readonly Dictionary<string, string> _headersToSend = new Dictionary<string, string>();
         private readonly SslStream _network;
         private readonly TcpClient _socket;
-        private static readonly X509Certificate ServerCertificate = new X509Certificate2("server.pfx", "password");
+        private static readonly X509Certificate ServerCertificate = new X509Certificate2("server.pfx", "");
 
         private bool SocketConnected(Socket s)
         {
