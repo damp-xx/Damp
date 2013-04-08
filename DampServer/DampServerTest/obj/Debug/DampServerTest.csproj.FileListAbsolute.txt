@@ -1,0 +1,7 @@
+C:\Users\bardyr\Documents\Damp\DampServer\DampServerTest\bin\Debug\DampServerTest.dll
+C:\Users\bardyr\Documents\Damp\DampServer\DampServerTest\bin\Debug\DampServerTest.pdb
+C:\Users\bardyr\Documents\Damp\DampServer\DampServerTest\bin\Debug\nunit.framework.dll
+C:\Users\bardyr\Documents\Damp\DampServer\DampServerTest\bin\Debug\nunit.framework.xml
+C:\Users\bardyr\Documents\Damp\DampServer\DampServerTest\obj\Debug\DampServerTest.csprojResolveAssemblyReference.cache
+C:\Users\bardyr\Documents\Damp\DampServer\DampServerTest\obj\Debug\DampServerTest.dll
+C:\Users\bardyr\Documents\Damp\DampServer\DampServerTest\obj\Debug\DampServerTest.pdb
