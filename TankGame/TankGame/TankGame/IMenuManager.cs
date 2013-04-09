@@ -8,7 +8,7 @@ namespace TankGame
 {
     interface IMenuManager
     {
-        IMenuManager chosenMenu { get; }
+        IMenu chosenMenu { get; }
 
         void ShowMenu(IMenu nextMenu);
     }

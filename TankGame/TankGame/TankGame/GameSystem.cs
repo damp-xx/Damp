@@ -21,17 +21,6 @@ namespace TankGame
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        //Background 
-       /* private Texture2D background1Texture;
-        private Vector2 background1Position;
-        private Texture2D background2Texture;
-        private Vector2 background2Position;
-        private Texture2D background3Texture;
-        private Vector2 background3Position;
-        private Texture2D background4Texture;
-        private Vector2 background4Position;*/
-
-
         private IMenu menuShown;
 
         public GameSystem()
