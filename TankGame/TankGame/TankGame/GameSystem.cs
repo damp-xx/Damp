@@ -21,8 +21,7 @@ namespace TankGame
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        private bool isMouseVisiblePub = false;
-
+       
         private IMenuManager menuManager;
 
         public GameSystem()
@@ -44,9 +43,8 @@ namespace TankGame
         /// </summary>
         protected override void Initialize()
         {
-            IsMouseVisible = isMouseVisiblePub;
             menuManager = new MenuManager();
-            menuManager.ShowMenu(new MainMenu(GraphicsDevice.Viewport, Content, menuManager, graphics.GraphicsDevice, isMouseVisiblePub));
+            menuManager.ShowMenu(new MainMenu(GraphicsDevice.Viewport, Content, menuManager, graphics.GraphicsDevice));
 
             base.Initialize();
         }
@@ -82,6 +80,7 @@ namespace TankGame
                 this.Exit();
 
             menuManager.chosenMenu.Update();
+            IsMouseVisible = menuManager.chosenMenu.IsMouseVisible;
 
             base.Update(gameTime);
         }
