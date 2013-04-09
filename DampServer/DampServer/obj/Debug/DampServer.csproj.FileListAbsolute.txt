@@ -1,0 +1,7 @@
+C:\Users\bardyr\Documents\Damp\DampServer\DampServer\bin\Debug\DampServer.exe.config
+C:\Users\bardyr\Documents\Damp\DampServer\DampServer\obj\Debug\DampServer.csprojResolveAssemblyReference.cache
+C:\Users\bardyr\Documents\Damp\DampServer\DampServer\bin\Debug\DampServer.exe
+C:\Users\bardyr\Documents\Damp\DampServer\DampServer\bin\Debug\DampServer.pdb
+C:\Users\bardyr\Documents\Damp\DampServer\DampServer\bin\Debug\ICSharpCode.SharpZipLib.dll
+C:\Users\bardyr\Documents\Damp\DampServer\DampServer\obj\Debug\DampServer.exe
+C:\Users\bardyr\Documents\Damp\DampServer\DampServer\obj\Debug\DampServer.pdb

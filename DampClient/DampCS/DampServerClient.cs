@@ -7,7 +7,6 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Web;
 using System.Xml;
-using System.Threading.Tasks;
 
 namespace DampCS
 {
@@ -50,7 +49,7 @@ namespace DampCS
 
         public bool Login(string username, string password)
         {
-            var xml = SendRequest("Login", new Dictionary<string, string> {{"Username", username}, {"Password", password}});
+            var xml= SendRequest("Login", new Dictionary<string, string> {{"Username", username}, {"Password", password}});
 
             if (xml.Name.Equals("Status"))
             {
@@ -66,9 +65,11 @@ namespace DampCS
             return false;
         }
 
+
         public void Listen()
         {
-            Task ListenToServerTask = Task.Factory.StartNew(Run);
+            // @TODO run in seperate thread
+            Run();
         }
 
 
@@ -77,8 +78,9 @@ namespace DampCS
             var tcp = new TcpClient();
             SendRequestWIthOutParse("Live", new Dictionary<string, string>(),tcp);
 
-            while (true)
+            while (false)
             {
+                Console.WriteLine("WHHIILLLLINNNG!!!!  !!!");
                var element = ParseResponse(tcp.GetStream());
                 Handle(element);
             }
@@ -86,7 +88,7 @@ namespace DampCS
 
         private void Handle(XmlElement element)
         {
-            Console.WriteLine("Handle Element: {0}", element.Name);
+           // Console.WriteLine("Handle Element: {0}", element.Name);
         }
 
         public XmlElement SendRequest(string command, Dictionary<string, string> parameters)
@@ -130,16 +132,25 @@ namespace DampCS
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine(e.Message);
+               //     Console.WriteLine("Exp: {0}", e.Message);
                     Console.ReadKey();
                 }    
 
                 var sw = new StreamWriter(stream) {AutoFlush = true};
                 string qq = HttpUtility.UrlPathEncode("/" + query);
-                Console.WriteLine("SENT GET: {0}", qq);
+                //Console.WriteLine("SENT GET: {0}", qq);
 
                 sw.WriteLine("GET {0} HTTP/1.1", qq);
                 sw.WriteLine();
+
+            if (command.Equals("Live"))
+            {
+                while (true)
+                {
+                   var e2 = ParseResponse(stream);
+                    Handle(e2);
+                }
+            }
 
                 var el = ParseResponse(stream);
                 
@@ -149,6 +160,7 @@ namespace DampCS
 
         private XmlElement ParseResponse(Stream stream)
         {
+            Console.WriteLine("PARSING!!!    !!");
             var sr = new StreamReader(new BufferedStream(stream));
             int contentLenght = 0;
             string contentType;
@@ -157,12 +169,16 @@ namespace DampCS
             {
                 string l = sr.ReadLine();
 
-                if (l == null) return null;
+                if (l == null)
+                {
+                    Console.WriteLine("FUCK MIG I RØVEN!");
+                    return null;
+                }
                 if (l.Equals("")) break;
 
                 string[] ll;
                 char[] splitDelimiter = { Convert.ToChar(":") };
-                Console.WriteLine(l);
+              //  Console.WriteLine(l);
                 ll = l.Split(splitDelimiter, 2);
 
                 if (ll[0].Equals("Content-Length"))
@@ -173,16 +189,12 @@ namespace DampCS
                 if (ll[0].Equals("Content-Type")) contentType = ll[1];
             }
 
-            var buffer = new char[contentLenght];
-
-      
-
             var data = new char[contentLenght];
             var bytes = sr.Read(data, 0, data.Length);
          
             Console.WriteLine("Received: {0}", new string(data));    
  
-            if(bytes!=contentLenght) Console.WriteLine("WTF RECEIVED BYTES NOT THOSE EXPECTED!! REC: {0}. EXC: {1}", bytes, contentLenght);
+           // if(bytes!=contentLenght) Console.WriteLine("WTF RECEIVED BYTES NOT THOSE EXPECTED!! REC: {0}. EXC: {1}", bytes, contentLenght);
 
             var xDoc = new XmlDocument();
             xDoc.LoadXml(new string(data));

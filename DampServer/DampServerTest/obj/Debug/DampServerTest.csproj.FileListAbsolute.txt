@@ -1,0 +1,11 @@
+C:\Users\bardyr\Documents\Damp\DampServer\DampServerTest\bin\Debug\DampServerTest.dll
+C:\Users\bardyr\Documents\Damp\DampServer\DampServerTest\bin\Debug\DampServerTest.pdb
+C:\Users\bardyr\Documents\Damp\DampServer\DampServerTest\bin\Debug\nunit.framework.dll
+C:\Users\bardyr\Documents\Damp\DampServer\DampServerTest\bin\Debug\nunit.framework.xml
+C:\Users\bardyr\Documents\Damp\DampServer\DampServerTest\obj\Debug\DampServerTest.csprojResolveAssemblyReference.cache
+C:\Users\bardyr\Documents\Damp\DampServer\DampServerTest\obj\Debug\DampServerTest.dll
+C:\Users\bardyr\Documents\Damp\DampServer\DampServerTest\obj\Debug\DampServerTest.pdb
+C:\Users\bardyr\Documents\Damp\DampServer\DampServerTest\bin\Debug\DampServer.exe
+C:\Users\bardyr\Documents\Damp\DampServer\DampServerTest\bin\Debug\ICSharpCode.SharpZipLib.dll
+C:\Users\bardyr\Documents\Damp\DampServer\DampServerTest\bin\Debug\DampServer.pdb
+C:\Users\bardyr\Documents\Damp\DampServer\DampServerTest\bin\Debug\Rhino.Mocks.dll
