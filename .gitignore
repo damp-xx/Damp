@@ -2,3 +2,5 @@ Doxygen/*
 DampServer/*/bin/*/*
 DampServer/*/obj/*/*
 TankGame/TankGame/TankGame/bin/*
+TankGame/TankGame.Tests/obj/*
+TankGame/TankGame.Tests/bin/*
