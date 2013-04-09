@@ -11,7 +11,7 @@ namespace DampServer
     internal class Database
     {
         private const string ConnectionString =
-            "data source=localhost\\SQLEXPRESS;initial catalog=Damp;user id=root;password=3Password";
+            "data source=localhost\\SQLEXPRESS;initial catalog=Damp;user id=root;password=password";
 
         private readonly SqlConnection _sqlConnection = new SqlConnection(ConnectionString);
 

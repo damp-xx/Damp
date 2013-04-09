@@ -13,8 +13,8 @@ namespace DampServer
 {
     public class ConnectionManager
     {
-        private static readonly ConnectionManager Manager = new ConnectionManager();
-        private readonly List<Connection> _connections = new List<Connection>();
+        public static  ConnectionManager Manager = new ConnectionManager();
+        private readonly List<IConnection> _connections = new List<IConnection>();
 
         public ConnectionManager()
         {
@@ -55,23 +55,23 @@ namespace DampServer
             return Manager;
         }
 
-        public void RemoveConnection(Connection con)
+        public void RemoveConnection(IConnection con)
         {
             _connections.Remove(con);
         }
 
-        public void AddConnection(Connection con)
+        public void AddConnection(IConnection con)
         {
             Logger.Log("User online");
             _connections.Add(con);
         }
 
-        public Connection GetConnectionByUserId(int userid)
+        public IConnection GetConnectionByUserId(int userid)
         {
             return _connections.FirstOrDefault(con => con.UserProfile.UserId == userid);
         }
 
-        public Connection GetConnectionByAuthToken(string authToken)
+        public IConnection GetConnectionByAuthToken(string authToken)
         {
             return _connections.FirstOrDefault(con => con.UserProfile.AuthToken == authToken);
         }

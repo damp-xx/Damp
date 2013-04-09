@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace DampServer
 {
-    public class User : XmlResponse
+    public class User : XmlResponse, IUser
     {
         public Int64 UserId { get; set; }
         public string Username { get; set; }

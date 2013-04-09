@@ -28,7 +28,7 @@ namespace DampServer
             }
 
             // @TODO needs verification
-            Connection receiver = null;
+            IConnection receiver = null;
             try
             {
                 receiver =

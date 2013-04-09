@@ -1,6 +1,6 @@
 ﻿namespace DampServer
 {
-    public class Connection
+    public class Connection : IConnection
     {
         public User UserProfile { get; set; }
         public ICommandArgument UserHttp { get; set; }

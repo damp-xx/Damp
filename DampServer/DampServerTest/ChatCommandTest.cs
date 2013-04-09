@@ -69,7 +69,6 @@ namespace DampServerTest
             var HttpMocks = MockRepository.GenerateMock<ICommandArgument>();
             HttpMocks.Stub(x => x.Query.Get(Arg<string>.Is.Equal("Message"))).Return("1");
 
-
             var chat = new ChatCommand();
 
             chat.Execute(HttpMocks, "Chat");
@@ -82,12 +81,39 @@ namespace DampServerTest
             var HttpMocks = MockRepository.GenerateMock<ICommandArgument>();
             HttpMocks.Stub(x => x.Query.Get(Arg<string>.Is.Anything)).Return("");
 
+            var chat = new ChatCommand();
+
+            chat.Execute(HttpMocks, "Chat");
+        }
+/*
+        [Test]
+        [ExpectedException(typeof(InvalidHttpRequestException))]
+        public void Execute_Execute_send_chat_online_success()
+        {
+            ConnectionManager.Manager = null;
+            var cM = ConnectionManager.GetConnectionManager();
+
+            var conMock = MockRepository.GenerateMock<IConnection>();
+            
+
+            cM.AddConnection(conMock);            
+
+            var HttpMocks = MockRepository.GenerateMock<ICommandArgument>();
+
+            conMock.Stub(x => x.UserHttp).Return(HttpMocks);
+
+
+            HttpMocks.Stub(x => x.Query.Get(Arg<string>.Is.Equal("Message"))).Return("Hej");
+            HttpMocks.Stub(x => x.Query.Get(Arg<string>.Is.Equal("To"))).Return("1");
+          //  HttpMocks.Stub(x => x.SendXmlResponse()).)
+
+
 
             var chat = new ChatCommand();
 
             chat.Execute(HttpMocks, "Chat");
         }
-
+*/
 
     }
 }
