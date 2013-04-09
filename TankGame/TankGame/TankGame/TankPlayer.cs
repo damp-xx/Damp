@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace TankGame
 {
-    class TankPlayer : ITank
+    public class TankPlayer : ITank
     {
         public Texture2D TextureTop { get; private set; }
         public Rectangle RectangleTop { get; private set; }

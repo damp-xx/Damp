@@ -7,7 +7,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Filip\Documents\Programmering\TankGame\TankGame\TankGame\bin\x86\Debug\Content\Tanks\tank_bottom_1.xnb</Output>
+      <Output>E:\IHA docs\4. semester\PRJ4\Damp\TankGame\TankGame\TankGame\bin\x86\Debug\Content\Tanks\tank_bottom_1.xnb</Output>
       <Time>2013-04-07T21:52:28.8573533+02:00</Time>
     </Item>
     <Item>
@@ -16,7 +16,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Filip\Documents\Programmering\TankGame\TankGame\TankGame\bin\x86\Debug\Content\Tanks\Tank_top_1.xnb</Output>
+      <Output>E:\IHA docs\4. semester\PRJ4\Damp\TankGame\TankGame\TankGame\bin\x86\Debug\Content\Tanks\Tank_top_1.xnb</Output>
       <Time>2013-04-07T21:52:53.5624181+02:00</Time>
     </Item>
     <Item>
@@ -25,7 +25,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Filip\Documents\Programmering\TankGame\TankGame\TankGame\bin\x86\Debug\Content\MapBackground\1.xnb</Output>
+      <Output>E:\IHA docs\4. semester\PRJ4\Damp\TankGame\TankGame\TankGame\bin\x86\Debug\Content\MapBackground\1.xnb</Output>
       <Time>2013-04-07T21:44:20.9092292+02:00</Time>
     </Item>
     <Item>
@@ -34,7 +34,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Filip\Documents\Programmering\TankGame\TankGame\TankGame\bin\x86\Debug\Content\MapBackground\2.xnb</Output>
+      <Output>E:\IHA docs\4. semester\PRJ4\Damp\TankGame\TankGame\TankGame\bin\x86\Debug\Content\MapBackground\2.xnb</Output>
       <Time>2013-04-07T21:45:29.3188148+02:00</Time>
     </Item>
     <Item>
@@ -43,7 +43,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Filip\Documents\Programmering\TankGame\TankGame\TankGame\bin\x86\Debug\Content\MapBackground\3.xnb</Output>
+      <Output>E:\IHA docs\4. semester\PRJ4\Damp\TankGame\TankGame\TankGame\bin\x86\Debug\Content\MapBackground\3.xnb</Output>
       <Time>2013-04-07T21:45:39.3017714+02:00</Time>
     </Item>
     <Item>
@@ -52,8 +52,17 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Filip\Documents\Programmering\TankGame\TankGame\TankGame\bin\x86\Debug\Content\MapBackground\4.xnb</Output>
+      <Output>E:\IHA docs\4. semester\PRJ4\Damp\TankGame\TankGame\TankGame\bin\x86\Debug\Content\MapBackground\4.xnb</Output>
       <Time>2013-04-07T21:45:50.3694736+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Buttons\singlePlayerButton.png</Source>
+      <Name>Buttons\singlePlayerButton</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\IHA docs\4. semester\PRJ4\Damp\TankGame\TankGame\TankGame\bin\x86\Debug\Content\Buttons\singlePlayerButton.xnb</Output>
+      <Time>2013-04-09T13:18:03.0503156+02:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -61,10 +70,10 @@
       <TargetProfile>HiDef</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Users\Filip\Documents\Programmering\TankGame\TankGame\TankGameContent\</RootDirectory>
-      <LoggerRootDirectory>C:\Users\Filip\Documents\Programmering\TankGame\TankGame\TankGame\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\Filip\Documents\Programmering\TankGame\TankGame\TankGameContent\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\Filip\Documents\Programmering\TankGame\TankGame\TankGame\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>E:\IHA docs\4. semester\PRJ4\Damp\TankGame\TankGame\TankGameContent\</RootDirectory>
+      <LoggerRootDirectory>E:\IHA docs\4. semester\PRJ4\Damp\TankGame\TankGame\TankGame\</LoggerRootDirectory>
+      <IntermediateDirectory>E:\IHA docs\4. semester\PRJ4\Damp\TankGame\TankGame\TankGameContent\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>E:\IHA docs\4. semester\PRJ4\Damp\TankGame\TankGame\TankGame\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>

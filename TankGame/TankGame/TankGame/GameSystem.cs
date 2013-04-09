@@ -21,7 +21,9 @@ namespace TankGame
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        private IMenu menuShown;
+        private bool isMouseVisiblePub = false;
+
+        private IMenuManager menuManager;
 
         public GameSystem()
         {
@@ -42,7 +44,9 @@ namespace TankGame
         /// </summary>
         protected override void Initialize()
         {
-            menuShown = new PlayMenu(GraphicsDevice.Viewport, Content);
+            IsMouseVisible = isMouseVisiblePub;
+            menuManager = new MenuManager();
+            menuManager.ShowMenu(new MainMenu(GraphicsDevice.Viewport, Content, menuManager, graphics.GraphicsDevice, isMouseVisiblePub));
 
             base.Initialize();
         }
@@ -55,10 +59,7 @@ namespace TankGame
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
-            // Map
-           
-        }
+       }
 
         /// <summary>
         /// UnloadContent will be called once per game and is the place to unload
@@ -80,7 +81,7 @@ namespace TankGame
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
-            menuShown.Update();
+            menuManager.chosenMenu.Update();
 
             base.Update(gameTime);
         }
@@ -93,7 +94,7 @@ namespace TankGame
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            menuShown.Draw(spriteBatch);
+            menuManager.chosenMenu.Draw(spriteBatch);
                   
             base.Draw(gameTime);
         }
