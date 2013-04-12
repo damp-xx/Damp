@@ -115,8 +115,10 @@
     <Compile Include="Interfaces\IMap.cs" />
     <Compile Include="Interfaces\IMenuManager.cs" />
     <Compile Include="Interfaces\ITank.cs" />
+    <Compile Include="Interfaces\IObstacle.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="MenuManager.cs" />
+    <Compile Include="ObstacleBasic.cs" />
     <Compile Include="TankCamera.cs" />
     <Compile Include="Game Menus\MainMenu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

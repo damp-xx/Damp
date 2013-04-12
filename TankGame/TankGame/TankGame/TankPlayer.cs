@@ -30,10 +30,15 @@ namespace TankGame
         private const float rotationSpeed = 0.045f;
         private const float rotationSpeedBottom = 0.02f;
 
-        private Rectangle leftSide;
-        private Rectangle rightSide;
-        private Rectangle upSide;
-        private Rectangle downSide;
+        private Rectangle leftSideMap;
+        private Rectangle rightSideMap;
+        private Rectangle upSideMap;
+        private Rectangle downSideMap;
+
+        private Rectangle frontLeft;
+        private Rectangle frontRight;
+        private Rectangle backLeft;
+        private Rectangle backRight;
 
         public TankPlayer()
         {
@@ -47,7 +52,7 @@ namespace TankGame
             spriteBatch.Draw(TextureTop, PositionTop, null, Color.White, RotationTop, OriginTop, 1f, SpriteEffects.None, 0);
         }
 
-        public void Update()
+        public void Update(List<IObstacle> obstacles)
         {
             RectangleBottom = new Rectangle((int)PositionBottom.X, (int)PositionBottom.Y, TextureBottom.Width, TextureBottom.Height);
             PositionBottom = tankVelocity + PositionBottom;
@@ -57,19 +62,19 @@ namespace TankGame
             PositionTop = tankVelocity + PositionTop;
             OriginTop = new Vector2(TextureTop.Width / 2, TextureTop.Height / 1.22f);
 
-            if (RectangleBottom.Intersects(leftSide))
+            if (RectangleBottom.Intersects(leftSideMap))
             {
                 tankVelocity.X = 0.5f;
             }
-            else if (RectangleBottom.Intersects(rightSide))
+            else if (RectangleBottom.Intersects(rightSideMap))
             {
                 tankVelocity.X = -0.5f;
             }
-            else if (RectangleBottom.Intersects(upSide))
+            else if (RectangleBottom.Intersects(upSideMap))
             {
                 tankVelocity.Y = 0.5f;
             }
-            else if (RectangleBottom.Intersects(downSide))
+            else if (RectangleBottom.Intersects(downSideMap))
             {
                 tankVelocity.Y = -0.5f;
             }
@@ -116,10 +121,12 @@ namespace TankGame
 
         private void Initialize()
         {
-            leftSide = new Rectangle(0, 0, 50, 8000);
-            rightSide = new Rectangle(8000, 0, 1000, 8000);
-            upSide = new Rectangle(0, 0, 8000, 50);
-            downSide = new Rectangle(0, 8050, 8000, 50);
+            leftSideMap = new Rectangle(0, 0, 50, 8000);
+            rightSideMap = new Rectangle(8000, 0, 1000, 8000);
+            upSideMap = new Rectangle(0, 0, 8000, 50);
+            downSideMap = new Rectangle(0, 8050, 8000, 50);
+
+
         }
     }
 }
