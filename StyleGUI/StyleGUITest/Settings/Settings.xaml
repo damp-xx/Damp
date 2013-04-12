@@ -9,13 +9,29 @@
     <Window.Resources>
         <ResourceDictionary Source="/Styles/Styles.xaml"></ResourceDictionary>
     </Window.Resources>
-    <TabPanel>
-    <TabItem>
-        <Grid>
-            
-        </Grid>
-    </TabItem>
-        
-    </TabPanel>
-    
+    <Grid>
+        <Grid.RowDefinitions> 
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <DockPanel Grid.Row="0">
+            <Rectangle  Fill="Transparent" IsHitTestVisible="True" Stretch="Fill" DockPanel.Dock="Left"></Rectangle>
+            <Button DockPanel.Dock="Right" Name="Close" VerticalContentAlignment="Center" Width="35" FontSize="20" Content="X" Style="{StaticResource CloseButton}" Click="Close_OnClick"></Button>
+
+        </DockPanel>
+    <TabControl Margin="0,3,0,0" Grid.Row="1">
+        <TabItem Header="Account">
+         <TextBox IsEnabled="False">account</TextBox>
+        </TabItem>
+
+        <TabItem Header="Crew">
+            <TextBox>Crew</TextBox>
+
+        </TabItem>
+        <TabItem Header="Food">
+            <TextBox>Food</TextBox>
+
+        </TabItem>
+    </TabControl>
+    </Grid>
 </Window>

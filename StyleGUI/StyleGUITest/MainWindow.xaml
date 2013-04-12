@@ -1,91 +1,90 @@
-﻿<Window x:Name="MainWindowDamp" x:Class="StyleGUITest.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:userControls="clr-namespace:StyleGUITest" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Name="MainWindowDamp" x:Class="StyleGUITest.MainWindow"
         Title="DAMP"  WindowStartupLocation="CenterScreen" Icon="/Images/Icon.jpg"
         ResizeMode="NoResize"  WindowStyle="None"  WindowState="Normal" Style="{DynamicResource StandardWindow}"
-        xmlns:userControls="clr-namespace:StyleGUITest" >
-         
+        d:DesignWidth="1092.776" d:DesignHeight="563.857" >
+
     <Window.Resources>
-        <ResourceDictionary Source="/Styles/Styles.xaml"></ResourceDictionary>
-     </Window.Resources>
-        
+        <ResourceDictionary Source="/Styles/Styles.xaml"/>
+    </Window.Resources>
+
     <DockPanel>
 
         <Grid x:Name="TopBar" DockPanel.Dock="Top" SnapsToDevicePixels="True" Margin="0,0,0,0" MouseDown="Drag_OnMouseDown" IsHitTestVisible="True">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"></ColumnDefinition>
-                <ColumnDefinition Width="Auto"></ColumnDefinition>
-                <ColumnDefinition Width="Auto"></ColumnDefinition>
-                <ColumnDefinition Width="Auto"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
 
             </Grid.ColumnDefinitions>
-            
-            <Button Grid.Column="0" Content="Home" Name="HomeButton"  Click="HomeButton_Click" FontSize="28" Margin="10,0,0,0" Style="{StaticResource LinkButton}"></Button>
-            <Button Grid.Column="1" Content="Profile" Name="ProfileButton" Click="ProfileButton_Click"  FontSize="28" Margin="30,0,0,0" Style="{StaticResource LinkButton}" ></Button>
-            <Button Grid.Column="2" Content="Find friends" Name="FindFriendsButton" FontSize="28" Margin="30,0,0,0" Style="{StaticResource LinkButton}" Click="FindFriendsButton_Click"></Button>
-            <Button Grid.Column="3" Content="Settings" Name="SettingsButton" FontSize="28" Margin="30,0,0,0" Style="{StaticResource LinkButton}" Click="SettingsButton_OnClick"></Button>
 
-            <Rectangle Grid.Column="4" Fill="Transparent" IsHitTestVisible="True" Stretch="Fill"></Rectangle>
+            <Button Grid.Column="0" Content="Home" x:Name="HomeButton"  Click="HomeButton_Click" FontSize="28" Margin="10,0,0,0" Style="{StaticResource LinkButton}"/>
+            <Button Grid.Column="1" Content="Profile" x:Name="ProfileButton" Click="ProfileButton_Click"  FontSize="28" Margin="30,0,0,0" Style="{StaticResource LinkButton}" />
+            <Button Grid.Column="2" Content="Find friends" x:Name="FindFriendsButton" FontSize="28" Margin="30,0,0,0" Style="{StaticResource LinkButton}" Click="FindFriendsButton_Click"/>
+            <Button Grid.Column="3" Content="Settings" x:Name="SettingsButton" FontSize="28" Margin="30,0,0,0" Style="{StaticResource LinkButton}" Click="SettingsButton_OnClick"/>
+
+            <Rectangle Grid.Column="4" Fill="Transparent" IsHitTestVisible="True" Stretch="Fill"/>
 
             <DockPanel Grid.Column="5">
-                <Button DockPanel.Dock="Right" Name="Close" Click="Close_OnClick"  VerticalContentAlignment="Center" Width="35" FontSize="20" Content="X" Style="{StaticResource CloseButton}"></Button>
-            <Button DockPanel.Dock="Right" Name="MinimizeNormal"   VerticalContentAlignment="Center" Width="35" FontSize="20" Margin="0,0,3,0" Content="M" Click="MaximizeNormal_Click" />
-            <Button DockPanel.Dock="Right" Name="Minimize" VerticalContentAlignment="Center" Width="35" FontSize="20" FontWeight="UltraBold"  Margin="0,0,3,0" Content="_" Click="Minimize_OnClick"></Button>
+                <Button DockPanel.Dock="Right" x:Name="Close" Click="Close_OnClick"  VerticalContentAlignment="Center" Width="35" FontSize="20" Content="X" Style="{StaticResource CloseButton}"/>
+                <Button DockPanel.Dock="Right" x:Name="MinimizeNormal"   VerticalContentAlignment="Center" Width="35" FontSize="20" Margin="0,0,3,0" Content="M" Click="MaximizeNormal_Click" />
+                <Button DockPanel.Dock="Right" x:Name="Minimize" VerticalContentAlignment="Center" Width="35" FontSize="20" FontWeight="UltraBold"  Margin="0,0,3,0" Content="_" Click="Minimize_OnClick"/>
             </DockPanel>
 
         </Grid>
-        <Separator DockPanel.Dock="Top" Background="#3F3F46"></Separator>
+        <Separator DockPanel.Dock="Top" Background="#3F3F46"/>
         <StatusBar Height="23" DockPanel.Dock="Bottom" Background="{Binding SelectedItem.Tag, ElementName=cmbAlarm}">
             <StatusBarItem>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Foreground="{StaticResource Foreground}">Alarm level:</TextBlock>
+                    <TextBlock Foreground="{StaticResource Foreground}"><Run Text="Alarm level:"/></TextBlock>
                     <TextBlock Margin="5,0,0,0" Foreground="{StaticResource Foreground}" Text="{Binding SelectedItem.Content, ElementName=cmbAlarm}"/>
                 </StackPanel>
             </StatusBarItem>
         </StatusBar>
         <GroupBox DockPanel.Dock="Left" Header="Games" Margin="0,0,3,0">
-        <Grid Margin="5" VerticalAlignment="Top" Width="150">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-            </Grid.RowDefinitions>
-            <TextBox FontSize="16" Grid.Row="0" Margin="5" Style="{StaticResource SearchTextBox}"/>
-            <ListView Name="GameListView" Grid.Row="1"  >
-                <Button Content="GunGame" Click="Button_Click_1"  BorderBrush="Transparent"></Button>
-                <ListViewItem Content="Game1Game1"></ListViewItem>
-            </ListView>
-            
-        </Grid>
+            <Grid Margin="5" VerticalAlignment="Top" Width="150">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBox FontSize="16" Grid.Row="0" Margin="5" Style="{StaticResource SearchTextBox}"/>
+                <ListView x:Name="GameListView" Grid.Row="1"  >
+                    <Button Content="GunGame" Click="Button_Click_1"  BorderBrush="Transparent"/>
+                    <ListViewItem Content="Game1Game1"/>
+                </ListView>
+
+            </Grid>
         </GroupBox>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <ContentControl Name="ContentCtrl" Margin="0,10,0,0" Content="{Binding CurrentPageViewModel}"> 
-
-            </ContentControl>
+            <ContentControl x:Name="ContentCtrl" Margin="0,10,0,0" Content="{Binding CurrentPageViewModel}"/>
             <GroupBox Grid.Column="1" Header="Friends" Margin="3,0,0,0">
-            <Grid  Width="150" >
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"></RowDefinition>
-                    <RowDefinition Height="*"></RowDefinition>
-                </Grid.RowDefinitions>
-                <TextBox FontSize="16" Grid.Row="0" Margin="5" Style="{StaticResource SearchTextBox}"/>
-                <ListView Name="FriendListView" Grid.Row="1">
-                    <ListViewItem Content="Ven1"></ListViewItem>
-                    <ListViewItem Content="Ven1"></ListViewItem>
-                    <ListViewItem Content="Ven1"></ListViewItem>
-                    <ListViewItem Content="Ven1"></ListViewItem>
-                    <ListViewItem Content="Ven1"></ListViewItem>
-                    <ListViewItem Content="Ven1"></ListViewItem>
-                    <ListViewItem Content="Ven1"></ListViewItem>
-                    <ListViewItem Content="Ven1"></ListViewItem>
-                    <ListViewItem Content="Ven1"></ListViewItem>
-                </ListView>
-            </Grid>
+                <Grid  Width="150" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBox FontSize="16" Grid.Row="0" Margin="5" Style="{StaticResource SearchTextBox}"/>
+                    <ListView x:Name="FriendListView" Grid.Row="1">
+                        <ListViewItem Content="Ven1"/>
+                        <ListViewItem Content="Ven1"/>
+                        <ListViewItem Content="Ven1"/>
+                        <ListViewItem Content="Ven1"/>
+                        <ListViewItem Content="Ven1"/>
+                        <ListViewItem Content="Ven1"/>
+                        <ListViewItem Content="Ven1"/>
+                        <ListViewItem Content="Ven1"/>
+                        <ListViewItem Content="Ven1"/>
+                    </ListView>
+                </Grid>
             </GroupBox>
         </Grid>
     </DockPanel>

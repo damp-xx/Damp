@@ -25,7 +25,6 @@ namespace StyleGUITest
         HomeScreen homeW = new HomeScreen();
         FindFriendWindow findFriend = new FindFriendWindow();
         ProfileWindow profileWindow = new ProfileWindow();
-        Settings settings = new Settings();
         private bool normalWindow = true;
         
         public MainWindow()
@@ -112,8 +111,10 @@ namespace StyleGUITest
 
         private void SettingsButton_OnClick(object sender, RoutedEventArgs e)
         {
+            Settings settings = new Settings();
+
             settings.Owner = this;
-            settings.Show();
+            settings.ShowDialog();
 
         }
     }

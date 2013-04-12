@@ -9,6 +9,7 @@
         <ResourceDictionary Source="ScrollBarStyle.xaml"></ResourceDictionary>
         <ResourceDictionary Source="GroupboxStyle.xaml"></ResourceDictionary>
         <ResourceDictionary Source="LabelStyle.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="TabStyle.xaml"></ResourceDictionary>
     </ResourceDictionary.MergedDictionaries>
     <Style TargetType="Button" BasedOn="{StaticResource StandardButton}"/>
     <Style TargetType="Window" BasedOn="{StaticResource StandardWindow}"/>
@@ -18,5 +19,5 @@
     <Style TargetType="TextBox" BasedOn="{StaticResource StandardTextBox}"/>
     <Style TargetType="GroupBox" BasedOn="{StaticResource StandardGroupBox}"></Style>
     <Style TargetType="Label" BasedOn="{StaticResource StandardLabel}"></Style>
-
+    <Style TargetType="TabControl" BasedOn="{StaticResource StandardTabControl}"></Style>
 </ResourceDictionary>
