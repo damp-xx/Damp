@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 namespace DampCS
 {
     class Program
-    {
+    {/*
         static void Main(string[] args)
         {
-            var client = new DampServerClient("10.193.1.217");
+            var client = new DampServerClient("10.20.255.127");
             Console.WriteLine(client.Login("Bardyr", "mormor") ? "User logged in" : "User not logged in");
 
           //  client.SendRequest("Chat", new Dictionary<string, string>{{"To", "1"}, {"Message", "1337"}});
@@ -22,6 +22,6 @@ namespace DampCS
 
 
             Console.Read();
-        }
+        }*/
     }
 }

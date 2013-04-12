@@ -3,22 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Xml;
 
 namespace CommunicationLibrary
 {
-    class ComProfile
+    class ComAchievement
     {/*
-        public static XmlElement GetProfile()
+        public static void GetAchievement()
         {
             
         }
 
-        public static void UpdateProfile()
+        public static void SetAchievement()
         {
             
-        }
-        */
-
+        }*/
     }
 }

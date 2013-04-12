@@ -7,8 +7,11 @@ using System.Xml;
 
 namespace CommunicationLibrary
 {
+
     class ComFriend
     {
+        private static string _ComToken;
+        private static string _ComIp;
         public static XmlElement GetFriendList()
         {
             
@@ -19,6 +22,14 @@ namespace CommunicationLibrary
             
         }
 
-        
+        public static void AddFriend()
+        {
+            
+        }
+
+        public static void RemoveFriend()
+        {
+            
+        }
     }
 }

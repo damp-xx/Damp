@@ -8,7 +8,7 @@ using System.Xml;
 namespace CommunicationLibrary
 {
     class ComGame
-    {
+    {/*
         public static XmlElement GetGameList()
         {
             
@@ -22,6 +22,6 @@ namespace CommunicationLibrary
         public static void SubscribeForNewGameEvent()
         {
             
-        }
+        }*/
     }
 }

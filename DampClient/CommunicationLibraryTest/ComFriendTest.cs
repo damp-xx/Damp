@@ -22,6 +22,16 @@ namespace CommunicationLibraryTest
             
         }
 
+        [Test]
+        public void AddFriend_FriendReturned_True()
+        {
+            
+        }
 
+        [Test]
+        public void RemoveFriend_FriendSendToServer_True()
+        {
+            
+        }
     }
 }

@@ -17,7 +17,7 @@ namespace DampCS
         public bool IsAuthenticated { get; private set; }
 
         private readonly static object _lock = new object();
-        private static string _authToken = "1337";
+        //private static string _authToken = "1337";
 
 
         // The following method is invoked by the RemoteCertificateValidationDelegate. 
@@ -30,7 +30,7 @@ namespace DampCS
             if (sslPolicyErrors == SslPolicyErrors.None)
                 return true;
 
-            Console.WriteLine("Certificate error: {0}", sslPolicyErrors);
+            //Console.WriteLine("Certificate error: {0}", sslPolicyErrors);
 
             // Do not allow this client to communicate with unauthenticated servers. 
          // return false;
@@ -47,36 +47,36 @@ namespace DampCS
 
         public bool IsConnected { get; private set; }
 
-        public bool Login(string username, string password)
+        public bool Login(string username, string password, out string _authToken)
         {
-            var xml= SendRequest("Login", new Dictionary<string, string> {{"Username", username}, {"Password", password}});
+            var xml= SendRequest("Login", new Dictionary<string, string> {{"Username", username}, {"Password", password}}, null);
 
             if (xml.Name.Equals("Status"))
             {
-                var xmlNode = xml.GetElementsByTagName("Message").Item(0);
+                var xmlNode = xml.GetElementsByTagName("Code").Item(0);
 
-                if (xmlNode != null)
+                if (xmlNode.InnerText == "200")
                 {
-                    _authToken = xmlNode.InnerText;
+                    _authToken = xml.GetElementsByTagName("Message").Item(0).InnerText;
                     return true;
                 }
             }
-
+            _authToken = null;
             return false;
         }
 
 
-        public void Listen()
+        public void Listen(string _authToken)
         {
             // @TODO run in seperate thread
-            Run();
+            Run(_authToken);
         }
 
 
-        private void Run()
+        private void Run( string _authToken)
         {
             var tcp = new TcpClient();
-            SendRequestWIthOutParse("Live", new Dictionary<string, string>(),tcp);
+            SendRequestWIthOutParse("Live", new Dictionary<string, string>(),tcp, _authToken);
 
             while (false)
             {
@@ -91,57 +91,63 @@ namespace DampCS
            // Console.WriteLine("Handle Element: {0}", element.Name);
         }
 
-        public XmlElement SendRequest(string command, Dictionary<string, string> parameters)
+        public XmlElement SendRequest(string command, Dictionary<string, string> parameters, string _authToken)
         {
             var tcp = new TcpClient();
-            return SendRequestWIthOutParse(command, parameters, tcp);
+            return SendRequestWIthOutParse(command, parameters, tcp, _authToken);
             tcp.Close();
         }
 
-        private XmlElement SendRequestWIthOutParse(string command, Dictionary<string, string> parameters, TcpClient tcp)
-        {   
-                var query = new StringBuilder(command);
-                query.Append("?");
-                foreach (var parameter in parameters)
-                {
-                    query.AppendFormat("{0}={1}&", parameter.Key, HttpUtility.UrlEncode(parameter.Value));
-                }
+        private XmlElement SendRequestWIthOutParse(string command, Dictionary<string, string> parameters, TcpClient tcp, string _authToken)
+        {
+            SslStream stream = null;
+            var query = new StringBuilder(command);
+            query.Append("?");
+            foreach (var parameter in parameters)
+            {
+                query.AppendFormat("{0}={1}&", parameter.Key, HttpUtility.UrlEncode(parameter.Value));
+            }
 
-                if (!string.IsNullOrEmpty(_authToken))
-                {
-                    query.AppendFormat("authToken={0}", _authToken);
-                }
-                else
-                {
-                    query.Remove(query.Length - 1, 1);
-                }
+            if (!string.IsNullOrEmpty(_authToken))
+            {
+                query.AppendFormat("authToken={0}", _authToken);
+            }
+            else
+            {
+                query.Remove(query.Length - 1, 1);
+            }
 
-               
+            try
+            {
                 tcp.Connect(_host, _port);
-                var stream = new SslStream(
-                             tcp.GetStream(),
-                             false,
-                             new RemoteCertificateValidationCallback(ValidateServerCertificate),
-                             null
-                             );
+                stream = new SslStream(
+                    tcp.GetStream(),
+                    false,
+                    new RemoteCertificateValidationCallback(ValidateServerCertificate),
+                    null
+                    );
+            }
+           catch (SocketException ConnectEx)
+            {
+               Console.WriteLine(ConnectEx);
+            }
 
+            try
+            {
+                stream.AuthenticateAsClient("*");
+            }
+            catch (Exception e)
+            {
+            //     Console.WriteLine("Exp: {0}", e.Message);
+                Console.ReadKey();
+            }    
 
-                try
-                {
-                    stream.AuthenticateAsClient("*");
-                }
-                catch (Exception e)
-                {
-               //     Console.WriteLine("Exp: {0}", e.Message);
-                    Console.ReadKey();
-                }    
+            var sw = new StreamWriter(stream) {AutoFlush = true};
+            string qq = HttpUtility.UrlPathEncode("/" + query);
+            //Console.WriteLine("SENT GET: {0}", qq);
 
-                var sw = new StreamWriter(stream) {AutoFlush = true};
-                string qq = HttpUtility.UrlPathEncode("/" + query);
-                //Console.WriteLine("SENT GET: {0}", qq);
-
-                sw.WriteLine("GET {0} HTTP/1.1", qq);
-                sw.WriteLine();
+            sw.WriteLine("GET {0} HTTP/1.1", qq);
+            sw.WriteLine();
 
             if (command.Equals("Live"))
             {
