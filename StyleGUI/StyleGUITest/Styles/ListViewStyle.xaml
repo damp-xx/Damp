@@ -35,11 +35,21 @@
                                     <Setter Property="Background" Value="{StaticResource BackgroundSelected}" />
                                     <Setter Property="BorderBrush" Value="{StaticResource BorderBrushSelected}" />
                                 </Trigger>
+                                
+                                <MultiTrigger>
+                                    <MultiTrigger.Conditions>
+                                        <Condition Property="IsSelected" Value="true"></Condition>
+                                        <Condition Property="IsFocused" Value="false"></Condition>
+                                    </MultiTrigger.Conditions>
+                                    <Setter Property="Background" Value="{StaticResource BackgroundNormal}"></Setter>
+                                    <Setter Property="BorderBrush" Value="Transparent"/>
+                                </MultiTrigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
             </Style>
+
         </Style.Resources>
     </Style>
 
