@@ -31,12 +31,12 @@ namespace TankGame
 
             TextureMap.Add(content.Load<Texture2D>(@"MapBackground\1")); 
             PostionMap.Add(new Vector2(0, 0));
-            TextureMap.Add(content.Load<Texture2D>(@"MapBackground\2"));
+            /*TextureMap.Add(content.Load<Texture2D>(@"MapBackground\2"));
             PostionMap.Add(new Vector2(4000, 0));
             TextureMap.Add(content.Load<Texture2D>(@"MapBackground\3"));
             PostionMap.Add(new Vector2(0, 4000));
             TextureMap.Add(content.Load<Texture2D>(@"MapBackground\4"));
-            PostionMap.Add(new Vector2(4000, 4000));            
+            PostionMap.Add(new Vector2(4000, 4000));   */         
         }
 
         public void Initialize()

@@ -13,9 +13,6 @@ C:\Users\Filip\Documents\Programmering\TankGame\TankGame\TankGame\bin\x86\Debug\
 E:\IHA docs\4. semester\PRJ4\Damp\TankGame\TankGame\TankGame\bin\x86\Debug\Content\Tanks\tank_bottom_1.xnb
 E:\IHA docs\4. semester\PRJ4\Damp\TankGame\TankGame\TankGame\bin\x86\Debug\Content\Tanks\Tank_top_1.xnb
 E:\IHA docs\4. semester\PRJ4\Damp\TankGame\TankGame\TankGame\bin\x86\Debug\Content\MapBackground\1.xnb
-E:\IHA docs\4. semester\PRJ4\Damp\TankGame\TankGame\TankGame\bin\x86\Debug\Content\MapBackground\2.xnb
-E:\IHA docs\4. semester\PRJ4\Damp\TankGame\TankGame\TankGame\bin\x86\Debug\Content\MapBackground\3.xnb
-E:\IHA docs\4. semester\PRJ4\Damp\TankGame\TankGame\TankGame\bin\x86\Debug\Content\MapBackground\4.xnb
 E:\IHA docs\4. semester\PRJ4\Damp\TankGame\TankGame\TankGame\bin\x86\Debug\TankGame.exe
 E:\IHA docs\4. semester\PRJ4\Damp\TankGame\TankGame\TankGame\bin\x86\Debug\TankGame.pdb
 E:\IHA docs\4. semester\PRJ4\Damp\TankGame\TankGame\TankGame\obj\x86\Debug\TankGame.csprojResolveAssemblyReference.cache

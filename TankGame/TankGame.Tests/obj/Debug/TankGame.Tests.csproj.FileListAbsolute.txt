@@ -2,9 +2,6 @@ E:\IHA docs\4. semester\PRJ4\Damp\TankGame\TankGame.Tests\obj\Debug\TankGame.Tes
 E:\IHA docs\4. semester\PRJ4\Damp\TankGame\TankGame.Tests\bin\Debug\Content\Tanks\tank_bottom_1.xnb
 E:\IHA docs\4. semester\PRJ4\Damp\TankGame\TankGame.Tests\bin\Debug\Content\Tanks\Tank_top_1.xnb
 E:\IHA docs\4. semester\PRJ4\Damp\TankGame\TankGame.Tests\bin\Debug\Content\MapBackground\1.xnb
-E:\IHA docs\4. semester\PRJ4\Damp\TankGame\TankGame.Tests\bin\Debug\Content\MapBackground\2.xnb
-E:\IHA docs\4. semester\PRJ4\Damp\TankGame\TankGame.Tests\bin\Debug\Content\MapBackground\3.xnb
-E:\IHA docs\4. semester\PRJ4\Damp\TankGame\TankGame.Tests\bin\Debug\Content\MapBackground\4.xnb
 E:\IHA docs\4. semester\PRJ4\Damp\TankGame\TankGame.Tests\bin\Debug\TankGame.Tests.dll
 E:\IHA docs\4. semester\PRJ4\Damp\TankGame\TankGame.Tests\bin\Debug\TankGame.Tests.pdb
 E:\IHA docs\4. semester\PRJ4\Damp\TankGame\TankGame.Tests\bin\Debug\nunit.framework.dll

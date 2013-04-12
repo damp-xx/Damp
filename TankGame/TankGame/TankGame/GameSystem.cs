@@ -94,7 +94,7 @@ namespace TankGame
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             menuManager.chosenMenu.Draw(spriteBatch);
-                  
+               
             base.Draw(gameTime);
         }
     }

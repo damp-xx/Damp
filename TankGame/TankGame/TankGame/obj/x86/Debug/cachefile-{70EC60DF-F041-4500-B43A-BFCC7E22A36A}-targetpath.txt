@@ -1,7 +1,4 @@
 Content\Tanks\tank_bottom_1.xnb
 Content\Tanks\Tank_top_1.xnb
-Content\Buttons\singlePlayerButton.xnb
 Content\MapBackground\1.xnb
-Content\MapBackground\2.xnb
-Content\MapBackground\3.xnb
-Content\MapBackground\4.xnb
+Content\Buttons\singlePlayerButton.xnb

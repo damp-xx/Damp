@@ -40,6 +40,8 @@ namespace TankGame
         private Rectangle backLeft;
         private Rectangle backRight;
 
+        private readonly float scale = 0.7f;
+
         public TankPlayer()
         {
             Initialize();
@@ -48,8 +50,8 @@ namespace TankGame
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(TextureBottom, PositionBottom, null, Color.White, RotationBottom, OriginBottom, 1f, SpriteEffects.None, 0);
-            spriteBatch.Draw(TextureTop, PositionTop, null, Color.White, RotationTop, OriginTop, 1f, SpriteEffects.None, 0);
+            spriteBatch.Draw(TextureBottom, PositionBottom, null, Color.White, RotationBottom, OriginBottom, scale, SpriteEffects.None, 0);
+            spriteBatch.Draw(TextureTop, PositionTop, null, Color.White, RotationTop, OriginTop, scale, SpriteEffects.None, 0);
         }
 
         public void Update(List<IObstacle> obstacles)
@@ -82,10 +84,16 @@ namespace TankGame
             {
                 /*************** Keyboard input ******************/
                 if (Keyboard.GetState().IsKeyDown(Keys.Right))
+                {
                     RotationBottom += rotationSpeedBottom;
+                    RotationTop += rotationSpeedBottom;
+                }
 
                 if (Keyboard.GetState().IsKeyDown(Keys.Left))
+                {
                     RotationBottom -= rotationSpeedBottom;
+                    RotationTop += rotationSpeedBottom;
+                }
 
                 if (Keyboard.GetState().IsKeyDown(Keys.D))
                     RotationTop += rotationSpeed;

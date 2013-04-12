@@ -20,15 +20,6 @@
       <Time>2013-04-07T21:52:53.5624181+02:00</Time>
     </Item>
     <Item>
-      <Source>Buttons\singlePlayerButton.png</Source>
-      <Name>Buttons\singlePlayerButton</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>E:\IHA docs\4. semester\PRJ4\Damp\TankGame\TankGame\TankGame\bin\x86\Debug\Content\Buttons\singlePlayerButton.xnb</Output>
-      <Time>2013-04-09T13:18:03.0503156+02:00</Time>
-    </Item>
-    <Item>
       <Source>MapBackground\1.jpg</Source>
       <Name>MapBackground\1</Name>
       <Importer>TextureImporter</Importer>
@@ -41,40 +32,13 @@
       <Time>2013-04-07T21:44:20.9092292+02:00</Time>
     </Item>
     <Item>
-      <Source>MapBackground\2.jpg</Source>
-      <Name>MapBackground\2</Name>
+      <Source>Buttons\singlePlayerButton.png</Source>
+      <Name>Buttons\singlePlayerButton</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
-      <Parameters>
-        <Data Key="TextureFormat">DxtCompressed</Data>
-      </Parameters>
       <Options>None</Options>
-      <Output>E:\IHA docs\4. semester\PRJ4\Damp\TankGame\TankGame\TankGame\bin\x86\Debug\Content\MapBackground\2.xnb</Output>
-      <Time>2013-04-07T21:45:29.3188148+02:00</Time>
-    </Item>
-    <Item>
-      <Source>MapBackground\3.jpg</Source>
-      <Name>MapBackground\3</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Parameters>
-        <Data Key="TextureFormat">DxtCompressed</Data>
-      </Parameters>
-      <Options>None</Options>
-      <Output>E:\IHA docs\4. semester\PRJ4\Damp\TankGame\TankGame\TankGame\bin\x86\Debug\Content\MapBackground\3.xnb</Output>
-      <Time>2013-04-07T21:45:39.3017714+02:00</Time>
-    </Item>
-    <Item>
-      <Source>MapBackground\4.jpg</Source>
-      <Name>MapBackground\4</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Parameters>
-        <Data Key="TextureFormat">DxtCompressed</Data>
-      </Parameters>
-      <Options>None</Options>
-      <Output>E:\IHA docs\4. semester\PRJ4\Damp\TankGame\TankGame\TankGame\bin\x86\Debug\Content\MapBackground\4.xnb</Output>
-      <Time>2013-04-07T21:45:50.3694736+02:00</Time>
+      <Output>E:\IHA docs\4. semester\PRJ4\Damp\TankGame\TankGame\TankGame\bin\x86\Debug\Content\Buttons\singlePlayerButton.xnb</Output>
+      <Time>2013-04-09T13:18:03.0503156+02:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

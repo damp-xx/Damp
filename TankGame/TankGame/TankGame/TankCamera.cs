@@ -12,8 +12,8 @@ namespace TankGame
         private Viewport view;
         private Vector2 centre;
 
-        private int mapWidth = 8000;
-        private int mapHeight = 8000;
+        private int mapWidth = 4000;
+        private int mapHeight = 4000;
 
         public Matrix transform { get; private set; }
 
