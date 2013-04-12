@@ -39,7 +39,7 @@ namespace DampServer
                 Console.WriteLine("ChatCommandP Exception 211: {0}", e.Message);
             }
 
-            User me = UserManagement.GetUser(http.Query.Get("authToken"));
+            User me = UserManagement.GetUserByAuthToken(http.Query.Get("authToken"));
 
             ChatXmlResponse r = new ChatXmlResponse
                 {

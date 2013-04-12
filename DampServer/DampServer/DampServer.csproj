@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Archivement.cs" />
     <Compile Include="commands\ChatCommand.cs" />
+    <Compile Include="commands\FriendCommand.cs" />
     <Compile Include="responses\ChatXmlResponse.cs" />
     <Compile Include="exceptions\CommandNotFoundException.cs" />
     <Compile Include="Connection.cs" />
@@ -68,6 +69,7 @@
     <Compile Include="commands\LoginCommand.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="RequestProcessor.cs" />
+    <Compile Include="responses\FrendRequestResponse.cs" />
     <Compile Include="SocketHandler.cs" />
     <Compile Include="responses\StatusXmlResponse.cs" />
     <Compile Include="commands\UploadGameCommand.cs" />

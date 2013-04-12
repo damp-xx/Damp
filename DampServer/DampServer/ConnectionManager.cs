@@ -66,7 +66,7 @@ namespace DampServer
             _connections.Add(con);
         }
 
-        public IConnection GetConnectionByUserId(int userid)
+        public IConnection GetConnectionByUserId(long userid)
         {
             return _connections.FirstOrDefault(con => con.UserProfile.UserId == userid);
         }
