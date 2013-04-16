@@ -96,3 +96,8 @@ F:\Dropbox\IHA\PRJ4\Damp\StyleGUI\StyleGUITest\obj\Debug\StyleGUITest.g.resource
 F:\Dropbox\IHA\PRJ4\Damp\StyleGUI\StyleGUITest\obj\Debug\StyleGUITest.Properties.Resources.resources
 F:\Dropbox\IHA\PRJ4\Damp\StyleGUI\StyleGUITest\obj\Debug\StyleGUITest.csproj.GenerateResource.Cache
 F:\Dropbox\IHA\PRJ4\Damp\StyleGUI\StyleGUITest\obj\Debug\Styles\TabStyle.baml
+F:\Dropbox\IHA\PRJ4\Damp\StyleGUI\StyleGUITest\obj\Debug\Styles\PasswordStyle.baml
+F:\Dropbox\IHA\PRJ4\Damp\StyleGUI\StyleGUITest\obj\Debug\Settings\ChangeEmail.baml
+F:\Dropbox\IHA\PRJ4\Damp\StyleGUI\StyleGUITest\obj\Debug\Settings\ChangeEmail.g.cs
+F:\Dropbox\IHA\PRJ4\Damp\StyleGUI\StyleGUITest\obj\Debug\Settings\ChangePassword.baml
+F:\Dropbox\IHA\PRJ4\Damp\StyleGUI\StyleGUITest\obj\Debug\Settings\ChangePassword.g.cs

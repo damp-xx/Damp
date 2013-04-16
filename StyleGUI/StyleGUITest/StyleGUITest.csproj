@@ -67,6 +67,12 @@
     <Compile Include="GameWindow\ThumbnailPhoto.xaml.cs">
       <DependentUpon>ThumbnailPhoto.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Settings\ChangeEmail.xaml.cs">
+      <DependentUpon>ChangeEmail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\ChangePassword.xaml.cs">
+      <DependentUpon>ChangePassword.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Settings\Settings.xaml.cs">
       <DependentUpon>Settings.xaml</DependentUpon>
     </Compile>
@@ -79,6 +85,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Profile\ProfileWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Settings\ChangeEmail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Settings\ChangePassword.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -126,6 +140,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Styles\MenuStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\PasswordStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

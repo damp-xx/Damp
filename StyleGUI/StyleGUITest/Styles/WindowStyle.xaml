@@ -10,6 +10,13 @@
         <Setter Property="Background" Value="{StaticResource LightBackground}"></Setter>
         
     </Style>
-    
-    
+
+
+
+    <Style TargetType="Window" x:Key="SettingsWindow">
+        <Setter Property="Background" Value="{StaticResource LightBackground}"></Setter>
+        <Setter Property="BorderBrush" Value="{StaticResource BorderBrushHighlighted}"></Setter>
+        <Setter Property="BorderThickness" Value="2"></Setter>        
+    </Style>
+
 </ResourceDictionary>
