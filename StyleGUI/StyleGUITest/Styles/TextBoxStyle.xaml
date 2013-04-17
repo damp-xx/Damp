@@ -10,6 +10,7 @@
         <Setter Property="Background" Value="{StaticResource TextBoxBackground}"></Setter>
         <Setter Property="Foreground" Value="{StaticResource Foreground}"></Setter>
         <Setter Property="CaretBrush" Value="{StaticResource Foreground}">
+    
             <!-- caret er markøren -->
         </Setter>
 
@@ -64,4 +65,37 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+
+    <Style TargetType="TextBox" x:Key="LoginTextBox">
+
+        <Setter Property="Background" Value="{StaticResource TextBoxBackground}"></Setter>
+        <Setter Property="Foreground" Value="{StaticResource Foreground}"></Setter>
+        <Setter Property="CaretBrush" Value="{StaticResource Foreground}">
+
+            <!-- caret er markøren -->
+        </Setter>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Border BorderBrush="{StaticResource Foreground}" BorderThickness="0.7">
+                        <Grid Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ScrollViewer x:Name="PART_ContentHost" Margin="1" />
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="Background" Value="{StaticResource TextBoxBackgroundSelected}"/>
+                        </Trigger>
+                        <Trigger Property="IsFocused" Value="true">
+                            <Setter Property="Background" Value="{StaticResource TextBoxBackgroundSelected}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
 </ResourceDictionary>
