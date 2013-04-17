@@ -92,7 +92,7 @@ namespace DampServer
         public string HttpVersion { get; private set; }
         public long Length { get; private set; }
         public string Status { get; private set; }
-        public NameValueCollection Query { get; private set; }
+        public NameValueCollection Query { get;  set; }
 
         /**
          * GetHeader

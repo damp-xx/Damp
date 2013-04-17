@@ -46,36 +46,41 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Archivement.cs" />
-    <Compile Include="ChatCommand.cs" />
-    <Compile Include="ChatXmlResponse.cs" />
-    <Compile Include="CommandNotFoundException.cs" />
+    <Compile Include="commands\ChatCommand.cs" />
+    <Compile Include="commands\FriendCommand.cs" />
+    <Compile Include="responses\ChatXmlResponse.cs" />
+    <Compile Include="exceptions\CommandNotFoundException.cs" />
     <Compile Include="Connection.cs" />
     <Compile Include="ConnectionManager.cs" />
     <Compile Include="Database.cs" />
-    <Compile Include="DownloadCommand.cs" />
-    <Compile Include="ErrorXmlResponse.cs" />
+    <Compile Include="commands\DownloadCommand.cs" />
+    <Compile Include="responses\ErrorXmlResponse.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="GameHandler.cs" />
     <Compile Include="Http.cs" />
-    <Compile Include="ICommandArgument.cs" />
-    <Compile Include="InvalidFileHashException.cs" />
-    <Compile Include="InvalidHttpRequestException.cs" />
-    <Compile Include="IServerCommand.cs" />
-    <Compile Include="LiveCommand.cs" />
+    <Compile Include="interfaces\ICommandArgument.cs" />
+    <Compile Include="interfaces\IConnection.cs" />
+    <Compile Include="exceptions\InvalidFileHashException.cs" />
+    <Compile Include="exceptions\InvalidHttpRequestException.cs" />
+    <Compile Include="interfaces\IServerCommand.cs" />
+    <Compile Include="interfaces\IUser.cs" />
+    <Compile Include="commands\LiveCommand.cs" />
     <Compile Include="Log.cs" />
-    <Compile Include="LoginCommand.cs" />
+    <Compile Include="commands\LoginCommand.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="RequestProcessor.cs" />
+    <Compile Include="responses\FrendRequestResponse.cs" />
     <Compile Include="SocketHandler.cs" />
-    <Compile Include="StatusXmlResponse.cs" />
-    <Compile Include="UploadGameCommand.cs" />
+    <Compile Include="responses\StatusXmlResponse.cs" />
+    <Compile Include="commands\UploadGameCommand.cs" />
     <Compile Include="User.cs" />
-    <Compile Include="UserCommands.cs" />
+    <Compile Include="commands\UserCommands.cs" />
     <Compile Include="UserManagement.cs" />
-    <Compile Include="XmlResponse.cs" />
+    <Compile Include="responses\XmlResponse.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

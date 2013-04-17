@@ -63,7 +63,13 @@
       <ProcessorParameters_TextureFormat>DxtCompressed</ProcessorParameters_TextureFormat>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Compile Include="RedTest.png">
+      <Name>RedTest</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
   <ItemGroup>
     <Compile Include="Buttons\singlePlayerButton.png">
       <Name>singlePlayerButton</Name>
