@@ -7,6 +7,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Web;
 using System.Xml;
+using System.Threading.Tasks;
 
 namespace DampCS
 {
@@ -15,7 +16,7 @@ namespace DampCS
         private readonly string _host;
         private readonly int _port;
         public bool IsAuthenticated { get; private set; }
-
+        private string _ComToken = null;
         private readonly static object _lock = new object();
         //private static string _authToken = "1337";
 
@@ -68,15 +69,15 @@ namespace DampCS
 
         public void Listen(string _authToken)
         {
-            // @TODO run in seperate thread
-            Run(_authToken);
+            _ComToken = _authToken;
+            Task ListenTask = Task.Factory.StartNew(Run);
         }
 
 
-        private void Run( string _authToken)
+        private void Run()
         {
             var tcp = new TcpClient();
-            SendRequestWIthOutParse("Live", new Dictionary<string, string>(),tcp, _authToken);
+            SendRequestWIthOutParse("Live", new Dictionary<string, string>(),tcp, _ComToken);
 
             while (false)
             {

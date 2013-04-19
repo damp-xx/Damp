@@ -9,16 +9,18 @@ namespace CommunicationLibrary
 {
     class ComLogin
     {
-        private static string _ComToken;
-        private static string _ComIp = "10.20.255.127";
+        public static string _ComToken { get; private set; }
+        public static string _ComIp { get; private set; }
         public static bool Authenticate(string username, string password)
         {
+            _ComIp = "10.20.255.127";
             if (username == "" || password == "")
                 return false;
             
             var client = new DampServerClient(_ComIp);
-            
-            var ResultOfLogin = client.Login(username, password, out _ComToken);
+            string _TempComToken;
+            var ResultOfLogin = client.Login(username, password, out _TempComToken);
+            _ComToken = _TempComToken;
             Console.WriteLine("Token after login: {0}", _ComToken);
             return ResultOfLogin;
         }

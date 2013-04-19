@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ComAchievement.cs" />
+    <Compile Include="ComEvents.cs" />
     <Compile Include="ComGame.cs" />
     <Compile Include="ComFriend.cs" />
     <Compile Include="ComLogin.cs" />
