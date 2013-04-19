@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DampServer
+namespace DampServer.exceptions
 {
     public class InvalidFileHashException : Exception
     {

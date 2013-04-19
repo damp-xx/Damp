@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using DampServer.interfaces;
 using DampServer.responses;
 
 namespace DampServer.commands
@@ -30,6 +31,9 @@ namespace DampServer.commands
             {
                 case "AddFriend":
                     HandleAddFriend();
+                    break;
+                case "AcceptFriend":
+                    HandleAcceptFriend();
                     break;
 
             }
@@ -76,7 +80,7 @@ namespace DampServer.commands
             catch (InvalidOperationException e)
             {
                 Logger.Log(e.Message);
-                _client.SendXmlResponse(new ErrorXmlResponse { Message = "Internal Server Error!!" });
+                _client.SendXmlResponse(new ErrorXmlResponse { Message = "Internal Server Error!! #2321114" });
                 return;
             }
 
@@ -86,6 +90,67 @@ namespace DampServer.commands
             _client.SendXmlResponse(new StatusXmlResponse {Code = 200, Command = "AddFriend", Message = "Friend request added"});
 
         }
+
+        private void HandleAcceptFriend()
+        {
+            Int64 friendid;
+            
+            if (string.IsNullOrEmpty(_client.Query.Get("Friend")))
+            {
+                _client.SendXmlResponse(new ErrorXmlResponse
+                    {
+                        Message = "Missing or invalid argument #3312"
+                    });
+                return;
+            }
+            else
+            {
+                friendid = Int64.Parse(_client.Query.Get("Friend"));
+            }
+
+
+            Database db = new Database();
+
+            db.Open();
+
+            SqlCommand sqlCmd = db.GetCommand();
+
+            // get user
+            sqlCmd.CommandText = "SELECT * FROM FriendRequests WHERE \"User\" = @userid AND Friend = @friendid";
+            
+            sqlCmd.Parameters.Add("@userid", SqlDbType.BigInt).Value =
+                UserManagement.GetUserByAuthToken(_client.Query.Get("AuthToken")).UserId;
+
+            sqlCmd.Parameters.Add("@friendid", SqlDbType.BigInt).Value = friendid;
+            SqlDataReader r = sqlCmd.ExecuteReader();
+
+            if (r.HasRows)
+            {
+                r.Close();
+                sqlCmd.CommandText = "DELETE FROM FriendRequests WHERE \"User\" = @userid AND Friend = @friendid";
+                sqlCmd.ExecuteNonQuery();
+
+                sqlCmd.CommandText = "INSERT INTO Friends (\"userid\", \"userid1\") VALUES (@userid, @friendid)";
+                sqlCmd.ExecuteNonQuery();
+
+                _client.SendXmlResponse(new StatusXmlResponse
+                    {
+                        Code = 200,
+                        Command = "AcceptFriend",
+                        Message = "Friend Accepted!"
+                    });
+            }
+            else
+            {
+                _client.SendXmlResponse(new StatusXmlResponse
+                    {
+                        Code = 301,
+                        Command = "AcceptFriend",
+                        Message = "Friend not found!"
+                    });
+            }
+
+            db.Close();        }
 
         private void NotifyUser(XmlResponse xml, long userid)
         {

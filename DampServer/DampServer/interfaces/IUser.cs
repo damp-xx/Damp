@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DampServer
+namespace DampServer.interfaces
 {
     public interface IUser
     {

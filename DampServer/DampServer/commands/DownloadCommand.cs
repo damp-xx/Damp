@@ -1,4 +1,6 @@
-﻿namespace DampServer
+﻿using DampServer.interfaces;
+
+namespace DampServer.commands
 {
     public class DownloadCommand : IServerCommand
     {

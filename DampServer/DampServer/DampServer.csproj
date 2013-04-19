@@ -48,6 +48,8 @@
     <Compile Include="Archivement.cs" />
     <Compile Include="commands\ChatCommand.cs" />
     <Compile Include="commands\FriendCommand.cs" />
+    <Compile Include="interfaces\INotify.cs" />
+    <Compile Include="Notifier.cs" />
     <Compile Include="responses\ChatXmlResponse.cs" />
     <Compile Include="exceptions\CommandNotFoundException.cs" />
     <Compile Include="Connection.cs" />

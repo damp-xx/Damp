@@ -1,6 +1,6 @@
 ﻿using System.Collections.Specialized;
 
-namespace DampServer
+namespace DampServer.interfaces
 {
     public interface ICommandArgument
     {

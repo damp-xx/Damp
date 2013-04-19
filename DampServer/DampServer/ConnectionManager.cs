@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+using DampServer.interfaces;
 
 #endregion
 
@@ -48,7 +49,11 @@ namespace DampServer
             }
         }
 
-
+        // @TODO MAKE THREAD SAFE!!
+        public List<IConnection> GetOnlineUsers()
+        {
+            return _connections.ToList();
+        }
 
         public static ConnectionManager GetConnectionManager()
         {

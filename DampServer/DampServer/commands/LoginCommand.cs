@@ -5,10 +5,11 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Security.Cryptography;
 using System.Text;
+using DampServer.interfaces;
 
 #endregion
 
-namespace DampServer
+namespace DampServer.commands
 {
     /**
      * LoginCommand
@@ -42,12 +43,9 @@ namespace DampServer
             string password = http.Query.Get("Password");
 
             Database db = new Database();
-            if (!db.Open())
-            {
-                Console.WriteLine("FUCK MIG I RØVEN DIN LORTE DB!!!");
-            }
-
-
+            
+            db.Open();
+    
             SqlCommand sqlCmd = db.GetCommand();
 
             sqlCmd.CommandText = "SELECT TOP 1 * FROM Users WHERE username LIKE @username AND password LIKE @password";
@@ -63,10 +61,11 @@ namespace DampServer
             catch (InvalidOperationException e)
             {
                 Logger.Log(e.Message);
-                http.SendXmlResponse(new ErrorXmlResponse {Message = "Internal Server Error!!"});
+                http.SendXmlResponse(new ErrorXmlResponse {Message = "Internal Server Error!! #90022"});
                 return;
             }
 
+            r.Read();
 
             if (r.HasRows)
             {
@@ -80,8 +79,10 @@ namespace DampServer
                 Database db2 = new Database();
                 db2.Open();
                 SqlCommand sqlCmdUpdate = db2.GetCommand();
-                sqlCmdUpdate.CommandText = "UPDATE Users SET authToken = @authToken";
+                sqlCmdUpdate.CommandText = "UPDATE Users SET authToken = @authToken WHERE userid = @userid";
                 sqlCmdUpdate.Parameters.Add("@authToken", SqlDbType.NVarChar).Value = hexHash;
+                sqlCmdUpdate.Parameters.Add("@userid", SqlDbType.BigInt).Value =(long) r["userid"];
+
                 sqlCmdUpdate.ExecuteNonQuery();
                 db2.Close();
 

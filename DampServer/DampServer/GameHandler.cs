@@ -7,6 +7,7 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Xml;
 using System.Xml.Serialization;
+using DampServer.exceptions;
 using ICSharpCode.SharpZipLib.Zip;
 
 #endregion

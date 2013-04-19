@@ -4,7 +4,7 @@ using System;
 
 #endregion
 
-namespace DampServer
+namespace DampServer.exceptions
 {
     public class InvalidHttpRequestException : Exception
     {

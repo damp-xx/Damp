@@ -20,6 +20,8 @@ using System.Security.Authentication;
 using System.Security.Cryptography.X509Certificates;
 using System.Web;
 using System.Xml.Serialization;
+using DampServer.exceptions;
+using DampServer.interfaces;
 
 #endregion
 

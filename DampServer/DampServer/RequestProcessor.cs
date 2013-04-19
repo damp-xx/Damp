@@ -12,6 +12,8 @@ using System;
 using System.Net.Sockets;
 using System.Threading;
 using DampServer.commands;
+using DampServer.exceptions;
+using DampServer.interfaces;
 
 #endregion
 
@@ -99,7 +101,7 @@ namespace DampServer
                 hp.SendXmlResponse(r);
                 CloseSocket();
             }
-            catch (Exception e)
+            catch (InvalidFileHashException e)
             {
                 Logger.Log(e.Message);
                 hp.SendXmlResponse(new ErrorXmlResponse { Message = "Internal Server Error! #1337 " + e.Message  });
@@ -141,7 +143,7 @@ namespace DampServer
             switch (cmd)
             {
                 case "Chat":
-                    leCmd=new ChatCommand();
+                    leCmd = new ChatCommand();
                     break;
                 case "Login":
                     leCmd=new LoginCommand();
@@ -159,8 +161,15 @@ namespace DampServer
                     leCmd = new UserCommands();
                     break;
                 case "AddFriend":
-                    leCmd=new FriendCommand();
+                    leCmd = new FriendCommand();
                     break;
+                case "AcceptFriend":
+                    leCmd = new FriendCommand();
+                    break;
+                case "ForgottenPassword":
+                    leCmd = new UserCommands();
+                    break;
+
                 default:
                     throw new CommandNotFoundException(cmd);
             }
