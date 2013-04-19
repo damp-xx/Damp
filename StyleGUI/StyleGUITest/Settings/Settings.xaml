@@ -1,0 +1,63 @@
+﻿<Window x:Class="StyleGUITest.Settings"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Settings" Height="300" Width="300"
+        Name="SettingsWindow"
+        ResizeMode="NoResize" WindowStyle="None" WindowState="Normal" WindowStartupLocation="CenterScreen"
+        Style="{DynamicResource SettingsWindow}">
+
+    <Window.Resources>
+        <ResourceDictionary Source="/Styles/Styles.xaml"></ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <DockPanel Grid.Row="0" MouseDown="Drag_OnMouseDown" IsHitTestVisible="True">
+            <Button DockPanel.Dock="Right" Name="Close" VerticalContentAlignment="Center" Width="35" FontSize="20"
+                    Content="X" Style="{StaticResource CloseButton}" Click="Close_OnClick">
+            </Button>
+            <Rectangle Fill="Transparent" IsHitTestVisible="True" Stretch="Fill"></Rectangle>
+
+        </DockPanel>
+        <TabControl Margin="0,3,0,0" Grid.Row="1">
+            <TabItem Header="Account">
+                <Grid Margin="3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Button Grid.Row="0" Grid.Column="0" FontSize="18" Click="ChangePassword_OnClick">Change your password</Button>
+                    <Button Grid.Row="1" Grid.Column="0" FontSize="18" Margin="0,3,0,0" Click="ChangeEmail_OnClick">Change your email</Button>
+                    
+                    <Rectangle Grid.Row="2" Fill="Transparent" Stretch="Fill"></Rectangle>
+
+                    <DockPanel Grid.Row="3" >
+                        <Button DockPanel.Dock="Right" Name="OkButton" Margin="3,0,0,0">Ok</Button>
+                        <Button DockPanel.Dock="Right" Name="ApplyButton" Margin="3,0,0,0">Apply</Button>
+                        <Button DockPanel.Dock="Right" Name="CancelButton" >Cancel</Button>
+
+                        <Rectangle DockPanel.Dock="Left" Fill="Transparent" Stretch="Fill"></Rectangle>
+
+                    </DockPanel>
+
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Crew">
+                <StackPanel Margin="5">
+                    <PasswordBox></PasswordBox>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Food">
+                <StackPanel Margin="5">
+                <TextBox Style="{StaticResource LoginTextBox}" >Food</TextBox>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

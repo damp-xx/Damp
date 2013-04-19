@@ -20,7 +20,7 @@ namespace DampServer
 
         public bool CanHandleCommand(string cmd)
         {
-            return cmd.Equals("GetUser") || (cmd.Equals("GetMyUser"));
+            return cmd.Equals("GetUserByAuthToken") || (cmd.Equals("GetMyUser"));
         }
 
         public void Execute(ICommandArgument http, string cmd)
@@ -38,7 +38,7 @@ namespace DampServer
 
             if (cmd.Equals("GetMyUser"))
             {
-                user = UserManagement.GetUser(_http.Query.Get("authToken"));
+                user = UserManagement.GetUserByAuthToken(_http.Query.Get("authToken"));
             }
             else
             {

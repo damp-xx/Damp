@@ -11,6 +11,7 @@
 using System;
 using System.Net.Sockets;
 using System.Threading;
+using DampServer.commands;
 
 #endregion
 
@@ -66,7 +67,7 @@ namespace DampServer
 
                 if (serverCommand.NeedsAuthcatication)
                 {
-                    if (!CheckAuthetication(hp.Query.Get("AuthToken")))
+                    if (string.IsNullOrEmpty(hp.Query.Get("AuthToken")) || !CheckAuthetication(hp.Query.Get("AuthToken")))
                     {
                         var r = new ErrorXmlResponse {Date = new DateTime(), Message = "Access Denied"};
                         hp.SendXmlResponse(r);
@@ -101,7 +102,7 @@ namespace DampServer
             catch (Exception e)
             {
                 Logger.Log(e.Message);
-                hp.SendXmlResponse(new ErrorXmlResponse { Message = "Internal Server Error! #1337" });
+                hp.SendXmlResponse(new ErrorXmlResponse { Message = "Internal Server Error! #1337 " + e.Message  });
                 CloseSocket();
             }
         }
@@ -118,7 +119,7 @@ namespace DampServer
         {
             try
             {
-                UserManagement.GetUser(authToken);
+                UserManagement.GetUserByAuthToken(authToken);
                 return true;
             }
             catch (UserNotFoundException)
@@ -156,6 +157,9 @@ namespace DampServer
                     break;
                 case "GetMyUser":
                     leCmd = new UserCommands();
+                    break;
+                case "AddFriend":
+                    leCmd=new FriendCommand();
                     break;
                 default:
                     throw new CommandNotFoundException(cmd);

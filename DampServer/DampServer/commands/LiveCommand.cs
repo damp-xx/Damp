@@ -16,7 +16,7 @@
         public void Execute(ICommandArgument http, string cmd = null)
         {
             ConnectionManager connectionManager = ConnectionManager.GetConnectionManager();
-            User userProfile = UserManagement.GetUser(http.Query.Get("authToken"));
+            User userProfile = UserManagement.GetUserByAuthToken(http.Query.Get("authToken"));
             connectionManager.AddConnection(new Connection {UserHttp = http, UserProfile = userProfile});
         }
 
