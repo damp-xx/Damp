@@ -10,3 +10,14 @@ C:\Users\Filip\Documents\Programmering\TankGame\TankGame\TankGame\bin\x86\Debug\
 C:\Users\Filip\Documents\Programmering\TankGame\TankGame\TankGame\bin\x86\Debug\Content\MapBackground\2.xnb
 C:\Users\Filip\Documents\Programmering\TankGame\TankGame\TankGame\bin\x86\Debug\Content\MapBackground\3.xnb
 C:\Users\Filip\Documents\Programmering\TankGame\TankGame\TankGame\bin\x86\Debug\Content\MapBackground\4.xnb
+E:\IHA docs\4. semester\PRJ4\Damp\TankGame\TankGame\TankGame\bin\x86\Debug\Content\Tanks\tank_bottom_1.xnb
+E:\IHA docs\4. semester\PRJ4\Damp\TankGame\TankGame\TankGame\bin\x86\Debug\Content\Tanks\Tank_top_1.xnb
+E:\IHA docs\4. semester\PRJ4\Damp\TankGame\TankGame\TankGame\bin\x86\Debug\Content\MapBackground\1.xnb
+E:\IHA docs\4. semester\PRJ4\Damp\TankGame\TankGame\TankGame\bin\x86\Debug\TankGame.exe
+E:\IHA docs\4. semester\PRJ4\Damp\TankGame\TankGame\TankGame\bin\x86\Debug\TankGame.pdb
+E:\IHA docs\4. semester\PRJ4\Damp\TankGame\TankGame\TankGame\obj\x86\Debug\TankGame.csprojResolveAssemblyReference.cache
+E:\IHA docs\4. semester\PRJ4\Damp\TankGame\TankGame\TankGame\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+E:\IHA docs\4. semester\PRJ4\Damp\TankGame\TankGame\TankGame\obj\x86\Debug\TankGame.exe
+E:\IHA docs\4. semester\PRJ4\Damp\TankGame\TankGame\TankGame\obj\x86\Debug\TankGame.pdb
+E:\IHA docs\4. semester\PRJ4\Damp\TankGame\TankGame\TankGame\bin\x86\Debug\Content\Buttons\singlePlayerButton.xnb
+E:\IHA docs\4. semester\PRJ4\Damp\TankGame\TankGame\TankGame\bin\x86\Debug\Content\RedTest.xnb
