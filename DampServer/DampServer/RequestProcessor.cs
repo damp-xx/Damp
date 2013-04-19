@@ -169,6 +169,10 @@ namespace DampServer
                 case "ForgottenPassword":
                     leCmd = new UserCommands();
                     break;
+                case "RemoveFriend":
+                    leCmd=new FriendCommand();
+                    break;
+                    
 
                 default:
                     throw new CommandNotFoundException(cmd);

@@ -104,7 +104,9 @@ namespace DampServer.commands
                 User u = new User
                     {
                         Username = (string) r["username"],
-                        Email = (string) r["email"]
+                        Email = (string) r["email"],
+                        UserId = (long) r["userid"]
+                       
                     };
                 user.Friends.Add(u);  
             }
@@ -179,7 +181,12 @@ namespace DampServer.commands
             while (r.Read())
             {
 
-                User u = new User { Username = (string)r["username"], Email = (string)r["email"] };
+                User u = new User
+                    {
+                        Username = (string) r["username"],
+                        Email = (string) r["email"],
+                        UserId = (long) r["userid"]
+                    };
                 user.Friends.Add(u);
 
             }

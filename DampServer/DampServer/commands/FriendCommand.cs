@@ -35,6 +35,10 @@ namespace DampServer.commands
                 case "AcceptFriend":
                     HandleAcceptFriend();
                     break;
+                case "RemoveFriend":
+                    HandleRemoveFriend();
+                    break;
+                   
 
             }
         }
@@ -151,6 +155,42 @@ namespace DampServer.commands
             }
 
             db.Close();        }
+
+        private void HandleRemoveFriend()
+        {
+            if (string.IsNullOrEmpty(_client.Query.Get("Friend")))
+            {
+                _client.SendXmlResponse(new ErrorXmlResponse
+                    {
+                        Message = "Missing argurment!! #211764"
+                    });
+                return;
+            }
+
+            long frindid = long.Parse(_client.Query.Get("Friend"));
+
+            Database db = new Database();
+
+            db.Open();
+
+            SqlCommand cmd = db.GetCommand();
+
+            cmd.CommandText = "DELETE FROM Friends WHERE userid = @userid AND userid1 = @friendid";
+            cmd.Parameters.Add("@userid", SqlDbType.BigInt).Value =
+                UserManagement.GetUserByAuthToken(_client.Query.Get("AuthToken")).UserId;
+            cmd.Parameters.Add("@friendid", SqlDbType.BigInt).Value = frindid;
+
+            cmd.ExecuteNonQuery();
+
+            db.Close();
+
+            _client.SendXmlResponse(new StatusXmlResponse
+                {
+                    Code = 200,
+                    Command = "RemoveFriend",
+                    Message = "Friend was removed!"
+                });
+        }
 
         private void NotifyUser(XmlResponse xml, long userid)
         {
