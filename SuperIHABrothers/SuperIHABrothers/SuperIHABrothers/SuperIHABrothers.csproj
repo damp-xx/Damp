@@ -131,9 +131,9 @@
     <Compile Include="GameState\IGameStateEvent.cs" />
     <Compile Include="GameState\IGameStateLevel.cs" />
     <Compile Include="Sprite\IAnchor.cs" />
-    <Compile Include="Sprite\IAnchorPlayer.cs" />
     <Compile Include="Sprite\IAnchorUpdate.cs" />
     <Compile Include="Sprite\ISprite.cs" />
+    <Compile Include="Sprite\ISpriteAnchor.cs" />
     <Compile Include="Sprite\ISpriteContainer.cs" />
     <Compile Include="Sprite\ISpriteContainerCollition.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

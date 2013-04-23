@@ -21,42 +21,40 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using SuperIHABrothers.GameState;
+
 
 namespace Sprites {
-	public class Anchor : IAnchor, IAnchorPlayer, IAnchorUpdate {
+	public class Anchor : IAnchor, IAnchorUpdate {
 
 
-        public Vector2 Position { get; private set; }
-        public int Speed { set; get; }
+        
 	    private Vector2 _velocety;
+	    private IKeybordInput _KeyInput;
+	    private ISpriteAnchor _player;
+        public Vector2 Position { get; set; }
 
-		public Anchor(){
+        public Anchor(IKeybordInput mKey, ISpriteAnchor mPlayer)
+        {
             Position = new Vector2(0,0);
             _velocety = new Vector2(0,0);
-		}
-		/// 
-		/// <param name="mSpeed"></param>
-		public void SetSpeed(int mSpeed)
-		{
-            if(mSpeed>=0)
-		        Speed = mSpeed;
-            else
-                throw new Exception("Cant have Negative Speed");
-		}
+		    _KeyInput = mKey;
+            _player = mPlayer;
+        }
 
 		public void Update()
 		{
-            if (Keyboard.GetState().IsKeyDown(Keys.Right))
-                _velocety.X = Speed;
-            else if (Keyboard.GetState().IsKeyDown(Keys.Left))
-                _velocety.X = -Speed;
-            else
-                _velocety.X = 0;
+            _velocety.X = 0;
+            if (_KeyInput.IsRightPressed)
+                _velocety.X += _player.Speed;
+            if (_KeyInput.IsLeftPressed)
+                _velocety.X += -_player.Speed;
+               
 		    Position += _velocety;
 		}
 
 
-
+	    
 	}//end Anchor
 
 }//end namespace Sprites
