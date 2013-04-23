@@ -7,47 +7,31 @@
 ///////////////////////////////////////////////////////////
 
 
-
-
+using System;
+using Microsoft.Xna.Framework;
 using Sprites;
 namespace Sprites {
 	public class SpritePlayer : ISprite {
 
 		public Sprites.IAnchorPlayer m_IAnchorPlayer;
+        public Vector2 MyPosition { get; set; }
+        public Rectangle MyRectangle { get; set; }
 
 		public SpritePlayer(){
-
+            throw new NotImplementedException();
 		}
 
-		~SpritePlayer(){
 
-		}
-
-		public virtual void Dispose(){
-
-		}
 
 		public void Draw(){
-
+            throw new NotImplementedException();
 		}
 
-		public Vector2 MyPosition{
-			get{
-				return MyPosition;
-			}
-			set{
-				MyPosition = value;
-			}
-		}
 
-		public Rectangle MyRectangle{
-			get{
-				return MyRectangle;
-			}
-		}
 
-		public void Update(){
 
+	    public void Update(){
+            throw new NotImplementedException();
 		}
 
 	}//end SpritePlayer

@@ -8,7 +8,8 @@
 
 
 
-
+using Sprites;
+using System.Collections.Generic;
 namespace CollitionControle {
 	public interface IColitionDetect  {
 
@@ -16,7 +17,7 @@ namespace CollitionControle {
 		/// <param name="mSpriteCollection"></param>
 		/// <param name="mSprite2"></param>
 		/// <param name="mSprite1"></param>
-		List<IEvent> Detect(ISpriteCollectionColition mSpriteCollection, ISprite mSprite2, ISprite mSprite1);
+		List<IEvent> Detect(ISpriteContainerCollition mSpriteCollection, ISprite mSprite2, ISprite mSprite1);
 	}//end IColitionDetect
 
 }//end namespace CollitionControle

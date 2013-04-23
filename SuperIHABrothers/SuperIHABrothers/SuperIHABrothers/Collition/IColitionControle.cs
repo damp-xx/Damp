@@ -8,13 +8,15 @@
 
 
 
+using System.Collections.Generic;
+using Sprites;
 
 namespace CollitionControle {
 	public interface IColitionControle  {
 
 		/// 
 		/// <param name="mSprites"></param>
-		List<IEvent> Update(List<ISprites> mSprites);
+		List<IEvent> Update(List<ISprite> mSprites);
 	}//end IColitionControle
 
 }//end namespace CollitionControle

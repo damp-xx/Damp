@@ -7,7 +7,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Space-Punk\Dropbox\Skole\4.Sem\I4PRJ\Games\SuperIHABrothers\SuperIHABrothers\SuperIHABrothers\bin\x86\Debug\Content\burning man.xnb</Output>
+      <Output>C:\Users\Space-Punk\Dropbox\Skole\4.Sem\I4PRJ\Games\Damp\SuperIHABrothers\SuperIHABrothers\SuperIHABrothers\bin\x86\Debug\Content\burning man.xnb</Output>
       <Time>2013-03-22T12:09:29+01:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
@@ -16,10 +16,10 @@
       <TargetProfile>HiDef</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Users\Space-Punk\Dropbox\Skole\4.Sem\I4PRJ\Games\SuperIHABrothers\SuperIHABrothers\SuperIHABrothersContent\</RootDirectory>
-      <LoggerRootDirectory>C:\Users\Space-Punk\Dropbox\Skole\4.Sem\I4PRJ\Games\SuperIHABrothers\SuperIHABrothers\SuperIHABrothers\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\Space-Punk\Dropbox\Skole\4.Sem\I4PRJ\Games\SuperIHABrothers\SuperIHABrothers\SuperIHABrothersContent\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\Space-Punk\Dropbox\Skole\4.Sem\I4PRJ\Games\SuperIHABrothers\SuperIHABrothers\SuperIHABrothers\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\Users\Space-Punk\Dropbox\Skole\4.Sem\I4PRJ\Games\Damp\SuperIHABrothers\SuperIHABrothers\SuperIHABrothersContent\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\Space-Punk\Dropbox\Skole\4.Sem\I4PRJ\Games\Damp\SuperIHABrothers\SuperIHABrothers\SuperIHABrothers\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\Space-Punk\Dropbox\Skole\4.Sem\I4PRJ\Games\Damp\SuperIHABrothers\SuperIHABrothers\SuperIHABrothersContent\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\Space-Punk\Dropbox\Skole\4.Sem\I4PRJ\Games\Damp\SuperIHABrothers\SuperIHABrothers\SuperIHABrothers\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>

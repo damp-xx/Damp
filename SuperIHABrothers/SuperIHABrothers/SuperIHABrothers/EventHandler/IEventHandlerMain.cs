@@ -7,7 +7,8 @@
 ///////////////////////////////////////////////////////////
 
 
-
+using System.Collections.Generic;
+using CollitionControle;
 
 namespace EventHandling {
 	public interface IEventHandlerMain  {

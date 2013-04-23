@@ -10,6 +10,8 @@
 
 
 using CollitionControle;
+using System.Collections.Generic;
+using Sprites;
 namespace CollitionControle {
 	public class MonsterEnviromentDetect : IColitionDetect {
 
@@ -17,23 +19,17 @@ namespace CollitionControle {
 
 		}
 
-		~MonsterEnviromentDetect(){
-
-		}
-
-		public virtual void Dispose(){
-
-		}
 
 		/// 
 		/// <param name="mSpriteCollection"></param>
 		/// <param name="mSprite2"></param>
 		/// <param name="mSprite1"></param>
-		public List<IEvent> Detect(ISpriteCollectionColition mSpriteCollection, ISprite mSprite2, ISprite mSprite1){
 
-			return null;
-		}
 
-	}//end MonsterEnviromentDetect
+        public List<IEvent> Detect(ISpriteContainerCollition mSpriteCollection, ISprite mSprite2, ISprite mSprite1)
+        {
+            throw new System.NotImplementedException();
+        }
+    }//end MonsterEnviromentDetect
 
 }//end namespace CollitionControle

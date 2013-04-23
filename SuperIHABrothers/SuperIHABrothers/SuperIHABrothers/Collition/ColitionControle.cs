@@ -10,30 +10,26 @@
 
 
 using CollitionControle;
+using System.Collections.Generic;
+using Sprites;
+
 namespace CollitionControle {
 	public class ColitionControle : IColitionControle {
 
-		public CollitionControle.IColitionDetect m_IColitionDetect;
+		private IColitionDetect _IColitionDetect;
 
-		public ColitionControle(){
-
+		public ColitionControle(IColitionDetect mColitionDetect)
+		{
+		    _IColitionDetect = mColitionDetect;
 		}
 
-		~ColitionControle(){
-
-		}
-
-		public virtual void Dispose(){
-
-		}
 
 		/// 
 		/// <param name="mSprites"></param>
-		public List<IEvent> Update(List<ISprites> mSprites){
-
-			return null;
-		}
-
-	}//end ColitionControle
+        public List<IEvent> Update(List<ISprite> mSprites)
+        {
+            throw new System.NotImplementedException();
+        }
+    }//end ColitionControle
 
 }//end namespace CollitionControle

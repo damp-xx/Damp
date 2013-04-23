@@ -7,8 +7,7 @@
 ///////////////////////////////////////////////////////////
 
 
-
-
+using System.Collections.Generic;
 using CollitionControle;
 namespace Sprites {
 	public interface ISpriteContainerCollition  {

@@ -9,22 +9,13 @@
 
 
 
-using CollitionControle;
+using Sprites;
 namespace CollitionControle {
 	public class MonsteDeathEvent : IEvent {
 
-		public MonsteDeathEvent(){
+		public MonsteDeathEvent(ISprite mSprite, ISpriteContainerCollition mSpriteContainerCollition){
 
 		}
-
-		~MonsteDeathEvent(){
-
-		}
-
-		public virtual void Dispose(){
-
-		}
-
 	}//end MonsteDeathEvent
 
 }//end namespace CollitionControle

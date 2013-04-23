@@ -17,7 +17,8 @@
     <XnaCrossPlatformGroupID>8f22fb00-e822-462a-912b-9653e4415c2a</XnaCrossPlatformGroupID>
     <XnaOutputType>Game</XnaOutputType>
     <ApplicationIcon>Game.ico</ApplicationIcon>
-    <Thumbnail>GameThumbnail.png</Thumbnail>
+    <Thumbnail>
+    </Thumbnail>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -107,6 +108,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GameState\IKeybordInput.cs" />
     <Compile Include="Sprite\Anchor.cs" />
     <Compile Include="Collition\ColitionControle.cs" />
     <Compile Include="Collition\IColitionControle.cs" />
@@ -121,13 +123,13 @@
     <Compile Include="EventHandler\EventHandlerPlayerDeath.cs" />
     <Compile Include="EventHandler\IEventHandlerMain.cs" />
     <Compile Include="EventHandler\IEventHandlerSpecefic.cs" />
-    <Compile Include="GameCtrl\Game.cs" />
-    <Compile Include="GameCtrl\ILevel.cs" />
-    <Compile Include="GameCtrl\Level1.cs" />
-    <Compile Include="GameStateR\GameState.cs" />
-    <Compile Include="GameStateR\IGameState.cs" />
-    <Compile Include="GameStateR\IGameStateEvent.cs" />
-    <Compile Include="GameStateR\IGameStateLevel.cs" />
+    <Compile Include="GameControle\Game.cs" />
+    <Compile Include="GameControle\ILevel.cs" />
+    <Compile Include="GameControle\Level1.cs" />
+    <Compile Include="GameState\GameState.cs" />
+    <Compile Include="GameState\IGameState.cs" />
+    <Compile Include="GameState\IGameStateEvent.cs" />
+    <Compile Include="GameState\IGameStateLevel.cs" />
     <Compile Include="Sprite\IAnchor.cs" />
     <Compile Include="Sprite\IAnchorPlayer.cs" />
     <Compile Include="Sprite\IAnchorUpdate.cs" />
@@ -146,7 +148,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />
-    <Content Include="GameThumbnail.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SuperIHABrothersContent\SuperIHABrothersContent.contentproj">

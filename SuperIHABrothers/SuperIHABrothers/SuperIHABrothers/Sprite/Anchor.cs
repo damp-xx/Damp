@@ -9,45 +9,53 @@
 
 
 
-using Sprites;
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.GamerServices;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
+
 namespace Sprites {
 	public class Anchor : IAnchor, IAnchorPlayer, IAnchorUpdate {
 
-		private Vector2D Position;
+
+        public Vector2 Position { get; private set; }
+        public int Speed { set; get; }
+	    private Vector2 _velocety;
 
 		public Anchor(){
-
+            Position = new Vector2(0,0);
+            _velocety = new Vector2(0,0);
 		}
-
-		~Anchor(){
-
-		}
-
-		public virtual void Dispose(){
-
-		}
-
-		public int Position{
-			get{
-				return Position;
-			}
-		}
-
 		/// 
 		/// <param name="mSpeed"></param>
-		public void SetSpeed(int mSpeed){
-
+		public void SetSpeed(int mSpeed)
+		{
+            if(mSpeed>=0)
+		        Speed = mSpeed;
+            else
+                throw new Exception("Cant have Negative Speed");
 		}
 
-		public void Update(){
-
+		public void Update()
+		{
+            if (Keyboard.GetState().IsKeyDown(Keys.Right))
+                _velocety.X = Speed;
+            else if (Keyboard.GetState().IsKeyDown(Keys.Left))
+                _velocety.X = -Speed;
+            else
+                _velocety.X = 0;
+		    Position += _velocety;
 		}
 
-		public int Speed{
-			set{
-				Speed = value;
-			}
-		}
+
 
 	}//end Anchor
 
