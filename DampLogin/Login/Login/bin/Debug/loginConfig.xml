@@ -1,0 +1,6 @@
+<XML>
+  <LoginConfig>
+    <RememberAccount>false</RememberAccount>
+    <AutoLogin>true</AutoLogin>
+  </LoginConfig>
+</XML>
