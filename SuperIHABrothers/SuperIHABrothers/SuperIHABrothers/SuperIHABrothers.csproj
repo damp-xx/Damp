@@ -110,15 +110,15 @@
   <ItemGroup>
     <Compile Include="GameState\IKeybordInput.cs" />
     <Compile Include="Sprite\Anchor.cs" />
-    <Compile Include="Collition\ColitionControle.cs" />
-    <Compile Include="Collition\IColitionControle.cs" />
-    <Compile Include="Collition\IColitionDetect.cs" />
-    <Compile Include="Collition\IEvent.cs" />
-    <Compile Include="Collition\MonsteDeathEvent.cs" />
-    <Compile Include="Collition\MonsterEnviromentDetect.cs" />
-    <Compile Include="Collition\PlayerDeathEvent.cs" />
-    <Compile Include="Collition\PlayerEnviromentDetect.cs" />
-    <Compile Include="Collition\PlayerMonsterDetect.cs" />
+    <Compile Include="Collision\CollisionControle.cs" />
+    <Compile Include="Collision\ICollisionControle.cs" />
+    <Compile Include="Collision\ICollisionDetect.cs" />
+    <Compile Include="Collision\IEvent.cs" />
+    <Compile Include="Collision\MonsteDeathEvent.cs" />
+    <Compile Include="Collision\MonsterEnviromentDetect.cs" />
+    <Compile Include="Collision\PlayerDeathEvent.cs" />
+    <Compile Include="Collision\PlayerEnviromentDetect.cs" />
+    <Compile Include="Collision\PlayerMonsterDetect.cs" />
     <Compile Include="EventHandler\EventHandlerMain.cs" />
     <Compile Include="EventHandler\EventHandlerPlayerDeath.cs" />
     <Compile Include="EventHandler\IEventHandlerMain.cs" />
