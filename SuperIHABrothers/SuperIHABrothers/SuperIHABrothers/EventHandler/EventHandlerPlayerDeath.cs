@@ -7,7 +7,7 @@
 ///////////////////////////////////////////////////////////
 
 
-using CollisionControle;
+using Collision;
 using EventHandling;
 using GameState;
 namespace EventHandling {
