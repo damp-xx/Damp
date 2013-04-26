@@ -9,13 +9,11 @@ namespace CommunicationLibrary
 {
     class ComEvents
     {
-        public static string _ComToken { get; set; }
-        public static string _ComIp { get; private set; }
         public static void Listen()
         {
-            var client = new DampServerClient(_ComIp);
+            var client = new DampServerClient(ComLogin._ComIp);
 
-            client.Listen(_ComToken);
+            client.Listen(ComLogin._ComToken);
 
         }
     }
