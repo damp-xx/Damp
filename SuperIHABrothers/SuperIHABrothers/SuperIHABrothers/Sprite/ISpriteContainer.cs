@@ -7,7 +7,7 @@
 ///////////////////////////////////////////////////////////
 
 
-
+using System.Collections.Generic;
 
 namespace Sprites {
 	public interface ISpriteContainer  {

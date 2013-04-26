@@ -19,7 +19,6 @@ namespace SuperIHABrothers
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        private Player player;
 
         public Game1()
         {
@@ -38,7 +37,7 @@ namespace SuperIHABrothers
             // TODO: Add your initialization logic here
 
             base.Initialize();
-            player = new Player(Content.Load<Texture2D>("burning man"), new Vector2(100, 100), 47, 44);
+            
         }
 
         /// <summary>
@@ -74,7 +73,7 @@ namespace SuperIHABrothers
                 this.Exit();
 
             // TODO: Add your update logic here
-            player.Update(gameTime, new List<ISprite>());
+            
             base.Update(gameTime);
         }
 
@@ -88,7 +87,7 @@ namespace SuperIHABrothers
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
-            player.Draw(spriteBatch);
+            
             spriteBatch.End();
             base.Draw(gameTime);
         }

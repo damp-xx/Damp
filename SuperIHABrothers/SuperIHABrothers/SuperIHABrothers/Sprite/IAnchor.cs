@@ -7,14 +7,12 @@
 ///////////////////////////////////////////////////////////
 
 
-
+using Microsoft.Xna.Framework;
 
 namespace Sprites {
 	public interface IAnchor  {
 
-		2DVector Position{
-			get;
-		}
+        Vector2 Position { get; set; }
 	}//end IAnchor
 
 }//end namespace Sprites

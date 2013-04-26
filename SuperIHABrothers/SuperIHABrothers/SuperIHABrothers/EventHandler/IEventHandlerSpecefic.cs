@@ -7,7 +7,7 @@
 ///////////////////////////////////////////////////////////
 
 
-
+using Collision;
 
 namespace EventHandling {
 	public interface IEventHandlerSpecefic  {

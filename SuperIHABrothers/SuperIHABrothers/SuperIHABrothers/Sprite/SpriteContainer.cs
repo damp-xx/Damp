@@ -7,54 +7,47 @@
 ///////////////////////////////////////////////////////////
 
 
-
-
+using System.Collections.Generic;
 using Sprites;
 namespace Sprites {
-	public class SpriteContainer : ISpriteContainer, ISpriteContainerCollition {
+	public class SpriteContainer : ISpriteContainer, ISpriteContainerCollision {
 
-		public Sprites.IAnchorUpdate m_IAnchorUpdate;
-		public Sprites.ISprite m_ISprite;
+		public Sprites.IAnchorUpdate _IAnchorUpdate;
+		public Sprites.ISprite _ISprite;
+	    private List<ISprite> _spriteList;
+        List<ISprite> ISpriteContainer.SpriteList { set { _spriteList = value; } }
+        List<ISprite> ISpriteContainerCollision.SpriteList { get { return _spriteList; } }
 
 		public SpriteContainer(){
 
 		}
 
-		~SpriteContainer(){
 
-		}
-
-		public virtual void Dispose(){
-
-		}
 
 		/// 
 		/// <param name="mStrite"></param>
 		public void AddSprite(ISprite mStrite){
-
+            throw new System.NotImplementedException();
 		}
 
 		/// 
 		/// <param name="mSprite"></param>
 		public void RemoveSprite(ISprite mSprite){
-
+            throw new System.NotImplementedException();
 		}
 
-		public List<ISprite> ISpriteContainer.SpriteList{
-			set{
-				SpriteList = value;
-			}
-		}
+	    
+	    public void Update()
+	    {
+	        throw new System.NotImplementedException();
+	    }
 
-		public void Update(){
 
-		}
+	    
 
-		public List<ISprite> ISpriteContainerCollition.SpriteList{
-			get{
-				return SpriteList;
-			}
-		}
+
+
+
 
 	}//end SpriteContainer
 

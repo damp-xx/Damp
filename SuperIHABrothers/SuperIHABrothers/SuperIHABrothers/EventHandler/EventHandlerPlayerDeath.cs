@@ -7,8 +7,7 @@
 ///////////////////////////////////////////////////////////
 
 
-
-
+using Collision;
 using EventHandling;
 using GameState;
 namespace EventHandling {
@@ -20,13 +19,6 @@ namespace EventHandling {
 
 		}
 
-		~EventHandlerPlayerDeath(){
-
-		}
-
-		public virtual void Dispose(){
-
-		}
 
 		/// 
 		/// <param name="mEvent"></param>

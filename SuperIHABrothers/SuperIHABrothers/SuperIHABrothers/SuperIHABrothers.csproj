@@ -17,7 +17,8 @@
     <XnaCrossPlatformGroupID>8f22fb00-e822-462a-912b-9653e4415c2a</XnaCrossPlatformGroupID>
     <XnaOutputType>Game</XnaOutputType>
     <ApplicationIcon>Game.ico</ApplicationIcon>
-    <Thumbnail>GameThumbnail.png</Thumbnail>
+    <Thumbnail>
+    </Thumbnail>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -107,46 +108,46 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GameState\IKeybordInput.cs" />
     <Compile Include="Sprite\Anchor.cs" />
-    <Compile Include="Collition\ColitionControle.cs" />
-    <Compile Include="Collition\IColitionControle.cs" />
-    <Compile Include="Collition\IColitionDetect.cs" />
-    <Compile Include="Collition\IEvent.cs" />
-    <Compile Include="Collition\MonsteDeathEvent.cs" />
-    <Compile Include="Collition\MonsterEnviromentDetect.cs" />
-    <Compile Include="Collition\PlayerDeathEvent.cs" />
-    <Compile Include="Collition\PlayerEnviromentDetect.cs" />
-    <Compile Include="Collition\PlayerMonsterDetect.cs" />
+    <Compile Include="Collision\CollisionControle.cs" />
+    <Compile Include="Collision\ICollisionControle.cs" />
+    <Compile Include="Collision\ICollisionDetect.cs" />
+    <Compile Include="Collision\IEvent.cs" />
+    <Compile Include="Collision\MonsteDeathEvent.cs" />
+    <Compile Include="Collision\MonsterEnviromentDetect.cs" />
+    <Compile Include="Collision\PlayerDeathEvent.cs" />
+    <Compile Include="Collision\PlayerEnviromentDetect.cs" />
+    <Compile Include="Collision\PlayerMonsterDetect.cs" />
     <Compile Include="EventHandler\EventHandlerMain.cs" />
     <Compile Include="EventHandler\EventHandlerPlayerDeath.cs" />
     <Compile Include="EventHandler\IEventHandlerMain.cs" />
     <Compile Include="EventHandler\IEventHandlerSpecefic.cs" />
-    <Compile Include="GameCtrl\Game.cs" />
-    <Compile Include="GameCtrl\ILevel.cs" />
-    <Compile Include="GameCtrl\Level1.cs" />
-    <Compile Include="GameStateR\GameState.cs" />
-    <Compile Include="GameStateR\IGameState.cs" />
-    <Compile Include="GameStateR\IGameStateEvent.cs" />
-    <Compile Include="GameStateR\IGameStateLevel.cs" />
+    <Compile Include="GameControle\Game.cs" />
+    <Compile Include="GameControle\ILevel.cs" />
+    <Compile Include="GameControle\Level1.cs" />
+    <Compile Include="GameState\GameState.cs" />
+    <Compile Include="GameState\IGameState.cs" />
+    <Compile Include="GameState\IGameStateEvent.cs" />
+    <Compile Include="GameState\IGameStateLevel.cs" />
     <Compile Include="Sprite\IAnchor.cs" />
-    <Compile Include="Sprite\IAnchorPlayer.cs" />
     <Compile Include="Sprite\IAnchorUpdate.cs" />
     <Compile Include="Sprite\ISprite.cs" />
+    <Compile Include="Sprite\ISpriteAnchor.cs" />
     <Compile Include="Sprite\ISpriteContainer.cs" />
-    <Compile Include="Sprite\ISpriteContainerCollition.cs" />
+    <Compile Include="Sprite\ISpriteContainerCollision.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Sprite\SpriteBackground.cs" />
     <Compile Include="Sprite\SpriteContainer.cs" />
     <Compile Include="Sprite\SpriteDeathAnimaiton.cs" />
-    <Compile Include="Sprite\SpriteEnviroment.cs" />
+    <Compile Include="Sprite\SpriteEnvironment.cs" />
     <Compile Include="Sprite\SpriteMonster.cs" />
     <Compile Include="Sprite\SpritePlayer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />
-    <Content Include="GameThumbnail.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SuperIHABrothersContent\SuperIHABrothersContent.contentproj">

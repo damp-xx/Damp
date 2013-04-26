@@ -8,7 +8,7 @@
 
 
 
-
+using Microsoft.Xna.Framework;
 namespace Sprites {
 	public interface ISprite  {
 
@@ -19,9 +19,9 @@ namespace Sprites {
 			set;
 		}
 
-		Rectangle MyRectangle{
-			get;
-		}
+        Rectangle MyRectangle
+        {
+            get; set; }
 
 		void Update();
 	}//end ISprite

@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+
+<!--This is the website used for the Prj4 project.
+The content of the website is:
+* A homepage which guides the user, to either creating an account or downloading the game client
+* A Create Client page where the user inputs the needed information.
+* A login page. After login the user can gain access to "User Only" content
+* A Download Client page. once user gains access to this page, a downloader will be initiated.-->
+
+</head>
+<body style="background-color:#A9D0F5;">
+
+<!--This is the HTML code for the Homepage.-->
+<h1 style="text-align:center;font-size:200%">Prj4 homepage</h1>
+<p style="font-family:arial;font-size:15px;">Welcome to **INSERT NAME**! <br />You can use this website for:<br /> Creating an account to gain access to the game client. <br /> Download the game client.</p>
+
+<hr />
+
+<h2>Create Account</h2>
+
+<span style="background-color:##FF0000;color:#ffffff;">PLEASE NOTE<br /></span>
+
+<p style="font-family:arial;font-size:15;"> If you already have created an account, you can skip this step and go right ahead and Download the game client. Click on the following link below to Download the game client. 
+<br /> <br /> 
+<a href="#Download_Client">Download Client</a>
+<br /> <br /> 
+To create an account, click on the following link below: <br /> <br />
+<a href="#Create_Account">Create Account</a>
+</p>
+
+<hr />
+
+<!--This is the "Create Account" section.-->
+<h2><a id="Create_Account">Create Account</a></h2>
+<p style="font-family:arial;font-size:15;"> To create an account, you have to fill out all the infomation fields. If you haven't filled all fields, your account will be invalid. </p>
+
+<!--This section is used to choose between sex-->
+<form name="input" action="html_account_info.asp" method="get">
+<input type="radio" name="sex" value="male">Male<br>
+<input type="radio" name="sex" value="female">Female<br>
+<input type="submit" value="Submit">
+</form> 
+
+<br />
+
+<!--This section is used to input users personal name-->
+<form name="input" action="html_account_info.asp" method="get">
+First name: <input type="text" name="FirstName" value=""><br>
+Last name: <input type="text" name="LastName" value=""><br>
+
+<br />
+
+<!--This section is used to pick a "Date of Birth"
+The source for this script can be found at: http://www.htmlforums.com/client-side-scripting/t-date-of-birth-form-114779.html.
+Last visited at: 12/04/2013-->
+<p style="font-family:arial;font-size:15;">Date Of Birth:</p>
+<form name="input" action="html_form_action.asp" method="get">
+<select name="month" onChange="changeDate(this.options[selectedIndex].value);">
+<option value="na">Month</option>
+<option value="1">January</option>
+<option value="2">February</option>
+<option value="3">March</option>
+<option value="4">April</option>
+<option value="5">May</option>
+<option value="6">June</option>
+<option value="7">July</option>
+<option value="8">August</option>
+<option value="9">September</option>
+<option value="10">October</option>
+<option value="11">November</option>
+<option value="12">December</option>
+</select>
+<select name="day" id="day">
+<option value="na">Day</option>
+</select>
+<select name="year" id="year">
+<option value="na">Year</option>
+</select>
+<script language="JavaScript" type="text/javascript">
+function changeDate(i){
+var e = document.getElementById('day');
+while(e.length>0)
+e.remove(e.length-1);
+var j=-1;
+if(i=="na")
+k=0;
+else if(i==2)
+k=28;
+else if(i==4||i==6||i==9||i==11)
+k=30;
+else
+k=31;
+while(j++<k){
+var s=document.createElement('option');
+var e=document.getElementById('day');
+if(j==0){
+s.text="Day";
+s.value="na";
+try{
+e.add(s,null);}
+catch(ex){
+e.add(s);}}
+else{
+s.text=j;
+s.value=j;
+try{
+e.add(s,null);}
+catch(ex){
+e.add(s);}}}}
+y = 2010;
+while (y-->1909){
+var s = document.createElement('option');
+var e = document.getElementById('year');
+s.text=y;
+s.value=y;
+try{
+e.add(s,null);}
+catch(ex){
+e.add(s);}}
+</script>
+
+
+<!--If you click the "Submit" button, the form-data will be sent to a page called "html_account_info.asp".-->
+
+<hr />
+
+<!--This is "Download Client" section.-->
+<h2><a id="Download_Client">Download Client</a></h2>
+<p style="font-family:arial;font-size:15;"> test </p>
+
+
+
+</body>
+</html>

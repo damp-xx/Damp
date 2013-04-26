@@ -7,8 +7,8 @@
 ///////////////////////////////////////////////////////////
 
 
-
-
+using System.Collections.Generic;
+using Collision;
 using EventHandling;
 namespace EventHandling {
 	public class EventHandlerMain : IEventHandlerMain {
@@ -19,13 +19,7 @@ namespace EventHandling {
 
 		}
 
-		~EventHandlerMain(){
 
-		}
-
-		public virtual void Dispose(){
-
-		}
 
 		/// 
 		/// <param name="mEventList"></param>
