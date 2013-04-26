@@ -1,0 +1,71 @@
+26-04-2013 10:46:06	This log contains information about the import schema operation into project 'Database1' on computer 'MICHAEL-P' by user 'Michael'.
+26-04-2013 10:46:06	Import of database schema has started.
+26-04-2013 10:46:16	Gathering database options
+26-04-2013 10:46:16	Gathering users
+26-04-2013 10:46:16	Gathering roles
+26-04-2013 10:46:16	Gathering application roles
+26-04-2013 10:46:16	Gathering role memberships
+26-04-2013 10:46:16	Gathering filegroups
+26-04-2013 10:46:16	Gathering full-text catalogs
+26-04-2013 10:46:16	Gathering assemblies
+26-04-2013 10:46:16	Gathering certificates
+26-04-2013 10:46:16	Gathering asymmetric keys
+26-04-2013 10:46:16	Gathering symmetric keys
+26-04-2013 10:46:16	Gathering encrypted symmetric keys
+26-04-2013 10:46:16	Gathering schemas
+26-04-2013 10:46:16	Gathering XML schema collections
+26-04-2013 10:46:16	Gathering user-defined data types
+26-04-2013 10:46:16	Gathering user-defined types
+26-04-2013 10:46:16	Gathering table types
+26-04-2013 10:46:16	Gathering unique keys for table types
+26-04-2013 10:46:16	Gathering primary keys for table types
+26-04-2013 10:46:16	Gathering check constraints for table types
+26-04-2013 10:46:16	Gathering default constraints for table types
+26-04-2013 10:46:16	Gathering partition functions
+26-04-2013 10:46:16	Gathering partition schemes
+26-04-2013 10:46:16	Gathering functions
+26-04-2013 10:46:16	Gathering encrypted functions
+26-04-2013 10:46:16	Gathering aggregates
+26-04-2013 10:46:16	Gathering procedures
+26-04-2013 10:46:16	Gathering encrypted procedures
+26-04-2013 10:46:16	Gathering tables
+26-04-2013 10:46:16	Gathering primary keys
+26-04-2013 10:46:16	Gathering unique constraints
+26-04-2013 10:46:16	Gathering foreign keys
+26-04-2013 10:46:16	Gathering default constraints
+26-04-2013 10:46:16	Gathering check constraints
+26-04-2013 10:46:16	Gathering views
+26-04-2013 10:46:16	Gathering encrypted views
+26-04-2013 10:46:16	Gathering indexes
+26-04-2013 10:46:16	Gathering statistics
+26-04-2013 10:46:16	Gathering full-text index stoplists
+26-04-2013 10:46:16	Gathering full-text indexes
+26-04-2013 10:46:16	Gathering spatial indexes
+26-04-2013 10:46:16	Gathering XML indexes
+26-04-2013 10:46:16	Gathering encrypted triggers
+26-04-2013 10:46:16	Gathering triggers
+26-04-2013 10:46:16	Gathering encrypted and clr ddl triggers
+26-04-2013 10:46:16	Gathering ddl triggers
+26-04-2013 10:46:16	Gathering synonyms
+26-04-2013 10:46:16	Gathering defaults
+26-04-2013 10:46:16	Gathering data constraint uddt bindings
+26-04-2013 10:46:16	Gathering rules
+26-04-2013 10:46:16	Gathering data constraint uddt bindings
+26-04-2013 10:46:16	Gathering message types
+26-04-2013 10:46:16	Gathering queues
+26-04-2013 10:46:16	Gathering contracts
+26-04-2013 10:46:16	Gathering services
+26-04-2013 10:46:16	Gathering event notifications
+26-04-2013 10:46:16	Gathering remote service bindings
+26-04-2013 10:46:16	Gathering broker priorities
+26-04-2013 10:46:16	Gathering signatures
+26-04-2013 10:46:16	Gathering data compression options
+26-04-2013 10:46:16	Gathering extended properties
+26-04-2013 10:46:17	Gathering credentials
+26-04-2013 10:46:17	Gathering logins
+26-04-2013 10:46:17	Gathering server audits
+26-04-2013 10:46:17	Scanning project for duplicate elements
+26-04-2013 10:46:17	Finished duplicate element processing
+26-04-2013 10:46:18	Finished importing database.
+26-04-2013 10:46:18	A summary of the import was saved to the following location: C:\Users\Michael\Documents\teststuff\Database1\Database1\Import Schema Logs\Database1_20130426084606.log
+26-04-2013 10:46:18	Click Finish to continue...
