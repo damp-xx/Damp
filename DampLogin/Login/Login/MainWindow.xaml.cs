@@ -17,40 +17,43 @@ namespace Login
     {
         XmlDocument xmlCfg = new XmlDocument();
         private const string ConfPath = "loginConfig.xml";
-        private bool rememberLogin = false;
-        private bool autoLogin = false;
+        private bool _rememberLogin = false;
+        private bool _autoLogin = false;
+        private const string LoginConfNode = "LoginConfig";
+        private const string RememberAccountElement = "RememberAccount";
+        private const string AutoLoginElement = "AutoLogin";
+        private const string AccountNameElement = "AccountName";
+        private string _username = "";
 
         public MainWindow()
         {
-            if (!File.Exists(ConfPath))
+            if (File.Exists(ConfPath))
             {
-                CreateXml();
-            }
-            else
-            {
-                ReadXml();
+                ReadConfXml();
             }
 
             InitializeComponent();
 
-            if (!rememberLogin)
+            if (!_rememberLogin)
             {
                 AutoLoginCheck.IsEnabled = false;
                 AutoLoginCheck.IsChecked = false;
-                RememberLoginCheck.IsChecked = rememberLogin;
+                RememberLoginCheck.IsChecked = _rememberLogin;
             }
             else
             {
-                RememberLoginCheck.IsChecked = rememberLogin;
-                AutoLoginCheck.IsChecked = autoLogin;
+                RememberLoginCheck.IsChecked = _rememberLogin;
+                AutoLoginCheck.IsChecked = _autoLogin;
             }
-            
+            Username.Text = _username;
             Username.Focus();
         }
+
         private void RememberCheckOn(object sender, RoutedEventArgs e)
         {
             AutoLoginCheck.IsEnabled = true;
         }
+
         private void RememberCheckOff(object sender, RoutedEventArgs e)
         {
             AutoLoginCheck.IsEnabled = false;
@@ -76,8 +79,8 @@ namespace Login
 
         private void LoginButton_OnClick(object sender, RoutedEventArgs e)
         {
-            
-            throw new NotImplementedException();
+            WriteXml();
+            //throw new NotImplementedException();
         }
 
         private void Logo_OnMouseDown(object sender, MouseButtonEventArgs e)
@@ -106,59 +109,89 @@ namespace Login
             }
         }
 
-        private void CreateXml()
+        private void CreateConfXml()
         {
             XmlNode rootNode = xmlCfg.CreateElement("XML");
             xmlCfg.AppendChild(rootNode);
 
-            XmlNode configNode = xmlCfg.CreateElement("LoginConfig");
-            var configElement = xmlCfg.CreateElement("RememberAccount");
-            configElement.InnerText = "false";
+            XmlNode configNode = xmlCfg.CreateElement(LoginConfNode);
+            var configElement = xmlCfg.CreateElement(RememberAccountElement);
+            configElement.InnerText = RememberLoginCheck.IsChecked.Value.ToString();
+
             configNode.AppendChild(configElement);
-            configElement = xmlCfg.CreateElement("AutoLogin");
-            configElement.InnerText = "false";
+            configElement = xmlCfg.CreateElement(AccountNameElement);
+            configElement.InnerText = Username.Text;
+            configNode.AppendChild(configElement);
+
+            configElement = xmlCfg.CreateElement(AutoLoginElement);
+            configElement.InnerText = AutoLoginCheck.IsChecked.Value.ToString();
             configNode.AppendChild(configElement);
             rootNode.AppendChild(configNode);
+
             xmlCfg.Save(ConfPath);
         }
 
-        private void ReadXml()
+        private void ReadConfXml()
         {
             try
             {
                 xmlCfg.Load(ConfPath);
-                var node = xmlCfg.GetElementsByTagName("LoginConfig").Item(0);
-                if (node != null)
+                XmlElement root = xmlCfg.DocumentElement;
+
+                if (root != null)
                 {
-                    var element = node.ChildNodes;
-                    try
+                    bool.TryParse(root.GetElementsByTagName(RememberAccountElement).Item(0).InnerText, out _rememberLogin);
+                    bool.TryParse(root.GetElementsByTagName(AutoLoginElement).Item(0).InnerText, out _autoLogin);
+                    if (_rememberLogin == true)
                     {
-                        rememberLogin = string.IsNullOrEmpty(element.Item(0).InnerText) ? false : bool.Parse(element.Item(0).InnerText);
-                    }
-                    catch (FormatException e)
-                    {
-                        rememberLogin = false;
-                    }
-                    try
-                    {
-                        autoLogin = string.IsNullOrEmpty(element.Item(1).InnerText) ? false : bool.Parse(element.Item(1).InnerText);
-                    }
-                    catch (FormatException e)
-                    {
-                        autoLogin = false;
+                        _username = root.GetElementsByTagName(AccountNameElement).Item(0).InnerText;
                     }
                 }
             }
-            //on exception, overwrite file using default values
+            //on exception, delete file
             catch (XmlException e)
             {
                 File.Delete(ConfPath);
-                CreateXml();
             }
         }
-        private void WriteXml(string rememberAccountSet, string autoLoginSet)
+
+        private void WriteXml()
         {
-            
+            if (File.Exists(ConfPath))
+            {
+                try
+                {
+                    xmlCfg.Load(ConfPath);
+                    XmlElement root = xmlCfg.DocumentElement;
+
+                    if (root != null)
+                    {
+                        root.GetElementsByTagName(RememberAccountElement).Item(0).InnerText =
+                            RememberLoginCheck.IsChecked.Value.ToString();
+                        root.GetElementsByTagName(AutoLoginElement).Item(0).InnerText =
+                            AutoLoginCheck.IsChecked.Value.ToString();
+
+                        if (RememberLoginCheck.IsChecked.Value == true)
+                        {
+                            root.GetElementsByTagName(AccountNameElement).Item(0).InnerText = Username.Text;
+                        }
+                        else
+                        {
+                            root.GetElementsByTagName(AccountNameElement).Item(0).InnerText = "";
+                        }
+                    }
+                    xmlCfg.Save(ConfPath);
+                }
+                catch (XmlException e)
+                {
+                    File.Delete(ConfPath);
+                    CreateConfXml();
+                }
+            }
+            else
+            {
+                CreateConfXml();
+            }
         }
     }
 }
