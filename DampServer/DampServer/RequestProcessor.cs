@@ -177,7 +177,24 @@ namespace DampServer
                 case "Download":
                     leCmd=new DownloadCommand();
                     break;
-                    
+                case "GetMyGames":
+                    leCmd=new GameCommand();
+                    break;
+                case "GetAllGames":
+                    leCmd=new GameCommand();
+                    break;
+                case "GameSearch":
+                    leCmd=new GameCommand();
+                    break;
+                case "BuyGame":
+                    leCmd=new GameCommand();
+                    break;
+                case "GameInfo":
+                    leCmd=new GameCommand();
+                    break;
+                case "GetGame":
+                    leCmd=new GameCommand();
+                    break;    
 
                 default:
                     throw new CommandNotFoundException(cmd);

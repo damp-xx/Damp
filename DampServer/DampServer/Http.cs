@@ -267,6 +267,16 @@ namespace DampServer
             }           
         }
 
+        private string GetMimeType(string fileName)
+        {
+            string mimeType = "application/unknown";
+            string ext = System.IO.Path.GetExtension(fileName).ToLower();
+            Microsoft.Win32.RegistryKey regKey = Microsoft.Win32.Registry.ClassesRoot.OpenSubKey(ext);
+            if (regKey != null && regKey.GetValue("Content Type") != null)
+                mimeType = regKey.GetValue("Content Type").ToString();
+            return mimeType;
+        }
+
         /**
          * SendFileResponse
          * 
@@ -274,27 +284,40 @@ namespace DampServer
          */
         public void SendFileResponse(string filename)
         {
-            using (FileStream fs = File.OpenRead(filename))
+            try
             {
-                Length = fs.Length;
-                Type = MediaTypeNames.Application.Octet;
-                AddHeader("Content-disposition", "attachment; filename=largefile.txt");
-                Status = "200 OK";
 
-                SendResponseHeader();
-
-                var buffer = new byte[64*1024];
-                using (var bw = new BinaryWriter(_network))
+                using (FileStream fs = File.OpenRead(filename))
                 {
-                    int read;
-                    while ((read = fs.Read(buffer, 0, buffer.Length)) > 0)
+                    Length = fs.Length;
+                    Type = GetMimeType(filename);
+                    AddHeader("Content-disposition", "attachment; filename="+filename);
+                    Status = "200 OK";
+
+                    SendResponseHeader();
+
+                    var buffer = new byte[64*1024];
+                    using (var bw = new BinaryWriter(_network))
                     {
-                        bw.Write(buffer, 0, read);
-                        bw.Flush(); //seems to have no effect
+                        int read;
+                        while ((read = fs.Read(buffer, 0, buffer.Length)) > 0)
+                        {
+                            bw.Write(buffer, 0, read);
+                            bw.Flush(); 
+                        }
+
+                        bw.Close();
                     }
 
-                    bw.Close();
+                    fs.Close();
                 }
+            }
+            catch (FileNotFoundException e)
+            {
+                SendXmlResponse(new ErrorXmlResponse
+                    {
+                        Message = e.Message
+                    });
             }
         }
     }

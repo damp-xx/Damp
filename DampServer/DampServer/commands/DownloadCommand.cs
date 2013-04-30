@@ -17,7 +17,13 @@ namespace DampServer.commands
 
         public void Execute(ICommandArgument http, string cmd = null)
         {
-            http.SendFileResponse("download.txt");
+            if (string.IsNullOrEmpty(http.Query.Get("Object")))
+            {
+                http.SendXmlResponse(new ErrorXmlResponse {Message = "Missing arguments"});
+                return;
+            }
+
+            http.SendFileResponse(@"../../public/"+http.Query.Get("Object"));
         }
 
         public bool NeedsAuthcatication { get; private set; }

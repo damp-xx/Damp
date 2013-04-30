@@ -49,6 +49,7 @@
     <Compile Include="Archivement.cs" />
     <Compile Include="commands\ChatCommand.cs" />
     <Compile Include="commands\FriendCommand.cs" />
+    <Compile Include="commands\GameCommand.cs" />
     <Compile Include="interfaces\INotify.cs" />
     <Compile Include="Notifier.cs" />
     <Compile Include="responses\ChatXmlResponse.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="RequestProcessor.cs" />
     <Compile Include="responses\FrendRequestResponse.cs" />
     <Compile Include="responses\FriendSearchResponse.cs" />
+    <Compile Include="responses\GameListResponse.cs" />
     <Compile Include="SocketHandler.cs" />
     <Compile Include="responses\StatusXmlResponse.cs" />
     <Compile Include="commands\UploadGameCommand.cs" />
@@ -88,6 +90,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
+    <Folder Include="public\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -33,7 +33,7 @@ namespace DampServer.commands
         {
             // @TODO PROPER VALIDATION
 
-            if (string.IsNullOrEmpty(http.Query.Get("Username")) && string.IsNullOrEmpty(http.Query.Get("Password")))
+            if (string.IsNullOrEmpty(http.Query.Get("Username")) || string.IsNullOrEmpty(http.Query.Get("Password")))
             {
                 http.SendXmlResponse(new ErrorXmlResponse {Message = "Missing arguments #1112!"});
                 return;

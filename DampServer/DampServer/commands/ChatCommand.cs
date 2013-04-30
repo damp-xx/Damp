@@ -52,6 +52,7 @@ namespace DampServer.commands
                     Message = http.Query.Get("Message"),
                     To = http.Query.Get("To"),
                     From = me.Username,
+                    Command = "ChatRecieved"
                 };
 
             Database db = new Database();
@@ -83,7 +84,7 @@ namespace DampServer.commands
                 {
                     Code = 200,
                     Message = http.Query.Get("Message"),
-                    Command = "Chat"
+                    Command = "ChatSend"
                 });
         }
 
