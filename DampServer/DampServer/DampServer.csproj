@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -72,6 +73,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="RequestProcessor.cs" />
     <Compile Include="responses\FrendRequestResponse.cs" />
+    <Compile Include="responses\FriendSearchResponse.cs" />
     <Compile Include="SocketHandler.cs" />
     <Compile Include="responses\StatusXmlResponse.cs" />
     <Compile Include="commands\UploadGameCommand.cs" />

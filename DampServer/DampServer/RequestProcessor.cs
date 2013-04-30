@@ -172,6 +172,9 @@ namespace DampServer
                 case "RemoveFriend":
                     leCmd=new FriendCommand();
                     break;
+                case "FriendSearch":
+                    leCmd=new UserCommands();
+                    break;
                     
 
                 default:
