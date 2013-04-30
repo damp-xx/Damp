@@ -9,31 +9,27 @@
 
 
 
-using CollitionControle;
-namespace CollitionControle {
-	public class MonsterEnviromentDetect : IColitionDetect {
+using Collision;
+using System.Collections.Generic;
+using Sprites;
+namespace Collision {
+	public class MonsterEnviromentDetect : ICollisionDetect {
 
 		public MonsterEnviromentDetect(){
 
 		}
 
-		~MonsterEnviromentDetect(){
-
-		}
-
-		public virtual void Dispose(){
-
-		}
 
 		/// 
 		/// <param name="mSpriteCollection"></param>
 		/// <param name="mSprite2"></param>
 		/// <param name="mSprite1"></param>
-		public List<IEvent> Detect(ISpriteCollectionColition mSpriteCollection, ISprite mSprite2, ISprite mSprite1){
 
-			return null;
-		}
 
-	}//end MonsterEnviromentDetect
+        public IEvent Detect(ISpriteContainerCollision mSpriteCollection, ISprite mSprite2, ISprite mSprite1)
+        {
+            throw new System.NotImplementedException();
+        }
+    }//end MonsterEnviromentDetect
 
-}//end namespace CollitionControle
+}//end namespace CollisionControl

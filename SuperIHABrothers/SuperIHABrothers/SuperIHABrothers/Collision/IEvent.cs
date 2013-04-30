@@ -9,9 +9,9 @@
 
 
 
-namespace CollitionControle {
+namespace Collision {
 	public interface IEvent  {
 
 	}//end IEvent
 
-}//end namespace CollitionControle
+}//end namespace CollisionControl

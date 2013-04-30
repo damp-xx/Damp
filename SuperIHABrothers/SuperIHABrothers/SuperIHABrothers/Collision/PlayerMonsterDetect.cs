@@ -7,14 +7,15 @@
 ///////////////////////////////////////////////////////////
 
 
+using System.Collections.Generic;
+using Collision;
+using Sprites;
 
+namespace Collision {
+	public class PlayerMonsterDetect : ICollisionDetect {
 
-using CollitionControle;
-namespace CollitionControle {
-	public class PlayerMonsterDetect : IColitionDetect {
-
-		public CollitionControle.MonsteDeathEvent m_MonsteDeathEvent;
-		public CollitionControle.PlayerDeathEvent m_PlayerDeathEvent;
+		public MonsterDeathEvent MMonsterDeathEvent;
+		public PlayerDeathEvent m_PlayerDeathEvent;
 
 		public PlayerMonsterDetect(){
 
@@ -32,11 +33,12 @@ namespace CollitionControle {
 		/// <param name="mSpriteCollection"></param>
 		/// <param name="mSprite2"></param>
 		/// <param name="mSprite1"></param>
-		public List<IEvent> Detect(ISpriteCollectionColition mSpriteCollection, ISprite mSprite2, ISprite mSprite1){
 
-			return null;
-		}
 
-	}//end PlayerMonsterDetect
+        public IEvent Detect(ISpriteContainerCollision mSpriteCollection, ISprite mSprite2, ISprite mSprite1)
+        {
+            throw new System.NotImplementedException();
+        }
+    }//end PlayerMonsterDetect
 
-}//end namespace CollitionControle
+}//end namespace CollisionControl
