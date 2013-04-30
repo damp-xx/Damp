@@ -6,6 +6,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Net.Mail;
 using DampServer.interfaces;
+using DampServer.responses;
 
 #endregion
 
@@ -120,6 +121,46 @@ namespace DampServer.commands
             _http.SendXmlResponse(user);
             
             
+        }
+
+        private void HandleFriendSearch()
+        {
+            if (string.IsNullOrEmpty(_http.Query.Get("Query")))
+            {
+                _http.SendXmlResponse(new ErrorXmlResponse
+                    {
+                        Message = "Missing argument #129992"
+                    });
+
+                return;
+            }
+
+            Database db = new Database();
+
+            db.Open();
+
+            SqlCommand cmd = db.GetCommand();
+
+            cmd.CommandText = "SELECT * FROM Users WHERE username LIKE @query";
+            cmd.Parameters.Add("@query", SqlDbType.NVarChar).Value = _http.Query.Get("Query")+"%";
+
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            FriendSearchResponse f = new FriendSearchResponse();
+            f.Users = new List<User>();
+
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    
+                    f.Users.Add(new User {Username = (string) reader["username"], UserId = (long) reader["userid"]});
+                }
+            }
+
+            _http.SendXmlResponse(f);
+
+            db.Close();
         }
 
         private void HandleGetMyUser()
@@ -262,6 +303,9 @@ namespace DampServer.commands
                     break;
                 case "ForgottenPassword":
                     HandleForgotPassword();
+                    break;
+                case "FriendSearch":
+                    HandleFriendSearch();
                     break;
             }
         }

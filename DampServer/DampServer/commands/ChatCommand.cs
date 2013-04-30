@@ -54,17 +54,30 @@ namespace DampServer.commands
                     From = me.Username,
                 };
 
-            //http.SendXmlResponse(r);
+            Database db = new Database();
+            db.Open();
+
+            SqlCommand cmd2 = db.GetCommand();
+
+            cmd2.CommandText =
+                "INSERT INTO Chat (sender, receiver, message, seen, time) Values(@sender, @sender, @message, @seen, getdate())";
+            cmd2.Parameters.Add("@sender", SqlDbType.BigInt).Value = me.UserId;
+            cmd2.Parameters.Add("@receiver", SqlDbType.BigInt).Value = r.To;
+            cmd2.Parameters.Add("@message", SqlDbType.Text).Value = r.Message;
 
             if (receiver != null)
             {
+                cmd2.Parameters.Add("@seen", SqlDbType.TinyInt).Value = 1;
                 Console.WriteLine("ChatCommand: User online, sending chat");
                 receiver.UserHttp.SendXmlResponse(r);
             }
             else
             {
+                cmd2.Parameters.Add("@seen", SqlDbType.TinyInt).Value = 0;
                 Console.WriteLine("ChatCommand: User not online, logging chat");
             }
+
+            cmd2.ExecuteNonQuery();
 
             http.SendXmlResponse(new StatusXmlResponse
                 {
@@ -77,7 +90,6 @@ namespace DampServer.commands
         public bool NeedsAuthcatication { get; private set; }
         public bool IsPersistant { get; private set; }
 
-
         public List<XmlResponse> Notify(IUser user)
         {
             Database db = new Database();
@@ -85,7 +97,7 @@ namespace DampServer.commands
 
             var sqlCmd = db.GetCommand();
 
-            sqlCmd.CommandText = "SELECT * FROM Chat WHERE \"receiver\" = @userid";
+            sqlCmd.CommandText = "SELECT * FROM Chat WHERE \"receiver\" = @userid AND seen = 0";
             sqlCmd.Parameters.Add("@userid", SqlDbType.BigInt).Value = user.UserId;
 
             SqlDataReader r = null;
@@ -115,7 +127,16 @@ namespace DampServer.commands
                     Message = message,
                     To = to,
                     Date = date
-                });  
+                }); 
+ 
+                Database db2 = new Database();
+                db2.Open();
+
+                SqlCommand cmd3 = db2.GetCommand();
+
+                cmd3.CommandText = "UPDATE Chat SET seen = 1 WHERE chatid = @id";
+                cmd3.Parameters.Add("@id", SqlDbType.BigInt).Value = r["chatid"];
+                cmd3.ExecuteNonQuery();
             }
 
             db.Close();

@@ -46,6 +46,7 @@
     <Compile Include="ComAchievementTest.cs" />
     <Compile Include="ComFriendTest.cs" />
     <Compile Include="ComGameTest.cs" />
+    <Compile Include="ComLoginTest.cs" />
     <Compile Include="ComProfileTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
