@@ -1,5 +1,0 @@
-Content\Tanks\tank_bottom_1.xnb
-Content\Tanks\Tank_top_1.xnb
-Content\MapBackground\1.xnb
-Content\Buttons\singlePlayerButton.xnb
-Content\RedTest.xnb

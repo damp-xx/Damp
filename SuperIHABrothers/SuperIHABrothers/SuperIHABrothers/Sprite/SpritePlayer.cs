@@ -9,13 +9,16 @@
 
 using System;
 using Microsoft.Xna.Framework;
-using Sprites;
-namespace Sprites {
-	public class SpritePlayer : ISprite {
 
-		public Sprites.IAnchorPlayer m_IAnchorPlayer;
-        public Vector2 MyPosition { get; set; }
+
+
+namespace Sprites {
+	public class SpritePlayer : ISprite, ISpriteAnchor {
+
+	    public int Speed { get; set; }
+	    public Vector2 MyPosition { get; set; }
         public Rectangle MyRectangle { get; set; }
+        public Vector2 Velocety { get; set; }
 
 		public SpritePlayer(){
             throw new NotImplementedException();

@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace DampCS
 {
-    public class DampServerClient
+    public class DampServerClient :  IDampServerClient
     {
         private readonly string _host;
         private readonly int _port;
@@ -48,6 +48,12 @@ namespace DampCS
 
         public bool IsConnected { get; private set; }
 
+        bool IDampServerClient.ValidateServerCertificate(object sender, X509Certificate certificate, X509Chain chain,
+                                                         SslPolicyErrors sslPolicyErrors)
+        {
+            return ValidateServerCertificate(sender, certificate, chain, sslPolicyErrors);
+        }
+
         public bool Login(string username, string password, out string _authToken)
         {
             var xml= SendRequest("Login", new Dictionary<string, string> {{"Username", username}, {"Password", password}}, null);
@@ -71,6 +77,16 @@ namespace DampCS
         {
             _ComToken = _authToken;
             Task ListenTask = Task.Factory.StartNew(Run);
+        }
+
+        void IDampServerClient.Run()
+        {
+            Run();
+        }
+
+        void IDampServerClient.Handle(XmlElement element)
+        {
+            Handle(element);
         }
 
 

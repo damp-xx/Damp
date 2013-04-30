@@ -8,7 +8,7 @@
 
 
 using System.Collections.Generic;
-using CollitionControle;
+using Collision;
 
 namespace EventHandling {
 	public interface IEventHandlerMain  {

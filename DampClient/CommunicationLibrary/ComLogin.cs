@@ -9,11 +9,10 @@ namespace CommunicationLibrary
 {
     class ComLogin
     {
-        public static string _ComToken { get; private set; }
-        public static string _ComIp { get; private set; }
+        volatile public static string _ComToken = "1337";
+        volatile public static string _ComIp = "10.20.255.127";
         public static bool Authenticate(string username, string password)
         {
-            _ComIp = "10.20.255.127";
             if (username == "" || password == "")
                 return false;
             
@@ -44,6 +43,23 @@ namespace CommunicationLibrary
                 }
             }
             return false;
+        }
+
+        public static string GetWebPathCreateAccount()
+        {
+            var client = new DampServerClient(_ComIp);
+            var ResultFromServerXml = client.SendRequest("GetWebPath", new Dictionary<string, string>{{null, null}}, ComLogin._ComToken);
+
+                        if (ResultFromServerXml.Name.Equals("Status"))
+            {
+                var xmlNode = ResultFromServerXml.GetElementsByTagName("Code").Item(0);
+
+                if (xmlNode.InnerText == "200")
+                {
+                    return ResultFromServerXml.GetElementsByTagName("Path").Item(0).InnerText;
+                }
+            }
+            return null;
         }
     }
 }

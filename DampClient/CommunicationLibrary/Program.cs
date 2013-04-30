@@ -16,8 +16,11 @@ namespace CommunicationLibrary
 
             Console.WriteLine("login status is: {0}", resultOfLogin);
             //var resultOfSendChat = ComFriend.SendChatMessage("Test til bardyr");
-            ComEvents.Listen();
-            //Console.WriteLine("Char message status: {0}", resultOfSendChat);
+            //Console.WriteLine("{0}", resultOfSendChat);
+            var resultOfGetProfile = ComProfile.GetProfile();
+            Console.WriteLine("{0}", resultOfGetProfile);
+            var resultOfSearchUser = ComFriend.AddFriend("2");
+            Console.WriteLine(resultOfSearchUser);
             Console.Read();
         }
     }

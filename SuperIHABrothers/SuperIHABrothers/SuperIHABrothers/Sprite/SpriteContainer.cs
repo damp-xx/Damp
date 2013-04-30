@@ -10,13 +10,13 @@
 using System.Collections.Generic;
 using Sprites;
 namespace Sprites {
-	public class SpriteContainer : ISpriteContainer, ISpriteContainerCollition {
+	public class SpriteContainer : ISpriteContainer, ISpriteContainerCollision {
 
 		public Sprites.IAnchorUpdate _IAnchorUpdate;
 		public Sprites.ISprite _ISprite;
 	    private List<ISprite> _spriteList;
         List<ISprite> ISpriteContainer.SpriteList { set { _spriteList = value; } }
-        List<ISprite> ISpriteContainerCollition.SpriteList { get { return _spriteList; } }
+        List<ISprite> ISpriteContainerCollision.SpriteList { get { return _spriteList; } }
 
 		public SpriteContainer(){
 

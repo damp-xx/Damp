@@ -9,7 +9,7 @@
 
 
 
-using CollitionControle;
+using Collision;
 using GameControle;
 using Sprites;
 using EventHandling;
@@ -17,7 +17,7 @@ using GameState;
 namespace GameControle {
 	public class Level1 : ILevel {
 
-		public CollitionControle.IColitionControle m_IColitionControle;
+		public Collision.ICollisionControl MiCollisionControl;
 		public Sprites.ISpriteContainer m_ISpriteContainer;
 		public EventHandling.IEventHandlerMain m_IEventHandlerMain;
 		public GameState.IGameStateLevel m_IGameStateLevel;
