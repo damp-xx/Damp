@@ -8,32 +8,27 @@
 
 
 
-
-using CollitionControle;
-namespace CollitionControle {
-	public class PlayerEnviromentDetect : IColitionDetect {
+using Sprites;
+using System.Collections.Generic;
+using Collision;
+namespace Collision {
+	public class PlayerEnviromentDetect : ICollisionDetect {
 
 		public PlayerEnviromentDetect(){
 
 		}
 
-		~PlayerEnviromentDetect(){
 
-		}
-
-		public virtual void Dispose(){
-
-		}
 
 		/// 
 		/// <param name="mSpriteCollection"></param>
 		/// <param name="mSprite2"></param>
 		/// <param name="mSprite1"></param>
-		public List<IEvent> Detect(ISpriteCollectionColition mSpriteCollection, ISprite mSprite2, ISprite mSprite1){
+		public IEvent Detect(ISpriteContainerCollision mSpriteCollection, ISprite mSprite2, ISprite mSprite1){
 
-			return null;
+            throw new System.NotImplementedException();
 		}
 
-	}//end PlayerEnviromentDetect
+    }//end PlayerEnviromentDetect
 
-}//end namespace CollitionControle
+}//end namespace CollisionControl

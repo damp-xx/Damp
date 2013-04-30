@@ -8,29 +8,40 @@
 
 
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Sprites;
 namespace Sprites {
 	public class SpriteBackground : ISprite {
 
-		public Sprites.IAnchor m_IAnchor;
-        public Vector2 MyPosition { get; set; }
+        //Generel Atributes
+        public Vector2 Position { get; set; }
+        private Vector2 _AnchorOffset;
         public Rectangle MyRectangle { get; set; }
+        private IAnchor _Anchor;
+        private int _FrameHeight;
+        private int _FrameWidth;
+        private Texture2D _texture2D;
 
-		public SpriteBackground(){
+        //Moving Atributes
+        public Vector2 Velocety { get { return _velocety; } set { _velocety = value; } }
+        private Vector2 _velocety;
+        private bool _isInAir = true;
+	    private int _distance; //Distance form forground to the background
 
-		}
+        public SpriteBackground()
+        {
+
+        }
+	    public void Draw(SpriteBatch spriteBatch)
+	    {
+	        throw new System.NotImplementedException();
+	    }
 
 
-
-		public void Draw(){
-
-		}
-
-
-
-	    public void Update(){
-
-		}
+	    public void Update(GameTime time)
+	    {
+	        throw new System.NotImplementedException();
+	    }
 
 	}//end SpriteBackground
 

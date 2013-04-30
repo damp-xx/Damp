@@ -8,22 +8,16 @@
 
 
 
-
-using CollitionControle;
-namespace CollitionControle {
+using Sprites;
+using Collision;
+namespace Collision {
 	public class PlayerDeathEvent : IEvent {
 
-		public PlayerDeathEvent(){
+		public PlayerDeathEvent(ISprite mSprite, ISpriteContainerCollision mSpriteContainerCollision){
 
 		}
 
-		~PlayerDeathEvent(){
 
-		}
-
-		public virtual void Dispose(){
-
-		}
 
 	}//end PlayerDeathEvent
 
