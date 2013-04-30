@@ -9,12 +9,14 @@
 
 
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+
 namespace Sprites {
 	public interface ISprite  {
 
-		void Draw();
+        void Draw(SpriteBatch spriteBatch);
 
-		Vector2 MyPosition{
+		Vector2 Position{
 			get;
 			set;
 		}
@@ -23,7 +25,7 @@ namespace Sprites {
         {
             get; set; }
 
-		void Update();
+        void Update(GameTime time);
 	}//end ISprite
 
 }//end namespace Sprites

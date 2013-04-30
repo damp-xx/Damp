@@ -9,33 +9,113 @@
 
 using System;
 using Microsoft.Xna.Framework;
-
+using Microsoft.Xna.Framework.Graphics;
+using SuperIHABrothers.GameState;
 
 
 namespace Sprites {
 	public class SpritePlayer : ISprite, ISpriteAnchor {
 
-	    public int Speed { get; set; }
-	    public Vector2 MyPosition { get; set; }
-        public Rectangle MyRectangle { get; set; }
-        public Vector2 Velocety { get; set; }
+	    //Generel Atributes
+	    public Vector2 Position { get; set; }
+        public Rectangle MyRectangle { get; set; } 
+	    public IAnchor _Anchor;
+	    private Texture2D _texture; 
+	    private int _FrameHeight;
+	    private int _FrameWidth;
+	    private Vector2 _origin;
+        
+        //Animation Atributes
+        private float _timer; //Timer til at måle tiden som den aktuelle frame på animationern har været vist
+        private float _interval = 75; //Interval som er tiden som hvert frame på animationen skal vises
+        private int _currentFrame;
 
-		public SpritePlayer(){
-            throw new NotImplementedException();
+        //Moving Atributes
+        public int Speed { get; set; }
+        public Vector2 Velocety { get { return _velocety; } set { _velocety = value; } }
+        private Vector2 _velocety;
+        private IKeybordInput _keybordInput;
+        private bool _isInAir = true;
+	    private float _gravaty = 0.2f;
+	    private float _jumpPower = 10; // Kraften som spilleren kan hoppe med
+        
+        
+
+
+        public SpritePlayer(Texture2D mTexture2D, Vector2 mPosition, int mFrameHeight, int mFrameWidth, IAnchor mAnchor)
+        {
+            
+            _texture = mTexture2D;
+            Position = mPosition;
+            _FrameHeight = mFrameHeight;
+            _FrameWidth = mFrameWidth;
+            _Anchor = mAnchor;
+            Velocety = new Vector2(0,0);
+            
+        }
+
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(_texture, Position, MyRectangle, Color.White, 0f, _origin, 1f, SpriteEffects.None, 0);
 		}
 
-
-
-		public void Draw(){
-            throw new NotImplementedException();
+	    public void Update(GameTime time){
+            MyRectangle = new Rectangle(_currentFrame * _FrameWidth, 0, _FrameWidth, _FrameHeight);
+            _origin = new Vector2(MyRectangle.Width / 2, MyRectangle.Height / 2);
+            if (_isInAir == false)
+            {
+                if (_keybordInput.IsSpacePressed)
+                {
+                    _velocety.Y = _jumpPower;
+                    _isInAir = true;
+                }
+                else
+                {
+                    _velocety.Y = 0.1f;
+                    _isInAir = true;
+                }
+            }
+            else
+            {
+                _velocety.Y += _gravaty;
+            }
+            if (_keybordInput.IsLeftPressed)
+            {
+                AnimateLeft(time);
+            }
+            if (_keybordInput.IsRightPressed)
+            {
+                AnimateRight(time);
+            }
 		}
 
+        private void AnimateLeft(GameTime gameTime)
+        {
+            _timer += (float)gameTime.ElapsedGameTime.TotalMilliseconds / 2;
+            if (_timer > _interval)
+            {
+                _currentFrame++;
+                _timer = 0;
+                if (_currentFrame > 7 || _currentFrame < 4 || _isInAir)
+                {
+                    _currentFrame = 4;
+                }
+            }
+        }
 
-
-
-	    public void Update(){
-            throw new NotImplementedException();
-		}
+        private void AnimateRight(GameTime gameTime)
+        {
+            _timer += (float)gameTime.ElapsedGameTime.TotalMilliseconds / 2;
+            if (_timer > _interval)
+            {
+                _currentFrame++;
+                _timer = 0;
+                if (_currentFrame > 3 || _isInAir)
+                {
+                    _currentFrame = 0;
+                }
+            }
+        }
 
 	}//end SpritePlayer
 

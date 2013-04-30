@@ -8,7 +8,8 @@
 
 
 using System.Collections.Generic;
-using Sprites;
+using Microsoft.Xna.Framework;
+
 namespace Sprites {
 	public class SpriteContainer : ISpriteContainer, ISpriteContainerCollision {
 
@@ -16,30 +17,42 @@ namespace Sprites {
 		public Sprites.ISprite _ISprite;
 	    private List<ISprite> _spriteList;
         List<ISprite> ISpriteContainer.SpriteList { set { _spriteList = value; } }
-        List<ISprite> ISpriteContainerCollision.SpriteList { get { return _spriteList; } }
+        public List<ISprite> SpriteList { get { return _spriteList; } }
+       
+	    private IAnchorUpdate _anchor;
 
-		public SpriteContainer(){
 
+		public SpriteContainer(List<ISprite> mList, IAnchorUpdate mAnchor)
+		{
+		    _spriteList = mList;
+		    _anchor = mAnchor;
 		}
 
 
 
 		/// 
-		/// <param name="mStrite"></param>
-		public void AddSprite(ISprite mStrite){
-            throw new System.NotImplementedException();
+		/// <param name="mSprite"></param>
+		public void AddSprite(ISprite mSprite){
+            _spriteList.Add(mSprite);
 		}
 
 		/// 
 		/// <param name="mSprite"></param>
-		public void RemoveSprite(ISprite mSprite){
-            throw new System.NotImplementedException();
+		public void RemoveSprite(ISprite mSprite)
+		{
+		    _spriteList.Remove(mSprite);
 		}
 
 	    
-	    public void Update()
+
+
+	    public void Update(GameTime time)
 	    {
-	        throw new System.NotImplementedException();
+	        _anchor.Update(time);
+	        foreach (var sprite in _spriteList)
+	        {
+	            sprite.Update(time);
+	        }
 	    }
 
 
