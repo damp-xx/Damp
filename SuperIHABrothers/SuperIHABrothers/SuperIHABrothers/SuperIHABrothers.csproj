@@ -142,7 +142,7 @@
     <Compile Include="Sprite\SpriteBackground.cs" />
     <Compile Include="Sprite\SpriteContainer.cs" />
     <Compile Include="Sprite\SpriteDeathAnimaiton.cs" />
-    <Compile Include="Sprite\SpriteEnviroment.cs" />
+    <Compile Include="Sprite\SpriteEnvironment.cs" />
     <Compile Include="Sprite\SpriteMonster.cs" />
     <Compile Include="Sprite\SpritePlayer.cs" />
   </ItemGroup>
