@@ -116,7 +116,6 @@ namespace DampServer
             _socket.Close();
         }
 
-
         private static bool CheckAuthetication(string authToken)
         {
             try
@@ -174,6 +173,9 @@ namespace DampServer
                     break;
                 case "FriendSearch":
                     leCmd=new UserCommands();
+                    break;
+                case "Download":
+                    leCmd=new DownloadCommand();
                     break;
                     
 

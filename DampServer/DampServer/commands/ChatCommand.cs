@@ -90,7 +90,6 @@ namespace DampServer.commands
         public bool NeedsAuthcatication { get; private set; }
         public bool IsPersistant { get; private set; }
 
-
         public List<XmlResponse> Notify(IUser user)
         {
             Database db = new Database();
