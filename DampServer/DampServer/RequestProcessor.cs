@@ -194,8 +194,28 @@ namespace DampServer
                     break;
                 case "GetGame":
                     leCmd=new GameCommand();
-                    break;    
-
+                    break;
+                case "AddAchievement":
+                    leCmd = new AchievementCommand();
+                    break;
+                case "GetAllMyAchievement":
+                    leCmd = new AchievementCommand();
+                    break;
+                case "AchievementSearch":
+                    leCmd = new AchievementCommand();
+                    break;
+                case "GetAchievementsForGame":
+                    leCmd = new AchievementCommand();
+                    break;
+                case "GetAllUserAchievements":
+                    leCmd = new AchievementCommand();
+                    break;
+                case "GetUserAchievements":
+                    leCmd = new AchievementCommand();
+                    break;
+                case "GetGameMyAchievements":
+                    leCmd = new AchievementCommand();
+                    break;
                 default:
                     throw new CommandNotFoundException(cmd);
             }

@@ -1,10 +1,15 @@
-﻿using System;
+﻿/**
+ * @file   	GameCommand.cs
+ * @author 	Bardur Simonsen, 11841
+ * @date   	April, 2013
+ * @brief  	This file implements the server functions related to games
+ * @section	LICENSE GPL 
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DampServer.interfaces;
 using DampServer.responses;
 
@@ -18,6 +23,12 @@ namespace DampServer.commands
         public bool NeedsAuthcatication { get; private set; }
         public bool IsPersistant { get; private set; }
        
+        public GameCommand()
+        {
+            NeedsAuthcatication = true;
+            IsPersistant = false;
+        }
+
         public bool CanHandleCommand(string cmd)
         {
             throw new NotImplementedException();
@@ -130,7 +141,7 @@ namespace DampServer.commands
             User user = UserManagement.GetUserByAuthToken(_client.Query.Get("AuthToken"));
 
             Database db = new Database();
-
+            db.Open();
             SqlCommand cmd = db.GetCommand();
 
             cmd.CommandText =
@@ -152,8 +163,8 @@ namespace DampServer.commands
                     {
                         Command = "GetGame",
                         Code = 200,
-                        Message = @"http://10.20.255.127/GameDownload?authToken=" + _client.Query.Get("AuthToken") +
-                                  "Id=" + ((long) r["gameid"])
+                        Message = @"https://10.20.255.127:1337/GameDownload?authToken=" + _client.Query.Get("AuthToken") +
+                                  "&Id=" + ((long) r["gameid"])
                     });
             }
             else
