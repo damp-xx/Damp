@@ -9,6 +9,7 @@
 #region
 
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.IO;
@@ -33,8 +34,8 @@ namespace DampServer
      */
     public class Http : ICommandArgument
     {
-        private readonly Dictionary<string, string> _headers = new Dictionary<string, string>();
-        private readonly Dictionary<string, string> _headersToSend = new Dictionary<string, string>();
+        private readonly ConcurrentDictionary<string, string> _headers = new ConcurrentDictionary<string, string>();
+        private readonly ConcurrentDictionary<string, string> _headersToSend = new ConcurrentDictionary<string, string>();
         private readonly SslStream _network;
         private readonly TcpClient _socket;
         private static readonly X509Certificate ServerCertificate = new X509Certificate2("server.pfx", "");
@@ -113,7 +114,7 @@ namespace DampServer
          */
         public void AddHeader(string name, string value)
         {
-            _headersToSend.Add(name, value);
+            _headersToSend.TryAdd(name, value);
         }
 
         /**
@@ -168,7 +169,7 @@ namespace DampServer
                 }
 
                 line = readLine.Split(sD, 2);
-                _headers.Add(line[0], line[1]);
+                _headers.TryAdd(line[0], line[1]);
             }
 
             if (Type.Equals("POST"))
@@ -201,30 +202,31 @@ namespace DampServer
          * 
          * @brief method to send a XML response object to the client
          */
-        [MethodImpl(MethodImplOptions.Synchronized)]
         public void SendXmlResponse(XmlResponse obj)
         {
-            var serializer = new XmlSerializer(obj.GetType());
-            var ns = new MemoryStream();
-            serializer.Serialize(ns, obj);
-
-            Length = ns.Length;
-            Type = "text/xml";
-            Status = "200 OK";
-
-            SendResponseHeader();
-
-            if (!_network.CanWrite) return;
-
-            try
+            lock (this)
             {
-                _network.Write(ns.GetBuffer(), 0, (int)ns.Length);
-                _network.Flush();
-            }
-            catch (Exception e)
-            {
-                
-                Logger.Log(e.Message);
+                var serializer = new XmlSerializer(obj.GetType());
+                var ns = new MemoryStream();
+                serializer.Serialize(ns, obj);
+
+                Length = ns.Length;
+                Type = "text/xml";
+                Status = "200 OK";
+
+                SendResponseHeader();
+
+                if (!_network.CanWrite) return;
+
+                try
+                {
+                    _network.Write(ns.GetBuffer(), 0, (int) ns.Length);
+                    _network.Flush();
+                }
+                catch (Exception e)
+                {
+                    Logger.Log(e.Message);
+                }
             }
         }
 
@@ -286,30 +288,33 @@ namespace DampServer
         {
             try
             {
-
-                using (FileStream fs = File.OpenRead(filename))
+                lock (this)
                 {
-                    Length = fs.Length;
-                    Type = GetMimeType(filename);
-                    AddHeader("Content-disposition", "attachment; filename="+filename);
-                    Status = "200 OK";
 
-                    SendResponseHeader();
-
-                    var buffer = new byte[64*1024];
-                    using (var bw = new BinaryWriter(_network))
+                    using (FileStream fs = File.OpenRead(filename))
                     {
-                        int read;
-                        while ((read = fs.Read(buffer, 0, buffer.Length)) > 0)
+                        Length = fs.Length;
+                        Type = GetMimeType(filename);
+                        AddHeader("Content-disposition", "attachment; filename=" + filename);
+                        Status = "200 OK";
+
+                        SendResponseHeader();
+
+                        var buffer = new byte[64*1024];
+                        using (var bw = new BinaryWriter(_network))
                         {
-                            bw.Write(buffer, 0, read);
-                            bw.Flush(); 
+                            int read;
+                            while ((read = fs.Read(buffer, 0, buffer.Length)) > 0)
+                            {
+                                bw.Write(buffer, 0, read);
+                                bw.Flush();
+                            }
+
+                            bw.Close();
                         }
 
-                        bw.Close();
+                        fs.Close();
                     }
-
-                    fs.Close();
                 }
             }
             catch (FileNotFoundException e)

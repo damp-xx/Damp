@@ -12,7 +12,7 @@ namespace CommunicationLibrary
         {
 
 
-            var resultOfLogin = ComLogin.Authenticate("bardyr", "mormor");
+            var resultOfLogin = ComLogin.Authenticate("Jens", "Jens");
 
             Console.WriteLine("login status is: {0}", resultOfLogin);
             //var resultOfSendChat = ComFriend.SendChatMessage("Test til bardyr");
@@ -21,6 +21,7 @@ namespace CommunicationLibrary
             Console.WriteLine("{0}", resultOfGetProfile);
             var resultOfSearchUser = ComFriend.AddFriend("2");
             Console.WriteLine(resultOfSearchUser);
+            ComEvents.Listen();
             Console.Read();
         }
     }

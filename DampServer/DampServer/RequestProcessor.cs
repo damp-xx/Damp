@@ -10,7 +10,7 @@
 
 using System;
 using System.Net.Sockets;
-using System.Threading;
+using System.Threading.Tasks;
 using DampServer.commands;
 using DampServer.exceptions;
 using DampServer.interfaces;
@@ -31,8 +31,7 @@ namespace DampServer
         {
             _socket = s;
 
-            var newThread = new Thread(Run);
-            newThread.Start();
+            Task.Factory.StartNew(Run);
         }
 
         public void Run()

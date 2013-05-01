@@ -9,8 +9,6 @@ using DampServer.interfaces;
 
 #endregion
 
-// @TODO MAKE THREAD SAFE!!
-
 namespace DampServer
 {
     public class ConnectionManager
@@ -28,47 +26,42 @@ namespace DampServer
         {
             while (true)
             {
-                List<IConnection> tmpCons = new List<IConnection>();
+               
+                List<IConnection> tmpList = _connections.ToList();
 
-                foreach (IConnection connection in _connections)
-                {
-                    if (!connection.UserHttp.IsConnected)
-                        tmpCons.Add(connection);
-                }
+                tmpList.Where(x => !x.UserHttp.IsConnected).AsParallel().ForAll( connection =>
+                    {
+                        Console.WriteLine("User disconnected, removing user: {0}", connection.UserProfile.Username);
+                        RemoveConnection(connection);
 
-                foreach (IConnection connection in tmpCons)
-                {
-                    Console.WriteLine("User disconnected, removing user: {0}", connection.UserProfile.Username);
-                    RemoveConnection(connection);
-
-                    StatusXmlResponse xmlRes = new StatusXmlResponse
+                        var xmlRes = new StatusXmlResponse
                         {
                             Code = 501,
                             Command = "UserWentOffline",
                         };
 
-                    NotifyUserFriends(connection, xmlRes);
-                }
+                        NotifyUserFriends(connection, xmlRes);
+                    });
 
                 Thread.Sleep(1000);
             }
+// ReSharper disable FunctionNeverReturns
         }
+// ReSharper restore FunctionNeverReturns
 
         private void NotifyUserFriends(IConnection connection, StatusXmlResponse response)
         {
-            foreach ( User user in connection.UserProfile.Friends)
-            {
-                IConnection con = GetConnectionByUserId(user.UserId);
-
-                if (con != null && con.UserHttp != null)
-                {
-                    response.Message = con.UserProfile.UserId.ToString();
-                    con.UserHttp.SendXmlResponse(response);
-                }
-            }
+            connection.UserProfile.Friends.Select(user => GetConnectionByUserId(user.UserId))
+                      .Where(con => con != null)
+                      .AsParallel()
+                      .ForAll(
+                          con =>
+                              {
+                                  response.Message = con.UserProfile.UserId.ToString(CultureInfo.InvariantCulture);
+                                  con.UserHttp.SendXmlResponse(response);
+                              });
         }
 
-        // @TODO MAKE THREAD SAFE!!
         public List<IConnection> GetOnlineUsers()
         {
             return _connections.ToList();
@@ -79,23 +72,30 @@ namespace DampServer
             return Manager;
         }
 
-        public void RemoveConnection(IConnection con)
+        public void RemoveConnection(IConnection  con)
         {
-            _connections.Remove(con);
+            lock (_connections)
+            {
+                _connections.Remove(con);
+            }
         }
 
         public void AddConnection(IConnection con)
         {
             Logger.Log("User online");
 
-            StatusXmlResponse xmlRes = new StatusXmlResponse
+            var xmlRes = new StatusXmlResponse
             {
                 Code = 601,
                 Command = "UserWentOnline",
             };
 
             NotifyUserFriends(con, xmlRes);
-            _connections.Add(con);
+
+            lock (_connections)
+            {
+                _connections.Add(con);
+            }
         }
 
         public IConnection GetConnectionByUserId(long userid)
