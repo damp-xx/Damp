@@ -10,15 +10,6 @@
 using System.Collections.Generic;
 using Sprites;
 
-internal enum SpritesOrder
-
-{
-    Player = 1,
-    Monster = 2,
-    Environment = 3,
-    DeathAnimation = 4,
-    Evironment = 5
-};
 
 namespace Collision
 {
@@ -53,29 +44,29 @@ namespace Collision
         {
             List<IEvent> eventList = new List<IEvent>();
 
-            for (int i = 0; i < _spriteContainerCollision.SpriteList[(int) SpritesOrder.Player].Count; i++)
+            for (int i = 0; i < _spriteContainerCollision.SpriteList[(int) listTypes.Player].Count; i++)
             {       
                 /* Checking with Monster */
-                for (int j = 0; j < _spriteContainerCollision.SpriteList[(int) SpritesOrder.Monster].Count; j++)
+                for (int j = 0; j < _spriteContainerCollision.SpriteList[(int) listTypes.Monster].Count; j++)
                 {
-                    if (_spriteContainerCollision.SpriteList[(int) SpritesOrder.Player][i].MyRectangle.Intersects(
-                        _spriteContainerCollision.SpriteList[(int) SpritesOrder.Monster][j].MyRectangle))
+                    if (_spriteContainerCollision.SpriteList[(int) listTypes.Player][i].MyRectangle.Intersects(
+                        _spriteContainerCollision.SpriteList[(int) listTypes.Monster][j].MyRectangle))
                     {
                         eventList.Add(_playerMonsterDetect.Detect(_spriteContainerCollision,
-                                                                  _spriteContainerCollision.SpriteList[(int) SpritesOrder.Player][i],
-                                                                  _spriteContainerCollision.SpriteList[(int) SpritesOrder.Monster][j]));
+                                                                  _spriteContainerCollision.SpriteList[(int) listTypes.Player][i],
+                                                                  _spriteContainerCollision.SpriteList[(int) listTypes.Monster][j]));
                     }
                 }
 
                 /* Checking with Evironment */
-                for (int j = 0; j < _spriteContainerCollision.SpriteList[(int)SpritesOrder.Environment].Count; j++)
+                for (int j = 0; j < _spriteContainerCollision.SpriteList[(int)listTypes.Envirinment].Count; j++)
                 {
-                    if (_spriteContainerCollision.SpriteList[(int)SpritesOrder.Player][i].MyRectangle.Intersects(
-                        _spriteContainerCollision.SpriteList[(int)SpritesOrder.Environment][j].MyRectangle))
+                    if (_spriteContainerCollision.SpriteList[(int)listTypes.Player][i].MyRectangle.Intersects(
+                        _spriteContainerCollision.SpriteList[(int)listTypes.Envirinment][j].MyRectangle))
                     {
                         eventList.Add(_playerMonsterDetect.Detect(_spriteContainerCollision,
-                                                                  _spriteContainerCollision.SpriteList[(int)SpritesOrder.Player][i],
-                                                                  _spriteContainerCollision.SpriteList[(int)SpritesOrder.Environment][j]));
+                                                                  _spriteContainerCollision.SpriteList[(int)listTypes.Player][i],
+                                                                  _spriteContainerCollision.SpriteList[(int)listTypes.Envirinment][j]));
                     }
                 }
             }
@@ -87,17 +78,17 @@ namespace Collision
         {
             List<IEvent> eventList = new List<IEvent>();
 
-            for (int i = 0; i < _spriteContainerCollision.SpriteList[(int)SpritesOrder.Monster].Count; i++)
+            for (int i = 0; i < _spriteContainerCollision.SpriteList[(int)listTypes.Monster].Count; i++)
             {
                 /* Checking with Evironment */
-                for (int j = 0; j < _spriteContainerCollision.SpriteList[(int)SpritesOrder.Environment].Count; j++)
+                for (int j = 0; j < _spriteContainerCollision.SpriteList[(int)listTypes.Envirinment].Count; j++)
                 {
-                    if (_spriteContainerCollision.SpriteList[(int)SpritesOrder.Monster][i].MyRectangle.Intersects(
-                        _spriteContainerCollision.SpriteList[(int)SpritesOrder.Environment][j].MyRectangle))
+                    if (_spriteContainerCollision.SpriteList[(int)listTypes.Monster][i].MyRectangle.Intersects(
+                        _spriteContainerCollision.SpriteList[(int)listTypes.Envirinment][j].MyRectangle))
                     {
                         eventList.Add(_playerMonsterDetect.Detect(_spriteContainerCollision,
-                                                                  _spriteContainerCollision.SpriteList[(int)SpritesOrder.Monster][i],
-                                                                  _spriteContainerCollision.SpriteList[(int)SpritesOrder.Environment][j]));
+                                                                  _spriteContainerCollision.SpriteList[(int)listTypes.Monster][i],
+                                                                  _spriteContainerCollision.SpriteList[(int)listTypes.Envirinment][j]));
                     }
                 }
             }

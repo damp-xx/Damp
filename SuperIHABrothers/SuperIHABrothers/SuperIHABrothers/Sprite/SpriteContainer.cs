@@ -12,7 +12,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Sprites {
-    enum listTypes
+   public enum listTypes
     {
         Player = 0,
         Monster = 1,
