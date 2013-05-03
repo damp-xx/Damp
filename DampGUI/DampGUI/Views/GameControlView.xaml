@@ -31,7 +31,7 @@
 
         <StackPanel  VerticalAlignment="Bottom">
           <TextBox Margin="3,0,0,0" FontSize="18" VerticalContentAlignment="Bottom" IsEnabled="False" Background="Transparent" Foreground="#1297FB" 
-                   Text="{Binding Path=CurrentGame.Name}" ></TextBox>
+                   Text="{Binding Path=CurrentGame.Title}" ></TextBox>
           <Separator Margin="3,0,0,0" VerticalContentAlignment="Bottom" Background="#3F3F46"></Separator>
         </StackPanel>
 

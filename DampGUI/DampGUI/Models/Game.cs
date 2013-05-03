@@ -71,7 +71,7 @@ namespace DampGUI
 
     public class Game
     {
-        private string name;
+        private string _title;
         private string description;
         private string genre;
         private string developer;
@@ -87,7 +87,7 @@ namespace DampGUI
         public Game(string aName, string aDescription, string aGenre, string aDeveloper, string aMode,
                     string aLanguage, ObservableCollection<string> aAchivementsGame, PhotoCollection aPhotoCollection)
         {
-            Name = aName;
+            Title = aName;
             Description = aDescription;
             Genre = aGenre;
             Developer = aDeveloper;
@@ -111,10 +111,10 @@ namespace DampGUI
 
 
 
-        public string Name
+        public string Title
         {
-            get { return name; }
-            set { name = value; }
+            get { return _title; }
+            set { _title = value; }
         }
 
         public string Language

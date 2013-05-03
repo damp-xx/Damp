@@ -14,8 +14,8 @@ namespace CommunicationLibrary
         public static XmlElement GetFriendList()
         {
             var client = new DampServerClient(ComLogin._ComIp);
-            Console.WriteLine("Token before send Forgotten Email: {0}", ComLogin._ComToken);
-            var ResultFromServerXml = client.SendRequest("GetMyFriends", null, ComLogin._ComToken);
+            //Console.WriteLine("Token before send Forgotten Email: {0}", ComLogin._ComToken);
+            var ResultFromServerXml = client.SendRequest("GetMyUser", null, ComLogin._ComToken);
 
             if (ResultFromServerXml.Name.Equals("Status"))
             {

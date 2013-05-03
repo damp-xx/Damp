@@ -34,8 +34,8 @@ namespace DampGUI
 
             for (int i = 0; i < games.TotalGames; i++)
             {
-                lGames.Add(games.Get(i).Name);
-                allGames.Add(games.Get(i).Name);
+                lGames.Add(games.Get(i).Title);
+                allGames.Add(games.Get(i).Title);
             }
 
             for (int i = 0; i < knowFriends.TotalFriends; i++)
@@ -96,7 +96,7 @@ namespace DampGUI
 
                 for (int i = 0; i < games.TotalGames; i++)
                 {
-                    if (name == games.Get(i).Name)
+                    if (name == games.Get(i).Title)
                     {
                         //games.CurrentGame = games.Get(i);
                         games.CurrentIndex = i;

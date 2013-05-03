@@ -21,6 +21,7 @@ namespace CommunicationLibrary
 
                 if (xmlNode.InnerText == "200")
                 {
+
                     return ResultFromServerXml;
                 }
             }
@@ -30,7 +31,7 @@ namespace CommunicationLibrary
         public static XmlElement GetGameInfo(string gameID)
         {
             var client = new DampServerClient(ComLogin._ComIp);
-            var ResultFromServerXml = client.SendRequest("RemoveFriend", new Dictionary<string, string>{{"GameId", gameID}}, ComLogin._ComToken);
+            var ResultFromServerXml = client.SendRequest("GameInfo", new Dictionary<string, string>{{"GameId", gameID}}, ComLogin._ComToken);
 
             if (ResultFromServerXml.Name.Equals("Status"))
             {
@@ -98,7 +99,7 @@ namespace CommunicationLibrary
         public static XmlElement GetGame(string GameID)
         {
             var client = new DampServerClient(ComLogin._ComIp);
-            var ResultFromServerXml = client.SendRequest("GetMyGames", new Dictionary<string, string> { { "Id", GameID } }, ComLogin._ComToken);
+            var ResultFromServerXml = client.SendRequest("GetGames", new Dictionary<string, string> { { "Id", GameID } }, ComLogin._ComToken);
 
             if (ResultFromServerXml.Name.Equals("Status"))
             {
