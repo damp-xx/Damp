@@ -54,7 +54,6 @@ namespace SuperIHABrothers.Tests
         {
             Setup();
 
-
             _uutCollisionControl = new CollisionControl(_stubSpriteContainerCollision, _mockPlayerEnvironmentDetect);
 
             _uutCollisionControl.Update();

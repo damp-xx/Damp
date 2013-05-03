@@ -20,7 +20,7 @@ namespace Sprites {
 		/// <param name="mSprite"></param>
 		void RemoveSprite(ISprite mSprite);
 
-		List<ISprite> SpriteList{
+		List<List<ISprite>> SpriteList{
 			get;
 		}
 	}//end ISpriteContainerCollision

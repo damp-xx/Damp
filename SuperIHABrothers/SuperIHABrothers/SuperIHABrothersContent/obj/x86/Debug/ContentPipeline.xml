@@ -7,8 +7,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Space-Punk\Dropbox\Skole\4.Sem\I4PRJ\Games\Damp\SuperIHABrothers\SuperIHABrothers\SuperIHABrothers\bin\x86\Debug\Content\burning man.xnb</Output>
-      <Time>2013-04-30T10:27:22+02:00</Time>
+      <Output>C:\Users\Filip\Dropbox\IHA Docs\4. Semester\PRJ4\Damp\SuperIHABrothers\SuperIHABrothers\SuperIHABrothers\bin\x86\Debug\Content\burning man.xnb</Output>
+      <Time>2013-04-30T10:49:08+02:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -16,10 +16,10 @@
       <TargetProfile>HiDef</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Users\Space-Punk\Dropbox\Skole\4.Sem\I4PRJ\Games\Damp\SuperIHABrothers\SuperIHABrothers\SuperIHABrothersContent\</RootDirectory>
-      <LoggerRootDirectory>C:\Users\Space-Punk\Dropbox\Skole\4.Sem\I4PRJ\Games\Damp\SuperIHABrothers\SuperIHABrothers\SuperIHABrothers\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\Space-Punk\Dropbox\Skole\4.Sem\I4PRJ\Games\Damp\SuperIHABrothers\SuperIHABrothers\SuperIHABrothersContent\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\Space-Punk\Dropbox\Skole\4.Sem\I4PRJ\Games\Damp\SuperIHABrothers\SuperIHABrothers\SuperIHABrothers\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\Users\Filip\Dropbox\IHA Docs\4. Semester\PRJ4\Damp\SuperIHABrothers\SuperIHABrothers\SuperIHABrothersContent\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\Filip\Dropbox\IHA Docs\4. Semester\PRJ4\Damp\SuperIHABrothers\SuperIHABrothers\SuperIHABrothers\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\Filip\Dropbox\IHA Docs\4. Semester\PRJ4\Damp\SuperIHABrothers\SuperIHABrothers\SuperIHABrothersContent\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\Filip\Dropbox\IHA Docs\4. Semester\PRJ4\Damp\SuperIHABrothers\SuperIHABrothers\SuperIHABrothers\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
@@ -48,7 +48,7 @@
       </Assembly>
       <Assembly>
         <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
-        <Value>2013-03-05T09:36:11.1666333+01:00</Value>
+        <Value>2013-02-14T22:17:31.7353721+01:00</Value>
       </Assembly>
     </Assemblies>
   </Asset>
