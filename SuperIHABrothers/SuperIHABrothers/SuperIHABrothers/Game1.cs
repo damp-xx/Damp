@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.IO.Pipes;
 using System.Linq;
+using System.Threading;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
@@ -19,10 +22,29 @@ namespace SuperIHABrothers
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        private PipeStream pipeClientIn;
+        private PipeStream pipeClientOut;
 
-        public Game1()
+        private Queue<string> stringQueue;
+
+
+
+        public Game1(string pipeIn, string pipeOut)
         {
-            graphics = new GraphicsDeviceManager(this);
+            if (pipeIn != "NOPIPE" && pipeOut != "NOPIPE")
+            {
+                pipeClientIn = new AnonymousPipeClientStream(PipeDirection.In, pipeIn);
+                pipeClientOut = new AnonymousPipeClientStream(PipeDirection.Out, pipeOut);
+
+                Thread myNewThread = new Thread(() => RecieverThread(pipeClientIn, stringQueue));
+                myNewThread.Start();
+            }
+
+        graphics = new GraphicsDeviceManager(this);
+
+            
+
+
             Content.RootDirectory = "Content";
         }
 
@@ -90,6 +112,20 @@ namespace SuperIHABrothers
             
             spriteBatch.End();
             base.Draw(gameTime);
+        }
+
+
+        private void RecieverThread(PipeStream pipeClientIn, Queue<string> stringQueue )
+        {
+            for (;;)
+            {
+                using (StreamReader sr = new StreamReader(pipeClientIn))
+                {
+                    string recievedString;
+                    if ( (recievedString = sr.ReadLine()) != null);
+                        stringQueue.Enqueue(recievedString);
+                }
+            }
         }
     }
 }
