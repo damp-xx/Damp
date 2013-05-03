@@ -16,7 +16,9 @@ namespace SuperIHABrothers.Tests
     {
         private CollisionControl _uutCollisionControl;
         private ISpriteContainerCollision _stubSpriteContainerCollision;
-        private List<ISprite> _stubSpriteList; 
+        private List<ISprite> _stubSpritePlayerList;
+        private List<ISprite> _stubSpriteMonsterList;
+        private List<ISprite> _stubSpriteEnvironmentList; 
         private ISprite _stubSpritePlayer;
         private ISprite _stubSpriteEnvironment;
         private ISprite _stubSpriteMonster;
@@ -27,28 +29,29 @@ namespace SuperIHABrothers.Tests
         private void Setup()
         {
             _stubSpriteContainerCollision = MockRepository.GenerateMock<ISpriteContainerCollision>();
-            _stubSpriteList = MockRepository.GenerateMock<List<ISprite>>();
+            _stubSpritePlayerList = MockRepository.GenerateMock<List<ISprite>>();
+            _stubSpriteMonsterList = MockRepository.GenerateMock<List<ISprite>>();
+            _stubSpriteEnvironmentList = MockRepository.GenerateMock<List<ISprite>>();
             _stubSpritePlayer = MockRepository.GenerateMock<ISprite>();
             _stubSpriteEnvironment = MockRepository.GenerateMock<ISprite>();
             _stubSpriteMonster = MockRepository.GenerateMock<ISprite>();
             _mockPlayerEnvironmentDetect = MockRepository.GenerateMock<ICollisionDetect>();
             _stubRectangle = new Rectangle(0,0,10,10);
         
-            _stubSpriteList.Add(_stubSpritePlayer);
-            _stubSpriteList.Add(_stubSpriteEnvironment);
-            _stubSpriteList.Add(_stubSpriteMonster);
-            _stubSpriteContainerCollision.Stub(x => x.SpriteList).Return(_stubSpriteList);
+            _stubSpritePlayerList.Add(_stubSpritePlayer);
+            _stubSpriteMonsterList.Add(_stubSpriteEnvironment);
+            _stubSpriteEnvironmentList.Add(_stubSpriteMonster);
+           
+            _stubSpriteContainerCollision.Stub(x => x.SpriteList[(int)listTypes.Player]).Return(_stubSpritePlayerList);
+            _stubSpriteContainerCollision.Stub(x => x.SpriteList[(int)listTypes.Envirinment]).Return(_stubSpriteEnvironmentList);
+            _stubSpriteContainerCollision.Stub(x => x.SpriteList[(int)listTypes.Monster]).Return(_stubSpriteMonsterList);
 
             _stubSpritePlayer.Stub(x => x.MyRectangle).Return(_stubRectangle);
             _stubSpriteEnvironment.Stub(x => x.MyRectangle).Return(_stubRectangle);
             _stubSpriteMonster.Stub(x => x.MyRectangle).Return(_stubRectangle);
-            //_stubSpritePlayer.Stub(x => x.MyRectangle.Intersects(Arg<Rectangle>.Is.Equal(_stubSpriteEnvironment.MyRectangle))).Return(true);        
-
-            //_stubSpritePlayer.Stub(x => x.GetType()).Return();
-            //_stubSpriteEnvironment.Stub(x => x.GetType()).Return(typeof(SpriteEnvironment));
-            //_stubSpriteMonster.Stub(x => x.GetType()).Return(typeof(SpriteMonster));
         }
 
+        
         [Test]
         public void Update_InstantiatedWithSpritePlayerAndSpriteEnvironment_PlayerEnvironmentWasCalled()
         {
