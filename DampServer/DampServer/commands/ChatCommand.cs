@@ -47,7 +47,7 @@ namespace DampServer.commands
 
             User me = UserManagement.GetUserByAuthToken(http.Query.Get("authToken"));
 
-            ChatXmlResponse r = new ChatXmlResponse
+            var r = new StatusXmlResponse
                 {
                     Message = http.Query.Get("Message"),
                     To = http.Query.Get("To"),
@@ -55,7 +55,7 @@ namespace DampServer.commands
                     Command = "ChatRecieved"
                 };
 
-            Database db = new Database();
+            var db = new Database();
             db.Open();
 
             SqlCommand cmd2 = db.GetCommand();
@@ -93,7 +93,7 @@ namespace DampServer.commands
 
         public List<XmlResponse> Notify(IUser user)
         {
-            Database db = new Database();
+            var db = new Database();
             db.Open();
 
             var sqlCmd = db.GetCommand();
@@ -101,7 +101,7 @@ namespace DampServer.commands
             sqlCmd.CommandText = "SELECT * FROM Chat WHERE \"receiver\" = @userid AND seen = 0";
             sqlCmd.Parameters.Add("@userid", SqlDbType.BigInt).Value = user.UserId;
 
-            SqlDataReader r = null;
+            SqlDataReader r;
 
             try
             {
@@ -113,24 +113,26 @@ namespace DampServer.commands
                 return null;
             }
 
-            List<XmlResponse> respons = new List<XmlResponse>();
+            var respons = new List<XmlResponse>();
 
             while (r.Read())
             {
-                string from = ((long)r["sender"]).ToString();
-                string message = (string)r["message"];
-                string to = ((long) r["receiver"]).ToString();
-                DateTime date = (DateTime) r["time"];
+                var from = ((long)r["sender"]).ToString(CultureInfo.InvariantCulture);
+                var message = (string)r["message"];
+                string to = ((long) r["receiver"]).ToString(CultureInfo.InvariantCulture);
+                var date = (DateTime) r["time"];
 
-                respons.Add(new ChatXmlResponse
+                respons.Add(new StatusXmlResponse
                 {
                     From =  from,
                     Message = message,
                     To = to,
-                    Date = date
+                    Date = date,
+                    Command = "ChatReceived"
+                   
                 }); 
  
-                Database db2 = new Database();
+                var db2 = new Database();
                 db2.Open();
 
                 SqlCommand cmd3 = db2.GetCommand();

@@ -285,8 +285,7 @@ namespace DampServer.commands
             SqlCommand cmd = db.GetCommand();
 
             cmd.CommandText =
-                "SELECT G.title as title, G.gameid as gameid, G.picture as picture," +
-                " G.description  FROM Games G ";
+                "SELECT title, gameid, langauge as language, mode,picture, description, genre, developer, recommendedage   FROM Games ";
 
             SqlDataReader r = cmd.ExecuteReader();
 
@@ -301,7 +300,12 @@ namespace DampServer.commands
                         Id = (long)r["gameid"],
                         Title = (string)r["title"],
                         Description = (string)r["description"],
-                        Picture = (string)r["picture"]
+                        Picture = (string)r["picture"],
+                        Developer = (string) r["developer"],
+                        Genre = (string) r["genre"],
+                        RecommendedAge = (int)r["recommendedage"],
+                        Language = (string) r["language"],
+                        Mode = (string) r["mode"]
                     });
                 }
             r.Close();

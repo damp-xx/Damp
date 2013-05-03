@@ -1,111 +1,189 @@
-﻿#region
+﻿/**
+ * @file   	ConnectionManager.cpp
+ * @author 	Bardur Simonsen, 11841
+ * @date   	April, 2013
+ * @brief  	This file implements the  ConnectionManager for DAMP Server
+ * @section	LICENSE GPL 
+ */
 
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Threading;
 using DampServer.interfaces;
 
-#endregion
-
-// @TODO MAKE THREAD SAFE!!
-
 namespace DampServer
 {
+    /**
+     * ConnectionManager
+     * 
+     * @brief Yay
+     */
     public class ConnectionManager
     {
-        public static  ConnectionManager Manager = new ConnectionManager();
-        private readonly List<IConnection> _connections = new List<IConnection>();
+        public static volatile ConnectionManager Manager = null;
+        private readonly ConcurrentDictionary<int, IConnection> _connections = new ConcurrentDictionary<int,IConnection>();
+        private static readonly object SyncRoot = new Object();
 
+        /**
+         * ConnectionManager
+         * 
+         * @brief Default Constructor
+         */
         public ConnectionManager()
         {
             var newThread = new Thread(Run);
             newThread.Start();
         }
 
+        /**
+         * Run
+         * 
+         * @brief connection managers run function
+         * 
+         * This functions runs infinately and checks if users are logging of
+         */
         public void Run()
         {
             while (true)
             {
-                List<IConnection> tmpCons = new List<IConnection>();
+                ICollection<IConnection> tmpList = _connections.Values;
+                
 
-                foreach (IConnection connection in _connections)
-                {
-                    if (!connection.UserHttp.IsConnected)
-                        tmpCons.Add(connection);
-                }
+                tmpList.Where(x => !x.UserHttp.IsConnected).AsParallel().ForAll( connection =>
+                    {
+                        Console.WriteLine("User disconnected, removing user: {0}", connection.UserProfile.Username);
+                        RemoveConnection(connection);
 
-                foreach (IConnection connection in tmpCons)
-                {
-                    Console.WriteLine("User disconnected, removing user: {0}", connection.UserProfile.Username);
-                    RemoveConnection(connection);
-
-                    StatusXmlResponse xmlRes = new StatusXmlResponse
+                        var xmlRes = new StatusXmlResponse
                         {
                             Code = 501,
                             Command = "UserWentOffline",
                         };
 
-                    NotifyUserFriends(connection, xmlRes);
-                }
+                        NotifyUserFriends(connection, xmlRes);
+                    });
 
                 Thread.Sleep(1000);
             }
+// ReSharper disable FunctionNeverReturns
         }
+// ReSharper restore FunctionNeverReturns
 
-        private void NotifyUserFriends(IConnection connection, StatusXmlResponse response)
+        /**
+         * NotifyUserFirneds
+         * 
+         * @brief sends a StatusXmlResponse to all of the users friends
+         * @param IConnection connection the user whos friends needs to be notified
+         * @param StatuXmlResponse the notification message
+         */
+        public void NotifyUserFriends(IConnection connection, StatusXmlResponse response)
         {
-            foreach ( User user in connection.UserProfile.Friends)
-            {
-                IConnection con = GetConnectionByUserId(user.UserId);
-
-                if (con != null && con.UserHttp != null)
-                {
-                    response.Message = con.UserProfile.UserId.ToString();
-                    con.UserHttp.SendXmlResponse(response);
-                }
-            }
+            connection.UserProfile.Friends.Select(user => GetConnectionByUserId(user.UserId))
+                      .Where(con => con != null)
+                      .AsParallel()
+                      .ForAll(
+                          con =>
+                              {
+                                  response.Message = con.UserProfile.UserId.ToString(CultureInfo.InvariantCulture);
+                                  con.UserHttp.SendXmlResponse(response);
+                              });
         }
 
-        // @TODO MAKE THREAD SAFE!!
+        /**
+         * GetOnlineUsers
+         * 
+         * @brief return a clones list of the online users (connections)
+         * @param List<IConnection> a cloned list of online connections
+         */
         public List<IConnection> GetOnlineUsers()
         {
-            return _connections.ToList();
+            List<IConnection> tmpList = _connections.Values.ToList();
+
+            return tmpList;
         }
 
+        /**
+         * ConnectionManager
+         * 
+         * @brief returns a reference to a instance of the connectionmanager
+         * @param Connectionmanger singleton connectionmanager
+         */
         public static ConnectionManager GetConnectionManager()
         {
+            if (Manager == null)
+            {
+                lock (SyncRoot)
+                {
+                    Manager = new ConnectionManager();
+                }
+            }
             return Manager;
         }
 
-        public void RemoveConnection(IConnection con)
+        /**
+         * RemoveConnection
+         * 
+         * @brief Removes a connection from the connection manager
+         * @param Iconnection con the user connection
+         */
+        public void RemoveConnection(IConnection  con)
         {
-            _connections.Remove(con);
+            IConnection c;
+            if (!_connections.TryRemove(con.GetHashCode(), out c))
+            {
+                Console.WriteLine("Error 9982, Can't remove con");
+            }
         }
 
+        /**
+         * AddConnection
+         * 
+         * @brief Add a connection to the connection manager
+         * @param IConnection con user connection
+         */
         public void AddConnection(IConnection con)
         {
             Logger.Log("User online");
 
-            StatusXmlResponse xmlRes = new StatusXmlResponse
+            var xmlRes = new StatusXmlResponse
             {
                 Code = 601,
                 Command = "UserWentOnline",
             };
 
             NotifyUserFriends(con, xmlRes);
-            _connections.Add(con);
+
+            if (!_connections.TryAdd(con.GetHashCode(), con))
+            {
+                Console.WriteLine("Error 3211, Can't add connection to cdict");
+            }
         }
 
+        /**
+         * GetConnectionByUserId
+         * 
+         * @brief Get a connection by user id
+         * @param long userid the user id
+         * @return IConnection the user connection, null if user not found
+         */
         public IConnection GetConnectionByUserId(long userid)
         {
-            return _connections.FirstOrDefault(con => con.UserProfile.UserId == userid);
+            return _connections.Values.FirstOrDefault(con => con.UserProfile.UserId == userid);
         }
 
+        /**
+         * GetConnectionByAuthToken
+         * 
+         * @brief Get a connection by user authentication token
+         * @param string authToken users authentication token
+         * @return IConnection the user connection, null if user not found
+         */
         public IConnection GetConnectionByAuthToken(string authToken)
         {
-            return _connections.FirstOrDefault(con => con.UserProfile.AuthToken == authToken);
+            return _connections.Values.FirstOrDefault(con => con.UserProfile.AuthToken == authToken);
         }
     }
 }

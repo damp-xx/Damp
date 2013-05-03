@@ -15,6 +15,10 @@ namespace DampServer
         public List<Archivement> Archivements { get; set; }
         public string Path { get; set; }
 
+        public string Language { get; set; }
+        public string Mode { get; set; }
+
+
         public override string ToString()
         {
             return Title;
