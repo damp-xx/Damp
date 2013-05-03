@@ -32,7 +32,7 @@ namespace CommunicationLibrary
         public static bool SendChatMessage(string message)
         {
             var client = new DampServerClient(ComLogin._ComIp);
-            var ResultFromServerXml = client.SendRequest("Chat", new Dictionary<string, string>{{"Message", message}}, ComLogin._ComToken);
+            var ResultFromServerXml = client.SendRequest("ChatSend", new Dictionary<string, string>{{"Message", message}}, ComLogin._ComToken);
 
             if (ResultFromServerXml.Name.Equals("Status"))
             {
@@ -79,7 +79,6 @@ namespace CommunicationLibrary
             }
             return false;
         }
-
 
         public static XmlElement SearchUser(string searchString)
         {

@@ -11,7 +11,8 @@ namespace CommunicationLibrary
     {
         volatile public static string _ComToken = "1337";
         volatile public static string _ComIp = "10.20.255.127";
-        public static bool Authenticate(string username, string password)
+
+        public static bool Login(string username, string password)
         {
             if (username == "" || password == "")
                 return false;
@@ -21,6 +22,8 @@ namespace CommunicationLibrary
             var ResultOfLogin = client.Login(username, password, out _TempComToken);
             _ComToken = _TempComToken;
             Console.WriteLine("Token after login: {0}", _ComToken);
+            if(ResultOfLogin == true)
+                ComEvents.Listen();
             return ResultOfLogin;
         }
 

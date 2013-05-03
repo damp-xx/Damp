@@ -8,6 +8,7 @@ using System.Text;
 using System.Web;
 using System.Xml;
 using System.Threading.Tasks;
+using ConnectionLibrary;
 
 namespace DampCS
 {
@@ -18,6 +19,7 @@ namespace DampCS
         public bool IsAuthenticated { get; private set; }
         private string _ComToken = null;
         private readonly static object _lock = new object();
+        private IEvent HandleParse;
         //private static string _authToken = "1337";
 
 
@@ -48,12 +50,6 @@ namespace DampCS
 
         public bool IsConnected { get; private set; }
 
-        bool IDampServerClient.ValidateServerCertificate(object sender, X509Certificate certificate, X509Chain chain,
-                                                         SslPolicyErrors sslPolicyErrors)
-        {
-            return ValidateServerCertificate(sender, certificate, chain, sslPolicyErrors);
-        }
-
         public bool Login(string username, string password, out string _authToken)
         {
             var xml= SendRequest("Login", new Dictionary<string, string> {{"Username", username}, {"Password", password}}, null);
@@ -73,39 +69,23 @@ namespace DampCS
         }
 
 
-        public void Listen(string _authToken)
+        public void Listen(string _authToken, IEvent HandleParser)
         {
             _ComToken = _authToken;
+            HandleParse = HandleParser;
             Task ListenTask = Task.Factory.StartNew(Run);
         }
-
-        void IDampServerClient.Run()
-        {
-            Run();
-        }
-
-        void IDampServerClient.Handle(XmlElement element)
-        {
-            Handle(element);
-        }
-
 
         private void Run()
         {
             var tcp = new TcpClient();
             SendRequestWIthOutParse("Live", new Dictionary<string, string>(),tcp, _ComToken);
-
-            while (false)
-            {
-                Console.WriteLine("WHHIILLLLINNNG!!!!  !!!");
-               var element = ParseResponse(tcp.GetStream());
-                Handle(element);
-            }
         }
 
         private void Handle(XmlElement element)
         {
-           // Console.WriteLine("Handle Element: {0}", element.Name);
+            
+            HandleParse.ParseEvent(element);
         }
 
         public XmlElement SendRequest(string command, Dictionary<string, string> parameters, string _authToken)
@@ -170,7 +150,7 @@ namespace DampCS
             {
                 while (true)
                 {
-                   var e2 = ParseResponse(stream);
+                    var e2 = ParseResponse(stream);
                     Handle(e2);
                 }
             }
@@ -194,14 +174,14 @@ namespace DampCS
 
                 if (l == null)
                 {
-                    Console.WriteLine("FUCK MIG I RØVEN!");
+                    Console.WriteLine("Error no input in string");
                     return null;
                 }
                 if (l.Equals("")) break;
 
                 string[] ll;
                 char[] splitDelimiter = { Convert.ToChar(":") };
-              //  Console.WriteLine(l);
+                //  Console.WriteLine(l);
                 ll = l.Split(splitDelimiter, 2);
 
                 if (ll[0].Equals("Content-Length"))
@@ -215,7 +195,7 @@ namespace DampCS
             var data = new char[contentLenght];
             var bytes = sr.Read(data, 0, data.Length);
          
-            Console.WriteLine("Received: {0}", new string(data));    
+            //Console.WriteLine("Received: {0}", new string(data));    
  
            // if(bytes!=contentLenght) Console.WriteLine("WTF RECEIVED BYTES NOT THOSE EXPECTED!! REC: {0}. EXC: {1}", bytes, contentLenght);
 

@@ -12,15 +12,15 @@ namespace CommunicationLibrary
         {
 
 
-            var resultOfLogin = ComLogin.Authenticate("bardyr", "mormor");
+            var resultOfLogin = ComLogin.Login("bardyr", "mormor");
 
             Console.WriteLine("login status is: {0}", resultOfLogin);
             //var resultOfSendChat = ComFriend.SendChatMessage("Test til bardyr");
             //Console.WriteLine("{0}", resultOfSendChat);
             var resultOfGetProfile = ComProfile.GetProfile();
             Console.WriteLine("{0}", resultOfGetProfile);
-            var resultOfSearchUser = ComFriend.AddFriend("2");
-            Console.WriteLine(resultOfSearchUser);
+            //var resultOfSearchUser = ComFriend.AddFriend("2");
+            //Console.WriteLine(resultOfSearchUser);
             Console.Read();
         }
     }
