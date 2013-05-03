@@ -7,12 +7,12 @@
 ///////////////////////////////////////////////////////////
 
 
-
+using Microsoft.Xna.Framework;
 
 namespace Sprites {
 	public interface IAnchorUpdate  {
 
-		void Update();
+		void Update(GameTime time);
 	}//end IAnchorUpdate
 
 }//end namespace Sprites

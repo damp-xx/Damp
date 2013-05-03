@@ -13,6 +13,8 @@ namespace Sprites {
 	public interface IAnchor  {
 
         Vector2 Position { get; set; }
+        Vector2 Velocety { get; set; }
+        int Speed { get; set; }
 	}//end IAnchor
 
 }//end namespace Sprites

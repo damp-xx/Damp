@@ -17,14 +17,15 @@ namespace SuperIHABrothers.Tests
     {
         private Anchor _uut;
         private IKeybordInput _keybord;
-        private ISpriteAnchor _player;
+        private GameTime _time;
+
         [SetUp]
         public void Init()
         {
             _keybord = MockRepository.GenerateMock<IKeybordInput>();
-            _player = MockRepository.GenerateMock<ISpriteAnchor>();
-            _uut = new Anchor(_keybord, _player);
-            _player.Stub(x => x.Speed).Return(1);
+            _time = new GameTime();
+            _uut = new Anchor(_keybord);
+            
             
         }
 
@@ -33,7 +34,7 @@ namespace SuperIHABrothers.Tests
         {
             _keybord.Stub(x => x.IsLeftPressed).Return(true);
             _keybord.Stub(x => x.IsRightPressed).Return(false);
-            _uut.Update();
+            _uut.Update(_time);
             Assert.AreEqual(-1.0f, _uut.Position.X);
             Assert.AreEqual(0.0f, _uut.Position.Y);
 
@@ -43,7 +44,7 @@ namespace SuperIHABrothers.Tests
         {
             _keybord.Stub(x => x.IsLeftPressed).Return(false);
             _keybord.Stub(x => x.IsRightPressed).Return(true);
-            _uut.Update();
+            _uut.Update(_time);
             Assert.AreEqual(1.0f, _uut.Position.X);
             Assert.AreEqual(0.0f, _uut.Position.Y);
 
@@ -53,17 +54,17 @@ namespace SuperIHABrothers.Tests
         {
             _keybord.Stub(x => x.IsLeftPressed).Return(true);
             _keybord.Stub(x => x.IsRightPressed).Return(true);
-            _uut.Update();
+            _uut.Update(_time);
             Assert.AreEqual(0.0f, _uut.Position.X);
-            //Assert.AreEqual(0.0f, _uut.Position.Y);
+            Assert.AreEqual(0.0f, _uut.Position.Y);
         }
         public void Update_LeftPressedAndRelesed_PositionChanged()
         {
             _keybord.Stub(x => x.IsLeftPressed).Return(true);
             _keybord.Stub(x => x.IsRightPressed).Return(false);
-            _uut.Update();
+            _uut.Update(_time);
             _keybord.Stub(x => x.IsLeftPressed).Return(false);
-            _uut.Update();
+            _uut.Update(_time);
             Assert.AreEqual(-1.0f, _uut.Position.X);
             Assert.AreEqual(0.0f, _uut.Position.Y);
         }

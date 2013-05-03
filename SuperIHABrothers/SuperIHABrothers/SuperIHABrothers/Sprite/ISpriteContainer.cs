@@ -8,6 +8,7 @@
 
 
 using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 
 namespace Sprites {
 	public interface ISpriteContainer  {
@@ -16,7 +17,7 @@ namespace Sprites {
 			set;
 		}
 
-		void Update();
+		void Update(GameTime time);
 	}//end ISpriteContainer
 
 }//end namespace Sprites

@@ -143,6 +143,8 @@ namespace DampServer.commands
                         Command = "AcceptFriend",
                         Message = "Friend Accepted!"
                     });
+
+                NotifyUser(new StatusXmlResponse {Code = 732, Command = "FriendAccepted", Message = friendid.ToString()}, friendid);
             }
             else
             {
