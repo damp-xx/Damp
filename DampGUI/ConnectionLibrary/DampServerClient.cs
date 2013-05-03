@@ -135,8 +135,7 @@ namespace DampCS
             }
             catch (Exception e)
             {
-            //     Console.WriteLine("Exp: {0}", e.Message);
-                Console.ReadKey();
+            //     Console.WriteLine("Exp: {0}", e.Message);           
             }    
             
             var sw = new StreamWriter(stream) {AutoFlush = true};

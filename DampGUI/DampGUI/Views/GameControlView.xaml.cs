@@ -42,19 +42,19 @@ namespace DampGUI
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            double thumbWidth = ThumbnailWidth;
-            bool setFirstItemChecked = true;
-            int count = 0;
-            foreach (var photo in _photoCollection)
-            {
-                AddPhotoToStack(photo, thumbWidth, setFirstItemChecked);
-                setFirstItemChecked = false;
-                count++;
-                if (count == _maximumPhotoInStack)
-                {
-                    break;
-                }
-            }
+            //double thumbWidth = ThumbnailWidth;
+            //bool setFirstItemChecked = true;
+            //int count = 0;
+            //foreach (var photo in _photoCollection)
+            //{
+            //    AddPhotoToStack(photo, thumbWidth, setFirstItemChecked);
+            //    setFirstItemChecked = false;
+            //    count++;
+            //    if (count == _maximumPhotoInStack)
+            //    {
+            //        break;
+            //    }
+            //}
         }
 
         private void AddPhotoToStack(Photo photo, double thumbWidth, bool setFirstItemChecked, bool isInsert = false)

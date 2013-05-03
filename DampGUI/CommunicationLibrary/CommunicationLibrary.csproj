@@ -33,13 +33,18 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="SimpleMvvmToolkit-Common, Version=4.0.0.0, Culture=neutral, PublicKeyToken=20fad5ed49a0c3b4, processorArchitecture=MSIL" />
+    <Reference Include="SimpleMvvmToolkit-WPF, Version=4.0.0.0, Culture=neutral, PublicKeyToken=20fad5ed49a0c3b4, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ComAchievement.cs" />
@@ -53,7 +58,10 @@
     <Compile Include="Events\NewChatMessage.cs" />
     <Compile Include="Events\UserWentOffline.cs" />
     <Compile Include="Events\UserWentOnline.cs" />
+    <Compile Include="Models\Friend.cs" />
+    <Compile Include="Models\Game.cs" />
     <Compile Include="IEvents.cs" />
+    <Compile Include="Models\Photo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

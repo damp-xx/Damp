@@ -7,7 +7,7 @@ using DampCS;
 
 namespace CommunicationLibrary
 {
-    class ComLogin
+    public class ComLogin
     {
         volatile public static string _ComToken = "1337";
         volatile public static string _ComIp = "10.20.255.127";

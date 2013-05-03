@@ -5,10 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using DampCS;
+using DampGUI;
+
 
 namespace CommunicationLibrary
 {
-    class ComGame
+    public class ComGame
     {
         public static XmlElement GetMyGameList()
         {
@@ -62,21 +64,32 @@ namespace CommunicationLibrary
             return null;
         }
 
-        public static XmlElement GetAllGameList()
+        public static void GetAllGameList(Games games)
         {
             var client = new DampServerClient(ComLogin._ComIp);
             var ResultFromServerXml = client.SendRequest("GetAllGames", new Dictionary<string, string> { { "", "" } }, ComLogin._ComToken);
 
-            if (ResultFromServerXml.Name.Equals("Status"))
+            if (ResultFromServerXml.Name.Equals("GameList"))
             {
-                var xmlNode = ResultFromServerXml.GetElementsByTagName("Code").Item(0);
-
-                if (xmlNode.InnerText == "200")
+                foreach (XmlElement x in ResultFromServerXml.GetElementsByTagName("Game"))
                 {
-                    return ResultFromServerXml;
+                    Game k = new Game
+                        {
+                            Title = x.GetElementsByTagName("Title").Item(0).InnerText,
+                            Description = x.GetElementsByTagName("Description").Item(0).InnerText,
+                            Genre = x.GetElementsByTagName("Genre").Item(0).InnerText,
+                            Developer = x.GetElementsByTagName("Developer").Item(0).InnerText,
+                            Mode = x.GetElementsByTagName("Mode").Item(0).InnerText,
+                            Language = x.GetElementsByTagName("Language").Item(0).InnerText,
+                            AchivementsGame = ComAchievement.GetAchievement(x.GetElementsByTagName("Id").Item(0).InnerText),
+                            PhotoCollection = new PhotoCollection(".")
+                        };
+                    Console.WriteLine(k.Title);
+                    games.Add(k);
+
                 }
             }
-            return null;
+         
         }
 
         public static XmlElement BuyGame(string GameID)

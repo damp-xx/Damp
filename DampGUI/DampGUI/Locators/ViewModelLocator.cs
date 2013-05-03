@@ -13,7 +13,7 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-
+using CommunicationLibrary;
 // Toolkit namespace
 
 using SimpleMvvmToolkit;
@@ -53,9 +53,11 @@ namespace DampGUI
         {
             get
             {
+                ComLogin.Login("jens", "jens");
                 LoadGames();
                 LoadKnowFriend();
                 LoadAllFriends();
+                
                 return new MainPageViewModel(lGames,knowfriends);
             }
         }
@@ -90,25 +92,28 @@ namespace DampGUI
 
         public Games LoadGames()
         {
-            ObservableCollection<string> Ach = new ObservableCollection<string>();
-            Ach.Add("Shoot");
-            Ach.Add("Boom");
-            Ach.Add("Knife");
-            Ach.Add("Rocket");
-            string desc =
-            @"THE NEXT INSTALLMENT OF THE WORLD'S # 1 ONLINE ACTION GAME Counter-Strike: Source blends Counter-Strike's award-winning teamplay action with the advanced technology of Source™ technology. Featuring state of the art graphics, all new sounds, and introducing physics, Counter-Strike: Source is a must-have for every action gamer.";
+            //ObservableCollection<string> Ach = new ObservableCollection<string>();
+            //Ach.Add("Shoot");
+            //Ach.Add("Boom");
+            //Ach.Add("Knife");
+            //Ach.Add("Rocket");
+            //string desc =
+            //@"THE NEXT INSTALLMENT OF THE WORLD'S # 1 ONLINE ACTION GAME Counter-Strike: Source blends Counter-Strike's award-winning teamplay action with the advanced technology of Source™ technology. Featuring state of the art graphics, all new sounds, and introducing physics, Counter-Strike: Source is a must-have for every action gamer.";
 
-            PhotoCollection photoCollection1 = new PhotoCollection();
-            photoCollection1.Path = @".\Game";
+            //PhotoCollection photoCollection1 = new PhotoCollection();
+            //photoCollection1.Path = @".\Game";
 
-            PhotoCollection photoCollection2 = new PhotoCollection();
-            photoCollection2.Path = @".\Game2"; 
+            //PhotoCollection photoCollection2 = new PhotoCollection();
+            //photoCollection2.Path = @".\Game2"; 
 
-            Game CS = new Game("CS", desc, "Action", "Damp", "Single", "English", Ach, photoCollection1);
-            Game CSsovs = new Game("CSsovs", desc, "Action", "Damp", "Multi", "Danish", Ach, photoCollection2);
+            //Game CS = new Game("CS", desc, "Action", "Damp", "Single", "English", Ach, photoCollection1);
+            //Game CSsovs = new Game("CSsovs", desc, "Action", "Damp", "Multi", "Danish", Ach, photoCollection2);
 
-            lGames.Add(CS);
-            lGames.Add(CSsovs);
+            //lGames.Add(CS);
+            //lGames.Add(CSsovs);
+
+            ComGame.GetAllGameList(lGames);
+
             return lGames;
         }
 
@@ -133,8 +138,8 @@ namespace DampGUI
             string desc2 =
             @"THE NEXT INSTAadasddsadadasdsadd sad asd sa dsa d saf    sa f  as d asd as fd asd as ds ad asd as d asd a ward-winning teamplay action with the advanced technology osadasd rce™ technology. Featuring state of the art graphics, all new sounds, and introducing physics, Counter-Strike: Source is a must-have for every action gamer.";
 
-            Photo photo1 = new Photo(@".\ProfilePic\Ole_Profile.jpeg");
-            Photo photo2 = new Photo(@".\ProfilePic\Poulina_Profile.jpeg");
+            Photo photo1 = new Photo(@"F:\Dropbox\IHA\PRJ4\Damp\DampGUI\DampGUI\bin\Debug\ProfilePic\Ole_Profile.jpeg");
+            Photo photo2 = new Photo(@"F:\Dropbox\IHA\PRJ4\Damp\DampGUI\DampGUI\bin\Debug\ProfilePic\Poulina_Profile.jpeg");
             
             Friend Ole = new Friend("Ole", desc1, "Male", "Aarhus", "Denmark", "English", Ach1,photo1);
             Friend Poulina = new Friend("Poulina", desc2, "Female", "Minsk", "Poland", "Danish", Ach2,photo2);

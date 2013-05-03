@@ -29,6 +29,7 @@ namespace DampGUI
         public GameViewModel(IGameServiceAgent serviceAgent,Games aGames)
         {
             games = aGames;
+            PlayIns = "Play";
             this.serviceAgent = serviceAgent;
         }
         
@@ -63,8 +64,23 @@ namespace DampGUI
                     return null;
             }
         }
+
+        public string PlayIns { get; set; }
+        
+
         // TODO: Add methods that will be called by the view
- 
+        
+        public void Playbutton()
+        {
+            if (CurrentGame.Playins == true)
+            {
+                
+            }
+            else
+            {
+                
+            }
+        }
 
         // TODO: Optionally add callback methods for async calls to the service agent
         // Helper method to notify View of an error
