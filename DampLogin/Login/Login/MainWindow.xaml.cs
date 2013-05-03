@@ -120,7 +120,11 @@ namespace Login
 
             configNode.AppendChild(configElement);
             configElement = xmlCfg.CreateElement(AccountNameElement);
-            configElement.InnerText = Username.Text;
+            if (RememberLoginCheck.IsChecked.Value == true)
+                configElement.InnerText = Username.Text;
+            else
+                configElement.InnerText = "";
+
             configNode.AppendChild(configElement);
 
             configElement = xmlCfg.CreateElement(AutoLoginElement);
@@ -178,6 +182,8 @@ namespace Login
                         else
                         {
                             root.GetElementsByTagName(AccountNameElement).Item(0).InnerText = "";
+                            //XmlNode node = root.GetElementsByTagName(AccountNameElement).Item(0);
+                            //node.ParentNode.RemoveChild(node);
                         }
                     }
                     xmlCfg.Save(ConfPath);

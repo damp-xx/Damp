@@ -18,17 +18,10 @@ namespace Login
 
         public bool LoginUser(string username, string password)
         {
-            if(username == null || password == null)
+            if(string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
                 throw new ArgumentNullException();
             
-            if (_loginMethod.Login(username, password) == true)
-            {
-                var loginConf = new XmlDocument();
-               /* if(File.Exists(confPath))
-                    loginConf.Load(confPath);*/
-
-            }
-            return false;
+            return _loginMethod.Login(username, password);
         }
     }
 }
