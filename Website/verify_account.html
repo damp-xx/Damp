@@ -2,59 +2,52 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="styles.css" rel="stylesheet">
 <title>Verify Account</title>
 	<!--Once the user has created the account, must enter the login information to verify that the login is valid. -->
 </head>
 
-<body style="background-color:#A9D0F5;">
-	<style>	
-		.Three-Dee{
-		font-family: Arial, sans-serif;
-		line-height: 1em;
-		color: #f5ce0a;
-		font-weight:bold;
-		font-size: 65px;
-		text-shadow:0px 0px 0 rgb(143,104,-92),1px 1px 0 rgb(123,84,-112),
-		2px 2px 0 rgb(102,63,-133),3px 3px 0 rgb(82,43,-153),
-		4px 4px 0 rgb(62,23,-173),5px 5px 0 rgb(42,3,-193),
-		6px 6px 0 rgb(21,-18,-214),7px 7px 0 rgb(1,-38,-234),
-		8px 8px 0 rgb(-19,-58,-254),9px 9px 8px rgba(0,0,0,0.1),
-		9px 9px 1px rgba(0,0,0,0.5),0px 0px 8px rgba(0,0,0,.2);}
-	</style>
-
-	<p><span class="Three-Dee">Prj4 - DAMP Verify Account</span></p>
-
-	<p style="font-family:arial;font-size:15px;">
-		Once your account has been created, 
-		you must enter the login information to verify that the login is valid
-	</p>
-
-	<hr />
-
-	<form name:"loginInfo" action="#" method="get">
-		Username: <input type="text" name="user"><br>
-		Password: <input type="password" name="password"><br>
-		<input type="submit" value="Submit">
-	</form>
-
-	<br />
-
-	<b>NOTE: After the user has submitted the login information, a request must be sent to the Database, where it must verify that the login information is valid. At this moment I don't know how to do this!
-	<br /> <br />
-	When the login is valid, user can now click on the button below to gain access to the 'DOWNLOAD CLIENT' page</b>
-
-
-
-
-	<p style="font-family:arial;font-size:15;">
-		Your account has been verified! 
-		You can now click on the button below to be directed to the <b>'Download Client'</b> page. 
+<body>
+	<div id="wrapper">
+		<div id="header">
+			<p id="threeD">Prj4 - Verify DAMP Account</p>
+			Welcome to DAMP Verify Account page! <br />
+			You can use this page for:<br /> 
+			Verifying your account <br /> 
+		</div>
+		
+		<dl>
+			<dt>Enter login information</dt>
+			<dd>Once your account has been created,	you must enter the login information to verify that the login is valid
+	</dd>
+		</dl>
 		<br />
-		Click on the button below to get directed the download page.
-	</p>
+		<form name:"loginInfo" action="#" method="get">
+			Username: <input type="text" name="user"><br>
+			Password: <input type="password" name="password"><br>
+			<br />
+			<input type="submit" value="Submit" style="height:30px; width:125px">
+		</form>
 
-	<form action="download_client.html">
-		<input type="submit" value="Download Client" style="height:50px; width:200px">
-	</form>
+		<br />
+
+		<b>NOTE: After the user has submitted the login information, a request must be sent to the Database, where it must verify that the login information is valid. At this moment I don't know how to do this!
+		<br /> <br />
+		When the login is valid, user can now click on the button below to gain access to the 'DOWNLOAD CLIENT' page</b>
+
+
+
+
+		<p style="font-family:arial;font-size:15;">
+			Your account has been verified! 
+			You can now click on the button below to be directed to the <b>'Download Client'</b> page. 
+			<br />
+			Click on the button below to get directed the download page.
+		</p>
+
+		<form action="download_client.html">
+			<input type="submit" value="Download Client" style="height:50px; width:200px">
+		</form>
+	</div>
 </body>
 </html>
