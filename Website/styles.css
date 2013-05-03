@@ -44,7 +44,7 @@ dt{
 #footer {
     background-color: #2D2D30;
     color: #FFFFFF;
-    font-size: 10px;
+    font-size: 11px;
     font-style: Arial;
     text-align: center;
 }
@@ -55,8 +55,19 @@ dt{
     width: 80%;
 }
 .spanFormat {
-	text-align: left;
+	text-align: center;
 	display: table-cell;
 	min-width: 10px;
 	padding-right: 10px;
+}
+
+table
+{
+border-collapse:collapse;
+margin-left: auto;
+margin-right: auto;
+}
+table, td, th
+{
+border:0px solid black;
 }
