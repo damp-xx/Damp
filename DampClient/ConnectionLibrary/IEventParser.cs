@@ -2,7 +2,7 @@
 
 namespace ConnectionLibrary
 {
-    public interface IEvent
+    public interface IEventParser
     {
         void ParseEvent(XmlElement Event);
     }

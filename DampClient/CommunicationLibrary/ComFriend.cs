@@ -80,6 +80,23 @@ namespace CommunicationLibrary
             return false;
         }
 
+        public static bool AcceptFriend(string FriendID)
+        {
+            var client = new DampServerClient(ComLogin._ComIp);
+            var ResultFromServerXml = client.SendRequest("AcceptFriend", new Dictionary<string, string> { { "Friend", FriendID } }, ComLogin._ComToken);
+
+            if (ResultFromServerXml.Name.Equals("Status"))
+            {
+                var xmlNode = ResultFromServerXml.GetElementsByTagName("Code").Item(0);
+
+                if (xmlNode.InnerText == "200")
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         public static XmlElement SearchUser(string searchString)
         {
             var client = new DampServerClient(ComLogin._ComIp);

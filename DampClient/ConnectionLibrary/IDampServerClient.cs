@@ -16,7 +16,7 @@ namespace DampCS
     {
         bool Login(string username, string password, out string _authToken);
 
-        void Listen(string _authToken, IEvent HandleParser);
+        void Listen(string _authToken, IEventParser HandleParser);
 
         XmlElement SendRequest(string command, Dictionary<string, string> parameters, string _authToken);
     }

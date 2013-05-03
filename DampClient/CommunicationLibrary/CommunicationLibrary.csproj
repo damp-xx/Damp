@@ -48,6 +48,12 @@
     <Compile Include="ComFriend.cs" />
     <Compile Include="ComLogin.cs" />
     <Compile Include="ComProfile.cs" />
+    <Compile Include="Events\FriendAccepted.cs" />
+    <Compile Include="Events\FriendRequest.cs" />
+    <Compile Include="Events\NewChatMessage.cs" />
+    <Compile Include="Events\UserWentOffline.cs" />
+    <Compile Include="Events\UserWentOnline.cs" />
+    <Compile Include="IEvents.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

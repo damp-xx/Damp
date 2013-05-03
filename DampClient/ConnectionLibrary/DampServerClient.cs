@@ -19,7 +19,7 @@ namespace DampCS
         public bool IsAuthenticated { get; private set; }
         private string _ComToken = null;
         private readonly static object _lock = new object();
-        private IEvent HandleParse;
+        private IEventParser HandleParse;
         //private static string _authToken = "1337";
 
 
@@ -69,7 +69,7 @@ namespace DampCS
         }
 
 
-        public void Listen(string _authToken, IEvent HandleParser)
+        public void Listen(string _authToken, IEventParser HandleParser)
         {
             _ComToken = _authToken;
             HandleParse = HandleParser;
@@ -138,7 +138,7 @@ namespace DampCS
             //     Console.WriteLine("Exp: {0}", e.Message);
                 Console.ReadKey();
             }    
-
+            
             var sw = new StreamWriter(stream) {AutoFlush = true};
             string qq = HttpUtility.UrlPathEncode("/" + query);
             //Console.WriteLine("SENT GET: {0}", qq);

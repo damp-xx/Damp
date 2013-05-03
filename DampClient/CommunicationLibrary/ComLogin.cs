@@ -18,12 +18,24 @@ namespace CommunicationLibrary
                 return false;
             
             var client = new DampServerClient(_ComIp);
-            string _TempComToken;
-            var ResultOfLogin = client.Login(username, password, out _TempComToken);
-            _ComToken = _TempComToken;
-            Console.WriteLine("Token after login: {0}", _ComToken);
-            if(ResultOfLogin == true)
+            bool ResultOfLogin = false;
+            string _TempComToken = "1337";
+            try
+            {
+                ResultOfLogin = client.Login(username, password, out _TempComToken);
+            }
+            catch (Exception)
+            {
+                
+            }
+
+            if (ResultOfLogin == true)
+            {
+                _ComToken = _TempComToken;
+                Console.WriteLine("Token after login: {0}", _ComToken);
                 ComEvents.Listen();
+            }
+                
             return ResultOfLogin;
         }
 
