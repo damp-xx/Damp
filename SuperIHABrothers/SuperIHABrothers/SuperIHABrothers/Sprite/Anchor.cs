@@ -27,28 +27,27 @@ using SuperIHABrothers.GameState;
 namespace Sprites {
 	public class Anchor : IAnchor, IAnchorUpdate {
 
-
-        
 	    private Vector2 _velocety;
+        public Vector2 Velocety { get { return _velocety; } set { _velocety = value; } }
 	    private IKeybordInput _KeyInput;
-	    private ISpriteAnchor _player;
         public Vector2 Position { get; set; }
+        public int Speed { get; set; }
 
-        public Anchor(IKeybordInput mKey, ISpriteAnchor mPlayer)
+        public Anchor(IKeybordInput mKey)
         {
             Position = new Vector2(0,0);
             _velocety = new Vector2(0,0);
 		    _KeyInput = mKey;
-            _player = mPlayer;
+            Speed = 1;
         }
 
-		public void Update()
+		public void Update(GameTime time)
 		{
             _velocety.X = 0;
             if (_KeyInput.IsRightPressed)
-                _velocety.X += _player.Speed;
+                _velocety.X += Speed;
             if (_KeyInput.IsLeftPressed)
-                _velocety.X += -_player.Speed;
+                _velocety.X += -Speed;
                
 		    Position += _velocety;
 		}

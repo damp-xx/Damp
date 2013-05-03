@@ -9,29 +9,39 @@
 
 using System;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Sprites;
 namespace Sprites {
 	public class SpriteDeathAnimaiton : ISprite {
 
-		public Sprites.IAnchor m_IAnchor;
-        public Vector2 MyPosition { get; set; }
+        //Generel Atributes
+        public Vector2 Position { get; set; }
+        private Vector2 _AnchorOffset;
         public Rectangle MyRectangle { get; set; }
+        private IAnchor _Anchor;
+        private int _FrameHeight;
+        private int _FrameWidth;
+        private Texture2D _texture2D;
 
-		public SpriteDeathAnimaiton(){
+        //Animation Atributes
+        private int _interval = 75;
+        private int _currentFrame;
+        private float _timer = 0;
+
+	    public void Draw(SpriteBatch spriteBatch)
+	    {
+	        throw new NotImplementedException();
+	    }
+
+	    public void Update(GameTime time)
+	    {
+	        throw new NotImplementedException();
+	    }
+
+	    public SpriteDeathAnimaiton(){
             throw new NotImplementedException();
 		}
 
-
-		public void Draw(){
-            throw new NotImplementedException();
-		}
-
-
-
-
-	    public void Update(){
-            throw new NotImplementedException();
-		}
 
 	}//end SpriteDeathAnimaiton
 

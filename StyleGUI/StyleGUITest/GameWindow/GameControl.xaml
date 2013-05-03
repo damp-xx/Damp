@@ -106,7 +106,8 @@
                         
                         <ScrollViewer HorizontalScrollBarVisibility="Visible"  VerticalScrollBarVisibility="Disabled" >
                             <Viewbox>
-                            <StackPanel  Name="photos" Margin="0,0,0,3" ClipToBounds="True" Orientation="Horizontal" HorizontalAlignment="Center"></StackPanel>
+                            <StackPanel  Name="photos" Margin="0,0,0,3" ClipToBounds="True" 
+                                         Orientation="Horizontal" HorizontalAlignment="Center"></StackPanel>
                             </Viewbox>
                         </ScrollViewer>
                     </DockPanel>

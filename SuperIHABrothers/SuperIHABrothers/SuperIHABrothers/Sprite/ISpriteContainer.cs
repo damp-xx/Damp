@@ -8,15 +8,15 @@
 
 
 using System.Collections.Generic;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Sprites {
 	public interface ISpriteContainer  {
 
-		List<ISprite> SpriteList{
-			set;
-		}
 
-		void Update();
+		void Update(GameTime time);
+	    void Draw(SpriteBatch spriteBatch);
 	}//end ISpriteContainer
 
 }//end namespace Sprites

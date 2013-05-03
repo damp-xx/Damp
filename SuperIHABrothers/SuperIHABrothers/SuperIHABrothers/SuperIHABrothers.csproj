@@ -109,12 +109,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GameState\IKeybordInput.cs" />
-    <Compile Include="Sprite\Anchor.cs" />
-    <Compile Include="Collision\CollisionControle.cs" />
-    <Compile Include="Collision\ICollisionControle.cs" />
+    <Compile Include="Collision\CollisionControl.cs" />
+    <Compile Include="Collision\ICollisionControl.cs" />
     <Compile Include="Collision\ICollisionDetect.cs" />
     <Compile Include="Collision\IEvent.cs" />
-    <Compile Include="Collision\MonsteDeathEvent.cs" />
+    <Compile Include="Collision\MonsterDeathEvent.cs" />
     <Compile Include="Collision\MonsterEnviromentDetect.cs" />
     <Compile Include="Collision\PlayerDeathEvent.cs" />
     <Compile Include="Collision\PlayerEnviromentDetect.cs" />
@@ -130,15 +129,16 @@
     <Compile Include="GameState\IGameState.cs" />
     <Compile Include="GameState\IGameStateEvent.cs" />
     <Compile Include="GameState\IGameStateLevel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Game1.cs" />
+    <Compile Include="Sprite\Anchor.cs" />
     <Compile Include="Sprite\IAnchor.cs" />
     <Compile Include="Sprite\IAnchorUpdate.cs" />
     <Compile Include="Sprite\ISprite.cs" />
     <Compile Include="Sprite\ISpriteAnchor.cs" />
     <Compile Include="Sprite\ISpriteContainer.cs" />
     <Compile Include="Sprite\ISpriteContainerCollision.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Program.cs" />
-    <Compile Include="Game1.cs" />
     <Compile Include="Sprite\SpriteBackground.cs" />
     <Compile Include="Sprite\SpriteContainer.cs" />
     <Compile Include="Sprite\SpriteDeathAnimaiton.cs" />

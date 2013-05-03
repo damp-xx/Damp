@@ -8,47 +8,74 @@
 
 
 using System.Collections.Generic;
-using Sprites;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+
 namespace Sprites {
+    public enum listTypes
+    {
+        Player = 0,
+        Monster = 1,
+        Environment = 2,
+        Background = 3,
+        DeathAnimation = 4
+    }
 	public class SpriteContainer : ISpriteContainer, ISpriteContainerCollision {
 
 		public Sprites.IAnchorUpdate _IAnchorUpdate;
 		public Sprites.ISprite _ISprite;
-	    private List<ISprite> _spriteList;
-        List<ISprite> ISpriteContainer.SpriteList { set { _spriteList = value; } }
-        List<ISprite> ISpriteContainerCollision.SpriteList { get { return _spriteList; } }
-
-		public SpriteContainer(){
-
-		}
+	    private List<List<ISprite>> _spriteList;
 
 
-
-		/// 
-		/// <param name="mStrite"></param>
-		public void AddSprite(ISprite mStrite){
-            throw new System.NotImplementedException();
-		}
-
-		/// 
-		/// <param name="mSprite"></param>
-		public void RemoveSprite(ISprite mSprite){
-            throw new System.NotImplementedException();
-		}
-
-	    
-	    public void Update()
+	    public void AddDeathAnimation(ISprite mSprite)
 	    {
 	        throw new System.NotImplementedException();
 	    }
 
+	    public void RemoveMonster(ISprite mSprite)
+	    {
+	        throw new System.NotImplementedException();
+	    }
 
-	    
+	    public void RemovePlayer(ISprite mSprite)
+	    {
+	        throw new System.NotImplementedException();
+	    }
+
+	    List<List<ISprite>> ISpriteContainerCollision.SpriteList { get { return _spriteList; } }
+       
+	    private IAnchorUpdate _anchor;
 
 
+		public SpriteContainer(List<List<ISprite>> mList, IAnchorUpdate mAnchor)
+		{
+		    _spriteList = mList;
+		    _anchor = mAnchor;
+		}
 
 
+	    public void Update(GameTime time)
+	    {
+	        _anchor.Update(time);
+	        foreach (var _list in _spriteList)
+	        {
+	            foreach (var sprite in _list)
+	            {
+	                sprite.Update(time);
+	            }
+	        }
+	    }
 
+	    public void Draw(SpriteBatch spriteBatch)
+	    {
+            foreach (var _list in _spriteList)
+            {
+                foreach (var sprite in _list)
+                {
+                    sprite.Draw(spriteBatch);
+                }
+            }
+	    }
 	}//end SpriteContainer
 
 }//end namespace Sprites

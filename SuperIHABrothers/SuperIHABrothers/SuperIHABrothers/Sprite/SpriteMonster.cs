@@ -9,30 +9,73 @@
 
 using System;
 using Microsoft.Xna.Framework;
-using Sprites;
+using Microsoft.Xna.Framework.Graphics;
 namespace Sprites {
 	public class SpriteMonster : ISprite {
 
-		public Sprites.IAnchor m_IAnchor;
-        public Vector2 MyPosition { get; set; }
+        //Generel Atributes
+        public Vector2 Position { get; set; }
+	    private Vector2 _AnchorOffset;
         public Rectangle MyRectangle { get; set; }
+        private IAnchor _Anchor;
+        private int _FrameHeight;
+        private int _FrameWidth;
+	    private Texture2D _texture2D;
 
-		public SpriteMonster(){
+        //Animation Atributes
+	    private int _interval = 75; 
+        private int _currentFrame;
+        private float _timer = 0;
+        
+        //Moving Atributes
+        public Vector2 Velocety { get { return _velocety; } set { _velocety = value; } }
+        private Vector2 _velocety;
+        private bool _isInAir = true;
+        
+
+        public SpriteMonster(Texture2D mTexture2D, Vector2 mAnchorOffset, int mFrameHeight, int mFrameWidth, IAnchor mAnchor, Vector2 mVelocety)
+        {
             throw new NotImplementedException();
-		}
+        }
 
+	    public void Draw(SpriteBatch spriteBatch)
+	    {
+	        throw new NotImplementedException();
+	    }
 
-		public void Draw(){
-            throw new NotImplementedException();
-		}
+	    
+	    public void Update(GameTime time)
+	    {
+	        throw new NotImplementedException();
+	    }
 
+        private void AnimateLeft(GameTime gameTime)
+        {
+            _timer += (float)gameTime.ElapsedGameTime.TotalMilliseconds / 2;
+            if (_timer > _interval)
+            {
+                _currentFrame++;
+                _timer = 0;
+                if (_currentFrame > 7 || _currentFrame < 4 || _isInAir)
+                {
+                    _currentFrame = 4;
+                }
+            }
+        }
 
-
-
-	    public void Update(){
-            throw new NotImplementedException();
-		}
-
+        private void AnimateRight(GameTime gameTime)
+        {
+            _timer += (float)gameTime.ElapsedGameTime.TotalMilliseconds / 2;
+            if (_timer > _interval)
+            {
+                _currentFrame++;
+                _timer = 0;
+                if (_currentFrame > 3 || _isInAir)
+                {
+                    _currentFrame = 0;
+                }
+            }
+        }
 	}//end SpriteMonster
 
 }//end namespace Sprites
