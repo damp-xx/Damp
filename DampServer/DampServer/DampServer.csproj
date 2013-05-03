@@ -69,7 +69,6 @@
     <Compile Include="commands\GameCommand.cs" />
     <Compile Include="interfaces\INotify.cs" />
     <Compile Include="Notifier.cs" />
-    <Compile Include="responses\ChatXmlResponse.cs" />
     <Compile Include="exceptions\CommandNotFoundException.cs" />
     <Compile Include="Connection.cs" />
     <Compile Include="ConnectionManager.cs" />
@@ -90,7 +89,6 @@
     <Compile Include="commands\LoginCommand.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="RequestProcessor.cs" />
-    <Compile Include="responses\FrendRequestResponse.cs" />
     <Compile Include="responses\FriendSearchResponse.cs" />
     <Compile Include="responses\GameListResponse.cs" />
     <Compile Include="SocketHandler.cs" />

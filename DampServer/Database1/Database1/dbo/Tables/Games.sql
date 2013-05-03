@@ -7,6 +7,10 @@
     [genre]          NVARCHAR (32) NOT NULL,
     [recommendedage] INT           NOT NULL,
     [developer]      NVARCHAR (32) NOT NULL,
+    [langauge]       NVARCHAR (32) NOT NULL,
+    [mode]           NCHAR (32)    NOT NULL,
     CONSTRAINT [pk_Games] PRIMARY KEY CLUSTERED ([gameid] ASC)
 );
+
+
 

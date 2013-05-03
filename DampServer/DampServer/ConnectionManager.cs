@@ -1,37 +1,56 @@
-﻿#region
+﻿/**
+ * @file   	ConnectionManager.cpp
+ * @author 	Bardur Simonsen, 11841
+ * @date   	April, 2013
+ * @brief  	This file implements the  ConnectionManager for DAMP Server
+ * @section	LICENSE GPL 
+ */
 
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Threading;
 using DampServer.interfaces;
 
-#endregion
-
 namespace DampServer
 {
+    /**
+     * ConnectionManager
+     * 
+     * @brief Yay
+     */
     public class ConnectionManager
     {
-        public static  ConnectionManager Manager = new ConnectionManager();
-        private readonly List<IConnection> _connections = new List<IConnection>();
+        public static volatile ConnectionManager Manager = null;
+        private readonly ConcurrentDictionary<int, IConnection> _connections = new ConcurrentDictionary<int,IConnection>();
+        private static readonly object SyncRoot = new Object();
 
+        /**
+         * ConnectionManager
+         * 
+         * @brief Default Constructor
+         */
         public ConnectionManager()
         {
             var newThread = new Thread(Run);
             newThread.Start();
         }
 
+        /**
+         * Run
+         * 
+         * @brief connection managers run function
+         * 
+         * This functions runs infinately and checks if users are logging of
+         */
         public void Run()
         {
             while (true)
             {
-                List<IConnection> tmpList;
-
-                lock (_connections)
-                {
-                    tmpList = _connections.ToList();
-                }
+                ICollection<IConnection> tmpList = _connections.Values;
+                
 
                 tmpList.Where(x => !x.UserHttp.IsConnected).AsParallel().ForAll( connection =>
                     {
@@ -53,7 +72,14 @@ namespace DampServer
         }
 // ReSharper restore FunctionNeverReturns
 
-        private void NotifyUserFriends(IConnection connection, StatusXmlResponse response)
+        /**
+         * NotifyUserFirneds
+         * 
+         * @brief sends a StatusXmlResponse to all of the users friends
+         * @param IConnection connection the user whos friends needs to be notified
+         * @param StatuXmlResponse the notification message
+         */
+        public void NotifyUserFriends(IConnection connection, StatusXmlResponse response)
         {
             connection.UserProfile.Friends.Select(user => GetConnectionByUserId(user.UserId))
                       .Where(con => con != null)
@@ -66,30 +92,58 @@ namespace DampServer
                               });
         }
 
+        /**
+         * GetOnlineUsers
+         * 
+         * @brief return a clones list of the online users (connections)
+         * @param List<IConnection> a cloned list of online connections
+         */
         public List<IConnection> GetOnlineUsers()
         {
-            List<IConnection> tmpList;
+            List<IConnection> tmpList = _connections.Values.ToList();
 
-            lock (_connections)
-            {
-                tmpList = _connections.ToList();
-            }
             return tmpList;
         }
 
+        /**
+         * ConnectionManager
+         * 
+         * @brief returns a reference to a instance of the connectionmanager
+         * @param Connectionmanger singleton connectionmanager
+         */
         public static ConnectionManager GetConnectionManager()
         {
+            if (Manager == null)
+            {
+                lock (SyncRoot)
+                {
+                    Manager = new ConnectionManager();
+                }
+            }
             return Manager;
         }
 
+        /**
+         * RemoveConnection
+         * 
+         * @brief Removes a connection from the connection manager
+         * @param Iconnection con the user connection
+         */
         public void RemoveConnection(IConnection  con)
         {
-            lock (_connections)
+            IConnection c;
+            if (!_connections.TryRemove(con.GetHashCode(), out c))
             {
-                _connections.Remove(con);
+                Console.WriteLine("Error 9982, Can't remove con");
             }
         }
 
+        /**
+         * AddConnection
+         * 
+         * @brief Add a connection to the connection manager
+         * @param IConnection con user connection
+         */
         public void AddConnection(IConnection con)
         {
             Logger.Log("User online");
@@ -102,26 +156,34 @@ namespace DampServer
 
             NotifyUserFriends(con, xmlRes);
 
-            lock (_connections)
+            if (!_connections.TryAdd(con.GetHashCode(), con))
             {
-                _connections.Add(con);
+                Console.WriteLine("Error 3211, Can't add connection to cdict");
             }
         }
 
+        /**
+         * GetConnectionByUserId
+         * 
+         * @brief Get a connection by user id
+         * @param long userid the user id
+         * @return IConnection the user connection, null if user not found
+         */
         public IConnection GetConnectionByUserId(long userid)
         {
-            lock (_connections)
-            {
-                return _connections.FirstOrDefault(con => con.UserProfile.UserId == userid);
-            }
+            return _connections.Values.FirstOrDefault(con => con.UserProfile.UserId == userid);
         }
 
+        /**
+         * GetConnectionByAuthToken
+         * 
+         * @brief Get a connection by user authentication token
+         * @param string authToken users authentication token
+         * @return IConnection the user connection, null if user not found
+         */
         public IConnection GetConnectionByAuthToken(string authToken)
         {
-            lock (_connections)
-            {
-                return _connections.FirstOrDefault(con => con.UserProfile.AuthToken == authToken);
-            }
+            return _connections.Values.FirstOrDefault(con => con.UserProfile.AuthToken == authToken);
         }
     }
 }

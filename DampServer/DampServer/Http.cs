@@ -295,7 +295,7 @@ namespace DampServer
                     {
                         Length = fs.Length;
                         Type = GetMimeType(filename);
-                        AddHeader("Content-disposition", "attachment; filename=" + filename);
+                       // AddHeader("Content-disposition", "attachment; filename=" + filename);
                         Status = "200 OK";
 
                         SendResponseHeader();

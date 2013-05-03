@@ -13,7 +13,7 @@ namespace DampServer
     {
         protected XmlResponse()
         {
-            Date = DateTime.Now;
+            //Date = DateTime.Now;
         }
 
         public DateTime Date { get; set; }
