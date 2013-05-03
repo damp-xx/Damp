@@ -1,0 +1,14 @@
+C:\Users\Michael\Documents\GitHub\Damp\DampClient\CommunicationLibrary\bin\Debug\CommunicationLibrary.exe
+C:\Users\Michael\Documents\GitHub\Damp\DampClient\CommunicationLibrary\bin\Debug\CommunicationLibrary.pdb
+C:\Users\Michael\Documents\GitHub\Damp\DampClient\CommunicationLibrary\bin\Debug\ConnectionLibrary.dll
+C:\Users\Michael\Documents\GitHub\Damp\DampClient\CommunicationLibrary\bin\Debug\ConnectionLibrary.pdb
+C:\Users\Michael\Documents\GitHub\Damp\DampClient\CommunicationLibrary\obj\Debug\CommunicationLibrary.csprojResolveAssemblyReference.cache
+C:\Users\Michael\Documents\GitHub\Damp\DampClient\CommunicationLibrary\obj\Debug\CommunicationLibrary.exe
+C:\Users\Michael\Documents\GitHub\Damp\DampClient\CommunicationLibrary\obj\Debug\CommunicationLibrary.pdb
+C:\Users\bardyr\Documents\Damp\DampClient\CommunicationLibrary\obj\Debug\CommunicationLibrary.exe
+C:\Users\bardyr\Documents\Damp\DampClient\CommunicationLibrary\bin\Debug\CommunicationLibrary.exe
+C:\Users\bardyr\Documents\Damp\DampClient\CommunicationLibrary\bin\Debug\CommunicationLibrary.pdb
+C:\Users\bardyr\Documents\Damp\DampClient\CommunicationLibrary\bin\Debug\ConnectionLibrary.dll
+C:\Users\bardyr\Documents\Damp\DampClient\CommunicationLibrary\bin\Debug\ConnectionLibrary.pdb
+C:\Users\bardyr\Documents\Damp\DampClient\CommunicationLibrary\obj\Debug\CommunicationLibrary.csprojResolveAssemblyReference.cache
+C:\Users\bardyr\Documents\Damp\DampClient\CommunicationLibrary\obj\Debug\CommunicationLibrary.pdb

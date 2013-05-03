@@ -1,0 +1,11 @@
+C:\Users\Michael\Documents\GitHub\Damp\DampClient\CommunicationLibraryTest\bin\Debug\CommunicationLibraryTest.dll
+C:\Users\Michael\Documents\GitHub\Damp\DampClient\CommunicationLibraryTest\bin\Debug\CommunicationLibraryTest.pdb
+C:\Users\Michael\Documents\GitHub\Damp\DampClient\CommunicationLibraryTest\bin\Debug\nunit.framework.dll
+C:\Users\Michael\Documents\GitHub\Damp\DampClient\CommunicationLibraryTest\obj\Debug\CommunicationLibraryTest.dll
+C:\Users\Michael\Documents\GitHub\Damp\DampClient\CommunicationLibraryTest\obj\Debug\CommunicationLibraryTest.pdb
+C:\Users\bardyr\Documents\Damp\DampClient\CommunicationLibraryTest\bin\Debug\CommunicationLibraryTest.dll
+C:\Users\bardyr\Documents\Damp\DampClient\CommunicationLibraryTest\bin\Debug\CommunicationLibraryTest.pdb
+C:\Users\bardyr\Documents\Damp\DampClient\CommunicationLibraryTest\bin\Debug\nunit.framework.dll
+C:\Users\bardyr\Documents\Damp\DampClient\CommunicationLibraryTest\obj\Debug\CommunicationLibraryTest.csprojResolveAssemblyReference.cache
+C:\Users\bardyr\Documents\Damp\DampClient\CommunicationLibraryTest\obj\Debug\CommunicationLibraryTest.dll
+C:\Users\bardyr\Documents\Damp\DampClient\CommunicationLibraryTest\obj\Debug\CommunicationLibraryTest.pdb

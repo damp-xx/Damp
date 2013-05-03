@@ -1,0 +1,13 @@
+C:\Users\Michael\Documents\GitHub\Damp\DampClient\ConnectionLibrary\bin\Debug\ConnectionLibrary.dll
+C:\Users\Michael\Documents\GitHub\Damp\DampClient\ConnectionLibrary\bin\Debug\ConnectionLibrary.pdb
+C:\Users\Michael\Documents\GitHub\Damp\DampClient\ConnectionLibrary\obj\Debug\ConnectionLibrary.dll
+<<<<<<< HEAD:DampClient/ConnectionLibrary/obj/Debug/ConnectionLibrary.csproj.FileListAbsolute.txt
+C:\Users\bardyr\Documents\Damp\DampClient\ConnectionLibrary\bin\Debug\ConnectionLibrary.dll
+C:\Users\bardyr\Documents\Damp\DampClient\ConnectionLibrary\bin\Debug\ConnectionLibrary.pdb
+C:\Users\bardyr\Documents\Damp\DampClient\ConnectionLibrary\obj\Debug\ConnectionLibrary.csprojResolveAssemblyReference.cache
+C:\Users\bardyr\Documents\Damp\DampClient\ConnectionLibrary\obj\Debug\ConnectionLibrary.dll
+C:\Users\bardyr\Documents\Damp\DampClient\ConnectionLibrary\obj\Debug\ConnectionLibrary.pdb
+=======
+C:\Users\Michael\Documents\GitHub\Damp\DampClient\ConnectionLibrary\obj\Debug\ConnectionLibrary.pdb
+C:\Users\Michael\Documents\GitHub\Damp\DampClient\ConnectionLibrary\obj\Debug\ConnectionLibrary.csprojResolveAssemblyReference.cache
+>>>>>>> f7d9e19ea7f2cab0b28c4e4d00b1f69118bc8a59:DampGUI/ConnectionLibrary/obj/Debug/ConnectionLibrary.csproj.FileListAbsolute.txt

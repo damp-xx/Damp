@@ -14,15 +14,19 @@ namespace Sprites {
 
 		/// 
 		/// <param name="mSprite"></param>
-		void AddSprite(ISprite mSprite);
+		void AddDeathAnimation(ISprite mSprite);
 
 		/// 
 		/// <param name="mSprite"></param>
-		void RemoveSprite(ISprite mSprite);
+		void RemoveMonster(ISprite mSprite);
 
-		List<ISprite> SpriteList{
+	    void RemovePlayer(ISprite mSprite);
+
+		List<List<ISprite>> SpriteList{
 			get;
 		}
+
+        
 	}//end ISpriteContainerCollision
 
 }//end namespace Sprites
