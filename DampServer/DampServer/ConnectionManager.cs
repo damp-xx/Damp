@@ -26,8 +26,12 @@ namespace DampServer
         {
             while (true)
             {
-               
-                List<IConnection> tmpList = _connections.ToList();
+                List<IConnection> tmpList;
+
+                lock (_connections)
+                {
+                    tmpList = _connections.ToList();
+                }
 
                 tmpList.Where(x => !x.UserHttp.IsConnected).AsParallel().ForAll( connection =>
                     {
@@ -64,7 +68,13 @@ namespace DampServer
 
         public List<IConnection> GetOnlineUsers()
         {
-            return _connections.ToList();
+            List<IConnection> tmpList;
+
+            lock (_connections)
+            {
+                tmpList = _connections.ToList();
+            }
+            return tmpList;
         }
 
         public static ConnectionManager GetConnectionManager()
@@ -100,12 +110,18 @@ namespace DampServer
 
         public IConnection GetConnectionByUserId(long userid)
         {
-            return _connections.FirstOrDefault(con => con.UserProfile.UserId == userid);
+            lock (_connections)
+            {
+                return _connections.FirstOrDefault(con => con.UserProfile.UserId == userid);
+            }
         }
 
         public IConnection GetConnectionByAuthToken(string authToken)
         {
-            return _connections.FirstOrDefault(con => con.UserProfile.AuthToken == authToken);
+            lock (_connections)
+            {
+                return _connections.FirstOrDefault(con => con.UserProfile.AuthToken == authToken);
+            }
         }
     }
 }

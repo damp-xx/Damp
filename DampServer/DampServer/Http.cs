@@ -34,8 +34,8 @@ namespace DampServer
      */
     public class Http : ICommandArgument
     {
-        private readonly ConcurrentDictionary<string, string> _headers = new ConcurrentDictionary<string, string>();
-        private readonly ConcurrentDictionary<string, string> _headersToSend = new ConcurrentDictionary<string, string>();
+        private readonly Dictionary<string, string> _headers = new Dictionary<string, string>();
+        private readonly Dictionary<string, string> _headersToSend = new Dictionary<string, string>();
         private readonly SslStream _network;
         private readonly TcpClient _socket;
         private static readonly X509Certificate ServerCertificate = new X509Certificate2("server.pfx", "");
@@ -114,7 +114,7 @@ namespace DampServer
          */
         public void AddHeader(string name, string value)
         {
-            _headersToSend.TryAdd(name, value);
+            _headersToSend.Add(name, value);
         }
 
         /**
@@ -169,7 +169,7 @@ namespace DampServer
                 }
 
                 line = readLine.Split(sD, 2);
-                _headers.TryAdd(line[0], line[1]);
+                _headers.Add(line[0], line[1]);
             }
 
             if (Type.Equals("POST"))

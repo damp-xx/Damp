@@ -21,7 +21,11 @@ namespace CommunicationLibrary
             Console.WriteLine("{0}", resultOfGetProfile);
             var resultOfSearchUser = ComFriend.AddFriend("2");
             Console.WriteLine(resultOfSearchUser);
-            ComEvents.Listen();
+            Parallel.For(0, 1000, (i) =>
+                {
+                    ComEvents.Listen();
+
+                });
             Console.Read();
         }
     }

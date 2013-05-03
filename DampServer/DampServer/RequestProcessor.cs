@@ -31,7 +31,7 @@ namespace DampServer
         {
             _socket = s;
 
-            Task.Factory.StartNew(Run);
+           Task.Factory.StartNew(Run);
         }
 
         public void Run()
