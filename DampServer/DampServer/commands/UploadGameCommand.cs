@@ -1,6 +1,7 @@
 ﻿using System;
+using DampServer.interfaces;
 
-namespace DampServer
+namespace DampServer.commands
 {
     class UploadGameCommand : IServerCommand
     {

@@ -1,4 +1,4 @@
-﻿namespace DampServer
+﻿namespace DampServer.interfaces
 {
     public interface IServerCommand
     {

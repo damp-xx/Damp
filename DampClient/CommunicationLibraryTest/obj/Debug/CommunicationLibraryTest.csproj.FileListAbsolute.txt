@@ -1,0 +1,5 @@
+C:\Users\Michael\Documents\GitHub\Damp\DampClient\CommunicationLibraryTest\bin\Debug\CommunicationLibraryTest.dll
+C:\Users\Michael\Documents\GitHub\Damp\DampClient\CommunicationLibraryTest\bin\Debug\CommunicationLibraryTest.pdb
+C:\Users\Michael\Documents\GitHub\Damp\DampClient\CommunicationLibraryTest\bin\Debug\nunit.framework.dll
+C:\Users\Michael\Documents\GitHub\Damp\DampClient\CommunicationLibraryTest\obj\Debug\CommunicationLibraryTest.dll
+C:\Users\Michael\Documents\GitHub\Damp\DampClient\CommunicationLibraryTest\obj\Debug\CommunicationLibraryTest.pdb

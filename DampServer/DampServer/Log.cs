@@ -18,6 +18,7 @@ namespace DampServer
 
             Console.Write("Log: Line: ");
             Console.Write(line + ", Method:" + method);
+            Console.WriteLine(" {0}", stackFrame);
             Console.WriteLine(" {0}", message);
         }
     }

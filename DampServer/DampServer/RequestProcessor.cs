@@ -12,6 +12,8 @@ using System;
 using System.Net.Sockets;
 using System.Threading;
 using DampServer.commands;
+using DampServer.exceptions;
+using DampServer.interfaces;
 
 #endregion
 
@@ -99,7 +101,7 @@ namespace DampServer
                 hp.SendXmlResponse(r);
                 CloseSocket();
             }
-            catch (Exception e)
+            catch (InvalidFileHashException e)
             {
                 Logger.Log(e.Message);
                 hp.SendXmlResponse(new ErrorXmlResponse { Message = "Internal Server Error! #1337 " + e.Message  });
@@ -113,7 +115,6 @@ namespace DampServer
             //     _socket.Disconnect(false);
             _socket.Close();
         }
-
 
         private static bool CheckAuthetication(string authToken)
         {
@@ -141,7 +142,7 @@ namespace DampServer
             switch (cmd)
             {
                 case "Chat":
-                    leCmd=new ChatCommand();
+                    leCmd = new ChatCommand();
                     break;
                 case "Login":
                     leCmd=new LoginCommand();
@@ -159,7 +160,61 @@ namespace DampServer
                     leCmd = new UserCommands();
                     break;
                 case "AddFriend":
+                    leCmd = new FriendCommand();
+                    break;
+                case "AcceptFriend":
+                    leCmd = new FriendCommand();
+                    break;
+                case "ForgottenPassword":
+                    leCmd = new UserCommands();
+                    break;
+                case "RemoveFriend":
                     leCmd=new FriendCommand();
+                    break;
+                case "FriendSearch":
+                    leCmd=new UserCommands();
+                    break;
+                case "Download":
+                    leCmd=new DownloadCommand();
+                    break;
+                case "GetMyGames":
+                    leCmd=new GameCommand();
+                    break;
+                case "GetAllGames":
+                    leCmd=new GameCommand();
+                    break;
+                case "GameSearch":
+                    leCmd=new GameCommand();
+                    break;
+                case "BuyGame":
+                    leCmd=new GameCommand();
+                    break;
+                case "GameInfo":
+                    leCmd=new GameCommand();
+                    break;
+                case "GetGame":
+                    leCmd=new GameCommand();
+                    break;
+                case "AddAchievement":
+                    leCmd = new AchievementCommand();
+                    break;
+                case "GetAllMyAchievement":
+                    leCmd = new AchievementCommand();
+                    break;
+                case "AchievementSearch":
+                    leCmd = new AchievementCommand();
+                    break;
+                case "GetAchievementsForGame":
+                    leCmd = new AchievementCommand();
+                    break;
+                case "GetAllUserAchievements":
+                    leCmd = new AchievementCommand();
+                    break;
+                case "GetUserAchievements":
+                    leCmd = new AchievementCommand();
+                    break;
+                case "GetGameMyAchievements":
+                    leCmd = new AchievementCommand();
                     break;
                 default:
                     throw new CommandNotFoundException(cmd);

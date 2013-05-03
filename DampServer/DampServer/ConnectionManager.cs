@@ -2,8 +2,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading;
+using DampServer.interfaces;
 
 #endregion
 
@@ -26,29 +28,51 @@ namespace DampServer
         {
             while (true)
             {
-                try
+                List<IConnection> tmpCons = new List<IConnection>();
+
+                foreach (IConnection connection in _connections)
                 {
-                    foreach ( var connection in _connections)
-                    {
-                        if (!connection.UserHttp.IsConnected)
-                        {
-                            Console.WriteLine("User disconnected, removing user: {0}", connection.UserProfile.Username);
-                            RemoveConnection(connection);
-                        }
-                    }
-                }
-                catch
-                {
-                    // @TODO FIX THIS EXCEPTION!
-                    // Console.WriteLine("Exception 1234: {0}", e.Message);
+                    if (!connection.UserHttp.IsConnected)
+                        tmpCons.Add(connection);
                 }
 
+                foreach (IConnection connection in tmpCons)
+                {
+                    Console.WriteLine("User disconnected, removing user: {0}", connection.UserProfile.Username);
+                    RemoveConnection(connection);
+
+                    StatusXmlResponse xmlRes = new StatusXmlResponse
+                        {
+                            Code = 501,
+                            Command = "UserWentOffline",
+                        };
+
+                    NotifyUserFriends(connection, xmlRes);
+                }
 
                 Thread.Sleep(1000);
             }
         }
 
+        private void NotifyUserFriends(IConnection connection, StatusXmlResponse response)
+        {
+            foreach ( User user in connection.UserProfile.Friends)
+            {
+                IConnection con = GetConnectionByUserId(user.UserId);
 
+                if (con != null && con.UserHttp != null)
+                {
+                    response.Message = con.UserProfile.UserId.ToString();
+                    con.UserHttp.SendXmlResponse(response);
+                }
+            }
+        }
+
+        // @TODO MAKE THREAD SAFE!!
+        public List<IConnection> GetOnlineUsers()
+        {
+            return _connections.ToList();
+        }
 
         public static ConnectionManager GetConnectionManager()
         {
@@ -63,6 +87,14 @@ namespace DampServer
         public void AddConnection(IConnection con)
         {
             Logger.Log("User online");
+
+            StatusXmlResponse xmlRes = new StatusXmlResponse
+            {
+                Code = 601,
+                Command = "UserWentOnline",
+            };
+
+            NotifyUserFriends(con, xmlRes);
             _connections.Add(con);
         }
 

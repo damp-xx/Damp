@@ -17,7 +17,8 @@
     <XnaCrossPlatformGroupID>8f22fb00-e822-462a-912b-9653e4415c2a</XnaCrossPlatformGroupID>
     <XnaOutputType>Game</XnaOutputType>
     <ApplicationIcon>Game.ico</ApplicationIcon>
-    <Thumbnail>GameThumbnail.png</Thumbnail>
+    <Thumbnail>
+    </Thumbnail>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -107,18 +108,46 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseSprite.cs" />
-    <Compile Include="Classes\SpriteBackground.cs" />
-    <Compile Include="Interfaces\IAnchor.cs" />
-    <Compile Include="Interfaces\ISprite.cs" />
-    <Compile Include="Classes\SpritePlayer.cs" />
+    <Compile Include="GameState\IKeybordInput.cs" />
+    <Compile Include="Collision\CollisionControl.cs" />
+    <Compile Include="Collision\ICollisionControl.cs" />
+    <Compile Include="Collision\ICollisionDetect.cs" />
+    <Compile Include="Collision\IEvent.cs" />
+    <Compile Include="Collision\MonsterDeathEvent.cs" />
+    <Compile Include="Collision\MonsterEnviromentDetect.cs" />
+    <Compile Include="Collision\PlayerDeathEvent.cs" />
+    <Compile Include="Collision\PlayerEnviromentDetect.cs" />
+    <Compile Include="Collision\PlayerMonsterDetect.cs" />
+    <Compile Include="EventHandler\EventHandlerMain.cs" />
+    <Compile Include="EventHandler\EventHandlerPlayerDeath.cs" />
+    <Compile Include="EventHandler\IEventHandlerMain.cs" />
+    <Compile Include="EventHandler\IEventHandlerSpecefic.cs" />
+    <Compile Include="GameControle\Game.cs" />
+    <Compile Include="GameControle\ILevel.cs" />
+    <Compile Include="GameControle\Level1.cs" />
+    <Compile Include="GameState\GameState.cs" />
+    <Compile Include="GameState\IGameState.cs" />
+    <Compile Include="GameState\IGameStateEvent.cs" />
+    <Compile Include="GameState\IGameStateLevel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />
+    <Compile Include="Sprite\Anchor.cs" />
+    <Compile Include="Sprite\IAnchor.cs" />
+    <Compile Include="Sprite\IAnchorUpdate.cs" />
+    <Compile Include="Sprite\ISprite.cs" />
+    <Compile Include="Sprite\ISpriteAnchor.cs" />
+    <Compile Include="Sprite\ISpriteContainer.cs" />
+    <Compile Include="Sprite\ISpriteContainerCollision.cs" />
+    <Compile Include="Sprite\SpriteBackground.cs" />
+    <Compile Include="Sprite\SpriteContainer.cs" />
+    <Compile Include="Sprite\SpriteDeathAnimaiton.cs" />
+    <Compile Include="Sprite\SpriteEnvironment.cs" />
+    <Compile Include="Sprite\SpriteMonster.cs" />
+    <Compile Include="Sprite\SpritePlayer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />
-    <Content Include="GameThumbnail.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SuperIHABrothersContent\SuperIHABrothersContent.contentproj">
@@ -153,6 +182,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
   <!--

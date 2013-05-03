@@ -1,4 +1,6 @@
-﻿namespace DampServer
+﻿using DampServer.interfaces;
+
+namespace DampServer
 {
     public class Connection : IConnection
     {
