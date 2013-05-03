@@ -49,27 +49,35 @@ namespace Collision
 
         private void CallRightDetector(ISprite spriteOne, ISprite spriteTwo, List<IEvent> eventList)
         {
-            // Player - Environment
-            if (((spriteOne.GetType() == typeof (SpritePlayer)) && (spriteTwo.GetType() == typeof (SpriteEnviroment))) ||
-                ((spriteOne.GetType() == typeof (SpriteEnviroment)) && (spriteTwo.GetType() == typeof (SpritePlayer))))
-            {
-                _playerEnviromentDetect = new PlayerEnviromentDetect();
-                eventList.Add(_playerEnviromentDetect.Detect(_spriteContainerCollision, spriteOne, spriteTwo));
-            }
-                // Player - Monster
-            else if (((spriteOne.GetType() == typeof (SpritePlayer)) && (spriteTwo.GetType() == typeof (SpriteMonster))) ||
-                     ((spriteOne.GetType() == typeof (SpriteMonster)) && (spriteTwo.GetType() == typeof (SpritePlayer))))
-            {
-                PlayerMonsterDetect pmDetect = new PlayerMonsterDetect();
-                eventList.Add(pmDetect.Detect(_spriteContainerCollision, spriteOne, spriteTwo));
-            }
-                // Monster - Environment
-            else if (((spriteOne.GetType() == typeof (SpriteEnviroment)) && (spriteTwo.GetType() == typeof (SpriteMonster))) ||
-                     ((spriteOne.GetType() == typeof (SpriteMonster)) && (spriteTwo.GetType() == typeof (SpriteEnviroment))))
-            {
-                MonsterEnviromentDetect meDetect = new MonsterEnviromentDetect();
-                eventList.Add(meDetect.Detect(_spriteContainerCollision, spriteOne, spriteTwo));
-            }
+            
+            
+            
+            
+            
+            
+            /* ************************* OLD CODE ************************************** */
+            
+            //// Player - Environment
+            //if (((spriteOne.GetType() == typeof (SpritePlayer)) && (spriteTwo.GetType() == typeof (SpriteEnviroment))) ||
+            //    ((spriteOne.GetType() == typeof (SpriteEnviroment)) && (spriteTwo.GetType() == typeof (SpritePlayer))))
+            //{
+            //    _playerEnviromentDetect = new PlayerEnviromentDetect();
+            //    eventList.Add(_playerEnviromentDetect.Detect(_spriteContainerCollision, spriteOne, spriteTwo));
+            //}
+            //    // Player - Monster
+            //else if (((spriteOne.GetType() == typeof (SpritePlayer)) && (spriteTwo.GetType() == typeof (SpriteMonster))) ||
+            //         ((spriteOne.GetType() == typeof (SpriteMonster)) && (spriteTwo.GetType() == typeof (SpritePlayer))))
+            //{
+            //    PlayerMonsterDetect pmDetect = new PlayerMonsterDetect();
+            //    eventList.Add(pmDetect.Detect(_spriteContainerCollision, spriteOne, spriteTwo));
+            //}
+            //    // Monster - Environment
+            //else if (((spriteOne.GetType() == typeof (SpriteEnviroment)) && (spriteTwo.GetType() == typeof (SpriteMonster))) ||
+            //         ((spriteOne.GetType() == typeof (SpriteMonster)) && (spriteTwo.GetType() == typeof (SpriteEnviroment))))
+            //{
+            //    MonsterEnviromentDetect meDetect = new MonsterEnviromentDetect();
+            //    eventList.Add(meDetect.Detect(_spriteContainerCollision, spriteOne, spriteTwo));
+            //}
         }
     }
 
