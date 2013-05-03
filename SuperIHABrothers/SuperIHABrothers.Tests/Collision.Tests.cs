@@ -43,7 +43,7 @@ namespace SuperIHABrothers.Tests
             _stubSpriteEnvironmentList.Add(_stubSpriteMonster);
            
             _stubSpriteContainerCollision.Stub(x => x.SpriteList[(int)listTypes.Player]).Return(_stubSpritePlayerList);
-            _stubSpriteContainerCollision.Stub(x => x.SpriteList[(int)listTypes.Envirinment]).Return(_stubSpriteEnvironmentList);
+            _stubSpriteContainerCollision.Stub(x => x.SpriteList[(int)listTypes.Environment]).Return(_stubSpriteEnvironmentList);
             _stubSpriteContainerCollision.Stub(x => x.SpriteList[(int)listTypes.Monster]).Return(_stubSpriteMonsterList);
 
             _stubSpritePlayer.Stub(x => x.MyRectangle).Return(_stubRectangle);
