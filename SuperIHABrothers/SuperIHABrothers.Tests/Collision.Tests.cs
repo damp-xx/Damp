@@ -18,11 +18,14 @@ namespace SuperIHABrothers.Tests
         private ISpriteContainerCollision _stubSpriteContainerCollision;
         private List<ISprite> _stubSpritePlayerList;
         private List<ISprite> _stubSpriteMonsterList;
-        private List<ISprite> _stubSpriteEnvironmentList; 
+        private List<ISprite> _stubSpriteEnvironmentList;
+        private List<List<ISprite>> _stubAllSpritesList; 
         private ISprite _stubSpritePlayer;
         private ISprite _stubSpriteEnvironment;
         private ISprite _stubSpriteMonster;
         private ICollisionDetect _mockPlayerEnvironmentDetect;
+        private ICollisionDetect _mockPlayerMonsterDetect;
+        private ICollisionDetect _mockMonsterEnvironmentDetect;
         private Rectangle _stubRectangle;
         
 
@@ -32,23 +35,30 @@ namespace SuperIHABrothers.Tests
             _stubSpritePlayerList = MockRepository.GenerateMock<List<ISprite>>();
             _stubSpriteMonsterList = MockRepository.GenerateMock<List<ISprite>>();
             _stubSpriteEnvironmentList = MockRepository.GenerateMock<List<ISprite>>();
+            _stubAllSpritesList = MockRepository.GenerateMock < List<List<ISprite>>>();
             _stubSpritePlayer = MockRepository.GenerateMock<ISprite>();
             _stubSpriteEnvironment = MockRepository.GenerateMock<ISprite>();
             _stubSpriteMonster = MockRepository.GenerateMock<ISprite>();
             _mockPlayerEnvironmentDetect = MockRepository.GenerateMock<ICollisionDetect>();
+            _mockPlayerMonsterDetect = MockRepository.GenerateMock<ICollisionDetect>();
+            _mockMonsterEnvironmentDetect = MockRepository.GenerateMock<ICollisionDetect>();
             _stubRectangle = new Rectangle(0,0,10,10);
         
             _stubSpritePlayerList.Add(_stubSpritePlayer);
             _stubSpriteMonsterList.Add(_stubSpriteEnvironment);
             _stubSpriteEnvironmentList.Add(_stubSpriteMonster);
-           
-            _stubSpriteContainerCollision.Stub(x => x.SpriteList[(int)listTypes.Player]).Return(_stubSpritePlayerList);
-            _stubSpriteContainerCollision.Stub(x => x.SpriteList[(int)listTypes.Environment]).Return(_stubSpriteEnvironmentList);
-            _stubSpriteContainerCollision.Stub(x => x.SpriteList[(int)listTypes.Monster]).Return(_stubSpriteMonsterList);
+
+            _stubAllSpritesList.Add(_stubSpritePlayerList);
+            _stubAllSpritesList.Add(_stubSpriteMonsterList);
+            _stubAllSpritesList.Add(_stubSpriteEnvironmentList);
+
+            _stubSpriteContainerCollision.Stub(x => x.SpriteList).Return(_stubAllSpritesList);
 
             _stubSpritePlayer.Stub(x => x.MyRectangle).Return(_stubRectangle);
             _stubSpriteEnvironment.Stub(x => x.MyRectangle).Return(_stubRectangle);
             _stubSpriteMonster.Stub(x => x.MyRectangle).Return(_stubRectangle);
+
+            _uutCollisionControl = new CollisionControl(_stubSpriteContainerCollision, _mockPlayerEnvironmentDetect, _mockPlayerMonsterDetect, _mockMonsterEnvironmentDetect);
         }
 
         
@@ -56,12 +66,21 @@ namespace SuperIHABrothers.Tests
         public void Update_InstantiatedWithSpritePlayerAndSpriteEnvironment_PlayerEnvironmentWasCalled()
         {
             Setup();
-
-            _uutCollisionControl = new CollisionControl(_stubSpriteContainerCollision, _mockPlayerEnvironmentDetect);
-
+            
             _uutCollisionControl.Update();
 
             _mockPlayerEnvironmentDetect.AssertWasCalled(x => x.Detect(Arg<ISpriteContainerCollision>.Is.Anything, Arg<ISprite>.Is.Anything, Arg<ISprite>.Is.Anything));
+        }
+
+        [Test]
+        public void Update_InstantiatedWithSpritePlayerAndSpriteMonster_PlayerMonsterWasCalled()
+        {
+            Setup();
+
+            _uutCollisionControl.Update();
+
+            //_mockPlayerEnvironmentDetect.AssertWasCalled(x => x.Detect(_stubSpriteContainerCollision, _stubSpritePlayer, _stubSpriteMonster));
+            _mockPlayerMonsterDetect.AssertWasCalled(x => x.Detect(Arg<ISpriteContainerCollision>.Is.Anything, Arg<ISprite>.Is.Anything, Arg<ISprite>.Is.Anything));
         }
 	}
 

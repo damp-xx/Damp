@@ -21,10 +21,12 @@ namespace Collision
         private ICollisionDetect _monsterEnviromentDetect;
 
         public CollisionControl(ISpriteContainerCollision mSpriteContainerCollision,
-                                ICollisionDetect mPlayerEnviromentDetect)
+                                ICollisionDetect mPlayerEnviromentDetect, ICollisionDetect mPlayerMonsterDetect, ICollisionDetect mMonsterEnvironmentDetect)
         {
             _spriteContainerCollision = mSpriteContainerCollision;
             _playerEnviromentDetect = mPlayerEnviromentDetect;
+            _playerMonsterDetect = mPlayerMonsterDetect;
+            _monsterEnviromentDetect = mMonsterEnvironmentDetect;
         }
 
 
@@ -64,7 +66,7 @@ namespace Collision
                     if (_spriteContainerCollision.SpriteList[(int)listTypes.Player][i].MyRectangle.Intersects(
                         _spriteContainerCollision.SpriteList[(int)listTypes.Environment][j].MyRectangle))
                     {
-                        eventList.Add(_playerMonsterDetect.Detect(_spriteContainerCollision,
+                        eventList.Add(_playerEnviromentDetect.Detect(_spriteContainerCollision,
                                                                   _spriteContainerCollision.SpriteList[(int)listTypes.Player][i],
                                                                   _spriteContainerCollision.SpriteList[(int)listTypes.Environment][j]));
                     }
@@ -86,7 +88,7 @@ namespace Collision
                     if (_spriteContainerCollision.SpriteList[(int)listTypes.Monster][i].MyRectangle.Intersects(
                         _spriteContainerCollision.SpriteList[(int)listTypes.Environment][j].MyRectangle))
                     {
-                        eventList.Add(_playerMonsterDetect.Detect(_spriteContainerCollision,
+                        eventList.Add(_monsterEnviromentDetect.Detect(_spriteContainerCollision,
                                                                   _spriteContainerCollision.SpriteList[(int)listTypes.Monster][i],
                                                                   _spriteContainerCollision.SpriteList[(int)listTypes.Environment][j]));
                     }
