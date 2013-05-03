@@ -12,11 +12,11 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Sprites {
-    enum listTypes
+    public enum listTypes
     {
         Player = 0,
         Monster = 1,
-        Envirinment = 2,
+        Environment = 2,
         Background = 3,
         DeathAnimation = 4
     }
@@ -52,12 +52,6 @@ namespace Sprites {
 		    _spriteList = mList;
 		    _anchor = mAnchor;
 		}
-
-
-
-		
-
-	    
 
 
 	    public void Update(GameTime time)
