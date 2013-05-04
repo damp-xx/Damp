@@ -5,6 +5,5 @@ C:\Users\Michael\Documents\GitHub\Damp\DampClient\ConnectionLibrary\obj\Debug\Co
 C:\Users\Michael\Documents\GitHub\Damp\DampClient\ConnectionLibrary\obj\Debug\ConnectionLibrary.csprojResolveAssemblyReference.cache
 F:\Dropbox\IHA\PRJ4\Damp\DampGUI\ConnectionLibrary\bin\Debug\ConnectionLibrary.dll
 F:\Dropbox\IHA\PRJ4\Damp\DampGUI\ConnectionLibrary\bin\Debug\ConnectionLibrary.pdb
-F:\Dropbox\IHA\PRJ4\Damp\DampGUI\ConnectionLibrary\obj\Debug\ConnectionLibrary.csprojResolveAssemblyReference.cache
 F:\Dropbox\IHA\PRJ4\Damp\DampGUI\ConnectionLibrary\obj\Debug\ConnectionLibrary.dll
 F:\Dropbox\IHA\PRJ4\Damp\DampGUI\ConnectionLibrary\obj\Debug\ConnectionLibrary.pdb

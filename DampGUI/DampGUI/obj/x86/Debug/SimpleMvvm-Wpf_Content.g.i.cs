@@ -8,7 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("ole_profile.jpeg")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("poulina_profile.jpeg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("homepic.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("icon.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("splashscreen.png")]
 
 

@@ -73,6 +73,13 @@ namespace CommunicationLibrary
             {
                 foreach (XmlElement x in ResultFromServerXml.GetElementsByTagName("Game"))
                 {
+
+                    List<string> urls = new List<string>();
+                    urls.Add("http://www.securelist.com/en/images/vlpub/0807_online_games_pict01.png");
+                    //urls.Add("http://www.hdwallpapers.in/walls/angry_birds_space_game-HD.jpg");
+                    //urls.Add("http://www.shortfacts.com/wp-content/uploads/2013/01/halo-3-video-game-1031.jpg");
+                    //urls.Add("http://files.all-free-download.com/downloadfiles/wallpapers/1920_1200_widescreen/super_mario_galaxy_4_wallpaper_super_mario_games_wallpaper_1920_1200_widescreen_3159.jpg");
+                    //urls.Add("http://images4.fanpop.com/image/photos/22700000/Video-Game-Collages-video-games-22728041-1024-768.jpg");
                     Game k = new Game
                         {
                             Title = x.GetElementsByTagName("Title").Item(0).InnerText,
@@ -82,7 +89,8 @@ namespace CommunicationLibrary
                             Mode = x.GetElementsByTagName("Mode").Item(0).InnerText,
                             Language = x.GetElementsByTagName("Language").Item(0).InnerText,
                             AchivementsGame = ComAchievement.GetAchievement(x.GetElementsByTagName("Id").Item(0).InnerText),
-                            PhotoCollection = new PhotoCollection(".")
+                       
+                            PhotoCollection = new PhotoCollection(urls)
                         };
                     Console.WriteLine(k.Title);
                     games.Add(k);

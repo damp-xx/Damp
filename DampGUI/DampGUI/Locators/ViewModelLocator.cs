@@ -119,32 +119,35 @@ namespace DampGUI
 
         public Friends LoadKnowFriend()
         {
-            ObservableCollection<string> Ach1 = new ObservableCollection<string>();
-            Ach1.Add("Shoot");
-            Ach1.Add("Boom");
-            Ach1.Add("Knife");
-            Ach1.Add("Rocket");
+            //ObservableCollection<string> Ach1 = new ObservableCollection<string>();
+            //Ach1.Add("Shoot");
+            //Ach1.Add("Boom");
+            //Ach1.Add("Knife");
+            //Ach1.Add("Rocket");
 
 
-            ObservableCollection<string> Ach2 = new ObservableCollection<string>();
-            Ach2.Add("Hunter");
-            Ach2.Add("Lol");
-            Ach2.Add("Dog");
-            Ach2.Add("Cat");
+            //ObservableCollection<string> Ach2 = new ObservableCollection<string>();
+            //Ach2.Add("Hunter");
+            //Ach2.Add("Lol");
+            //Ach2.Add("Dog");
+            //Ach2.Add("Cat");
  
 
-            string desc1 =
-            @"THE NEXT INSTALLMENT OF THE WORLD'S # 1 ONLINE ACTION GAME Counter-Strike: Source blends Counter-Strike's award-winning teamplay action with the advanced technology of Source™ technology. Featuring state of the art graphics, all new sounds, and introducing physics, Counter-Strike: Source is a must-have for every action gamer.";
-            string desc2 =
-            @"THE NEXT INSTAadasddsadadasdsadd sad asd sa dsa d saf    sa f  as d asd as fd asd as ds ad asd as d asd a ward-winning teamplay action with the advanced technology osadasd rce™ technology. Featuring state of the art graphics, all new sounds, and introducing physics, Counter-Strike: Source is a must-have for every action gamer.";
+            //string desc1 =
+            //@"THE NEXT INSTALLMENT OF THE WORLD'S # 1 ONLINE ACTION GAME Counter-Strike: Source blends Counter-Strike's award-winning teamplay action with the advanced technology of Source™ technology. Featuring state of the art graphics, all new sounds, and introducing physics, Counter-Strike: Source is a must-have for every action gamer.";
+            //string desc2 =
+            //@"THE NEXT INSTAadasddsadadasdsadd sad asd sa dsa d saf    sa f  as d asd as fd asd as ds ad asd as d asd a ward-winning teamplay action with the advanced technology osadasd rce™ technology. Featuring state of the art graphics, all new sounds, and introducing physics, Counter-Strike: Source is a must-have for every action gamer.";
 
-            Photo photo1 = new Photo(@"F:\Dropbox\IHA\PRJ4\Damp\DampGUI\DampGUI\bin\Debug\ProfilePic\Ole_Profile.jpeg");
-            Photo photo2 = new Photo(@"F:\Dropbox\IHA\PRJ4\Damp\DampGUI\DampGUI\bin\Debug\ProfilePic\Poulina_Profile.jpeg");
+            //Photo photo1 = new Photo(@"F:\Dropbox\IHA\PRJ4\Damp\DampGUI\DampGUI\bin\Debug\ProfilePic\Ole_Profile.jpeg");
+            //Photo photo2 = new Photo(@"F:\Dropbox\IHA\PRJ4\Damp\DampGUI\DampGUI\bin\Debug\ProfilePic\Poulina_Profile.jpeg");
             
-            Friend Ole = new Friend("Ole", desc1, "Male", "Aarhus", "Denmark", "English", Ach1,photo1);
-            Friend Poulina = new Friend("Poulina", desc2, "Female", "Minsk", "Poland", "Danish", Ach2,photo2);
-            knowfriends.Add(Ole);
-            knowfriends.Add(Poulina);
+            //Friend Ole = new Friend("Ole", desc1, "Male", "Aarhus", "Denmark", "English", Ach1,photo1,"1");
+            //Friend Poulina = new Friend("Poulina", desc2, "Female", "Minsk", "Poland", "Danish", Ach2,photo2,"2");
+            //knowfriends.Add(Ole);
+            //knowfriends.Add(Poulina);
+
+            knowfriends = ComFriend.GetFriendList();
+
             return knowfriends;
         }
 
@@ -169,11 +172,11 @@ namespace DampGUI
             string desc2 =
             @"THE NEXT INSTAadasddsadadasdsadd sad asd sa dsa d saf    sa f  as d asd as fd asd as ds ad asd as d asd a ward-winning teamplay action with the advanced technology osadasd rce™ technology. Featuring state of the art graphics, all new sounds, and introducing physics, Counter-Strike: Source is a must-have for every action gamer.";
 
-            Photo photo1 = new Photo(@"F:\Dropbox\DampGUI\DampGUI\bin\Debug\ProfilePic\Ole_Profile.jpeg");
-            Photo photo2 = new Photo(@"F:\Dropbox\DampGUI\DampGUI\bin\Debug\ProfilePic\Poulina_Profile.jpeg");
+            Photo photo1 = new Photo("http://files.all-free-download.com/downloadfiles/wallpapers/1920_1200_widescreen/super_mario_galaxy_4_wallpaper_super_mario_games_wallpaper_1920_1200_widescreen_3159.jpg");
+            Photo photo2 = new Photo("http://images4.fanpop.com/image/photos/22700000/Video-Game-Collages-video-games-22728041-1024-768.jpg");
 
-            Friend Ole = new Friend("Ole", desc1, "Male", "Aarhus", "Denmark", "English", Ach1, photo1);
-            Friend Poulina = new Friend("Poulina", desc2, "Female", "Minsk", "Poland", "Danish", Ach2, photo2);
+            Friend Ole = new Friend("Ole", desc1, "Male", "Aarhus", "Denmark", "English", Ach1, photo1,"1");
+            Friend Poulina = new Friend("Poulina", desc2, "Female", "Minsk", "Poland", "Danish", Ach2, photo2,"2");
             allUsers.Add(Ole);
             allUsers.Add(Poulina);
             return allUsers;
