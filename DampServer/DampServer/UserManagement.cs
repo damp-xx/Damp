@@ -36,7 +36,7 @@ namespace DampServer
             }
             else throw new UserNotFoundException();
 
-
+            /*
             cmd.CommandText =
                 "SELECT U.userid as userid, U.username as username FROM Users U INNER JOIN Friends F ON F.userid1 = U.userid WHERE F.userid = @userid";
             cmd.Parameters.Add("@userid", SqlDbType.BigInt).Value = user.UserId;
@@ -51,6 +51,7 @@ namespace DampServer
                     user.Friends.Add(new User {Username = (string) r["username"], UserId = (long) r["userid"]});
                 }
             }
+             */
 
             r.Close();
             db.Close();
