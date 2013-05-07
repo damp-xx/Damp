@@ -76,8 +76,12 @@
     <Build Include="Security\root.sql" />
     <Build Include="Security\root_1.sql" />
     <Build Include="Security\RoleMemberships.sql" />
+    <Build Include="dbo\Tables\GamePictures.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Snapshots\Database1_20130503_03-15-36.dacpac" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="Database1.refactorlog" />
   </ItemGroup>
 </Project>
