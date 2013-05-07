@@ -27,7 +27,15 @@
       </Grid.RowDefinitions>
 
       <DockPanel  Grid.Row="0">
-        <Button DockPanel.Dock="Left" FontSize="25">Play</Button>
+        <Button DockPanel.Dock="Left" FontSize="25" Content="{Binding Path= PlayIns}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <ei:CallMethodAction
+                      TargetObject="{Binding}"
+                      MethodName="Playbutton"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
 
         <StackPanel  VerticalAlignment="Bottom">
           <TextBox Margin="3,0,0,0" FontSize="18" VerticalContentAlignment="Bottom" IsEnabled="False" Background="Transparent" Foreground="#1297FB" 

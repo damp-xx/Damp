@@ -5,10 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using DampCS;
+using DampGUI;
+
 
 namespace CommunicationLibrary
 {
-    class ComGame
+    public class ComGame
     {
         public static XmlElement GetMyGameList()
         {
@@ -62,21 +64,40 @@ namespace CommunicationLibrary
             return null;
         }
 
-        public static XmlElement GetAllGameList()
+        public static void GetAllGameList(Games games)
         {
             var client = new DampServerClient(ComLogin._ComIp);
             var ResultFromServerXml = client.SendRequest("GetAllGames", new Dictionary<string, string> { { "", "" } }, ComLogin._ComToken);
 
-            if (ResultFromServerXml.Name.Equals("Status"))
+            if (ResultFromServerXml.Name.Equals("GameList"))
             {
-                var xmlNode = ResultFromServerXml.GetElementsByTagName("Code").Item(0);
-
-                if (xmlNode.InnerText == "200")
+                foreach (XmlElement x in ResultFromServerXml.GetElementsByTagName("Game"))
                 {
-                    return ResultFromServerXml;
+
+                    List<string> urls = new List<string>();
+                    urls.Add("http://www.securelist.com/en/images/vlpub/0807_online_games_pict01.png");
+                    //urls.Add("http://www.hdwallpapers.in/walls/angry_birds_space_game-HD.jpg");
+                    //urls.Add("http://www.shortfacts.com/wp-content/uploads/2013/01/halo-3-video-game-1031.jpg");
+                    //urls.Add("http://files.all-free-download.com/downloadfiles/wallpapers/1920_1200_widescreen/super_mario_galaxy_4_wallpaper_super_mario_games_wallpaper_1920_1200_widescreen_3159.jpg");
+                    //urls.Add("http://images4.fanpop.com/image/photos/22700000/Video-Game-Collages-video-games-22728041-1024-768.jpg");
+                    Game k = new Game
+                        {
+                            Title = x.GetElementsByTagName("Title").Item(0).InnerText,
+                            Description = x.GetElementsByTagName("Description").Item(0).InnerText,
+                            Genre = x.GetElementsByTagName("Genre").Item(0).InnerText,
+                            Developer = x.GetElementsByTagName("Developer").Item(0).InnerText,
+                            Mode = x.GetElementsByTagName("Mode").Item(0).InnerText,
+                            Language = x.GetElementsByTagName("Language").Item(0).InnerText,
+                            AchivementsGame = ComAchievement.GetAchievement(x.GetElementsByTagName("Id").Item(0).InnerText),
+                       
+                            PhotoCollection = new PhotoCollection(urls)
+                        };
+                    Console.WriteLine(k.Title);
+                    games.Add(k);
+
                 }
             }
-            return null;
+         
         }
 
         public static XmlElement BuyGame(string GameID)

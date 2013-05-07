@@ -4,9 +4,12 @@ using System.ComponentModel;
 using System.Windows;
 using System.Threading;
 using System.Collections.ObjectModel;
-
+using CommunicationLibrary;
 // Toolkit namespace
+using System.Windows.Controls;
+using System.Windows.Input;
 using SimpleMvvmToolkit;
+
 
 namespace DampGUI
 {
@@ -27,6 +30,7 @@ namespace DampGUI
         // TODO: ctor that accepts IXxxServiceAgent
         public FriendFindViewModel(IFriendServiceAgent serviceAgent, Friends aAllUsers)
         {
+        
             this.serviceAgent = serviceAgent;
             allUsers = aAllUsers;
         }
@@ -44,24 +48,27 @@ namespace DampGUI
         //        NotifyPropertyChanged(vm => vm.Friends);
         //    }
         //}
-
+        
         private ObservableCollection<string> _friendList = new ObservableCollection<string>(); 
         public ObservableCollection<string> FriendList
         {
             get
             {
                 _friendList.Clear();
-                for (int i = 0; i < _friendSearchList.Count; i++)
+                if(_friendSearchList != null){
+                for (int i = 0; i < _friendSearchList.TotalFriends; i++)
                 {
-                    _friendList.Add(_friendSearchList[i].Name);
+                    _friendList.Add(_friendSearchList.Get(i).Name);
+                }
                 }
                 return _friendList;
+                
             }
            private set { }
         }
 
-        private ObservableCollection<Friend> _friendSearchList = new ObservableCollection<Friend>();
-        public ObservableCollection<Friend> FriendSearchList 
+        private Friends _friendSearchList = new Friends();
+        public Friends FriendSearchList 
         {
             get
             {   
@@ -78,6 +85,47 @@ namespace DampGUI
 
         // TODO: Add properties using the mvvmprop code snippet
 
+
+        private int _indexFriend = 0;
+
+        public int IndexFriend
+        {
+            get { return _indexFriend; }
+            set { _indexFriend = value; }
+        }
+
+        private string friendListName;
+
+        public string FriendListName
+        {
+            set
+            {
+                friendListName = value;
+                findIndexFriend(_indexFriend);
+                OnPropertyChanged("FriendListName");
+            }
+        }
+
+        public void findIndexFriend(int aIndex)
+        {
+            if (friendListName != null)
+            {
+                string name = friendListName;
+
+                for (int i = 0; i < FriendSearchList.TotalFriends; i++)
+                {
+                    if (name == FriendSearchList.Get(i).Name)
+                    {
+
+                        FriendSearchList.CurrentFriendIndex = i;
+                        NotifyPropertyChanged(vm => vm.FriendSearchList.CurrentFriendIndex);
+                        NotifyPropertyChanged(vm => vm.FriendSearchList.CurrentFriend);
+                        break;
+                    }
+                }
+            }
+        }
+
         // TODO: Add methods that will be called by the view
 
         public void LoadFriends()
@@ -88,13 +136,27 @@ namespace DampGUI
                 result.Add(allUsers.Get(i));
             }
             
-            FriendSearchList = new ObservableCollection<Friend>(result);
+            //FriendSearchList = new ObservableCollection<Friend>(result);
+        }
+
+        public void AddFriend()
+        {
+            if(FriendSearchList.CurrentFriend != null){
+            string msg = "Do you want to Add " + FriendSearchList.CurrentFriend.Name + "?";
+            MessageBoxResult result = MessageBox.Show(msg, "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+            {
+                ComFriend.AddFriend(allUsers.CurrentFriend.Id);
+            }
+            }
         }
 
         public void SearchFriends()
         {
-            var foundFriends = serviceAgent.FindFriends(_name,allUsers);
-            FriendSearchList = new ObservableCollection<Friend>(foundFriends);
+            //var foundFriends = serviceAgent.FindFriends(_name,allUsers);
+            var foundFriends = ComFriend.SearchUser(_name);
+
+            FriendSearchList = foundFriends;
         }
 
         // TODO: Optionally add callback methods for async calls to the service agent
