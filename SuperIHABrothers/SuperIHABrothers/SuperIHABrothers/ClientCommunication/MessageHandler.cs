@@ -42,7 +42,19 @@ namespace DampCommunication {
             
             if (message != null)
             {
-                //Do Something with the message
+                switch (message)
+                {
+                    case "DOL":
+                        m_IGameState.GameRunning = true;
+                        break;
+                        
+                    case "DOF":
+                        m_IGameState.GameRunning = false;
+                        break;
+
+                    default:
+                        break;
+                }
             }
         }
 

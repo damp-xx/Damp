@@ -12,8 +12,8 @@
 namespace GameState {
 	public class GameState : IGameState, IGameStateEvent, IGameStateLevel
 	{
-
 	    private int _lifes;
+        private static readonly object lockObject = new object();
 		public GameState(){
 
 		}
@@ -36,11 +36,18 @@ namespace GameState {
 
 		public bool GameRunning{
 			get{
-				return GameRunning;
+			    lock (lockObject)
+			    {
+                    return GameRunning;
+			    }			
 			}
-			set{
-				GameRunning = value;
-			}
+            set
+            {
+                lock (lockObject)
+                {
+                    GameRunning = value;
+                }
+            }
 		}
 
 	    private int _score;
@@ -48,12 +55,9 @@ namespace GameState {
         int IGameStateLevel.Score { get { return _score; } set { _score = value; } }
         int IGameState.Score { get { return _score; } }
 
-
 	    public void LoseLife(){
 
 		}
-
-
 
     }//end GameState
 
