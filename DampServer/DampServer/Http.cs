@@ -9,14 +9,11 @@
 #region
 
 using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.IO;
-using System.Net.Mime;
 using System.Net.Security;
 using System.Net.Sockets;
-using System.Runtime.CompilerServices;
 using System.Security.Authentication;
 using System.Security.Cryptography.X509Certificates;
 using System.Web;
@@ -237,7 +234,7 @@ namespace DampServer
          */
         private void SendResponseHeader()
         {
-            StreamWriter sw = null;
+            StreamWriter sw;
 
             try
             {

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.Net.Mail;
 using DampServer.interfaces;
 using DampServer.responses;
@@ -38,85 +39,7 @@ namespace DampServer.commands
                 return;
             }
           
-            User user = new User();
-
-     
-           user.UserId = int.Parse(_http.Query.Get("UserId"));
-          
-
-            Database db = new Database();
-            db.Open();
-
-            SqlCommand sqlCmd = db.GetCommand();
-
-            // get user
-            sqlCmd.CommandText = "SELECT TOP 1 * FROM Users WHERE userid = @userid";
-            sqlCmd.Parameters.Add("@userid", SqlDbType.BigInt).Value = user.UserId;
-            SqlDataReader r = sqlCmd.ExecuteReader();
-
-            if (r.HasRows)
-            {
-                r.Read();
-                user.Username = (string) r["username"];
-                user.Email = (string) r["email"];
-            }
-            else
-            {
-               Console.WriteLine("hewd");
-            }
-            r.Close();
-
-
-
-            // get user games
-            sqlCmd.CommandText =
-                "SELECT * FROM Games WHERE gameid = (SELECT gameid FROM GameLibaray WHERE userid = @userid)";
-            r = sqlCmd.ExecuteReader();
-
-            user.Games = new List<Game>();
-
-            if (r.HasRows)
-            while (r.Read())
-            {
-                
-                Game g = new Game
-                {
-                    Description = r["description"] as string,
-                    Title = (string)r["title"],
-                    Id = (long)r["gameid"]
-                };
-
-                user.Games.Add(g);
-            }
-            r.Close();
-
-            // get user friends
-            sqlCmd.CommandText =
-                "SELECT * FROM Users WHERE userid = (SELECT userid1 FROM Friends WHERE userid = 1)";
-            //    sqlCmd.Parameters.Add("@userid", SqlDbType.BigInt).Value = user.UserId;
-            r = sqlCmd.ExecuteReader();
-
-            user.Friends = new List<User>();
-
-            if(r.HasRows)
-            while (r.Read())
-            {
-                
-                User u = new User
-                    {
-                        Username = (string) r["username"],
-                        Email = (string) r["email"],
-                        UserId = (long) r["userid"]
-                       
-                    };
-                user.Friends.Add(u);  
-            }
-            
-      
-          
-            r.Close();
-
-            db.Close();
+            var user = GetUser(int.Parse(_http.Query.Get("UserId")));
 
             _http.SendXmlResponse(user);
             
@@ -154,7 +77,7 @@ namespace DampServer.commands
                 while (reader.Read())
                 {
                     
-                    f.Users.Add(new User {Username = (string) reader["username"], UserId = (long) reader["userid"]});
+                    f.Users.Add(GetUser((long) reader["userid"]));
                 }
             }
 
@@ -163,23 +86,21 @@ namespace DampServer.commands
             db.Close();
         }
 
-        private void HandleGetMyUser()
+        private User GetUser(long id)
         {
-         
+            User user = UserManagement.GetUserById(id.ToString(CultureInfo.InvariantCulture));
 
-            User user = new User();
-
-           
-                user = UserManagement.GetUserByAuthToken(_http.Query.Get("authToken"));
-      
             Database db = new Database();
             db.Open();
 
             SqlCommand sqlCmd = db.GetCommand();
 
             // get user
-               // get user
+            // get user
             sqlCmd.CommandText = "SELECT TOP 1 * FROM Users WHERE userid = @userid";
+
+            Console.WriteLine("SQL: {0}", user.UserId);
+
             sqlCmd.Parameters.Add("@userid", SqlDbType.BigInt).Value = user.UserId;
             SqlDataReader r = sqlCmd.ExecuteReader();
 
@@ -188,6 +109,19 @@ namespace DampServer.commands
                 r.Read();
                 user.Username = (string)r["username"];
                 user.Email = (string)r["email"];
+                if (!(r["description"] is DBNull))
+                    user.Description = (string) r["description"];
+                if (!(r["gender"] is DBNull))
+                    user.Gender = (string)r["gender"];
+                if (!(r["photo"] is DBNull))
+                    user.Photo = (string)r["photo"];
+                if (!(r["city"] is DBNull))
+                    user.City = (string)r["city"];
+                if (!(r["country"] is DBNull))
+                    user.Country = (string)r["country"];
+                if (!(r["language"] is DBNull))
+                    user.Language = (string)r["language"];
+
             }
             r.Close();
 
@@ -198,17 +132,17 @@ namespace DampServer.commands
 
             user.Games = new List<Game>();
             if (r.HasRows)
-            while (r.Read())
-            {
-                Game g = new Game
+                while (r.Read())
                 {
-                    Description = r["description"] as string,
-                    Title = (string)r["title"],
-                    Id = (long)r["gameid"]
-                };
+                    Game g = new Game
+                    {
+                        Description = r["description"] as string,
+                        Title = (string)r["title"],
+                        Id = (long)r["gameid"]
+                    };
 
-                user.Games.Add(g);
-            }
+                    user.Games.Add(g);
+                }
             r.Close();
 
             // get user friends
@@ -219,23 +153,49 @@ namespace DampServer.commands
 
             user.Friends = new List<User>();
             if (r.HasRows)
-            while (r.Read())
-            {
+                while (r.Read())
+                {
 
-                User u = new User
-                    {
-                        Username = (string) r["username"],
-                        Email = (string) r["email"],
-                        UserId = (long) r["userid"]
-                    };
-                user.Friends.Add(u);
+                    User u = new User
+                        {
+                            Username = (string) r["username"],
+                            Email = (string) r["email"],
+                            UserId = (long) r["userid"]
+                        };
 
-            }
+                    if (!(r["description"] is DBNull))
+                        u.Description = (string)r["description"];
+                    if (!(r["gender"] is DBNull))
+                        u.Gender = (string)r["gender"];
+                    if (!(r["photo"] is DBNull))
+                        u.Photo = (string)r["photo"];
+                    if (!(r["city"] is DBNull))
+                        u.City = (string)r["city"];
+                    if (!(r["country"] is DBNull))
+                        u.Country = (string)r["country"];
+                    if (!(r["language"] is DBNull))
+                        u.Language = (string)r["language"];
+                    
+                    user.Friends.Add(u);
+
+                }
             r.Close();
 
             db.Close();
 
-            _http.SendXmlResponse(user);               
+            return user;
+        }
+
+        private User GetUser(string authtoken)
+        {
+            var user = UserManagement.GetUserByAuthToken(authtoken);
+            return GetUser(user.UserId);
+        }
+
+        private void HandleGetMyUser()
+        {
+     
+            _http.SendXmlResponse(GetUser(_http.Query.Get("AuthToken")));               
         }
 
         private void HandleForgotPassword()

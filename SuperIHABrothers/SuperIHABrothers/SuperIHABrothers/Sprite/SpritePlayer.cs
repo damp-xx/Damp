@@ -18,7 +18,8 @@ namespace Sprites {
 
 	    //Generel Atributes
 	    public Vector2 Position { get; set; }
-        public Rectangle MyRectangle { get; set; } 
+        public Rectangle MyRectangle { get; set; }
+	    public Vector2 Velocity { get; set; }
 	    public IAnchor _Anchor;
 	    private Texture2D _texture; 
 	    private int _FrameHeight;

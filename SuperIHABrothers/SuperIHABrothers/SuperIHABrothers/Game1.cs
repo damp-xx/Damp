@@ -22,30 +22,15 @@ namespace SuperIHABrothers
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        private PipeStream pipeClientIn;
-        private PipeStream pipeClientOut;
-
-        private Queue<string> stringQueue;
-
-
+        private ClientCommunication_Game clientCommunication;
 
         public Game1(string pipeIn, string pipeOut)
         {
-            if (pipeIn != "NOPIPE" && pipeOut != "NOPIPE")
-            {
-                pipeClientIn = new AnonymousPipeClientStream(PipeDirection.In, pipeIn);
-                pipeClientOut = new AnonymousPipeClientStream(PipeDirection.Out, pipeOut);
-
-                Thread myNewThread = new Thread(() => RecieverThread(pipeClientIn, stringQueue));
-                myNewThread.Start();
-            }
-
-        graphics = new GraphicsDeviceManager(this);
-
-            
-
-
+            graphics = new GraphicsDeviceManager(this);          
             Content.RootDirectory = "Content";
+
+           // clientCommunication = new GameClientCommunication();
+           // clientCommunication.Connect(pipeIn, pipeOut);
         }
 
         /// <summary>
@@ -57,6 +42,7 @@ namespace SuperIHABrothers
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            
 
             base.Initialize();
             
@@ -96,6 +82,7 @@ namespace SuperIHABrothers
 
             // TODO: Add your update logic here
             
+
             base.Update(gameTime);
         }
 
@@ -115,17 +102,6 @@ namespace SuperIHABrothers
         }
 
 
-        private void RecieverThread(PipeStream pipeClientIn, Queue<string> stringQueue )
-        {
-            for (;;)
-            {
-                using (StreamReader sr = new StreamReader(pipeClientIn))
-                {
-                    string recievedString;
-                    if ( (recievedString = sr.ReadLine()) != null);
-                        stringQueue.Enqueue(recievedString);
-                }
-            }
-        }
+        
     }
 }
