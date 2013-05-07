@@ -12,10 +12,8 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.IO;
-using System.Net.Mime;
 using System.Net.Security;
 using System.Net.Sockets;
-using System.Runtime.CompilerServices;
 using System.Security.Authentication;
 using System.Security.Cryptography.X509Certificates;
 using System.Web;
@@ -201,30 +199,31 @@ namespace DampServer
          * 
          * @brief method to send a XML response object to the client
          */
-        [MethodImpl(MethodImplOptions.Synchronized)]
         public void SendXmlResponse(XmlResponse obj)
         {
-            var serializer = new XmlSerializer(obj.GetType());
-            var ns = new MemoryStream();
-            serializer.Serialize(ns, obj);
-
-            Length = ns.Length;
-            Type = "text/xml";
-            Status = "200 OK";
-
-            SendResponseHeader();
-
-            if (!_network.CanWrite) return;
-
-            try
+            lock (this)
             {
-                _network.Write(ns.GetBuffer(), 0, (int)ns.Length);
-                _network.Flush();
-            }
-            catch (Exception e)
-            {
-                
-                Logger.Log(e.Message);
+                var serializer = new XmlSerializer(obj.GetType());
+                var ns = new MemoryStream();
+                serializer.Serialize(ns, obj);
+
+                Length = ns.Length;
+                Type = "text/xml";
+                Status = "200 OK";
+
+                SendResponseHeader();
+
+                if (!_network.CanWrite) return;
+
+                try
+                {
+                    _network.Write(ns.GetBuffer(), 0, (int) ns.Length);
+                    _network.Flush();
+                }
+                catch (Exception e)
+                {
+                    Logger.Log(e.Message);
+                }
             }
         }
 
@@ -235,7 +234,7 @@ namespace DampServer
          */
         private void SendResponseHeader()
         {
-            StreamWriter sw = null;
+            StreamWriter sw;
 
             try
             {
@@ -286,30 +285,33 @@ namespace DampServer
         {
             try
             {
-
-                using (FileStream fs = File.OpenRead(filename))
+                lock (this)
                 {
-                    Length = fs.Length;
-                    Type = GetMimeType(filename);
-                    AddHeader("Content-disposition", "attachment; filename="+filename);
-                    Status = "200 OK";
 
-                    SendResponseHeader();
-
-                    var buffer = new byte[64*1024];
-                    using (var bw = new BinaryWriter(_network))
+                    using (FileStream fs = File.OpenRead(filename))
                     {
-                        int read;
-                        while ((read = fs.Read(buffer, 0, buffer.Length)) > 0)
+                        Length = fs.Length;
+                        Type = GetMimeType(filename);
+                       // AddHeader("Content-disposition", "attachment; filename=" + filename);
+                        Status = "200 OK";
+
+                        SendResponseHeader();
+
+                        var buffer = new byte[64*1024];
+                        using (var bw = new BinaryWriter(_network))
                         {
-                            bw.Write(buffer, 0, read);
-                            bw.Flush(); 
+                            int read;
+                            while ((read = fs.Read(buffer, 0, buffer.Length)) > 0)
+                            {
+                                bw.Write(buffer, 0, read);
+                                bw.Flush();
+                            }
+
+                            bw.Close();
                         }
 
-                        bw.Close();
+                        fs.Close();
                     }
-
-                    fs.Close();
                 }
             }
             catch (FileNotFoundException e)

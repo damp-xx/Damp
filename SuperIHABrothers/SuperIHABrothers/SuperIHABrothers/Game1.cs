@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.IO.Pipes;
 using System.Linq;
+using System.Threading;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
@@ -19,11 +22,15 @@ namespace SuperIHABrothers
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        private ClientCommunication_Game clientCommunication;
 
-        public Game1()
+        public Game1(string pipeIn, string pipeOut)
         {
-            graphics = new GraphicsDeviceManager(this);
+            graphics = new GraphicsDeviceManager(this);          
             Content.RootDirectory = "Content";
+
+           // clientCommunication = new GameClientCommunication();
+           // clientCommunication.Connect(pipeIn, pipeOut);
         }
 
         /// <summary>
@@ -35,6 +42,7 @@ namespace SuperIHABrothers
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            
 
             base.Initialize();
             
@@ -74,6 +82,7 @@ namespace SuperIHABrothers
 
             // TODO: Add your update logic here
             
+
             base.Update(gameTime);
         }
 
@@ -91,5 +100,8 @@ namespace SuperIHABrothers
             spriteBatch.End();
             base.Draw(gameTime);
         }
+
+
+        
     }
 }

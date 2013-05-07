@@ -2,7 +2,6 @@
 using System.Windows;
 using System.Threading;
 using System.Collections.ObjectModel;
-
 // Toolkit namespace
 using SimpleMvvmToolkit;
 
@@ -18,31 +17,24 @@ namespace DampGUI
     {
         // TODO: Add a member for IXxxServiceAgent
         private IFriendProfileServiceAgent serviceAgent;
-        Friends knowFriends;
-        
 
         // Default ctor
-        public FriendProfileViewModel() { }
+        public FriendProfileViewModel()
+        {
+        }
 
         // TODO: ctor that accepts IXxxServiceAgent
         public FriendProfileViewModel(IFriendProfileServiceAgent serviceAgent, Friends aFriends)
         {
             this.serviceAgent = serviceAgent;
-            knowFriends = aFriends;
+            KnowFriends = aFriends;
         }
 
         // TODO: Add events to notify the view or obtain data from the view
         public event EventHandler<NotificationEventArgs<Exception>> ErrorNotice;
 
         // TODO: Add properties using the mvvmprop code snippet
-        public Friends KnowFriends
-        {
-            get { return knowFriends; }
-            set
-            {
-                knowFriends = value;
-            }
-        }
+        public Friends KnowFriends { get; set; }
 
         public Friend CurrentFriend
         {
@@ -58,7 +50,7 @@ namespace DampGUI
         // TODO: Add methods that will be called by the view
 
         // TODO: Optionally add callback methods for async calls to the service agent
-        
+
         // Helper method to notify View of an error
         private void NotifyError(string message, Exception error)
         {

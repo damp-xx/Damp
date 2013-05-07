@@ -16,6 +16,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         
@@ -30,8 +31,21 @@
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </TextBox>
-       
-        <Separator Grid.Row="1" Margin="0,3,0,3" VerticalContentAlignment="Bottom" Background="#3F3F46"></Separator>
-      <ListView Grid.Row="2"  ItemsSource="{Binding Path=FriendList}" ></ListView>
+       <Button Content="Add Selected" Grid.Row="1" FontSize="20">
+
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Click">
+                    <ei:CallMethodAction
+                      TargetObject="{Binding}"
+                      MethodName="AddFriend"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+
+        </Button>
+        <Separator Grid.Row="2" Margin="0,3,0,3" VerticalContentAlignment="Bottom" Background="#3F3F46"></Separator>
+        
+        <ListView Grid.Row="3"  ItemsSource="{Binding Path=FriendList}" SelectedIndex="{Binding Path=IndexFriend }" 
+                              SelectedItem="{Binding Path=FriendListName}">
+        </ListView>
     </Grid>
 </UserControl>

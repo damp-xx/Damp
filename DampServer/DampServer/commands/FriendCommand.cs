@@ -90,7 +90,9 @@ namespace DampServer.commands
 
             db.Close();
 
-            NotifyUser(new FrendRequestResponse { From = friend.UserId }, friend.UserId);
+            NotifyUser(new StatusXmlResponse { From = friend.UserId.ToString(),
+            Code = 200,
+            Command = "FriendRequest"}, friend.UserId);
             _client.SendXmlResponse(new StatusXmlResponse {Code = 200, Command = "AddFriend", Message = "Friend request added"});
 
         }
@@ -144,13 +146,13 @@ namespace DampServer.commands
                         Message = "Friend Accepted!"
                     });
 
-                NotifyUser(new StatusXmlResponse {Code = 732, Command = "FriendAccepted", Message = friendid.ToString()}, friendid);
+                NotifyUser(new StatusXmlResponse {Code = 200, Command = "FriendAccepted", Message = friendid.ToString()}, friendid);
             }
             else
             {
                 _client.SendXmlResponse(new StatusXmlResponse
                     {
-                        Code = 301,
+                        Code = 404,
                         Command = "AcceptFriend",
                         Message = "Friend not found!"
                     });

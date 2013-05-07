@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,21 +9,21 @@ using System.Xml;
 
 namespace CommunicationLibrary
 {
-    class ComAchievement
+    public class ComAchievement
     {
-        public static XmlElement GetAchievement(string achievementID)
+        public static ObservableCollection<string> GetAchievement(string GameId)
         {
+            ObservableCollection<string> TempAchievement = new ObservableCollection<string>();
             var client = new DampServerClient(ComLogin._ComIp);
-            var ResultFromServerXml = client.SendRequest("RemoveFriend", new Dictionary<string, string>{{"Achievement", achievementID}}, ComLogin._ComToken);
+            var ResultFromServerXml = client.SendRequest("GetAchievementsForGame", new Dictionary<string, string>{{"GameId", GameId}}, ComLogin._ComToken);
 
-            if (ResultFromServerXml.Name.Equals("Status"))
+            if (ResultFromServerXml.Name.Equals("Achievement"))
             {
-                var xmlNode = ResultFromServerXml.GetElementsByTagName("Code").Item(0);
-
-                if (xmlNode.InnerText == "200")
+                foreach (XmlElement a in ResultFromServerXml.GetElementsByTagName("Archivement"))
                 {
-                    return ResultFromServerXml;
+                    TempAchievement.Add(a.GetElementsByTagName("Title").Item(0).InnerText);
                 }
+                return TempAchievement;
             }
             return null;
         }

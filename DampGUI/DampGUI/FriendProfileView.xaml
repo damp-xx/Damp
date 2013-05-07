@@ -90,7 +90,7 @@
 
       <GroupBox Grid.Row="0" Grid.Column="1"  BorderThickness="2" Header="Profile Picture" Foreground="#FFFFFF" Margin="5,0,0,0" VerticalContentAlignment="Center">
         <Grid  Margin="0,5,0,0">
-          <Image  Name="ProfilePhoto" Source="{Binding Path=CurrentFriend.Photo.Source}" Stretch="Uniform" />
+          <Image  Name="ProfilePhoto" Source="{Binding Path=CurrentFriend.Photo.Image}" Stretch="Uniform" />
         </Grid>
       </GroupBox>
 

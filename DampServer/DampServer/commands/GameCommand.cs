@@ -215,7 +215,7 @@ namespace DampServer.commands
                         Id = (long) r["gameid"],
                         Title = (string) r["title"],
                         Description = (string) r["description"],
-                        Picture = (string) r["picture"]
+     // @TODO FIX                   Picture = (string) r["picture"]
                     };
 
                 _client.SendXmlResponse(g);
@@ -269,7 +269,7 @@ namespace DampServer.commands
                         Id = (long)r["gameid"],
                         Title = (string)r["title"],
                         Description = (string)r["description"],
-                        Picture = (string)r["picture"]
+                    // @TODO FIX    Picture = (string)r["picture"]
                     });
                 }
             r.Close();
@@ -285,8 +285,7 @@ namespace DampServer.commands
             SqlCommand cmd = db.GetCommand();
 
             cmd.CommandText =
-                "SELECT G.title as title, G.gameid as gameid, G.picture as picture," +
-                " G.description  FROM Games G ";
+                "SELECT title, gameid, langauge as language, mode,picture, description, genre, developer, recommendedage   FROM Games ";
 
             SqlDataReader r = cmd.ExecuteReader();
 
@@ -296,13 +295,38 @@ namespace DampServer.commands
             if (r.HasRows)
                 while (r.Read())
                 {
-                    gl.Games.Add(new Game
+                    var gg = new Game
                     {
                         Id = (long)r["gameid"],
                         Title = (string)r["title"],
                         Description = (string)r["description"],
-                        Picture = (string)r["picture"]
-                    });
+                        Developer = (string) r["developer"],
+                        Genre = (string) r["genre"],
+                        RecommendedAge = (int)r["recommendedage"],
+                        Language = (string) r["language"],
+                        Mode = (string) r["mode"]
+                    };
+
+                    gg.Pictures = new List<string>();
+
+                    var db4 = new Database();
+                    db4.Open();
+                    var sql4 = db4.GetCommand();
+
+                    sql4.CommandText = "SELECT * FROM GamePictures WHERE gameid = @gameid";
+                    sql4.Parameters.Add("@gameid", SqlDbType.BigInt).Value = gg.Id;
+
+                    var rd = sql4.ExecuteReader();
+
+                    if (rd.HasRows)
+                    {
+                        while (rd.Read())
+                        {
+                            gg.Pictures.Add((string) rd["picture"]);
+                        }
+                    }
+
+                    gl.Games.Add(gg);
                 }
             r.Close();
             db.Close();
@@ -338,7 +362,7 @@ namespace DampServer.commands
                             Id = (long) r["gameid"],
                             Title = (string) r["title"],
                             Description = (string)r["description"],
-                            Picture = (string) r["picture"]
+                        // @TODO FIX    Picture = (string) r["picture"]
                         });
                 }
             r.Close();

@@ -11,7 +11,6 @@ namespace CommunicationLibrary
         static void Main(string[] args)
         {
 
-
             var resultOfLogin = ComLogin.Login("jens", "jens");
 
             Console.WriteLine("login status is: {0}", resultOfLogin);
@@ -19,8 +18,16 @@ namespace CommunicationLibrary
             //Console.WriteLine("{0}", resultOfSendChat);
             var resultOfGetProfile = ComProfile.GetProfile();
             Console.WriteLine("{0}", resultOfGetProfile);
+            var resultOfSearchUser = ComFriend.AddFriend("2");
+            Console.WriteLine(resultOfSearchUser);
+            Parallel.For(0, 1000, (i) =>
+                {
+                    ComEvents.Listen();
+
+                });
             //var resultOfSearchUser = ComFriend.AddFriend("2");
             //Console.WriteLine(resultOfSearchUser);
+
             Console.Read();
         }
     }
