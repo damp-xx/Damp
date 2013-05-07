@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SuperIHABrothers.ClientCommunication
 {
-    interface IMessageQueueRemove
+    public interface IMessageQueueRemove
     {
         string GetMessage();
     }

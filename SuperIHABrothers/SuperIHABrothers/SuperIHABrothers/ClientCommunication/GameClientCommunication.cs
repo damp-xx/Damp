@@ -12,18 +12,18 @@ using System.Collections.Generic;
 using System.IO;
 using System.IO.Pipes;
 using System.Threading;
+using SuperIHABrothers.ClientCommunication;
 
-public class GameClientCommunication : ClientCommunication_Game, ClientCommunication_Level {
+public class GameClientCommunication : ClientCommunication_Game {
 
-	private MessageQueue _messageQueue;
-	private GameClientProtocol m_GameClientProtocol;
+	private IMessageQueueAdd _messageQueue;
     
     private PipeStream pipeClientIn;
     private PipeStream pipeClientOut;
 
-    public GameClientCommunication(string pipeIn, string pipeOut)
+    public GameClientCommunication(string pipeIn, string pipeOut, IMessageQueueAdd messageQueue)
     {
-        _messageQueue = new MessageQueue();
+        _messageQueue = messageQueue;
 
         if (pipeIn != "NOPIPE" && pipeOut != "NOPIPE")
         {
@@ -37,33 +37,16 @@ public class GameClientCommunication : ClientCommunication_Game, ClientCommunica
             throw new Exception("Could not connnect to game");
     }
 
-	/// 
-	/// <param name="pipeIn"></param>
-	/// <param name="pipeOut"></param>
-	public bool Connect(){
-        
-        
-		return false;
-	}
-
-	public string Receive()
-	{
-	    string returnMessage;
-	    if ((returnMessage = _messageQueue.GetMessage()) != null) 
-	        return returnMessage;
-	    else
-	        return "NN"; // Nothing New
-	}
 
 	/// 
 	/// <param name="message"></param>
 	public void Send(string message){
-        Thread myNewThread = new Thread(() => SenderThread(pipeClientIn, message));
+        Thread myNewThread = new Thread(() => SenderThread(pipeClientOut, message));
         myNewThread.Start();
 	}
 
 
-    private void RecieverThread(PipeStream pipeClientIn, MessageQueue mMessageQueue)
+    private void RecieverThread(PipeStream pipeClientIn, IMessageQueueAdd mMessageQueue)
     {
         for (; ; )
         {
@@ -86,8 +69,5 @@ public class GameClientCommunication : ClientCommunication_Game, ClientCommunica
             pipeClientOut.WaitForPipeDrain();
         }    
     }
-
-
-
 
 }//end GameClientCommunication

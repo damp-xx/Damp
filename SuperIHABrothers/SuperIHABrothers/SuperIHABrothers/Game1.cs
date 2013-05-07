@@ -29,8 +29,8 @@ namespace SuperIHABrothers
             graphics = new GraphicsDeviceManager(this);          
             Content.RootDirectory = "Content";
 
-            clientCommunication = new GameClientCommunication();
-            clientCommunication.Connect(pipeIn, pipeOut);
+           // clientCommunication = new GameClientCommunication();
+           // clientCommunication.Connect(pipeIn, pipeOut);
         }
 
         /// <summary>
@@ -81,11 +81,7 @@ namespace SuperIHABrothers
                 this.Exit();
 
             // TODO: Add your update logic here
-            string receivedMessage;
-            if ((receivedMessage = clientCommunication.Receive()) != "NN")
-            {
-                // Do something with the received message
-            }
+            
 
             base.Update(gameTime);
         }
