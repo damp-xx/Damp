@@ -2,7 +2,6 @@
 using System.Windows;
 using System.Threading;
 using System.Collections.ObjectModel;
-
 // Toolkit namespace
 using SimpleMvvmToolkit;
 
@@ -18,67 +17,55 @@ namespace DampGUI
     {
         // TODO: Add a member for IXxxServiceAgent
         private IGameServiceAgent serviceAgent;
-        Games games;
-        
+
         // Default ctor
         public GameViewModel()
         {
         }
 
         // TODO: ctor that accepts IXxxServiceAgent
-        public GameViewModel(IGameServiceAgent serviceAgent,Games aGames)
+        public GameViewModel(IGameServiceAgent serviceAgent, Games aGames)
         {
-            games = aGames;
+            Games = aGames;
             PlayIns = "Play";
             this.serviceAgent = serviceAgent;
         }
-        
 
         // TODO: Add events to notify the view or obtain data from the view
         public event EventHandler<NotificationEventArgs<Exception>> ErrorNotice;
 
         // TODO: Add properties using the mvvmprop code snippet
-        
-        public Games Games
-        {
-            get { return games; }
-            set { games = value;
-     //       NotifyPropertyChanged(vm => vm.CurrentGame);
-            }
-        }
+
+        public Games Games { get; set; }
 
         public int GrdViewWidth
 
         {
-            get { return GrdViewWidth; }    
+            get { return GrdViewWidth; }
         }
 
-        
         public Game CurrentGame
         {
             get
             {
-                if (games.CurrentIndex >= 0)
-                    return games.CurrentGame;
+                if (Games.CurrentIndex >= 0)
+                    return Games.CurrentGame;
                 else
                     return null;
             }
         }
 
         public string PlayIns { get; set; }
-        
 
         // TODO: Add methods that will be called by the view
-        
+
         public void Playbutton()
         {
-            if (CurrentGame.Playins == true)
+            if (true)
             {
-                
             }
             else
             {
-                
             }
         }
 
