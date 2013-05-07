@@ -10,15 +10,17 @@
 using System;
 using System.Collections.Generic;
 using System.Threading;
+using SuperIHABrothers.ClientCommunication;
 
-public class MessageQueue
+
+public class MessageQueue : IMessageQueueAdd, IMessageQueueRemove
 {
     private Queue<string> queueString;
-    static readonly object lockObject = new object();
+    private static readonly object lockObject = new object();
 
-	public string GetMessage()
-	{
-	    string receivedString;
+    public string GetMessage()
+    {
+        string receivedString;
         lock (lockObject)
         {
             try
@@ -30,17 +32,19 @@ public class MessageQueue
                 receivedString = null;
             }
         }
-		return receivedString;
-	}
+        return receivedString;
+    }
 
-	/// 
-	/// <param name="message"></param>
-	public void InsertMessage(string message)
+    /// 
+    /// <param name="message"></param>
+    public void InsertMessage(string message)
     {
-	    lock (lockObject)
-	    {
-	        queueString.Enqueue(message);
-	    }
-	}
+        lock (lockObject)
+        {
+            queueString.Enqueue(message);
+        }
+    }
 
-}//end MessageQueue
+}
+
+//end MessageQueue

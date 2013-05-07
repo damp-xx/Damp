@@ -108,8 +108,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClientCommunication\ClientCommunication_Game.cs" />
-    <Compile Include="ClientCommunication\ClientCommunication_Level.cs" />
+    <Compile Include="ClientCommunication\IClientCommunication_Game.cs" />
     <Compile Include="ClientCommunication\GameClientCommunication.cs" />
     <Compile Include="ClientCommunication\GameClientProtocol.cs" />
     <Compile Include="ClientCommunication\MessageQueue.cs" />
