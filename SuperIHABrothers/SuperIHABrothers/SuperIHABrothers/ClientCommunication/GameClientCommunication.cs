@@ -7,6 +7,7 @@
 ///////////////////////////////////////////////////////////
 
 
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Pipes;
@@ -19,17 +20,11 @@ public class GameClientCommunication : ClientCommunication_Game, ClientCommunica
     
     private PipeStream pipeClientIn;
     private PipeStream pipeClientOut;
-	
-    public GameClientCommunication()
+
+    public GameClientCommunication(string pipeIn, string pipeOut)
     {
         _messageQueue = new MessageQueue();
-    }
 
-	/// 
-	/// <param name="pipeIn"></param>
-	/// <param name="pipeOut"></param>
-	public bool Connect(string pipeIn, string pipeOut){
-        
         if (pipeIn != "NOPIPE" && pipeOut != "NOPIPE")
         {
             pipeClientIn = new AnonymousPipeClientStream(PipeDirection.In, pipeIn);
@@ -37,8 +32,17 @@ public class GameClientCommunication : ClientCommunication_Game, ClientCommunica
 
             Thread myNewThread = new Thread(() => RecieverThread(pipeClientIn, _messageQueue));
             myNewThread.Start();
-            return true;
         }
+        else 
+            throw new Exception("Could not connnect to game");
+    }
+
+	/// 
+	/// <param name="pipeIn"></param>
+	/// <param name="pipeOut"></param>
+	public bool Connect(){
+        
+        
 		return false;
 	}
 

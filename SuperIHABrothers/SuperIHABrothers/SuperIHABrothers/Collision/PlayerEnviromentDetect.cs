@@ -7,15 +7,24 @@
 ///////////////////////////////////////////////////////////
 
 
-
+using System;
 using Sprites;
 using System.Collections.Generic;
 using Collision;
 namespace Collision {
-	public class PlayerEnviromentDetect : ICollisionDetect {
+	public class PlayerEnviromentDetect : ICollisionDetect
+	{
+	    private IEvent _playerTopEvent;
+        private IEvent _playerRightEvent;
+        private IEvent _playerBottomEvent;
+        private IEvent _playerLeftEvent;
 
-		public PlayerEnviromentDetect(){
-
+		public PlayerEnviromentDetect(IEvent playerTop, IEvent playerRight, IEvent playerLeft, IEvent playerBottom)
+		{
+		    _playerTopEvent = playerTop;
+		    _playerRightEvent = playerRight;
+		    _playerBottomEvent = playerBottom;
+		    _playerLeftEvent = playerLeft;
 		}
 
 
@@ -25,7 +34,23 @@ namespace Collision {
 		/// <param name="mSprite1"></param>
 		public IEvent Detect(ISpriteContainerCollision mSpriteCollection, ISprite player, ISprite environment){
 
-            throw new System.NotImplementedException();
+            List<IEvent> eventList = new List<IEvent>();
+
+            //if ( (player.MyRectangle.Right >= environment.MyRectangle.Left) && (
+            //    player.MyRectangle.Right <= environment.MyRectangle.Right/2) &&
+            //    (player.MyRectangle.Right - environment.MyRectangle.Left <= player.Velocity.X))
+            //{
+            //    eventList.Add(_playerLeftEvent);
+            //}
+            //else if( (player.MyRectangle.Left < environment.MyRectangle.Right) &&
+            //            (player.MyRectangle.Left > environment.MyRectangle.Left/2) &&
+            //            (player.MyRectangle.Left - environment.MyRectangle.Right <= player.Velocity.X)))
+            //{
+            //    eventList.Add(_playerRightEvent);
+            //}
+            //else if ()
+
+            throw new NotImplementedException();
 		}
 
     }//end PlayerEnviromentDetect
