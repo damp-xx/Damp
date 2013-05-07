@@ -10,7 +10,6 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using SimpleMvvmToolkit;
 
-
 namespace DampGUI
 {
     /// <summary>
@@ -25,56 +24,43 @@ namespace DampGUI
         private IFriendServiceAgent serviceAgent;
         private Friends allUsers;
         // Default ctor
-        public FriendFindViewModel() { }
+        public FriendFindViewModel()
+        {
+        }
 
         // TODO: ctor that accepts IXxxServiceAgent
-        public FriendFindViewModel(IFriendServiceAgent serviceAgent, Friends aAllUsers)
+        public FriendFindViewModel(IFriendServiceAgent serviceAgent)
         {
-        
             this.serviceAgent = serviceAgent;
-            allUsers = aAllUsers;
         }
 
         // TODO: Add events to notify the view or obtain data from the view
         public event EventHandler<NotificationEventArgs<Exception>> ErrorNotice;
 
-        //private ObservableCollection<Friend> _friends =new ObservableCollection<Friend>();
-        //public ObservableCollection<Friend> Friends
-        //{
-        //    get { return _friends; }
-        //    set
-        //    {
-        //        _friends = value;
-        //        NotifyPropertyChanged(vm => vm.Friends);
-        //    }
-        //}
-        
-        private ObservableCollection<string> _friendList = new ObservableCollection<string>(); 
+        private ObservableCollection<string> _friendList = new ObservableCollection<string>();
+
         public ObservableCollection<string> FriendList
         {
             get
             {
                 _friendList.Clear();
-                if(_friendSearchList != null){
-                for (int i = 0; i < _friendSearchList.TotalFriends; i++)
+                if (_friendSearchList != null)
                 {
-                    _friendList.Add(_friendSearchList.Get(i).Name);
-                }
+                    for (int i = 0; i < _friendSearchList.TotalFriends; i++)
+                    {
+                        _friendList.Add(_friendSearchList.Get(i).Name);
+                    }
                 }
                 return _friendList;
-                
             }
-           private set { }
         }
 
         private Friends _friendSearchList = new Friends();
-        public Friends FriendSearchList 
+
+        public Friends FriendSearchList
         {
-            get
-            {   
-                return _friendSearchList;
-            }
-             set
+            get { return _friendSearchList; }
+            set
             {
                 _friendSearchList = value;
                 NotifyPropertyChanged(vm => vm.FriendSearchList);
@@ -82,9 +68,7 @@ namespace DampGUI
             }
         }
 
-
         // TODO: Add properties using the mvvmprop code snippet
-
 
         private int _indexFriend = 0;
 
@@ -94,29 +78,28 @@ namespace DampGUI
             set { _indexFriend = value; }
         }
 
-        private string friendListName;
+        private string _friendListName;
 
         public string FriendListName
         {
             set
             {
-                friendListName = value;
-                findIndexFriend(_indexFriend);
+                _friendListName = value;
+                FindIndexFriend(_indexFriend);
                 OnPropertyChanged("FriendListName");
             }
         }
 
-        public void findIndexFriend(int aIndex)
+        public void FindIndexFriend(int aIndex)
         {
-            if (friendListName != null)
+            if (_friendListName != null)
             {
-                string name = friendListName;
+                string name = _friendListName;
 
                 for (int i = 0; i < FriendSearchList.TotalFriends; i++)
                 {
                     if (name == FriendSearchList.Get(i).Name)
                     {
-
                         FriendSearchList.CurrentFriendIndex = i;
                         NotifyPropertyChanged(vm => vm.FriendSearchList.CurrentFriendIndex);
                         NotifyPropertyChanged(vm => vm.FriendSearchList.CurrentFriend);
@@ -128,40 +111,30 @@ namespace DampGUI
 
         // TODO: Add methods that will be called by the view
 
-        public void LoadFriends()
-        {
-            ObservableCollection<Friend> result = new ObservableCollection<Friend>();
-            for (int i = 0; i < allUsers.TotalFriends; i++)
-            {
-                result.Add(allUsers.Get(i));
-            }
-            
-            //FriendSearchList = new ObservableCollection<Friend>(result);
-        }
-
         public void AddFriend()
         {
-            if(FriendSearchList.CurrentFriend != null){
-            string msg = "Do you want to Add " + FriendSearchList.CurrentFriend.Name + "?";
-            MessageBoxResult result = MessageBox.Show(msg, "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if (result == MessageBoxResult.Yes)
+            if (FriendSearchList.CurrentFriend != null)
             {
-                ComFriend.AddFriend(allUsers.CurrentFriend.Id);
-            }
+                string msg = "Do you want to Add " + FriendSearchList.CurrentFriend.Name + "?";
+                MessageBoxResult result = MessageBox.Show(msg, "Confirmation", MessageBoxButton.YesNo,
+                                                          MessageBoxImage.Question);
+                if (result == MessageBoxResult.Yes)
+                {
+                    ComFriend.AddFriend(allUsers.CurrentFriend.Id);
+                }
             }
         }
 
         public void SearchFriends()
         {
-            //var foundFriends = serviceAgent.FindFriends(_name,allUsers);
             var foundFriends = ComFriend.SearchUser(_name);
-
             FriendSearchList = foundFriends;
         }
 
         // TODO: Optionally add callback methods for async calls to the service agent
 
         private string _name;
+
         public string Name
         {
             get { return _name; }
@@ -173,7 +146,6 @@ namespace DampGUI
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-
 
         public void OnPropertyChanged(string propertyName)
         {

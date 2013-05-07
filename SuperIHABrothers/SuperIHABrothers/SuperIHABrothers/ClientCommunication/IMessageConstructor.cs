@@ -5,8 +5,10 @@ using System.Text;
 
 namespace SuperIHABrothers.ClientCommunication
 {
-    public interface IMessageQueueAdd
+    interface IMessageConstructor
     {
-        void InsertMessage(string message);
+        void StartUp();
+        void Achievement(string message);
+        void NewHighscore(string highscore);      
     }
 }

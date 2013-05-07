@@ -12,7 +12,9 @@ namespace CommunicationLibrary
 {
     public class ComFriend
     {
-        public static Friends GetFriendList()
+        public Friends _friends { get; set; }
+
+        public void GetFriendList()
         {
             var client = new DampServerClient(ComLogin._ComIp);
             //Console.WriteLine("Token before send Forgotten Email: {0}", ComLogin._ComToken);
@@ -28,17 +30,32 @@ namespace CommunicationLibrary
                             Name = x.GetElementsByTagName("Username").Item(0).InnerText,
                             Description = x.GetElementsByTagName("Email").Item(0).InnerText,
                             AchivementsComplete = new ObservableCollection<string> {"Test"},
-                            City = "Aarhus",
-                            Country = "Denmark",
-                            Gender = "Male",
-                            Language = "Male",
-                            Photo = new Photo("")
+                        
                         };
+
+                    var xmlNode = x.GetElementsByTagName("City").Item(0);
+                    if (xmlNode != null)
+                        k.City = xmlNode.InnerText;
+                    var item = x.GetElementsByTagName("Country").Item(0);
+                    if (item != null)
+                        k.Country = item.InnerText;
+                    var node = x.GetElementsByTagName("Gender").Item(0);
+                    if (node != null)
+                        k.Gender = node.InnerText;
+                    var xmlNode1 = x.GetElementsByTagName("Language").Item(0);
+                    if (xmlNode1 != null)
+                        k.Language = xmlNode1.InnerText;
+                    var item1 = x.GetElementsByTagName("Photo").Item(0);
+                    if (item1 != null)
+                        k.Photo = new Photo("Https://" + ComLogin._ComIp + ":1337/Download?AuthToken=" +
+                                            ComLogin._ComToken + "&Object=" +
+                                            item1.InnerText);
+                    
                     FriendList.Add(k);
                 }
-                return FriendList;
+                _friends = FriendList;
             }
-            return null;
+           // return null;
         }
 
         public static bool SendChatMessage(string message)

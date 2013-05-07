@@ -11,10 +11,5 @@
 
 public interface ClientCommunication_Game  {
 
-	/// 
-	/// <param name="pipeIn"></param>
-	/// <param name="pipeOut"></param>
-	bool Connect(string pipeIn, string pipeOut);
-
-	string Receive();
+	void Send(string message);
 }//end ClientCommunication_Game
