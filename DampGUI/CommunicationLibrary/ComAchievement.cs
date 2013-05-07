@@ -8,7 +8,7 @@ using System.Xml;
 
 namespace CommunicationLibrary
 {
-    class ComAchievement
+    public class ComAchievement
     {
         public static XmlElement GetAchievement(string achievementID)
         {
