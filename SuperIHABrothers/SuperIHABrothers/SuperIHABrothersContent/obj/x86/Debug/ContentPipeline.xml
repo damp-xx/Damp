@@ -10,6 +10,15 @@
       <Output>C:\Users\Filip\Dropbox\IHA Docs\4. Semester\PRJ4\Damp\SuperIHABrothers\SuperIHABrothers\SuperIHABrothers\bin\x86\Debug\Content\burning man.xnb</Output>
       <Time>2013-04-30T10:49:08+02:00</Time>
     </Item>
+    <Item>
+      <Source>GameFont.spritefont</Source>
+      <Name>GameFont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Filip\Dropbox\IHA Docs\4. Semester\PRJ4\Damp\SuperIHABrothers\SuperIHABrothers\SuperIHABrothers\bin\x86\Debug\Content\GameFont.xnb</Output>
+      <Time>2013-05-07T11:38:06.3570329+02:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>

@@ -76,8 +76,9 @@ namespace DampServer.commands
             {
                 while (reader.Read())
                 {
-                    
-                    f.Users.Add(GetUser((long) reader["userid"]));
+                    var  user = GetUser((long) reader["userid"]);
+                    user.Friends = null;
+                    f.Users.Add(user);
                 }
             }
 

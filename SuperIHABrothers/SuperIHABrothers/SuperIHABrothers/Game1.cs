@@ -22,7 +22,6 @@ namespace SuperIHABrothers
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        private ClientCommunication_Game clientCommunication;
 
         public Game1(string pipeIn, string pipeOut)
         {
@@ -56,6 +55,7 @@ namespace SuperIHABrothers
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+
 
             // TODO: use this.Content to load your game content here
         }
@@ -96,7 +96,7 @@ namespace SuperIHABrothers
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
-            
+ 
             spriteBatch.End();
             base.Draw(gameTime);
         }

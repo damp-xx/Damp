@@ -12,7 +12,6 @@
 namespace Collision {
 	public interface IEvent  {
 
-		void HandleEvent();
 	}//end IEvent
 
 }//end namespace CollitionControle

@@ -8,8 +8,13 @@
 
 
 
+namespace ClientCommunication
+{
+    public interface IClientCommunication_Game
+    {
 
-public interface ClientCommunication_Game  {
+        void Send(string message);
+    }
 
-	void Send(string message);
-}//end ClientCommunication_Game
+//end ClientCommunication_Game
+}

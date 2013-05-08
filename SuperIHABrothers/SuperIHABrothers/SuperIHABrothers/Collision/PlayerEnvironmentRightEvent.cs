@@ -7,26 +7,25 @@
 ///////////////////////////////////////////////////////////
 
 
-
-
+using Microsoft.Xna.Framework;
+using Sprites;
 
 namespace Collision {
 	public class PlayerEnvironmentRightEvent : IEvent {
-
-		public PlayerEnvironmentRightEvent(){
-
+        
+        private ISprite _playerSprite;
+	    private ISprite _environmentSprite;
+		
+        public PlayerEnvironmentRightEvent(ISprite player, ISprite environment)
+        {
+            _playerSprite = player;
+            HandleEvent();
 		}
 
-		~PlayerEnvironmentRightEvent(){
-
-		}
-
-		public virtual void Dispose(){
-
-		}
-
-		public void HandleEvent(){
-
+		public void HandleEvent()
+		{
+		    _playerSprite.Velocity = new Vector2(0,_playerSprite.Velocity.Y);
+		    _playerSprite.Position = new Vector2(_environmentSprite.MyRectangle.Right, _playerSprite.Position.Y); // Moving the player "out" from the environment
 		}
 
 	}//end PlayerEnvironmentRightEvent

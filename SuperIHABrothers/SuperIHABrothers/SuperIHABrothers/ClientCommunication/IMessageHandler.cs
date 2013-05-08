@@ -9,7 +9,8 @@
 
 using SuperIHABrothers.Sprite;
 
-namespace DampCommunication {
+namespace ClientCommunication
+{
 	public interface IMessageHandler  {
 
 		/// 
