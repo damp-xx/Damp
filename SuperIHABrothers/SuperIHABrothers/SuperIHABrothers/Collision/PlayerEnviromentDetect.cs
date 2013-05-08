@@ -11,47 +11,57 @@ using System;
 using Sprites;
 using System.Collections.Generic;
 using Collision;
-namespace Collision {
-	public class PlayerEnviromentDetect : ICollisionDetect
-	{
-	    private IEvent _playerTopEvent;
-        private IEvent _playerRightEvent;
-        private IEvent _playerBottomEvent;
-        private IEvent _playerLeftEvent;
+namespace Collision
+{
+    public class PlayerEnviromentDetect : ICollisionDetect
+    {
 
-		public PlayerEnviromentDetect(IEvent playerTop, IEvent playerRight, IEvent playerLeft, IEvent playerBottom)
-		{
-		    _playerTopEvent = playerTop;
-		    _playerRightEvent = playerRight;
-		    _playerBottomEvent = playerBottom;
-		    _playerLeftEvent = playerLeft;
-		}
+        public PlayerEnviromentDetect()
+        {
+        }
 
+        /// 
+        /// <param name="mSpriteCollection"></param>
+        /// <param name="mSprite2"></param>
+        /// <param name="mSprite1"></param>
+        public void Detect(ISpriteContainerCollision mSpriteCollection, ISprite player, ISprite environment)
+        {
 
-		/// 
-		/// <param name="mSpriteCollection"></param>
-		/// <param name="mSprite2"></param>
-		/// <param name="mSprite1"></param>
-		public IEvent Detect(ISpriteContainerCollision mSpriteCollection, ISprite player, ISprite environment){
+            float margin = player.Velocity.X + 2;
 
-            List<IEvent> eventList = new List<IEvent>();
+            //Left side
+            if (player.MyRectangle.X + player.MyRectangle.Width >= environment.MyRectangle.X &&
+                (player.MyRectangle.X + player.MyRectangle.Width) <= (environment.MyRectangle.X + margin) &&
+                player.Velocity.X > 0
+                )
+            {
+                new PlayerEnvironmentLeftEvent(player, environment);
+            }
+            //Right side
+            else if (player.MyRectangle.X >= (environment.MyRectangle.X + environment.MyRectangle.Width + margin) &&
+                     player.MyRectangle.X <= (environment.MyRectangle.X + environment.MyRectangle.Width) &&
+                     player.Velocity.X < 0
+                )
+            {
+                new PlayerEnvironmentRightEvent(player, environment);
+            }
 
-            //if ( (player.MyRectangle.Right >= environment.MyRectangle.Left) && (
-            //    player.MyRectangle.Right <= environment.MyRectangle.Right/2) &&
-            //    (player.MyRectangle.Right - environment.MyRectangle.Left <= player.Velocity.X))
-            //{
-            //    eventList.Add(_playerLeftEvent);
-            //}
-            //else if( (player.MyRectangle.Left < environment.MyRectangle.Right) &&
-            //            (player.MyRectangle.Left > environment.MyRectangle.Left/2) &&
-            //            (player.MyRectangle.Left - environment.MyRectangle.Right <= player.Velocity.X)))
-            //{
-            //    eventList.Add(_playerRightEvent);
-            //}
-            //else if ()
-
-            throw new NotImplementedException();
-		}
+            //Top side
+            else if (player.MyRectangle.Y + player.MyRectangle.Height >= environment.MyRectangle.Y &&
+                     player.MyRectangle.Y + player.MyRectangle.Height <
+                     environment.MyRectangle.Y + (environment.MyRectangle.Height / 2) &&
+                     player.Velocity.Y > 0)
+            {
+                new PlayerEnvironmentTopEvent(player, environment);
+            }
+            //Bottom side
+            else if (player.MyRectangle.Y <= environment.MyRectangle.Y + environment.MyRectangle.Height &&
+                     player.MyRectangle.Y > environment.MyRectangle.Y + (environment.MyRectangle.Height / 2) &&
+                     player.Velocity.Y < 0)
+            {
+                new PlayerEnvironmentBottomEvent(player, environment);
+            }
+        }
 
     }//end PlayerEnviromentDetect
 
