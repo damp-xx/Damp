@@ -8,13 +8,11 @@
 
 
 using System.Threading;
-using DampCommunication;
-using Sprites;
 using GameState;
-using SuperIHABrothers.ClientCommunication;
 using SuperIHABrothers.Sprite;
 
-namespace DampCommunication {
+namespace ClientCommunication
+{
 	public class MessageHandler : IMessageHandler {
 
 		public ISpriteContainerMessage m_ISpriteContainerMessage;

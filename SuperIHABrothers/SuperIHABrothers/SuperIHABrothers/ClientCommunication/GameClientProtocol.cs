@@ -8,19 +8,27 @@
 
 
 
+namespace ClientCommunication
+{
+    public class GameClientProtocol
+    {
 
-public class GameClientProtocol {
+        public GameClientProtocol()
+        {
 
-	public GameClientProtocol(){
+        }
 
-	}
+        ~GameClientProtocol()
+        {
 
-	~GameClientProtocol(){
+        }
 
-	}
+        public virtual void Dispose()
+        {
 
-	public virtual void Dispose(){
+        }
 
-	}
+    }
 
-}//end GameClientProtocol
+//end GameClientProtocol
+}

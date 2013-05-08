@@ -8,66 +8,72 @@
 
 
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.IO.Pipes;
 using System.Threading;
-using SuperIHABrothers.ClientCommunication;
 
-public class GameClientCommunication : ClientCommunication_Game {
 
-	private IMessageQueueAdd _messageQueue;
-    
-    private PipeStream pipeClientIn;
-    private PipeStream pipeClientOut;
-
-    public GameClientCommunication(string pipeIn, string pipeOut, IMessageQueueAdd messageQueue)
+namespace ClientCommunication
+{
+    public class GameClientCommunication : IClientCommunication_Game
     {
-        _messageQueue = messageQueue;
 
-        if (pipeIn != "NOPIPE" && pipeOut != "NOPIPE")
+        private IMessageQueueAdd _messageQueue;
+
+        private PipeStream pipeClientIn;
+        private PipeStream pipeClientOut;
+
+        public GameClientCommunication(string pipeIn, string pipeOut, IMessageQueueAdd messageQueue)
         {
-            pipeClientIn = new AnonymousPipeClientStream(PipeDirection.In, pipeIn);
-            pipeClientOut = new AnonymousPipeClientStream(PipeDirection.Out, pipeOut);
+            _messageQueue = messageQueue;
 
-            Thread myNewThread = new Thread(() => RecieverThread(pipeClientIn, _messageQueue));
+            if (pipeIn != "NOPIPE" && pipeOut != "NOPIPE")
+            {
+                pipeClientIn = new AnonymousPipeClientStream(PipeDirection.In, pipeIn);
+                pipeClientOut = new AnonymousPipeClientStream(PipeDirection.Out, pipeOut);
+
+                Thread myNewThread = new Thread(() => RecieverThread(pipeClientIn, _messageQueue));
+                myNewThread.Start();
+            }
+            else
+                throw new Exception("Could not connnect to game");
+        }
+
+
+        /// 
+        /// <param name="message"></param>
+        public void Send(string message)
+        {
+            Thread myNewThread = new Thread(() => SenderThread(pipeClientOut, message));
             myNewThread.Start();
         }
-        else 
-            throw new Exception("Could not connnect to game");
-    }
 
 
-	/// 
-	/// <param name="message"></param>
-	public void Send(string message){
-        Thread myNewThread = new Thread(() => SenderThread(pipeClientOut, message));
-        myNewThread.Start();
-	}
-
-
-    private void RecieverThread(PipeStream pipeClientIn, IMessageQueueAdd mMessageQueue)
-    {
-        for (; ; )
+        private void RecieverThread(PipeStream pipeClientIn, IMessageQueueAdd mMessageQueue)
         {
-            using (StreamReader sr = new StreamReader(pipeClientIn))
+            for (;;)
             {
-                string receivedString;
-                if ((receivedString = sr.ReadLine()) != null) 
-                mMessageQueue.InsertMessage(receivedString);
+                using (StreamReader sr = new StreamReader(pipeClientIn))
+                {
+                    string receivedString;
+                    if ((receivedString = sr.ReadLine()) != null)
+                        mMessageQueue.InsertMessage(receivedString);
+                }
             }
         }
-    }
 
 
-    private void SenderThread(PipeStream pipeClientOut, string message)
-    {
-        using (StreamWriter sw = new StreamWriter(pipeClientOut))
+        private void SenderThread(PipeStream pipeClientOut, string message)
         {
-            sw.AutoFlush = true;
-            sw.WriteLine(message);
-            pipeClientOut.WaitForPipeDrain();
-        }    
+            using (StreamWriter sw = new StreamWriter(pipeClientOut))
+            {
+                sw.AutoFlush = true;
+                sw.WriteLine(message);
+                pipeClientOut.WaitForPipeDrain();
+            }
+        }
+
     }
 
-}//end GameClientCommunication
+//end GameClientCommunication
+}

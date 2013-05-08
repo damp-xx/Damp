@@ -9,42 +9,42 @@
 
 using System;
 using System.Collections.Generic;
-using System.Threading;
-using SuperIHABrothers.ClientCommunication;
 
-
-public class MessageQueue : IMessageQueueAdd, IMessageQueueRemove
+namespace ClientCommunication
 {
-    private Queue<string> queueString;
-    private static readonly object lockObject = new object();
-
-    public string GetMessage()
+    public class MessageQueue : IMessageQueueAdd, IMessageQueueRemove
     {
-        string receivedString;
-        lock (lockObject)
+        private Queue<string> queueString;
+        private static readonly object lockObject = new object();
+
+        public string GetMessage()
         {
-            try
+            string receivedString;
+            lock (lockObject)
             {
-                receivedString = queueString.Dequeue();
+                try
+                {
+                    receivedString = queueString.Dequeue();
+                }
+                catch (Exception e)
+                {
+                    receivedString = null;
+                }
             }
-            catch (Exception e)
+            return receivedString;
+        }
+
+        /// 
+        /// <param name="message"></param>
+        public void InsertMessage(string message)
+        {
+            lock (lockObject)
             {
-                receivedString = null;
+                queueString.Enqueue(message);
             }
         }
-        return receivedString;
+
     }
 
-    /// 
-    /// <param name="message"></param>
-    public void InsertMessage(string message)
-    {
-        lock (lockObject)
-        {
-            queueString.Enqueue(message);
-        }
-    }
-
+    //end MessageQueue
 }
-
-//end MessageQueue
