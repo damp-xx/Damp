@@ -85,14 +85,22 @@
                     </i:Interaction.Triggers>
                     
                 </TextBox>
-                <ListView x:Name="GameListView"  Grid.Row="1" ItemsSource="{Binding Path=LGames}" SelectedIndex="{Binding Path=IndexGame }" SelectedItem="{Binding Path=GameListName}" >
+                <ListView x:Name="GameListView"  Grid.Row="1" ItemsSource="{Binding Path=LGames}" SelectedIndex="{Binding Path=IndexGame }" SelectedItem="{Binding Path=GameListName}">
+                    
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="SelectionChanged">
                             <ei:CallMethodAction
                       TargetObject="{Binding}"
                       MethodName="ChangeGame"/>
                         </i:EventTrigger>
+                        
+                        <i:EventTrigger EventName="GotFocus">
+                            <ei:CallMethodAction
+                                TargetObject="{Binding}"
+                      MethodName="GotFocus"/>
+                        </i:EventTrigger>
                     </i:Interaction.Triggers>
+                    
                 </ListView>
             </Grid>
         </GroupBox>
@@ -131,6 +139,13 @@
                       TargetObject="{Binding}"
                       MethodName="ChangeFriend"/>
                             </i:EventTrigger>
+                            
+                            <i:EventTrigger EventName="GotFocus">
+                                <ei:CallMethodAction
+                      TargetObject="{Binding}"
+                      MethodName="GotFocusF"/>
+                            </i:EventTrigger>
+
                         </i:Interaction.Triggers>
                         
                     </ListView>

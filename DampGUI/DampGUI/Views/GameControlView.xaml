@@ -7,8 +7,9 @@
     xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="800"
-             DataContext="{Binding Source={StaticResource Locator}, Path=GameViewModel}"
-             Loaded="UserControl_Loaded">
+             DataContext="{Binding Source={StaticResource Locator}, Path=GameViewModel}" Loaded="GameControlView_OnLoaded"
+             >
+    <!--Loaded="UserControl_Loaded"-->
     
     <Grid>
     <Grid.RowDefinitions>
@@ -99,7 +100,9 @@
 
     </Grid>
 
-    <GroupBox Grid.Row="0" Grid.Column="1"  BorderThickness="2" Header="Screenshots" Foreground="#FFFFFF" Margin="5,0,0,0" VerticalContentAlignment="Center">
+        <UserControl Name="PhotoStuff" Grid.Row="0" Grid.Column="1"></UserControl>
+        
+    <!--<GroupBox Grid.Row="0" Grid.Column="1"  BorderThickness="2" Header="Screenshots" Foreground="#FFFFFF" Margin="5,0,0,0" VerticalContentAlignment="Center">
 
             <Grid Name="grd" MinWidth="300" MinHeight="200" Margin="0,5,0,0" >
 
@@ -125,7 +128,7 @@
         </Border>
       </Grid>
 
-    </GroupBox>
+    </GroupBox>-->
 
     <GroupBox Grid.Row="1" Grid.Column="0"  BorderThickness="2" Header="Friends" Foreground="#FFFFFF" Margin="0,5,0,0">
       <Grid>

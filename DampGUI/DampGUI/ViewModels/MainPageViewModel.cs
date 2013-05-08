@@ -70,7 +70,15 @@ namespace DampGUI
         public int IndexGame
         {
             get { return _indexGame; }
-            set { _indexGame = value; }
+            set { _indexGame = value;
+            
+            }
+        }
+
+        public void GotFocus()
+        {
+            findIndex(IndexGame);
+            ChangeGame();
         }
 
         private string gameListName;
@@ -98,10 +106,12 @@ namespace DampGUI
                         games.CurrentIndex = i;
                         NotifyPropertyChanged(vm => vm.games.CurrentIndex);
                         NotifyPropertyChanged(vm => vm.games.CurrentGame);
+
                         break;
                     }
                 }
             }
+
         }
 
         private ObservableCollection<string> lGames = new ObservableCollection<string>();
@@ -212,6 +222,11 @@ namespace DampGUI
             }
         }
 
+        public void GotFocusF()
+        {
+            FindIndexFriend(IndexFriend);
+            ChangeFriend();
+        }
 
         private int _indexFriend = 0;
 
