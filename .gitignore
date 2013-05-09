@@ -5,5 +5,6 @@ TankGame/TankGame/TankGame/bin/*
 TankGame/TankGame.Tests/obj/*
 TankGame/TankGame.Tests/bin/*
 TankGame/TankGame/TankGame/bin/*
-/SuperIHABrothers/SuperIHABrothers/SuperIHABrothers/bin
-obj
+bin
+/DampServer/DampServer/obj
+
