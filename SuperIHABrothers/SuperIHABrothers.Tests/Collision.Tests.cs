@@ -59,6 +59,7 @@ namespace SuperIHABrothers.Tests
             _stubSpriteMonster.Stub(x => x.MyRectangle).Return(_stubRectangle);
 
             _uutCollisionControl = new CollisionControl(_stubSpriteContainerCollision, _mockPlayerEnvironmentDetect, _mockPlayerMonsterDetect, _mockMonsterEnvironmentDetect);
+            
         }
 
         

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SuperIHABrothers.GameState
+namespace GameState
 {
     
 
@@ -13,7 +13,7 @@ namespace SuperIHABrothers.GameState
         bool WasLeftPressed { get; }
         bool IsRightPressed { get; }
         bool WasRightPressed { get; }
-        bool IsSpacePressed { get; }
-        bool WasSpacePressed { get; }
+        bool IsJumpPressed { get; }
+        bool WasJumpPressed { get; }
     }
 }

@@ -6,7 +6,7 @@ using System.Text;
 using NUnit.Framework;
 using Sprites;
 using SuperIHABrothers;
-using SuperIHABrothers.GameState;
+using GameState;
 using Rhino.Mocks;
 using Microsoft.Xna.Framework;
 
