@@ -1,17 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Net;
-using System.Net.Mime;
 using System.Net.Security;
-using System.Security.Policy;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
-using System.Windows.Threading;
 
 namespace DampGUI
 {
@@ -20,19 +12,17 @@ namespace DampGUI
         public BitmapImage Image { get; set; }
         private BitmapImage image = new BitmapImage();
         public string Url { get; set; }
-        private bool isMade = false;
 
-
-        public bool IsMade { get { return isMade; } set{isMade=value;} }
+        public bool IsMade { get; set; }
 
         public Photo(string _url)
         {
+            IsMade = false;
             Url = _url;
-            Console.WriteLine("url:::::::" + Url);
-            
+            //Console.WriteLine("url:::::::" + Url);
         }
 
-        MemoryStream memoryStream = new MemoryStream();
+        private MemoryStream memoryStream = new MemoryStream();
 
 
         public void LoadPicture()
@@ -46,7 +36,7 @@ namespace DampGUI
                 WebResponse response = request.GetResponse();
                 Stream responseStream = response.GetResponseStream();
                 BinaryReader reader = new BinaryReader(responseStream);
-                
+
                 byte[] bytebuffer = new byte[BytesToRead];
                 int bytesRead = reader.Read(bytebuffer, 0, BytesToRead);
 
@@ -55,13 +45,12 @@ namespace DampGUI
                     memoryStream.Write(bytebuffer, 0, bytesRead);
                     bytesRead = reader.Read(bytebuffer, 0, BytesToRead);
                 }
-             //   File.WriteAllBytes("billed.jpg", memoryStream.ToArray());
-             //   Console.WriteLine("loadPicture er blevet koert???????????");
+                //   File.WriteAllBytes("billed.jpg", memoryStream.ToArray());
             }
         }
 
 
-        public void create()
+        public void Create()
         {
             image.BeginInit();
             memoryStream.Seek(0, SeekOrigin.Begin);
@@ -83,7 +72,7 @@ namespace DampGUI
                         delegate { return true; }
                         );
             }
-            catch (Exception ex)
+            catch
             {
             }
         }
@@ -91,9 +80,9 @@ namespace DampGUI
 
     public class PhotoCollection : List<Photo>
     {
-        private bool isMade = false;
         public PhotoCollection(List<string> listUrl)
         {
+            IsMade = false;
             foreach (var url in listUrl)
             {
                 if (url != null)
@@ -101,11 +90,7 @@ namespace DampGUI
             }
         }
 
-        public bool IsMade
-        {
-            get { return isMade; }
-            set { isMade = value; }
-        }
+        public bool IsMade { get; set; }
     }
 }
 

@@ -28,6 +28,7 @@ namespace CommunicationLibrary
                         {
                             Id = x. GetElementsByTagName("UserId").Item(0).InnerText,
                             Name = x.GetElementsByTagName("Username").Item(0).InnerText,
+                            RealName = x.GetElementsByTagName("Username").Item(0).InnerText,
                             Description = x.GetElementsByTagName("Email").Item(0).InnerText,
                             AchivementsComplete = new ObservableCollection<string> {"Test"},
                         
@@ -39,7 +40,7 @@ namespace CommunicationLibrary
                     var item = x.GetElementsByTagName("Country").Item(0);
                     if (item != null)
                         k.Country = item.InnerText;
-                    var node = x.GetElementsByTagName("Gender").Item(0);
+                    var node = x.GetElementsByTagName("UserId").Item(0);
                     if (node != null)
                         k.Gender = node.InnerText;
                     var xmlNode1 = x.GetElementsByTagName("Language").Item(0);

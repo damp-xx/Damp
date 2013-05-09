@@ -1,40 +1,20 @@
 ﻿using System;
-using System.Windows;
-using System.Threading;
-using System.Collections.ObjectModel;
-// Toolkit namespace
 using SimpleMvvmToolkit;
 
 namespace DampGUI
 {
     /// <summary>
     /// This class contains properties that a View can data bind to.
-    /// <para>
-    /// Use the <strong>mvvmprop</strong> snippet to add bindable properties to this ViewModel.
-    /// </para>
     /// </summary>
     public class GameViewModel : ViewModelBase<GameViewModel>
     {
-        // TODO: Add a member for IXxxServiceAgent
-        private IGameServiceAgent serviceAgent;
-
-        // Default ctor
-        public GameViewModel()
-        {
-        }
-
-        // TODO: ctor that accepts IXxxServiceAgent
-        public GameViewModel(IGameServiceAgent serviceAgent, Games aGames)
+        public GameViewModel(Games aGames)
         {
             Games = aGames;
             PlayIns = "Play";
-            this.serviceAgent = serviceAgent;
         }
 
-        // TODO: Add events to notify the view or obtain data from the view
         public event EventHandler<NotificationEventArgs<Exception>> ErrorNotice;
-
-        // TODO: Add properties using the mvvmprop code snippet
 
         public Games Games { get; set; }
 
@@ -50,17 +30,16 @@ namespace DampGUI
             {
                 if (Games.CurrentIndex >= 0)
                     return Games.CurrentGame;
-                else
+        
                     return null;
             }
         }
 
         public string PlayIns { get; set; }
 
-        // TODO: Add methods that will be called by the view
-
         public void Playbutton()
         {
+            //ToDO: Pierre skal sætte sin play func ind
             if (true)
             {
             }
@@ -69,7 +48,6 @@ namespace DampGUI
             }
         }
 
-        // TODO: Optionally add callback methods for async calls to the service agent
         // Helper method to notify View of an error
         private void NotifyError(string message, Exception error)
         {

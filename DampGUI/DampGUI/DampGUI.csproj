@@ -65,31 +65,24 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ChatView.xaml.cs">
+    <Compile Include="Views\ChatView.xaml.cs">
       <DependentUpon>ChatView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\Chat.cs" />
     <Compile Include="Models\EventSubscriber.cs" />
-    <Compile Include="PhotoCollectionView.xaml.cs">
+    <Compile Include="Views\PhotoCollectionView.xaml.cs">
       <DependentUpon>PhotoCollectionView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Services\ChatServiceAgent.cs" />
-    <Compile Include="Services\IChatServiceAgent.cs" />
-    <Compile Include="Services\IFriendProfileServiceAgent.cs" />
-    <Compile Include="Services\MockFriendProfileServiceAgent.cs" />
     <Compile Include="ViewModels\ChatViewModel.cs" />
     <Compile Include="ViewModels\FriendProfileViewModel.cs" />
     <Compile Include="Views\BigPictureView.xaml.cs">
       <DependentUpon>BigPictureView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="FriendProfileView.xaml.cs">
+    <Compile Include="Views\FriendProfileView.xaml.cs">
       <DependentUpon>FriendProfileView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\GameControlView.xaml.cs">
       <DependentUpon>GameControlView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Services\MockGameServiceAgent.cs" />
-    <Compile Include="Services\IGameServiceAgent.cs" />
     <Compile Include="Views\ThumbnailPhotoView.xaml.cs">
       <DependentUpon>ThumbnailPhotoView.xaml</DependentUpon>
     </Compile>
@@ -98,15 +91,13 @@
       <DependentUpon>FindFriendListView.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\FriendFindViewModel.cs" />
-    <Compile Include="Services\MockFriendServiceAgent.cs" />
-    <Compile Include="Services\IFriendServiceAgent.cs" />
     <Compile Include="Locators\ViewModelLocator.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
-    <Page Include="ChatView.xaml">
+    <Page Include="Views\ChatView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="PhotoCollectionView.xaml">
+    <Page Include="Views\PhotoCollectionView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -114,7 +105,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="FriendProfileView.xaml">
+    <Page Include="Views\FriendProfileView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -228,7 +219,9 @@
       <Name>ConnectionLibrary</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Services\" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="LOGOWall\HomePic.png" />
     <Resource Include="LOGOWall\Icon.jpg" />

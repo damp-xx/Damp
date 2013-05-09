@@ -15,6 +15,5 @@ F:\Dropbox\IHA\PRJ4\Damp\DampGUI\CommunicationLibrary\bin\Debug\ConnectionLibrar
 F:\Dropbox\IHA\PRJ4\Damp\DampGUI\CommunicationLibrary\bin\Debug\SimpleMvvmToolkit-Common.pdb
 F:\Dropbox\IHA\PRJ4\Damp\DampGUI\CommunicationLibrary\bin\Debug\SimpleMvvmToolkit-WPF.pdb
 F:\Dropbox\IHA\PRJ4\Damp\DampGUI\CommunicationLibrary\bin\Debug\SimpleMvvmToolkit-WPF.xml
-F:\Dropbox\IHA\PRJ4\Damp\DampGUI\CommunicationLibrary\obj\Debug\CommunicationLibrary.csprojResolveAssemblyReference.cache
 F:\Dropbox\IHA\PRJ4\Damp\DampGUI\CommunicationLibrary\obj\Debug\CommunicationLibrary.exe
 F:\Dropbox\IHA\PRJ4\Damp\DampGUI\CommunicationLibrary\obj\Debug\CommunicationLibrary.pdb

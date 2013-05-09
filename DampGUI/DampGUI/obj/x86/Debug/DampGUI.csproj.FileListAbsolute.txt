@@ -180,3 +180,9 @@ C:\Users\Pierre\Desktop\projekt\Damp\DampGUI\DampGUI\obj\x86\Debug\SimpleMvvm-Wp
 C:\Users\Pierre\Desktop\projekt\Damp\DampGUI\DampGUI\obj\x86\Debug\DampGUI.csprojResolveAssemblyReference.cache
 >>>>>>> a204213ea7f8386e87f92545314f813b25270ddc
 >>>>>>> 7292f7384b0113680f627769abd997fa2e7494d4
+F:\Dropbox\IHA\PRJ4\Damp\DampGUI\DampGUI\obj\x86\Debug\Views\ChatView.baml
+F:\Dropbox\IHA\PRJ4\Damp\DampGUI\DampGUI\obj\x86\Debug\Views\PhotoCollectionView.baml
+F:\Dropbox\IHA\PRJ4\Damp\DampGUI\DampGUI\obj\x86\Debug\Views\FriendProfileView.baml
+F:\Dropbox\IHA\PRJ4\Damp\DampGUI\DampGUI\obj\x86\Debug\Views\ChatView.g.cs
+F:\Dropbox\IHA\PRJ4\Damp\DampGUI\DampGUI\obj\x86\Debug\Views\PhotoCollectionView.g.cs
+F:\Dropbox\IHA\PRJ4\Damp\DampGUI\DampGUI\obj\x86\Debug\Views\FriendProfileView.g.cs

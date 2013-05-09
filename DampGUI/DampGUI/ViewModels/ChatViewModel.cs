@@ -1,15 +1,8 @@
-﻿using System;
-using System.Text;
-using System.Windows;
-using System.Threading;
-using System.Collections.ObjectModel;
-
-// Toolkit namespace
-using CommunicationLibrary;
-using SimpleMvvmToolkit;
+﻿using SimpleMvvmToolkit;
 
 namespace DampGUI
 {
+    // TODO: find ud af om klassen skal bruges
     /// <summary>
     /// This class contains properties that a View can data bind to.
     /// <para>
@@ -18,7 +11,7 @@ namespace DampGUI
     /// </summary>
     public class ChatViewModel : ViewModelBase<ChatViewModel>
     {
-        //    // TODO: Add a member for IXxxServiceAgent
+   
         //   // private /* IXxxServiceAgent */ serviceAgent;
 
         //    // Default ctor
@@ -27,16 +20,11 @@ namespace DampGUI
         //        Contact = idName;
         //    }
 
-        //    // TODO: ctor that accepts IXxxServiceAgent
         //    //public ChatViewModel(/* IXxxServiceAgent */ serviceAgent)
         //    //{
         //    // //   this.serviceAgent = serviceAgent;
         //    //}
-
-        //    // TODO: Add events to notify the view or obtain data from the view
-        //    public event EventHandler<NotificationEventArgs<Exception>> ErrorNotice;
-
-        //    // TODO: Add properties using the mvvmprop code snippet
+  //    public event EventHandler<NotificationEventArgs<Exception>> ErrorNotice;
 
         //    private ObservableCollection<string> chatData = new ObservableCollection<string>();
 

@@ -33,8 +33,10 @@ namespace CommunicationLibrary
             {
                 _ComToken = _TempComToken;
                 Console.WriteLine("Token after login: {0}", _ComToken);
-                ComEvents.Listen();
+                
             }
+
+            
                 
             return ResultOfLogin;
         }

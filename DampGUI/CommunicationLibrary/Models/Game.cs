@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.Threading.Tasks;
-using DampGUI;
+﻿using System.Collections.ObjectModel;
 using SimpleMvvmToolkit;
 using System.Linq;
 
@@ -9,7 +6,7 @@ namespace DampGUI
 {
     public class Games : ModelBase<Games>
     {
-        private int currentIndex = -1; //skal være -1 normalt
+        private int currentIndex = -1;
         private int totalGames = 0;
         private ObservableCollection<Game> games = new ObservableCollection<Game>();
 
@@ -24,44 +21,28 @@ namespace DampGUI
             return games[i];
         }
 
-
-
         public Game CurrentGame
         {
             get
             {
                 if (currentIndex >= 0)
                 {
-
                     if (games[currentIndex].PhotoCollection.IsMade == false)
                     {
-
-                        //    foreach(var photo in games[currentIndex].PhotoCollection)
-                        //{
-
-                        //    if (photo.IsMade == false)
-                        //    {
-                        //        photo.LoadPicture();
-                        //    }
-                        //    games[currentIndex].PhotoCollection.IsMade = true;
-                        //}
                         games[currentIndex].PhotoCollection.ToList().AsParallel().ForAll(photo =>
                             {
-
                                 if (photo.IsMade == false)
                                 {
                                     photo.LoadPicture();
-
                                 }
-                                  games[currentIndex].PhotoCollection.IsMade = true;
+                                games[currentIndex].PhotoCollection.IsMade = true;
                             });
                     }
                     return
-                    games[CurrentIndex];
-            
+                        games[CurrentIndex];
                 }
-                else
-                    return null;
+
+                return null;
             }
             set
             {
@@ -89,20 +70,15 @@ namespace DampGUI
             get { return totalGames; }
             set
             {
-
                 totalGames = value;
                 NotifyPropertyChanged(vm => vm.totalGames);
             }
         }
-}
+    }
 
 
-    public class Game: IGame
+    public class Game
     {
-        public Game()
-        {
-        }
-
         public ObservableCollection<string> AchivementsGame { get; set; }
 
         public PhotoCollection PhotoCollection { get; set; }
@@ -119,6 +95,5 @@ namespace DampGUI
 
         public string Mode { get; set; }
     }
-
 }
 
