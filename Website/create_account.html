@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="styles.css" rel="stylesheet">
+<SCRIPT LANGUAGE="JavaScript" SRC="validateForms.js"></SCRIPT>
 <title>Create Account</title>
 <!-- On this page you can enter the required information regarding the user account. On the page you can enter the following information:
   * Your Name (first and last name)
@@ -10,6 +11,8 @@
   * Date of Birth
   * E-mail
   * Username and Password 
+  
+  
 -->
 
 </head>
@@ -28,7 +31,7 @@
 	</dd>
 	<br />
 		<!--This section is used to input users personal name-->
-		<form name="personData" action="https://10.20.255.127:1338/AddUser" method="post"
+		<form name="personData" action="https://10.20.255.127:1338/AddUser" onsubmit="return validateForm()" method="get"
 			enctype="multipart/form-data">
 			First name: <input type="text" name="FirstName" value=""><br>
 			Last name: <input type="text" name="LastName" value=""><br>
@@ -178,11 +181,9 @@
 
 	<hr />
 
-		<dt>Verify Account</dt>
-		<dd>When you have entered all the required information, 
-		you need to verify that your account is valid. 
-		Click on the button below to gain access to the 
-		<b>'Verify Account'</b> page.
+		<dt>Download Client</dt>
+		<dd>Now that you've entered all the needed information, 
+		you can now proceed to the <b>'Download Client'</b> page
 	</dd>
 	</dl>
 	<br />
@@ -191,13 +192,16 @@
 		<tr>
 			<th>
 			<span class="spanFormat">
-				<form action="verify_account.html">
-					<input type="submit" value="Verify Account" style="height:50px; width:200px">
+				<form action="download_client.html">
+					<input type="submit" value="Download Client" style="height:50px; width:200px">
 				</form>
 			</span>
 			</th>
 		</tr>
 		</table>
+		
+		<br />
+		
 		<div id="footer">
             Copyright &copy; 2013 DAMP<br>
             <a href="mailto:10457@iha.com">Contact us</a>
