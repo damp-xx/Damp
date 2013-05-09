@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-F:\Dropbox\IHA\PRJ4\Damp\DampGUI\DampGUI\obj\x86\Debug\
+C:\Users\Michael\Documents\GitHub\Damp\DampGUI\DampGUI\obj\x86\Debug\
 DampGUI
 none
 false
 DEBUG;TRACE
-F:\Dropbox\IHA\PRJ4\Damp\DampGUI\DampGUI\App.xaml
+C:\Users\Michael\Documents\GitHub\Damp\DampGUI\DampGUI\App.xaml
 18-1412792928
 
-25-1812527350
-20320751881
+251708915684
+20-1306074608
 Views\BigPictureView.xaml;FriendProfileView.xaml;Views\GameControlView.xaml;Styles\ButtonStyle.xaml;Styles\GroupboxStyle.xaml;Styles\LabelStyle.xaml;Styles\ListViewStyle.xaml;Styles\MenuStyle.xaml;Styles\PasswordStyle.xaml;Styles\Resources.xaml;Styles\ScrollBarStyle.xaml;Styles\Styles.xaml;Styles\TabStyle.xaml;Styles\TextBoxStyle.xaml;Views\ThumbnailPhotoView.xaml;Views\FindFriendListView.xaml;MainWindow.xaml;Styles\WindowStyle.xaml;
 logowall\splashscreen.png
-False
+True
 
