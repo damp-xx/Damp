@@ -92,14 +92,14 @@ namespace DampGUI
             }
         }
 
-        public ChatViewModel ChatViewModel
-        {
-            get
-            {
+        //public ChatViewModel ChatViewModel
+        //{
+        //    get
+        //    {
                 
-                return new ChatViewModel(knowfriends.CurrentFriend.Id);
-            }
-        }
+        //        return new ChatViewModel(knowfriends.CurrentFriend.Id);
+        //    }
+        //}
 
 
 

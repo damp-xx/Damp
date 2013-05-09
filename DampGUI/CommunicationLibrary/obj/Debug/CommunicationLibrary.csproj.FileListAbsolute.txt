@@ -5,6 +5,7 @@ C:\Users\Michael\Documents\GitHub\Damp\DampClient\CommunicationLibrary\bin\Debug
 C:\Users\Michael\Documents\GitHub\Damp\DampClient\CommunicationLibrary\obj\Debug\CommunicationLibrary.csprojResolveAssemblyReference.cache
 C:\Users\Michael\Documents\GitHub\Damp\DampClient\CommunicationLibrary\obj\Debug\CommunicationLibrary.exe
 C:\Users\Michael\Documents\GitHub\Damp\DampClient\CommunicationLibrary\obj\Debug\CommunicationLibrary.pdb
+C:\Users\Pierre\Desktop\projekt\Damp\DampGUI\CommunicationLibrary\obj\Debug\CommunicationLibrary.csprojResolveAssemblyReference.cache
 F:\Dropbox\IHA\PRJ4\Damp\DampGUI\CommunicationLibrary\bin\Debug\CommunicationLibrary.exe
 F:\Dropbox\IHA\PRJ4\Damp\DampGUI\CommunicationLibrary\bin\Debug\CommunicationLibrary.pdb
 F:\Dropbox\IHA\PRJ4\Damp\DampGUI\CommunicationLibrary\bin\Debug\ConnectionLibrary.dll
@@ -17,4 +18,3 @@ F:\Dropbox\IHA\PRJ4\Damp\DampGUI\CommunicationLibrary\bin\Debug\SimpleMvvmToolki
 F:\Dropbox\IHA\PRJ4\Damp\DampGUI\CommunicationLibrary\obj\Debug\CommunicationLibrary.csprojResolveAssemblyReference.cache
 F:\Dropbox\IHA\PRJ4\Damp\DampGUI\CommunicationLibrary\obj\Debug\CommunicationLibrary.exe
 F:\Dropbox\IHA\PRJ4\Damp\DampGUI\CommunicationLibrary\obj\Debug\CommunicationLibrary.pdb
-C:\Users\Pierre\Desktop\projekt\Damp\DampGUI\CommunicationLibrary\obj\Debug\CommunicationLibrary.csprojResolveAssemblyReference.cache
