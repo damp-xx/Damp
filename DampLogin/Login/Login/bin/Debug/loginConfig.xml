@@ -1,7 +1,0 @@
-<XML>
-  <LoginConfig>
-    <RememberAccount>True</RememberAccount>
-    <AccountName>gtd</AccountName>
-    <AutoLogin>True</AutoLogin>
-  </LoginConfig>
-</XML>
