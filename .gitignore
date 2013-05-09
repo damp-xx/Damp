@@ -6,4 +6,5 @@ TankGame/TankGame.Tests/obj/*
 TankGame/TankGame.Tests/bin/*
 TankGame/TankGame/TankGame/bin/*
 bin
-obj
+/DampServer/DampServer/obj
+

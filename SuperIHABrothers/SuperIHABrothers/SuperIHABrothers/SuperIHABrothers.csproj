@@ -146,6 +146,9 @@
     <Compile Include="GameState\IGameStateEvent.cs" />
     <Compile Include="GameState\IGameStateLevel.cs" />
     <Compile Include="GameState\KeybordInput.cs" />
+    <Compile Include="IPlayerData.cs" />
+    <Compile Include="IPlayerDataGame.cs" />
+    <Compile Include="PlayerData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />
