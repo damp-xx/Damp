@@ -305,6 +305,13 @@ namespace DampGUI
             LGames = new ObservableCollection<string>(foundGames);
         }
 
+        public void ProfileButton()
+        {
+            var chat = new ChatView();
+            chat.Show();
+            
+        }
+
         ///friends
         public void SearchFriends()
         {

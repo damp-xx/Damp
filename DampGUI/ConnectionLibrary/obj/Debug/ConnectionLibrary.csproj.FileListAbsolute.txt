@@ -7,4 +7,3 @@ F:\Dropbox\IHA\PRJ4\Damp\DampGUI\ConnectionLibrary\bin\Debug\ConnectionLibrary.d
 F:\Dropbox\IHA\PRJ4\Damp\DampGUI\ConnectionLibrary\bin\Debug\ConnectionLibrary.pdb
 F:\Dropbox\IHA\PRJ4\Damp\DampGUI\ConnectionLibrary\obj\Debug\ConnectionLibrary.dll
 F:\Dropbox\IHA\PRJ4\Damp\DampGUI\ConnectionLibrary\obj\Debug\ConnectionLibrary.pdb
-F:\Dropbox\IHA\PRJ4\Damp\DampGUI\ConnectionLibrary\obj\Debug\ConnectionLibrary.csprojResolveAssemblyReference.cache
