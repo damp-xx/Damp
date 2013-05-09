@@ -168,3 +168,5 @@ F:\Dropbox\IHA\PRJ4\Damp\DampGUI\DampGUI\bin\Debug\CommunicationLibrary.exe
 F:\Dropbox\IHA\PRJ4\Damp\DampGUI\DampGUI\bin\Debug\ConnectionLibrary.dll
 F:\Dropbox\IHA\PRJ4\Damp\DampGUI\DampGUI\bin\Debug\CommunicationLibrary.pdb
 F:\Dropbox\IHA\PRJ4\Damp\DampGUI\DampGUI\bin\Debug\ConnectionLibrary.pdb
+F:\Dropbox\IHA\PRJ4\Damp\DampGUI\DampGUI\obj\x86\Debug\PhotoCollectionView.baml
+F:\Dropbox\IHA\PRJ4\Damp\DampGUI\DampGUI\obj\x86\Debug\PhotoCollectionView.g.cs

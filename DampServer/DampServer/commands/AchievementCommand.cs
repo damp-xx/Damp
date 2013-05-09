@@ -331,7 +331,7 @@ namespace DampServer.commands
 
         private void HandleAddAchievement()
         {
-            if (string.IsNullOrEmpty(_client.Query.Get("ArchivementId")))
+            if (string.IsNullOrEmpty(_client.Query.Get("AchievementId")))
             {
                 _client.SendXmlResponse(new ErrorXmlResponse
                     {
@@ -349,7 +349,7 @@ namespace DampServer.commands
 
             cmd.CommandText = "INSERT INTO ArcheivementIndex (userid, archeivementid) Values(@userid, @aid)";
             cmd.Parameters.Add("@userid", SqlDbType.BigInt).Value = user.UserId;
-            cmd.Parameters.Add("@aid", SqlDbType.BigInt).Value = _client.Query.Get("ArchivementId");
+            cmd.Parameters.Add("@aid", SqlDbType.BigInt).Value = _client.Query.Get("AchievementId");
 
             cmd.ExecuteNonQuery();
 
