@@ -170,8 +170,21 @@ F:\Dropbox\IHA\PRJ4\Damp\DampGUI\DampGUI\obj\x86\Debug\MainWindow.baml
 F:\Dropbox\IHA\PRJ4\Damp\DampGUI\DampGUI\obj\x86\Debug\SimpleMvvm-Wpf.g.resources
 F:\Dropbox\IHA\PRJ4\Damp\DampGUI\DampGUI\obj\x86\Debug\DampGUI.Properties.Resources.resources
 F:\Dropbox\IHA\PRJ4\Damp\DampGUI\DampGUI\obj\x86\Debug\DampGUI.csproj.GenerateResource.Cache
+<<<<<<< HEAD
+F:\Dropbox\IHA\PRJ4\Damp\DampGUI\DampGUI\bin\Debug\CommunicationLibrary.exe
+F:\Dropbox\IHA\PRJ4\Damp\DampGUI\DampGUI\bin\Debug\ConnectionLibrary.dll
+F:\Dropbox\IHA\PRJ4\Damp\DampGUI\DampGUI\bin\Debug\CommunicationLibrary.pdb
+F:\Dropbox\IHA\PRJ4\Damp\DampGUI\DampGUI\bin\Debug\ConnectionLibrary.pdb
+F:\Dropbox\IHA\PRJ4\Damp\DampGUI\DampGUI\obj\x86\Debug\PhotoCollectionView.baml
+F:\Dropbox\IHA\PRJ4\Damp\DampGUI\DampGUI\obj\x86\Debug\PhotoCollectionView.g.cs
+C:\Users\Michael\Documents\GitHub\Damp\DampGUI\DampGUI\obj\x86\Debug\DampGUI.csprojResolveAssemblyReference.cache
+=======
 F:\Dropbox\IHA\PRJ4\Damp\DampGUI\DampGUI\obj\x86\Debug\SimpleMvvm-Wpf.exe
 F:\Dropbox\IHA\PRJ4\Damp\DampGUI\DampGUI\obj\x86\Debug\SimpleMvvm-Wpf.pdb
+<<<<<<< HEAD
 C:\Users\Pierre\Desktop\projekt\Damp\DampGUI\DampGUI\bin\Debug\SimpleMvvm-Wpf.exe.config
 C:\Users\Pierre\Desktop\projekt\Damp\DampGUI\DampGUI\obj\x86\Debug\SimpleMvvm-Wpf.exe
 C:\Users\Pierre\Desktop\projekt\Damp\DampGUI\DampGUI\obj\x86\Debug\DampGUI.csprojResolveAssemblyReference.cache
+=======
+>>>>>>> a204213ea7f8386e87f92545314f813b25270ddc
+>>>>>>> 7292f7384b0113680f627769abd997fa2e7494d4
