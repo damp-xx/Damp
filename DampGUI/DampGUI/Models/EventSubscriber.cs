@@ -14,18 +14,19 @@ namespace DampGUI
         {
             Console.WriteLine("HandleNewChatMessage");
             Console.WriteLine(from+message);
-            //if (ChatIdentyfier.ContainsKey(from))
-            //{
-            //    Console.WriteLine("from known");
-            //    var d = ChatIdentyfier[from];
-            //    d.SendData(message);
-            //}
-            //else
-            //{
-            //    Console.WriteLine("from unknown");
-            //  //  var d = new ChatView(from);
-            // //   d.SendData(message);
-            //}
+            if (ChatIdentyfier.ContainsKey(from))
+            {
+                Console.WriteLine("from known");
+                var d = ChatIdentyfier[from];
+                d.SendData(message);
+            }
+            else
+            {
+                Console.WriteLine("from unknown");
+                var d = new ChatView(from);
+                d.SendData(message);
+            }
+
         }
 
         public void NewChat(string from, ChatView Instance)

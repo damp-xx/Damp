@@ -166,20 +166,6 @@
   <ItemGroup>
     <Resource Include="LogoDampLong.jpg" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\CommunicationLibrary\CommunicationLibrary.csproj">
-      <Project>{9380f760-d929-4b4f-97d9-3a0ece33210c}</Project>
-      <Name>CommunicationLibrary</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\ConnectionLibrary\ConnectionLibrary.csproj">
-      <Project>{540f41d8-691d-45eb-af49-9af15d4b69f9}</Project>
-      <Name>ConnectionLibrary</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\DampGUI\DampGUI.csproj">
-      <Project>{8cf77eb6-3593-4010-b4a5-8e33b144b2a4}</Project>
-      <Name>DampGUI</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
