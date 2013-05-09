@@ -15,22 +15,33 @@ namespace CommunicationLibrary
             var client = new DampServerClient(ComLogin._ComIp);
             var ResultFromServerXml = client.SendRequest("GetMyUser", new Dictionary<string, string>{{"", ""}}, ComLogin._ComToken);
 
-            if (ResultFromServerXml.Name.Equals("Status"))
+            if (ResultFromServerXml.Name.Equals("User"))
             {
-                var xmlNode = ResultFromServerXml.GetElementsByTagName("Code").Item(0);
-
-                if (xmlNode.InnerText == "200")
-                {
-                    return ResultFromServerXml;
-                }
+                return ResultFromServerXml;
             }
             return null;
         }
         /*
         public static void UpdateProfile()
         {
-            
+            //TO DO implment update user profile
         }*/
+
+        public static string GetProfileName()
+        {
+            var client = new DampServerClient(ComLogin._ComIp);
+            var profile = client.SendRequest("GetMyUser", new Dictionary<string, string> { { "", "" } }, ComLogin._ComToken);
+            if (profile.Name.Equals("User"))
+            {
+                XmlNode result = profile.GetElementsByTagName("Username").Item(0);
+
+                if (result != null)
+                    return result.InnerText;
+           
+            return "No username found";
+            }
+
+        }
         
 
     }

@@ -21,13 +21,6 @@ namespace Collision {
 
 		}
 
-		~PlayerMonsterDetect(){
-
-		}
-
-		public virtual void Dispose(){
-
-		}
 
 		/// 
 		/// <param name="mSpriteCollection"></param>
@@ -35,7 +28,7 @@ namespace Collision {
 		/// <param name="mSprite1"></param>
 
 
-        public IEvent Detect(ISpriteContainerCollision mSpriteCollection, ISprite mSprite2, ISprite mSprite1)
+        public void Detect(ISpriteContainerCollision mSpriteCollection, ISprite mSprite2, ISprite mSprite1)
         {
             throw new System.NotImplementedException();
         }

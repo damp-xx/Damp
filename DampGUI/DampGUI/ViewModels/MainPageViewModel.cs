@@ -23,19 +23,19 @@ namespace DampGUI
         public event EventHandler<NotificationEventArgs<Exception>> ErrorNotice;
         private Games games;
         private Friends knowFriends;
-        ObservableCollection<string> allGames = new ObservableCollection<string>();
-        ObservableCollection<string> allFriends = new ObservableCollection<string>();
-     
+        private ObservableCollection<string> allGames = new ObservableCollection<string>();
+        private ObservableCollection<string> allFriends = new ObservableCollection<string>();
+
         // Add properties using the mvvmprop code snippet
-        public MainPageViewModel(Games aGames,Friends aFriends)
+        public MainPageViewModel(Games aGames, Friends aFriends)
         {
             games = aGames;
             knowFriends = aFriends;
 
             for (int i = 0; i < games.TotalGames; i++)
             {
-                lGames.Add(games.Get(i).Name);
-                allGames.Add(games.Get(i).Name);
+                lGames.Add(games.Get(i).Title);
+                allGames.Add(games.Get(i).Title);
             }
 
             for (int i = 0; i < knowFriends.TotalFriends; i++)
@@ -43,7 +43,6 @@ namespace DampGUI
                 lFriends.Add(knowFriends.Get(i).Name);
                 allFriends.Add(knowFriends.Get(i).Name);
             }
-
         }
 
         // TODO: Add methods that will be called by the view
@@ -52,8 +51,6 @@ namespace DampGUI
         {
             Content = new FindFriendListView();
         }
-
-  
 
         private object _content;
 
@@ -73,7 +70,15 @@ namespace DampGUI
         public int IndexGame
         {
             get { return _indexGame; }
-            set { _indexGame = value; }
+            set { _indexGame = value;
+            
+            }
+        }
+
+        public void GotFocus()
+        {
+            findIndex(IndexGame);
+            ChangeGame();
         }
 
         private string gameListName;
@@ -96,16 +101,17 @@ namespace DampGUI
 
                 for (int i = 0; i < games.TotalGames; i++)
                 {
-                    if (name == games.Get(i).Name)
+                    if (name == games.Get(i).Title)
                     {
-                        //games.CurrentGame = games.Get(i);
                         games.CurrentIndex = i;
                         NotifyPropertyChanged(vm => vm.games.CurrentIndex);
                         NotifyPropertyChanged(vm => vm.games.CurrentGame);
+
                         break;
                     }
                 }
             }
+
         }
 
         private ObservableCollection<string> lGames = new ObservableCollection<string>();
@@ -134,9 +140,8 @@ namespace DampGUI
                 strName = game.ToLower();
                 char[] GName = strName.ToCharArray();
 
-                for (int i = 0; i <= (name.Length -1 ); i++)
+                for (int i = 0; i <= (name.Length - 1); i++)
                 {
-                
                     if (name.Length <= GName.Length || !(name.Length > GName.Length))
                     {
                         if (name[i] == GName[i])
@@ -154,7 +159,7 @@ namespace DampGUI
                         break;
                     }
                 }
-                if (check || name.Length==0)
+                if (check || name.Length == 0)
                 {
                     resultList.Add(game);
                     check = false;
@@ -162,7 +167,6 @@ namespace DampGUI
             }
             return resultList;
         }
-
 
         /////////////////////////////////Friends
         public List<string> FindFriends(string aName)
@@ -180,7 +184,6 @@ namespace DampGUI
 
                 for (int i = 0; i <= (name.Length - 1); i++)
                 {
-
                     if (name.Length <= FName.Length || !(name.Length > FName.Length))
                     {
                         if (name[i] == FName[i])
@@ -219,7 +222,12 @@ namespace DampGUI
             }
         }
 
-        
+        public void GotFocusF()
+        {
+            FindIndexFriend(IndexFriend);
+            ChangeFriend();
+        }
+
         private int _indexFriend = 0;
 
         public int IndexFriend
@@ -228,29 +236,28 @@ namespace DampGUI
             set { _indexFriend = value; }
         }
 
-        private string friendListName;
+        private string _friendListName;
 
         public string FriendListName
         {
             set
             {
-                friendListName = value;
-                findIndexFriend(_indexFriend);
+                _friendListName = value;
+                FindIndexFriend(_indexFriend);
                 OnPropertyChanged("FriendListName");
             }
         }
 
-        public void findIndexFriend(int aIndex)
+        public void FindIndexFriend(int aIndex)
         {
-            if (friendListName != null)
+            if (_friendListName != null)
             {
-                string name = friendListName;
+                string name = _friendListName;
 
                 for (int i = 0; i < knowFriends.TotalFriends; i++)
                 {
                     if (name == knowFriends.Get(i).Name)
                     {
-                       
                         knowFriends.CurrentFriendIndex = i;
                         NotifyPropertyChanged(vm => vm.knowFriends.CurrentFriendIndex);
                         NotifyPropertyChanged(vm => vm.knowFriends.CurrentFriend);
@@ -286,7 +293,7 @@ namespace DampGUI
             }
         }
 
-      public void ChangeGame()
+        public void ChangeGame()
         {
             if (games.CurrentGame != null)
                 Content = new GameControlView(games.CurrentGame.PhotoCollection);
@@ -304,6 +311,7 @@ namespace DampGUI
             var foundFriends = this.FindFriends(SearchFriendName);
             LFriends = new ObservableCollection<string>(foundFriends);
         }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         public void ChangeFriend()

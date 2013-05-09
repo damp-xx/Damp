@@ -65,6 +65,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="PhotoCollectionView.xaml.cs">
+      <DependentUpon>PhotoCollectionView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Services\IFriendProfileServiceAgent.cs" />
     <Compile Include="Services\MockFriendProfileServiceAgent.cs" />
     <Compile Include="ViewModels\FriendProfileViewModel.cs" />
@@ -78,8 +81,6 @@
       <DependentUpon>GameControlView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Services\MockGameServiceAgent.cs" />
-    <Compile Include="Models\Game.cs" />
-    <Compile Include="Models\Photo.cs" />
     <Compile Include="Services\IGameServiceAgent.cs" />
     <Compile Include="Views\ThumbnailPhotoView.xaml.cs">
       <DependentUpon>ThumbnailPhotoView.xaml</DependentUpon>
@@ -88,12 +89,15 @@
     <Compile Include="Views\FindFriendListView.xaml.cs">
       <DependentUpon>FindFriendListView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\Friend.cs" />
     <Compile Include="ViewModels\FriendFindViewModel.cs" />
     <Compile Include="Services\MockFriendServiceAgent.cs" />
     <Compile Include="Services\IFriendServiceAgent.cs" />
     <Compile Include="Locators\ViewModelLocator.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
+    <Page Include="PhotoCollectionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\BigPictureView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -201,7 +205,20 @@
     </None>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\CommunicationLibrary\CommunicationLibrary.csproj">
+      <Project>{9380f760-d929-4b4f-97d9-3a0ece33210c}</Project>
+      <Name>CommunicationLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="LOGOWall\HomePic.png" />
+    <Resource Include="LOGOWall\Icon.jpg" />
+    <SplashScreen Include="LOGOWall\SplashScreen.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

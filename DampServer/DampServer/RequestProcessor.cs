@@ -10,7 +10,7 @@
 
 using System;
 using System.Net.Sockets;
-using System.Threading;
+using System.Threading.Tasks;
 using DampServer.commands;
 using DampServer.exceptions;
 using DampServer.interfaces;
@@ -31,8 +31,7 @@ namespace DampServer
         {
             _socket = s;
 
-            var newThread = new Thread(Run);
-            newThread.Start();
+           Task.Factory.StartNew(Run);
         }
 
         public void Run()
@@ -215,6 +214,15 @@ namespace DampServer
                     break;
                 case "GetGameMyAchievements":
                     leCmd = new AchievementCommand();
+                    break;
+                case "UpdateScore":
+                    leCmd= new HighScore();
+                    break;
+                case "GetScore":
+                    leCmd = new HighScore();
+                    break;
+                case "AddUser":
+                    leCmd= new AddUserCommand();
                     break;
                 default:
                     throw new CommandNotFoundException(cmd);

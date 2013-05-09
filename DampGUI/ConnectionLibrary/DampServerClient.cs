@@ -35,7 +35,7 @@ namespace DampCS
 
             //Console.WriteLine("Certificate error: {0}", sslPolicyErrors);
 
-            // Do not allow this client to communicate with unauthenticated servers. 
+         // Do not allow this client to communicate with unauthenticated servers. 
          // return false;
 
             return true;
@@ -135,8 +135,7 @@ namespace DampCS
             }
             catch (Exception e)
             {
-            //     Console.WriteLine("Exp: {0}", e.Message);
-                Console.ReadKey();
+            //     Console.WriteLine("Exp: {0}", e.Message);           
             }    
             
             var sw = new StreamWriter(stream) {AutoFlush = true};

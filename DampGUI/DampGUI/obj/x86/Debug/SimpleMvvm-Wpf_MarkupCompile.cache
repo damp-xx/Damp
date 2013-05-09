@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-F:\Dropbox\DampGUI\DampGUI\obj\x86\Debug\
+F:\Dropbox\IHA\PRJ4\Damp\DampGUI\DampGUI\obj\x86\Debug\
 DampGUI
 none
 false
 DEBUG;TRACE
-F:\Dropbox\DampGUI\DampGUI\App.xaml
-18-1412792928
+F:\Dropbox\IHA\PRJ4\Damp\DampGUI\DampGUI\App.xaml
+19-585495415
 
-24-2015181940
-19-368300148
-Views\BigPictureView.xaml;FriendProfileView.xaml;Views\GameControlView.xaml;Styles\ButtonStyle.xaml;Styles\GroupboxStyle.xaml;Styles\LabelStyle.xaml;Styles\ListViewStyle.xaml;Styles\MenuStyle.xaml;Styles\PasswordStyle.xaml;Styles\Resources.xaml;Styles\ScrollBarStyle.xaml;Styles\Styles.xaml;Styles\TabStyle.xaml;Styles\TextBoxStyle.xaml;Views\ThumbnailPhotoView.xaml;Views\FindFriendListView.xaml;MainWindow.xaml;Styles\WindowStyle.xaml;
-
+22-746934365
+20320751881
+PhotoCollectionView.xaml;Views\BigPictureView.xaml;FriendProfileView.xaml;Views\GameControlView.xaml;Styles\ButtonStyle.xaml;Styles\GroupboxStyle.xaml;Styles\LabelStyle.xaml;Styles\ListViewStyle.xaml;Styles\MenuStyle.xaml;Styles\PasswordStyle.xaml;Styles\Resources.xaml;Styles\ScrollBarStyle.xaml;Styles\Styles.xaml;Styles\TabStyle.xaml;Styles\TextBoxStyle.xaml;Views\ThumbnailPhotoView.xaml;Views\FindFriendListView.xaml;MainWindow.xaml;Styles\WindowStyle.xaml;
+logowall\splashscreen.png
 False
 

@@ -17,7 +17,9 @@ namespace Sprites {
         public Vector2 Position { get; set; }
 	    private Vector2 _AnchorOffset;
         public Rectangle MyRectangle { get; set; }
-        private IAnchor _Anchor;
+	    public Vector2 Velocity { get; set; }
+	    public bool _isInAir { get; set; }
+	    private IAnchor _Anchor;
         private int _FrameHeight;
         private int _FrameWidth;
 	    private Texture2D _texture2D;
@@ -30,7 +32,7 @@ namespace Sprites {
         //Moving Atributes
         public Vector2 Velocety { get { return _velocety; } set { _velocety = value; } }
         private Vector2 _velocety;
-        private bool _isInAir = true;
+        
         
 
         public SpriteMonster(Texture2D mTexture2D, Vector2 mAnchorOffset, int mFrameHeight, int mFrameWidth, IAnchor mAnchor, Vector2 mVelocety)
@@ -49,7 +51,12 @@ namespace Sprites {
 	        throw new NotImplementedException();
 	    }
 
-        private void AnimateLeft(GameTime gameTime)
+	    public void UpdatePosition()
+	    {
+	        throw new NotImplementedException();
+	    }
+
+	    private void AnimateLeft(GameTime gameTime)
         {
             _timer += (float)gameTime.ElapsedGameTime.TotalMilliseconds / 2;
             if (_timer > _interval)

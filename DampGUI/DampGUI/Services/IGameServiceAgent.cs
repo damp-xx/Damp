@@ -9,6 +9,6 @@ namespace DampGUI
 {
     public interface IGameServiceAgent
     {
-         Games LoadGames();
+
     }
 }

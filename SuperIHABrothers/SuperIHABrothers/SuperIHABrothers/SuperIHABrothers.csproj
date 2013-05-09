@@ -108,14 +108,30 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClientCommunication\IClientCommunication_Game.cs" />
+    <Compile Include="ClientCommunication\GameClientCommunication.cs" />
+    <Compile Include="ClientCommunication\GameClientProtocol.cs" />
+    <Compile Include="ClientCommunication\IMessageConstructor.cs" />
+    <Compile Include="ClientCommunication\IMessageHandler.cs" />
+    <Compile Include="ClientCommunication\IMessageQueueAdd.cs" />
+    <Compile Include="ClientCommunication\IMessageQueueRemove.cs" />
+    <Compile Include="ClientCommunication\MessageConstructor.cs" />
+    <Compile Include="ClientCommunication\MessageHandler.cs" />
+    <Compile Include="ClientCommunication\MessageQueue.cs" />
+    <Compile Include="Collision\IEvent.cs" />
+    <Compile Include="Collision\MonsterDeathEvent.cs" />
+    <Compile Include="Collision\PlayerDeathEvent.cs" />
+    <Compile Include="Collision\PlayerEnvironmentBottomEvent.cs" />
+    <Compile Include="Collision\PlayerEnvironmentLeftEvent.cs" />
+    <Compile Include="Collision\PlayerEnvironmentRightEvent.cs" />
+    <Compile Include="Collision\PlayerEnvironmentTopEvent.cs" />
+    <Compile Include="GameControle\FactoryLevel.cs" />
+    <Compile Include="GameControle\IFactoryLevel.cs" />
     <Compile Include="GameState\IKeybordInput.cs" />
     <Compile Include="Collision\CollisionControl.cs" />
     <Compile Include="Collision\ICollisionControl.cs" />
     <Compile Include="Collision\ICollisionDetect.cs" />
-    <Compile Include="Collision\IEvent.cs" />
-    <Compile Include="Collision\MonsterDeathEvent.cs" />
     <Compile Include="Collision\MonsterEnviromentDetect.cs" />
-    <Compile Include="Collision\PlayerDeathEvent.cs" />
     <Compile Include="Collision\PlayerEnviromentDetect.cs" />
     <Compile Include="Collision\PlayerMonsterDetect.cs" />
     <Compile Include="EventHandler\EventHandlerMain.cs" />
@@ -129,6 +145,10 @@
     <Compile Include="GameState\IGameState.cs" />
     <Compile Include="GameState\IGameStateEvent.cs" />
     <Compile Include="GameState\IGameStateLevel.cs" />
+    <Compile Include="GameState\KeybordInput.cs" />
+    <Compile Include="IPlayerData.cs" />
+    <Compile Include="IPlayerDataGame.cs" />
+    <Compile Include="PlayerData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />
@@ -139,6 +159,7 @@
     <Compile Include="Sprite\ISpriteAnchor.cs" />
     <Compile Include="Sprite\ISpriteContainer.cs" />
     <Compile Include="Sprite\ISpriteContainerCollision.cs" />
+    <Compile Include="Sprite\ISpriteContainerMessage.cs" />
     <Compile Include="Sprite\SpriteBackground.cs" />
     <Compile Include="Sprite\SpriteContainer.cs" />
     <Compile Include="Sprite\SpriteDeathAnimaiton.cs" />

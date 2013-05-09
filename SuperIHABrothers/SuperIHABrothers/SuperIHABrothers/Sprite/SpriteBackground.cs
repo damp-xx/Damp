@@ -17,7 +17,9 @@ namespace Sprites {
         public Vector2 Position { get; set; }
         private Vector2 _AnchorOffset;
         public Rectangle MyRectangle { get; set; }
-        private IAnchor _Anchor;
+	    public Vector2 Velocity { get; set; }
+	    public bool _isInAir { get; set; }
+	    private IAnchor _Anchor;
         private int _FrameHeight;
         private int _FrameWidth;
         private Texture2D _texture2D;
@@ -25,7 +27,6 @@ namespace Sprites {
         //Moving Atributes
         public Vector2 Velocety { get { return _velocety; } set { _velocety = value; } }
         private Vector2 _velocety;
-        private bool _isInAir = true;
 	    private int _distance; //Distance form forground to the background
 
         public SpriteBackground()
@@ -43,6 +44,10 @@ namespace Sprites {
 	        throw new System.NotImplementedException();
 	    }
 
+	    public void UpdatePosition()
+	    {
+	        
+	    }
 	}//end SpriteBackground
 
 }//end namespace Sprites

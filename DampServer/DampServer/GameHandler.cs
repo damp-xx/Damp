@@ -107,7 +107,7 @@ namespace DampServer
             sqlCmd.Parameters.Add("@title", SqlDbType.NVarChar).Value = game.Title;
             sqlCmd.Parameters.Add("@description", SqlDbType.Text).Value = game.Description;
             sqlCmd.Parameters.Add("@path", SqlDbType.NVarChar).Value = _filepath;
-            sqlCmd.Parameters.Add("@picture", SqlDbType.NVarChar).Value = game.Picture;
+     // @TODO FIX      sqlCmd.Parameters.Add("@picture", SqlDbType.NVarChar).Value = game.Picture;
             sqlCmd.Parameters.Add("@genre", SqlDbType.NVarChar).Value = game.Genre;
             sqlCmd.Parameters.Add("@recommendedage", SqlDbType.Int).Value = game.RecommendedAge;
             sqlCmd.Parameters.Add("@developer", SqlDbType.NVarChar).Value = game.Developer;

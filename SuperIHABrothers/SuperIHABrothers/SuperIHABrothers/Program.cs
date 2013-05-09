@@ -10,7 +10,17 @@ namespace SuperIHABrothers
         /// </summary>
         static void Main(string[] args)
         {
-            using (Game1 game = new Game1())
+            
+            /****************** ONLY FOR TESTING **************************/
+            if (args.Length < 1)
+            {
+                args = new string[2];
+                args[0] = "NOPIPE";
+                args[1] = "NOPIPE";
+            }
+            /***************************************************************/
+
+            using (Game1 game = new Game1(args[0], args[1]))
             {
                 game.Run();
             }

@@ -1,6 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.IO.Pipes;
 using System.Linq;
+using System.Threading;
+using GameState;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
@@ -8,6 +12,7 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using GameControle;
 
 namespace SuperIHABrothers
 {
@@ -18,12 +23,18 @@ namespace SuperIHABrothers
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        private ILevel _level;
+        private FactoryLevel _factoryLevel;
+        private KeybordInput _input;
 
 
-        public Game1()
+        public Game1(string pipeIn, string pipeOut)
         {
-            graphics = new GraphicsDeviceManager(this);
+            graphics = new GraphicsDeviceManager(this);          
             Content.RootDirectory = "Content";
+
+           // clientCommunication = new GameClientCommunication();
+           // clientCommunication.Connect(pipeIn, pipeOut);
         }
 
         /// <summary>
@@ -35,6 +46,10 @@ namespace SuperIHABrothers
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            
+            _input = new KeybordInput();
+            _factoryLevel = new FactoryLevel();
+            _level = _factoryLevel.GetLevelOne(_input, Content);
 
             base.Initialize();
             
@@ -48,6 +63,7 @@ namespace SuperIHABrothers
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+
 
             // TODO: use this.Content to load your game content here
         }
@@ -73,7 +89,9 @@ namespace SuperIHABrothers
                 this.Exit();
 
             // TODO: Add your update logic here
-            
+            _input.Update();
+            _level.Update(gameTime);
+
             base.Update(gameTime);
         }
 
@@ -87,9 +105,12 @@ namespace SuperIHABrothers
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
-            
+            _level.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
         }
+
+
+        
     }
 }

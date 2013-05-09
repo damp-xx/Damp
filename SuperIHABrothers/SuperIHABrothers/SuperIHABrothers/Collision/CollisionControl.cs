@@ -8,6 +8,7 @@
 
 
 using System.Collections.Generic;
+using GameState;
 using Sprites;
 
 
@@ -20,10 +21,10 @@ namespace Collision
         private ICollisionDetect _playerMonsterDetect;
         private ICollisionDetect _monsterEnviromentDetect;
 
-        public CollisionControl(ISpriteContainerCollision mSpriteContainerCollision,
-                                ICollisionDetect mPlayerEnviromentDetect, ICollisionDetect mPlayerMonsterDetect, ICollisionDetect mMonsterEnvironmentDetect)
+        public CollisionControl(ICollisionDetect mPlayerEnviromentDetect, ICollisionDetect mPlayerMonsterDetect,
+                                ICollisionDetect mMonsterEnvironmentDetect)
         {
-            _spriteContainerCollision = mSpriteContainerCollision;
+            
             _playerEnviromentDetect = mPlayerEnviromentDetect;
             _playerMonsterDetect = mPlayerMonsterDetect;
             _monsterEnviromentDetect = mMonsterEnvironmentDetect;
@@ -32,73 +33,65 @@ namespace Collision
 
         /// 
         /// <param name="mSprites"></param>
-        public List<IEvent> Update()
+        public void Update(ISpriteContainerCollision mSpriteContainerCollision)
         {
-            List<IEvent> eventList = new List<IEvent>();
-
-            eventList.AddRange(CheckForPlayerCollision());
-            eventList.AddRange(CheckForMonsterCollision()); 
-
-            return eventList;
+            _spriteContainerCollision = mSpriteContainerCollision;
+            CheckForPlayerCollision();
+            CheckForMonsterCollision();
         }
 
-        private List<IEvent> CheckForPlayerCollision()
+        private void CheckForPlayerCollision()
         {
-            List<IEvent> eventList = new List<IEvent>();
-
             for (int i = 0; i < _spriteContainerCollision.SpriteList[(int) listTypes.Player].Count; i++)
-            {       
+            {
                 /* Checking with Monster */
                 for (int j = 0; j < _spriteContainerCollision.SpriteList[(int) listTypes.Monster].Count; j++)
                 {
                     if (_spriteContainerCollision.SpriteList[(int) listTypes.Player][i].MyRectangle.Intersects(
                         _spriteContainerCollision.SpriteList[(int) listTypes.Monster][j].MyRectangle))
                     {
-                        eventList.Add(_playerMonsterDetect.Detect(_spriteContainerCollision,
-                                                                  _spriteContainerCollision.SpriteList[(int) listTypes.Player][i],
-                                                                  _spriteContainerCollision.SpriteList[(int) listTypes.Monster][j]));
+                        _playerMonsterDetect.Detect(_spriteContainerCollision,
+                                                    _spriteContainerCollision.SpriteList[(int) listTypes.Player][i],
+                                                    _spriteContainerCollision.SpriteList[(int) listTypes.Monster][j]);
                     }
                 }
 
                 /* Checking with Evironment */
-                for (int j = 0; j < _spriteContainerCollision.SpriteList[(int)listTypes.Environment].Count; j++)
+                for (int j = 0; j < _spriteContainerCollision.SpriteList[(int) listTypes.Environment].Count; j++)
                 {
-                    if (_spriteContainerCollision.SpriteList[(int)listTypes.Player][i].MyRectangle.Intersects(
-                        _spriteContainerCollision.SpriteList[(int)listTypes.Environment][j].MyRectangle))
+                    if (_spriteContainerCollision.SpriteList[(int) listTypes.Player][i].MyRectangle.Intersects(
+                        _spriteContainerCollision.SpriteList[(int) listTypes.Environment][j].MyRectangle))
                     {
-                        eventList.Add(_playerEnviromentDetect.Detect(_spriteContainerCollision,
-                                                                  _spriteContainerCollision.SpriteList[(int)listTypes.Player][i],
-                                                                  _spriteContainerCollision.SpriteList[(int)listTypes.Environment][j]));
+                        _playerEnviromentDetect.Detect(_spriteContainerCollision,
+                                                       _spriteContainerCollision.SpriteList[(int) listTypes.Player][i],
+                                                       _spriteContainerCollision.SpriteList[(int) listTypes.Environment][j]);
                     }
                 }
             }
-            return eventList;
         }
 
 
-        private List<IEvent> CheckForMonsterCollision()
+        private void CheckForMonsterCollision()
         {
-            List<IEvent> eventList = new List<IEvent>();
-
-            for (int i = 0; i < _spriteContainerCollision.SpriteList[(int)listTypes.Monster].Count; i++)
+            for (int i = 0; i < _spriteContainerCollision.SpriteList[(int) listTypes.Monster].Count; i++)
             {
                 /* Checking with Evironment */
-                for (int j = 0; j < _spriteContainerCollision.SpriteList[(int)listTypes.Environment].Count; j++)
+                for (int j = 0; j < _spriteContainerCollision.SpriteList[(int) listTypes.Environment].Count; j++)
                 {
-                    if (_spriteContainerCollision.SpriteList[(int)listTypes.Monster][i].MyRectangle.Intersects(
-                        _spriteContainerCollision.SpriteList[(int)listTypes.Environment][j].MyRectangle))
+                    if (_spriteContainerCollision.SpriteList[(int) listTypes.Monster][i].MyRectangle.Intersects(
+                        _spriteContainerCollision.SpriteList[(int) listTypes.Environment][j].MyRectangle))
                     {
-                        eventList.Add(_monsterEnviromentDetect.Detect(_spriteContainerCollision,
-                                                                  _spriteContainerCollision.SpriteList[(int)listTypes.Monster][i],
-                                                                  _spriteContainerCollision.SpriteList[(int)listTypes.Environment][j]));
+                        _monsterEnviromentDetect.Detect(_spriteContainerCollision,
+                                                        _spriteContainerCollision.SpriteList[(int) listTypes.Monster][i],
+                                                        _spriteContainerCollision.SpriteList[(int) listTypes.Environment
+                                                            ][j]);
                     }
                 }
             }
-            return eventList;
         }
     }
 
-//end CollisionControl
+    //end CollisionControl
 }
 
 //end namespace CollitionControl

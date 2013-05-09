@@ -6,7 +6,8 @@
         xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         xmlns:ei="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions"
         mc:Ignorable="d" x:Class="DampGUI.MainWindow"
-        Title="Damp" ResizeMode="NoResize"  WindowStyle="None"  WindowState="Maximized"
+     WindowStartupLocation="CenterScreen" Icon="/LOGOWall/Icon.jpg"
+        Title="Damp" ResizeMode="NoResize"  WindowStyle="None"  WindowState="Normal"
         Style="{DynamicResource StandardWindow}"
         d:DesignWidth="1300" d:DesignHeight="900"
         >
@@ -20,7 +21,7 @@
 
     <DockPanel>
 
-        <Grid x:Name="TopBar" DockPanel.Dock="Top" SnapsToDevicePixels="True" Margin="0,0,0,0"  IsHitTestVisible="True">
+        <Grid x:Name="TopBar" DockPanel.Dock="Top" SnapsToDevicePixels="True" Margin="0,0,0,0"   MouseDown="Drag_OnMouseDown" IsHitTestVisible="True">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
@@ -51,11 +52,11 @@
             <Rectangle Grid.Column="4" Fill="Transparent" IsHitTestVisible="True" Stretch="Fill"/>
 
             <DockPanel Grid.Column="5">
-                
-                <Button DockPanel.Dock="Right" x:Name="Close"  VerticalContentAlignment="Center" Width="35" FontSize="20" Content="X" Style="{StaticResource CloseButton}"></Button>
-                <Button DockPanel.Dock="Right" x:Name="MinimizeNormal"   VerticalContentAlignment="Center" Width="35" FontSize="20" Margin="0,0,3,0" Content="M"  />
-                <Button DockPanel.Dock="Right" x:Name="Minimize" VerticalContentAlignment="Center" Width="35" FontSize="20" FontWeight="UltraBold"  Margin="0,0,3,0" Content="_" />
+                <Button DockPanel.Dock="Right" x:Name="Close" Click="Close_OnClick"  VerticalContentAlignment="Center" Width="35" FontSize="20" Content="X" Style="{StaticResource CloseButton}"/>
+                <Button DockPanel.Dock="Right" x:Name="MinimizeNormal"   VerticalContentAlignment="Center" Width="35" FontSize="20" Margin="0,0,3,0" Content="M" Click="MaximizeNormal_Click" />
+                <Button DockPanel.Dock="Right" x:Name="Minimize" VerticalContentAlignment="Center" Width="35" FontSize="20" FontWeight="UltraBold"  Margin="0,0,3,0" Content="_" Click="Minimize_OnClick"/>
             </DockPanel>
+
 
         </Grid>
         <Separator DockPanel.Dock="Top" Background="#3F3F46"/>
@@ -84,14 +85,22 @@
                     </i:Interaction.Triggers>
                     
                 </TextBox>
-                <ListView x:Name="GameListView"  Grid.Row="1" ItemsSource="{Binding Path=LGames}" SelectedIndex="{Binding Path=IndexGame }" SelectedItem="{Binding Path=GameListName}" >
+                <ListView x:Name="GameListView"  Grid.Row="1" ItemsSource="{Binding Path=LGames}" SelectedIndex="{Binding Path=IndexGame }" SelectedItem="{Binding Path=GameListName}">
+                    
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="SelectionChanged">
                             <ei:CallMethodAction
                       TargetObject="{Binding}"
                       MethodName="ChangeGame"/>
                         </i:EventTrigger>
+                        
+                        <i:EventTrigger EventName="GotFocus">
+                            <ei:CallMethodAction
+                                TargetObject="{Binding}"
+                      MethodName="GotFocus"/>
+                        </i:EventTrigger>
                     </i:Interaction.Triggers>
+                    
                 </ListView>
             </Grid>
         </GroupBox>
@@ -130,6 +139,13 @@
                       TargetObject="{Binding}"
                       MethodName="ChangeFriend"/>
                             </i:EventTrigger>
+                            
+                            <i:EventTrigger EventName="GotFocus">
+                                <ei:CallMethodAction
+                      TargetObject="{Binding}"
+                      MethodName="GotFocusF"/>
+                            </i:EventTrigger>
+
                         </i:Interaction.Triggers>
                         
                     </ListView>

@@ -8,9 +8,10 @@
 
 
 using System;
+using GameState;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using SuperIHABrothers.GameState;
+using GameState;
 
 
 namespace Sprites {
@@ -18,7 +19,8 @@ namespace Sprites {
 
 	    //Generel Atributes
 	    public Vector2 Position { get; set; }
-        public Rectangle MyRectangle { get; set; } 
+        public Rectangle MyRectangle { get; set; }
+	    public Vector2 Velocity { get; set; }
 	    public IAnchor _Anchor;
 	    private Texture2D _texture; 
 	    private int _FrameHeight;
@@ -35,14 +37,14 @@ namespace Sprites {
         public Vector2 Velocety { get { return _velocety; } set { _velocety = value; } }
         private Vector2 _velocety;
         private IKeybordInput _keybordInput;
-        private bool _isInAir = true;
-	    private float _gravaty = 0.2f;
+        public bool _isInAir { get; set; }
+	    private float _gravaty = 0.1f;
 	    private float _jumpPower = 10; // Kraften som spilleren kan hoppe med
         
         
 
 
-        public SpritePlayer(Texture2D mTexture2D, Vector2 mPosition, int mFrameHeight, int mFrameWidth, IAnchor mAnchor)
+        public SpritePlayer(Texture2D mTexture2D, Vector2 mPosition, int mFrameHeight, int mFrameWidth, IAnchor mAnchor, IKeybordInput mInput)
         {
             
             _texture = mTexture2D;
@@ -51,7 +53,9 @@ namespace Sprites {
             _FrameWidth = mFrameWidth;
             _Anchor = mAnchor;
             Velocety = new Vector2(0,0);
-            
+            _isInAir = true;
+            _keybordInput = mInput;
+
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -64,7 +68,7 @@ namespace Sprites {
             _origin = new Vector2(MyRectangle.Width / 2, MyRectangle.Height / 2);
             if (_isInAir == false)
             {
-                if (_keybordInput.IsSpacePressed)
+                if (_keybordInput.IsJumpPressed)
                 {
                     _velocety.Y = _jumpPower;
                     _isInAir = true;
@@ -87,9 +91,15 @@ namespace Sprites {
             {
                 AnimateRight(time);
             }
-		}
+	        Position += _velocety;
+	    }
 
-        private void AnimateLeft(GameTime gameTime)
+	    public void UpdatePosition()
+	    {
+	        throw new NotImplementedException();
+	    }
+
+	    private void AnimateLeft(GameTime gameTime)
         {
             _timer += (float)gameTime.ElapsedGameTime.TotalMilliseconds / 2;
             if (_timer > _interval)

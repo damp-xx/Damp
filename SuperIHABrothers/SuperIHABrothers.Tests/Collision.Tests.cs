@@ -58,7 +58,8 @@ namespace SuperIHABrothers.Tests
             _stubSpriteEnvironment.Stub(x => x.MyRectangle).Return(_stubRectangle);
             _stubSpriteMonster.Stub(x => x.MyRectangle).Return(_stubRectangle);
 
-            _uutCollisionControl = new CollisionControl(_stubSpriteContainerCollision, _mockPlayerEnvironmentDetect, _mockPlayerMonsterDetect, _mockMonsterEnvironmentDetect);
+            _uutCollisionControl = new CollisionControl( _mockPlayerEnvironmentDetect, _mockPlayerMonsterDetect, _mockMonsterEnvironmentDetect);
+            
         }
 
         
@@ -66,8 +67,8 @@ namespace SuperIHABrothers.Tests
         public void Update_InstantiatedWithSpritePlayerAndSpriteEnvironment_PlayerEnvironmentWasCalled()
         {
             Setup();
-            
-            _uutCollisionControl.Update();
+
+            _uutCollisionControl.Update(_stubSpriteContainerCollision);
 
             _mockPlayerEnvironmentDetect.AssertWasCalled(x => x.Detect(Arg<ISpriteContainerCollision>.Is.Anything, Arg<ISprite>.Is.Anything, Arg<ISprite>.Is.Anything));
         }
@@ -77,7 +78,7 @@ namespace SuperIHABrothers.Tests
         {
             Setup();
 
-            _uutCollisionControl.Update();
+            _uutCollisionControl.Update(_stubSpriteContainerCollision);
 
             //_mockPlayerEnvironmentDetect.AssertWasCalled(x => x.Detect(_stubSpriteContainerCollision, _stubSpritePlayer, _stubSpriteMonster));
             _mockPlayerMonsterDetect.AssertWasCalled(x => x.Detect(Arg<ISpriteContainerCollision>.Is.Anything, Arg<ISprite>.Is.Anything, Arg<ISprite>.Is.Anything));

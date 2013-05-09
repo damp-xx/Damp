@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,27 +11,55 @@ namespace CommunicationLibrary
 {
     public class ComAchievement
     {
-        public static XmlElement GetAchievement(string achievementID)
+        public static ObservableCollection<string> GetAllAchievementForGame(string GameId)
         {
+            ObservableCollection<string> TempAchievement = new ObservableCollection<string>();
             var client = new DampServerClient(ComLogin._ComIp);
-            var ResultFromServerXml = client.SendRequest("RemoveFriend", new Dictionary<string, string>{{"Achievement", achievementID}}, ComLogin._ComToken);
+            var ResultFromServerXml = client.SendRequest("GetAchievementsForGame", new Dictionary<string, string>{{"GameId", GameId}}, ComLogin._ComToken);
 
-            if (ResultFromServerXml.Name.Equals("Status"))
+            if (ResultFromServerXml.Name.Equals("Achievement"))
             {
-                var xmlNode = ResultFromServerXml.GetElementsByTagName("Code").Item(0);
-
-                if (xmlNode.InnerText == "200")
+                foreach (XmlElement a in ResultFromServerXml.GetElementsByTagName("Archivement"))
                 {
-                    return ResultFromServerXml;
+                    TempAchievement.Add(a.GetElementsByTagName("Title").Item(0).InnerText);
                 }
+                return TempAchievement;
             }
             return null;
         }
 
-        public static bool SetAchievement(string achievementID)
+
+        public static ObservableCollection<string> GetMyAchievementForGame(string GameId)
         {
+            ObservableCollection<string> TempAchievement = new ObservableCollection<string>();
             var client = new DampServerClient(ComLogin._ComIp);
-            var ResultFromServerXml = client.SendRequest("RemoveFriend", new Dictionary<string, string> { { "Achievement", achievementID } }, ComLogin._ComToken);
+            var ResultFromServerXml = client.SendRequest("GetGameMyAchievement", new Dictionary<string, string> { { "GameId", GameId } }, ComLogin._ComToken);
+
+            if (ResultFromServerXml.Name.Equals("Achievement"))
+            {
+                foreach (XmlElement a in ResultFromServerXml.GetElementsByTagName("Archivement"))
+                {
+                    TempAchievement.Add(a.GetElementsByTagName("Title").Item(0).InnerText);
+                }
+                return TempAchievement;
+            }
+            return null;
+        }
+
+        public static bool AddAchievement(string achievementTitle, string GameId)
+        {
+            Dictionary<string, string> AchievementsForGame = new Dictionary<string, string>();
+
+            AchievementsForGame = GetAchievementForGame(GameId);
+            string achievementID = "0";
+            foreach (var s in AchievementsForGame)
+            {
+                if (s.Value == achievementTitle) ;
+                achievementID = s.Key;
+            }
+
+            var client = new DampServerClient(ComLogin._ComIp);
+            var ResultFromServerXml = client.SendRequest("AddAchievement", new Dictionary<string, string> { { "Achievement", achievementID } }, ComLogin._ComToken);
 
             if (ResultFromServerXml.Name.Equals("Status"))
             {
@@ -42,6 +71,23 @@ namespace CommunicationLibrary
                 }
             }
             return false;
+        }
+
+        private static Dictionary<string, string> GetAchievementForGame(string GameId)
+        {
+            Dictionary<string, string> TempAchievement = new Dictionary<string, string>();
+            var client = new DampServerClient(ComLogin._ComIp);
+            var ResultFromServerXml = client.SendRequest("GetAchievementsForGame", new Dictionary<string, string> { { "GameId", GameId } }, ComLogin._ComToken);
+
+            if (ResultFromServerXml.Name.Equals("Achievement"))
+            {
+                foreach (XmlElement a in ResultFromServerXml.GetElementsByTagName("Archivement"))
+                {
+                    TempAchievement.Add(a.GetElementsByTagName("ArcheivementId").Item(0).InnerText, a.GetElementsByTagName("Title").Item(0).InnerText);
+                }
+                return TempAchievement;
+            }
+            return null;
         }
     }
 }
