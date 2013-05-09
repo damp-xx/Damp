@@ -25,11 +25,17 @@ namespace Sprites {
 		public Sprites.IAnchorUpdate _IAnchorUpdate;
 		public Sprites.ISprite _ISprite;
 	    private List<List<ISprite>> _spriteList;
+        public List<List<ISprite>> SpriteList { get { return _spriteList; } }
+
+        public SpriteContainer(List<List<ISprite>> mList)
+        {
+            _spriteList = mList;
+        }
 
 
 	    public void AddDeathAnimation(ISprite mSprite)
 	    {
-	        throw new System.NotImplementedException();
+	        _spriteList[(int)listTypes.DeathAnimation].Add(mSprite);
 	    }
 
 	    public void RemoveMonster(ISprite mSprite)
@@ -42,7 +48,7 @@ namespace Sprites {
 	        throw new System.NotImplementedException();
 	    }
 
-	    List<List<ISprite>> ISpriteContainerCollision.SpriteList { get { return _spriteList; } }
+	    
        
 	    private IAnchorUpdate _anchor;
 
