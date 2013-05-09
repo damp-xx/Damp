@@ -307,8 +307,10 @@ namespace DampGUI
 
         public void ProfileButton()
         {
-            var chat = new ChatView();
+            var chat = new ChatView(knowFriends.CurrentFriend.Id);
+            
             chat.Show();
+
             
         }
 

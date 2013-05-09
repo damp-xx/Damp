@@ -68,10 +68,13 @@
     <Compile Include="ChatView.xaml.cs">
       <DependentUpon>ChatView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\Chat.cs" />
     <Compile Include="Models\EventSubscriber.cs" />
     <Compile Include="PhotoCollectionView.xaml.cs">
       <DependentUpon>PhotoCollectionView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Services\ChatServiceAgent.cs" />
+    <Compile Include="Services\IChatServiceAgent.cs" />
     <Compile Include="Services\IFriendProfileServiceAgent.cs" />
     <Compile Include="Services\MockFriendProfileServiceAgent.cs" />
     <Compile Include="ViewModels\ChatViewModel.cs" />
