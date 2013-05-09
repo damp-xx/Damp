@@ -27,20 +27,21 @@ namespace Collision
         public void Detect(ISpriteContainerCollision mSpriteCollection, ISprite player, ISprite environment)
         {
 
-            float margin = player.Velocity.X + 2;
+            float margin = player.Velocity.X + 10;
 
             //Left side
             if (player.MyRectangle.X + player.MyRectangle.Width >= environment.MyRectangle.X &&
-                (player.MyRectangle.X + player.MyRectangle.Width) <= (environment.MyRectangle.X + margin) &&
-                player.Velocity.X > 0
+                (player.MyRectangle.X + player.MyRectangle.Width) <= (environment.MyRectangle.X + margin) //&&
+                //player.Velocity.X > 0
                 )
             {
                 new PlayerEnvironmentLeftEvent(player, environment);
             }
+
             //Right side
-            else if (player.MyRectangle.X >= (environment.MyRectangle.X + environment.MyRectangle.Width + margin) &&
-                     player.MyRectangle.X <= (environment.MyRectangle.X + environment.MyRectangle.Width) &&
-                     player.Velocity.X < 0
+            else if (player.MyRectangle.X >= (environment.MyRectangle.X + environment.MyRectangle.Width - margin) &&
+                     player.MyRectangle.X <= (environment.MyRectangle.X + environment.MyRectangle.Width) //&&
+                     //player.Velocity.X < 0
                 )
             {
                 new PlayerEnvironmentRightEvent(player, environment);
@@ -49,15 +50,13 @@ namespace Collision
             //Top side
             else if (player.MyRectangle.Y + player.MyRectangle.Height >= environment.MyRectangle.Y &&
                      player.MyRectangle.Y + player.MyRectangle.Height <
-                     environment.MyRectangle.Y + (environment.MyRectangle.Height / 2) &&
-                     player.Velocity.Y > 0)
+                     environment.MyRectangle.Y + (environment.MyRectangle.Height / 2) ) 
             {
                 new PlayerEnvironmentTopEvent(player, environment);
             }
             //Bottom side
             else if (player.MyRectangle.Y <= environment.MyRectangle.Y + environment.MyRectangle.Height &&
-                     player.MyRectangle.Y > environment.MyRectangle.Y + (environment.MyRectangle.Height / 2) &&
-                     player.Velocity.Y < 0)
+                     player.MyRectangle.Y > environment.MyRectangle.Y + (environment.MyRectangle.Height / 2) )
             {
                 new PlayerEnvironmentBottomEvent(player, environment);
             }

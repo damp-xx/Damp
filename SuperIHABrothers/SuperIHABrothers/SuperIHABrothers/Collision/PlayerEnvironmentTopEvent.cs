@@ -25,9 +25,13 @@ namespace Collision {
 
 		public void HandleEvent()
 		{
-		    //_playerSprite._isInAir = false;
-		    _playerSprite.Velocity = new Vector2(_playerSprite.Velocity.X, 0);
-            _playerSprite.Position = new Vector2(_playerSprite.Position.X, _environmentSprite.MyRectangle.Bottom - _playerSprite.MyRectangle.Height);
+		    _playerSprite._isInAir = false;
+		    int height = _playerSprite.MyRectangle.Height;
+		    int width = _playerSprite.MyRectangle.Width;
+		    int x = _playerSprite.MyRectangle.X;
+            _playerSprite.MyRectangle = new Rectangle(x, _environmentSprite.MyRectangle.Y-height, width, height);
+            //_playerSprite.Velocity = new Vector2(_playerSprite.Velocity.X, 0);
+            _playerSprite.Position = new Vector2(_playerSprite.Position.X, _environmentSprite.MyRectangle.Top - height);
 		}
 
 	}//end PlayerEnvironmentTopEvent

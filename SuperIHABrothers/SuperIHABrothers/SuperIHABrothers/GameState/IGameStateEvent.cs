@@ -19,4 +19,4 @@ namespace GameState {
 		void LoseLife();
 	}//end IGameStateEvent
 
-}//end namespace GameState
+}//end namespace GameStateC
