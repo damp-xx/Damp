@@ -143,10 +143,16 @@
     <Compile Include="GameState\IGameState.cs" />
     <Compile Include="GameState\IGameStateEvent.cs" />
     <Compile Include="GameState\IGameStateLevel.cs" />
+<<<<<<< HEAD
+    <Compile Include="IPlayerData.cs" />
+    <Compile Include="IPlayerDataGame.cs" />
+    <Compile Include="PlayerData.cs" />
+=======
     <Compile Include="GameState\KeybordInput.cs" />
+>>>>>>> 7a63c941b82a9cd28bad6cffb483681fe761034d
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="Game1.cs" />
+    <Compile Include="GameMain.cs" />
     <Compile Include="Sprite\Anchor.cs" />
     <Compile Include="Sprite\IAnchor.cs" />
     <Compile Include="Sprite\IAnchorUpdate.cs" />

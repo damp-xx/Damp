@@ -77,6 +77,7 @@
     <Build Include="Security\root_1.sql" />
     <Build Include="Security\RoleMemberships.sql" />
     <Build Include="dbo\Tables\GamePictures.sql" />
+    <Build Include="dbo\Tables\HighScore.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Snapshots\Database1_20130503_03-15-36.dacpac" />
