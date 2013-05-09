@@ -40,8 +40,9 @@ namespace DampGUI
         {
             get
             {
-                if (KnowFriends.CurrentFriendIndex >= 0)
+                if (KnowFriends.CurrentFriendIndex >= 0){
                     return KnowFriends.CurrentFriend;
+                }
                 else
                     return null;
             }

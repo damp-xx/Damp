@@ -3,23 +3,32 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SuperIHABrothers.ClientCommunication
+
+namespace ClientCommunication
 {
-    internal class MessageConstructor : IMessageConstructor
+    public class MessageConstructor : IMessageConstructor
     {
+        private IClientCommunication_Game _communication;
+
+        public MessageConstructor(IClientCommunication_Game communication)
+        {
+            _communication = communication;
+        }
+
         public void StartUp()
         {
-            throw new NotImplementedException();
+            _communication.Send("GHS");
+            _communication.Send("GPN");
         }
 
         public void Achievement(string message)
         {
-            throw new NotImplementedException();
+            _communication.Send("ACH:" + message);
         }
 
         public void NewHighscore(string highscore)
         {
-            throw new NotImplementedException();
+            _communication.Send("NHS" + highscore);
         }
     }
 }

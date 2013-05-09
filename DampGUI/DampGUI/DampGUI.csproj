@@ -65,6 +65,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="PhotoCollectionView.xaml.cs">
+      <DependentUpon>PhotoCollectionView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Services\IFriendProfileServiceAgent.cs" />
     <Compile Include="Services\MockFriendProfileServiceAgent.cs" />
     <Compile Include="ViewModels\FriendProfileViewModel.cs" />
@@ -91,6 +94,10 @@
     <Compile Include="Services\IFriendServiceAgent.cs" />
     <Compile Include="Locators\ViewModelLocator.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
+    <Page Include="PhotoCollectionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\BigPictureView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

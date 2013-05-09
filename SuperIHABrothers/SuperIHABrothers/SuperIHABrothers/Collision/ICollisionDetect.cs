@@ -17,7 +17,7 @@ namespace Collision {
 		/// <param name="mSpriteCollection"></param>
 		/// <param name="mSprite2"></param>
 		/// <param name="mSprite1"></param>
-		IEvent Detect(ISpriteContainerCollision mSpriteCollection, ISprite mSprite2, ISprite mSprite1);
+		void Detect(ISpriteContainerCollision mSpriteCollection, ISprite mSprite2, ISprite mSprite1);
 	}//end ICollisionDetect
 
 }//end namespace CollitionControle

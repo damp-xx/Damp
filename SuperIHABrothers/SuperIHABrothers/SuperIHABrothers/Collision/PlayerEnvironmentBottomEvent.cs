@@ -7,26 +7,30 @@
 ///////////////////////////////////////////////////////////
 
 
+using Microsoft.Xna.Framework;
+using Sprites;
 
-namespace Collision {
-	public class PlayerEnvironmentBottomEvent : IEvent {
+namespace Collision
+{
+    public class PlayerEnvironmentBottomEvent : IEvent
+    {
+        private ISprite _playerSprite;
+        private ISprite _environmentSprite;
 
-		public PlayerEnvironmentBottomEvent(){
+        public PlayerEnvironmentBottomEvent(ISprite player, ISprite environmentSprite)
+        {
+            _playerSprite = player;
+            _environmentSprite = environmentSprite;
+            HandleEvent();
+        }
 
-		}
+        private void HandleEvent()
+        {
+            //_playerSprite.IsInAir = false;
+            _playerSprite.Velocity = new Vector2(_playerSprite.Velocity.X, 0);
+            _playerSprite.Position = new Vector2(_playerSprite.Position.X, _environmentSprite.MyRectangle.Bottom);
+        }
 
-		~PlayerEnvironmentBottomEvent(){
-
-		}
-
-		public virtual void Dispose(){
-
-		}
-
-		public void HandleEvent(){
-
-		}
-
-	}//end PlayerEnvironmentBottomEvent
+    }//end PlayerEnvironmentBottomEvent
 
 }//end namespace CollitionControle
