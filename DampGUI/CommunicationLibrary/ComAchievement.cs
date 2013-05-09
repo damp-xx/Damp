@@ -59,7 +59,7 @@ namespace CommunicationLibrary
             }
 
             var client = new DampServerClient(ComLogin._ComIp);
-            var ResultFromServerXml = client.SendRequest("AddAchievement", new Dictionary<string, string> { { "Achievement", achievementID } }, ComLogin._ComToken);
+            var ResultFromServerXml = client.SendRequest("AddAchievement", new Dictionary<string, string> { { "AchievementId", achievementID } }, ComLogin._ComToken);
 
             if (ResultFromServerXml.Name.Equals("Status"))
             {
