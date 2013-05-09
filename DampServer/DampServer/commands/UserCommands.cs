@@ -268,7 +268,31 @@ namespace DampServer.commands
                 case "FriendSearch":
                     HandleFriendSearch();
                     break;
+                case "AddUser":
+                    HandleAddUser();
+                    break;
             }
+        }
+
+        private void HandleAddUser()
+        {
+            if (string.IsNullOrEmpty(_http.Query.Get("FirstName")) || string.IsNullOrEmpty(_http.Query.Get("LastName")) ||
+                string.IsNullOrEmpty(_http.Query.Get("Sex")) || string.IsNullOrEmpty(_http.Query.Get("Month")) ||
+                string.IsNullOrEmpty(_http.Query.Get("Day")) || string.IsNullOrEmpty(_http.Query.Get("Year")) ||
+                string.IsNullOrEmpty(_http.Query.Get("UserName")) || string.IsNullOrEmpty(_http.Query.Get("Password")) ||
+                string.IsNullOrEmpty(_http.Query.Get("Email")))
+            {
+                
+            }
+
+
+            _http.SendXmlResponse(new StatusXmlResponse
+                {
+                    Code = 200,
+                    Command = "AddUser",
+                    Message = "User added"
+                });
+
         }
 
         public bool NeedsAuthcatication { get; private set; }

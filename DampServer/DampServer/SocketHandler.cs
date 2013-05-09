@@ -11,7 +11,7 @@ namespace DampServer
 {
     public class SocketHandler
     {
-        private readonly TcpListener _tcp = new TcpListener(IPAddress.Parse("0.0.0.0"), 1337);
+        private readonly TcpListener _tcp = new TcpListener(IPAddress.Parse("0.0.0.0"), 1338);
 
 
         public SocketHandler()
