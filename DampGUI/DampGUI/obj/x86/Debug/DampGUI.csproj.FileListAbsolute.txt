@@ -172,3 +172,6 @@ F:\Dropbox\IHA\PRJ4\Damp\DampGUI\DampGUI\obj\x86\Debug\DampGUI.Properties.Resour
 F:\Dropbox\IHA\PRJ4\Damp\DampGUI\DampGUI\obj\x86\Debug\DampGUI.csproj.GenerateResource.Cache
 F:\Dropbox\IHA\PRJ4\Damp\DampGUI\DampGUI\obj\x86\Debug\SimpleMvvm-Wpf.exe
 F:\Dropbox\IHA\PRJ4\Damp\DampGUI\DampGUI\obj\x86\Debug\SimpleMvvm-Wpf.pdb
+C:\Users\Pierre\Desktop\projekt\Damp\DampGUI\DampGUI\bin\Debug\SimpleMvvm-Wpf.exe.config
+C:\Users\Pierre\Desktop\projekt\Damp\DampGUI\DampGUI\obj\x86\Debug\SimpleMvvm-Wpf.exe
+C:\Users\Pierre\Desktop\projekt\Damp\DampGUI\DampGUI\obj\x86\Debug\DampGUI.csprojResolveAssemblyReference.cache

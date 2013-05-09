@@ -5,6 +5,7 @@ using System.Windows.Controls;
 using System.Windows.Forms;
 using System.Windows.Input;
 using System.Xml;
+using CommunicationLibrary;
 using MessageBox = System.Windows.MessageBox;
 
 
@@ -24,6 +25,10 @@ namespace Login
         private const string AutoLoginElement = "AutoLogin";
         private const string AccountNameElement = "AccountName";
         private string _username = "";
+
+        public delegate void LoggedIn(MainWindow m, EventArgs e);
+
+        public event LoggedIn Login;
 
         public MainWindow()
         {
@@ -79,8 +84,15 @@ namespace Login
 
         private void LoginButton_OnClick(object sender, RoutedEventArgs e)
         {
-            WriteXml();
-            //throw new NotImplementedException();
+            if (ComLogin.Login(Username.Text, Password.Password))
+            {
+                WriteXml();
+                Login(this, new EventArgs());
+            }
+            else
+            {
+                MessageBox.Show("Argh", "Critical Warning", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void Logo_OnMouseDown(object sender, MouseButtonEventArgs e)
