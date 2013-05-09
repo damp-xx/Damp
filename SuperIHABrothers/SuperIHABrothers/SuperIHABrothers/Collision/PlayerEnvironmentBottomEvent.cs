@@ -14,13 +14,13 @@ namespace Collision
 {
     public class PlayerEnvironmentBottomEvent : IEvent
     {
-        private ISprite _playerSprite;
-        private ISprite _environmentSprite;
+        private SpritePlayer _playerSprite;
+        private SpriteEnviroment _environmentSprite;
 
         public PlayerEnvironmentBottomEvent(ISprite player, ISprite environmentSprite)
         {
-            _playerSprite = player;
-            _environmentSprite = environmentSprite;
+            _playerSprite = (SpritePlayer)player;
+            _environmentSprite = (SpriteEnviroment)environmentSprite;
             HandleEvent();
         }
 

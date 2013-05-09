@@ -12,13 +12,14 @@ using Sprites;
 
 namespace Collision {
 	public class PlayerEnvironmentRightEvent : IEvent {
-        
-        private ISprite _playerSprite;
-	    private ISprite _environmentSprite;
+
+        private SpritePlayer _playerSprite;
+        private SpriteEnviroment _environmentSprite;
 		
         public PlayerEnvironmentRightEvent(ISprite player, ISprite environment)
         {
-            _playerSprite = player;
+            _playerSprite = (SpritePlayer)player;
+            _environmentSprite = (SpriteEnviroment)environment;
             HandleEvent();
 		}
 

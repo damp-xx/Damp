@@ -37,10 +37,12 @@ namespace ClientCommunication
         private void HandlerThread(IMessageQueueRemove messageQueueRemove)
         {
             string message = messageQueueRemove.GetMessage();
+            string TypeTag = message.Substring(0,3);
+            string Data = message.Substring(3, message.Length-4);
             
             if (message != null)
             {
-                switch (message)
+                switch (TypeTag)
                 {
                     case "DOL":
                         m_IGameState.GameRunning = true;
@@ -49,6 +51,12 @@ namespace ClientCommunication
                     case "DOF":
                         m_IGameState.GameRunning = false;
                         break;
+
+                    case "CHS":
+                        //m_IGameState.Score = int.Parse(Data);
+                        break;
+
+
 
                     default:
                         break;
