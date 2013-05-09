@@ -21,11 +21,10 @@ namespace Collision
         private ICollisionDetect _playerMonsterDetect;
         private ICollisionDetect _monsterEnviromentDetect;
 
-        public CollisionControl(ISpriteContainerCollision mSpriteContainerCollision,
-                                ICollisionDetect mPlayerEnviromentDetect, ICollisionDetect mPlayerMonsterDetect,
+        public CollisionControl(ICollisionDetect mPlayerEnviromentDetect, ICollisionDetect mPlayerMonsterDetect,
                                 ICollisionDetect mMonsterEnvironmentDetect)
         {
-            _spriteContainerCollision = mSpriteContainerCollision;
+            
             _playerEnviromentDetect = mPlayerEnviromentDetect;
             _playerMonsterDetect = mPlayerMonsterDetect;
             _monsterEnviromentDetect = mMonsterEnvironmentDetect;
@@ -34,8 +33,9 @@ namespace Collision
 
         /// 
         /// <param name="mSprites"></param>
-        public void Update()
+        public void Update(ISpriteContainerCollision mSpriteContainerCollision)
         {
+            _spriteContainerCollision = mSpriteContainerCollision;
             CheckForPlayerCollision();
             CheckForMonsterCollision();
         }

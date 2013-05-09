@@ -18,7 +18,7 @@ namespace DampServer.commands
         public void Execute(ICommandArgument http, string cmd = null)
         {
             ConnectionManager connectionManager = ConnectionManager.GetConnectionManager();
-            User userProfile = UserManagement.GetUserByAuthToken(http.Query.Get("authToken"));
+            User userProfile = UserManagement.GetUserByAuthToken(http.Query.Get("AuthToken"));
             connectionManager.AddConnection(new Connection {UserHttp = http, UserProfile = userProfile});
         }
 

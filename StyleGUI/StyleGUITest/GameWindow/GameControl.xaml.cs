@@ -74,7 +74,7 @@ namespace StyleGUITest
             {
                 photos.Children.Add(tp);
             }
-            tp.IsSelected = setFirstItemChecked;
+            //tp.IsSelected = setFirstItemChecked;
         }
 
         void tp_ThumbnailClick(object sender, ThumbnailEventArgs e)

@@ -16,7 +16,7 @@ namespace Collision {
 
 		/// 
 		/// <param name="mSprites"></param>
-		void Update();
+		void Update(ISpriteContainerCollision mSpriteContainerCollision);
 	}//end ICollisionControl
 
 }//end namespace CollitionControle
