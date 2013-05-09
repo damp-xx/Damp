@@ -1,0 +1,4 @@
+C:\Users\Pierre\Documents\Visual Studio 2012\Projects\I4PRJ\Login\LoginTest\bin\Debug\LoginTest.dll
+C:\Users\Pierre\Documents\Visual Studio 2012\Projects\I4PRJ\Login\LoginTest\bin\Debug\LoginTest.pdb
+C:\Users\Pierre\Documents\Visual Studio 2012\Projects\I4PRJ\Login\LoginTest\obj\Debug\LoginTest.dll
+C:\Users\Pierre\Documents\Visual Studio 2012\Projects\I4PRJ\Login\LoginTest\obj\Debug\LoginTest.pdb

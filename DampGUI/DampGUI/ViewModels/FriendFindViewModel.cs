@@ -32,6 +32,8 @@ namespace DampGUI
         public FriendFindViewModel(IFriendServiceAgent serviceAgent)
         {
             this.serviceAgent = serviceAgent;
+
+            
         }
 
         // TODO: Add events to notify the view or obtain data from the view
@@ -116,6 +118,7 @@ namespace DampGUI
             if (FriendSearchList.CurrentFriend != null)
             {
                 string msg = "Do you want to Add " + FriendSearchList.CurrentFriend.Name + "?";
+                
                 MessageBoxResult result = MessageBox.Show(msg, "Confirmation", MessageBoxButton.YesNo,
                                                           MessageBoxImage.Question);
                 if (result == MessageBoxResult.Yes)
@@ -128,6 +131,8 @@ namespace DampGUI
         public void SearchFriends()
         {
             var foundFriends = ComFriend.SearchUser(_name);
+
+           
             FriendSearchList = foundFriends;
         }
 

@@ -21,7 +21,7 @@
         </Grid.RowDefinitions>
         
         <TextBox Grid.Row="0" Name="SearchBoxFriend" Text="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
-                 VerticalAlignment="Top" Margin="5,0,5,0" FontSize="28" Style="{StaticResource SearchTextBox}">
+                 VerticalAlignment="Top" Margin="3,0,3,0" FontSize="28" Style="{StaticResource SearchTextBox}">
         
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="TextChanged">
@@ -31,7 +31,7 @@
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </TextBox>
-       <Button Content="Add Selected" Grid.Row="1" FontSize="20">
+        <Button Content="Add Selected" Grid.Row="1" FontSize="20" Margin="3,3,3,0">
 
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="Click">

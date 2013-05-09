@@ -12,6 +12,7 @@ namespace CommunicationLibrary
 {
     public class ComEvents : IEventParser
     {
+        private static IEventSubscribe ChatHandler;
         public static void Listen()
         {
             var client = new DampServerClient(ComLogin._ComIp);
@@ -40,8 +41,8 @@ namespace CommunicationLibrary
                     case "FriendAccepted":
                         command = new FriendAccepted();
                         break;
-                    case "ChatRecieved":
-                        command = new NewChatMessage();
+                    case "ChatReceived":
+                        command = new NewChatMessage(ChatHandler);
                         break;
                     default:
                         Console.WriteLine("Error parseing Event: {0}", Event.InnerXml);
@@ -56,6 +57,11 @@ namespace CommunicationLibrary
                     Console.WriteLine("Event not recogniced ....");
                 }
             }
+        }
+
+        public static void EventSubscrie(IEventSubscribe Subscriber)
+        {
+            ChatHandler = Subscriber;
         }
     }
 }

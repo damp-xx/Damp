@@ -55,8 +55,10 @@ namespace DampGUI
             get
             {
                 ComLogin.Login("jens", "jens");
+               
                 LoadGames();
                 LoadKnowFriend();
+                ComEvents.EventSubscrie(new EventSubscriber());
                 
                 return new MainPageViewModel(lGames,knowfriends);
             }
@@ -89,6 +91,17 @@ namespace DampGUI
                 return new FriendProfileViewModel(serviceAgent, knowfriends);
             }
         }
+
+        //public ChatViewModel ChatViewModel
+        //{
+        //    get
+        //    {
+                
+        //        return new ChatViewModel(knowfriends.CurrentFriend.Id);
+        //    }
+        //}
+
+
 
         public Games LoadGames()
         {
