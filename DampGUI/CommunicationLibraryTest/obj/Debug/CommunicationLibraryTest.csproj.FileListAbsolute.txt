@@ -16,3 +16,9 @@ F:\Dropbox\IHA\PRJ4\Damp\DampGUI\CommunicationLibraryTest\bin\Debug\nunit.framew
 F:\Dropbox\IHA\PRJ4\Damp\DampGUI\CommunicationLibraryTest\obj\Debug\CommunicationLibraryTest.csprojResolveAssemblyReference.cache
 F:\Dropbox\IHA\PRJ4\Damp\DampGUI\CommunicationLibraryTest\obj\Debug\CommunicationLibraryTest.dll
 F:\Dropbox\IHA\PRJ4\Damp\DampGUI\CommunicationLibraryTest\obj\Debug\CommunicationLibraryTest.pdb
+C:\Users\Michael\Documents\GitHub\Damp\DampGUI\CommunicationLibraryTest\bin\Debug\CommunicationLibraryTest.dll
+C:\Users\Michael\Documents\GitHub\Damp\DampGUI\CommunicationLibraryTest\bin\Debug\CommunicationLibraryTest.pdb
+C:\Users\Michael\Documents\GitHub\Damp\DampGUI\CommunicationLibraryTest\bin\Debug\nunit.framework.dll
+C:\Users\Michael\Documents\GitHub\Damp\DampGUI\CommunicationLibraryTest\obj\Debug\CommunicationLibraryTest.csprojResolveAssemblyReference.cache
+C:\Users\Michael\Documents\GitHub\Damp\DampGUI\CommunicationLibraryTest\obj\Debug\CommunicationLibraryTest.dll
+C:\Users\Michael\Documents\GitHub\Damp\DampGUI\CommunicationLibraryTest\obj\Debug\CommunicationLibraryTest.pdb

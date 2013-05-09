@@ -8,3 +8,8 @@ F:\Dropbox\IHA\PRJ4\Damp\DampGUI\ConnectionLibrary\bin\Debug\ConnectionLibrary.p
 F:\Dropbox\IHA\PRJ4\Damp\DampGUI\ConnectionLibrary\obj\Debug\ConnectionLibrary.dll
 F:\Dropbox\IHA\PRJ4\Damp\DampGUI\ConnectionLibrary\obj\Debug\ConnectionLibrary.pdb
 F:\Dropbox\IHA\PRJ4\Damp\DampGUI\ConnectionLibrary\obj\Debug\ConnectionLibrary.csprojResolveAssemblyReference.cache
+C:\Users\Michael\Documents\GitHub\Damp\DampGUI\ConnectionLibrary\bin\Debug\ConnectionLibrary.dll
+C:\Users\Michael\Documents\GitHub\Damp\DampGUI\ConnectionLibrary\bin\Debug\ConnectionLibrary.pdb
+C:\Users\Michael\Documents\GitHub\Damp\DampGUI\ConnectionLibrary\obj\Debug\ConnectionLibrary.csprojResolveAssemblyReference.cache
+C:\Users\Michael\Documents\GitHub\Damp\DampGUI\ConnectionLibrary\obj\Debug\ConnectionLibrary.dll
+C:\Users\Michael\Documents\GitHub\Damp\DampGUI\ConnectionLibrary\obj\Debug\ConnectionLibrary.pdb

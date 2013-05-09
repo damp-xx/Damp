@@ -17,3 +17,4 @@ F:\Dropbox\IHA\PRJ4\Damp\DampGUI\CommunicationLibrary\bin\Debug\SimpleMvvmToolki
 F:\Dropbox\IHA\PRJ4\Damp\DampGUI\CommunicationLibrary\obj\Debug\CommunicationLibrary.csprojResolveAssemblyReference.cache
 F:\Dropbox\IHA\PRJ4\Damp\DampGUI\CommunicationLibrary\obj\Debug\CommunicationLibrary.exe
 F:\Dropbox\IHA\PRJ4\Damp\DampGUI\CommunicationLibrary\obj\Debug\CommunicationLibrary.pdb
+C:\Users\Michael\Documents\GitHub\Damp\DampGUI\CommunicationLibrary\obj\Debug\CommunicationLibrary.csprojResolveAssemblyReference.cache

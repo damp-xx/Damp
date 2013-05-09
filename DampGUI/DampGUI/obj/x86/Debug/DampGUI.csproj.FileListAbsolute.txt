@@ -170,3 +170,4 @@ F:\Dropbox\IHA\PRJ4\Damp\DampGUI\DampGUI\bin\Debug\CommunicationLibrary.pdb
 F:\Dropbox\IHA\PRJ4\Damp\DampGUI\DampGUI\bin\Debug\ConnectionLibrary.pdb
 F:\Dropbox\IHA\PRJ4\Damp\DampGUI\DampGUI\obj\x86\Debug\PhotoCollectionView.baml
 F:\Dropbox\IHA\PRJ4\Damp\DampGUI\DampGUI\obj\x86\Debug\PhotoCollectionView.g.cs
+C:\Users\Michael\Documents\GitHub\Damp\DampGUI\DampGUI\obj\x86\Debug\DampGUI.csprojResolveAssemblyReference.cache
