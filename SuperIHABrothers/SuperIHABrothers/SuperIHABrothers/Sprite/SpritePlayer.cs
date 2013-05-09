@@ -20,6 +20,7 @@ namespace Sprites {
 	    //Generel Atributes
 	    public Vector2 Position { get; set; }
         public Rectangle MyRectangle { get; set; }
+	    private Rectangle _sourceRectangle;
 	    public Vector2 Velocity { get; set; }
 	    public IAnchor _Anchor;
 	    private Texture2D _texture; 
@@ -39,7 +40,8 @@ namespace Sprites {
         private IKeybordInput _keybordInput;
         public bool _isInAir { get; set; }
 	    private float _gravaty = 0.1f;
-	    private float _jumpPower = 10; // Kraften som spilleren kan hoppe med
+	    private float _jumpPower = -4.6f; // Kraften som spilleren kan hoppe med
+	    private int fallCount =0;
         
         
 
@@ -60,23 +62,26 @@ namespace Sprites {
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(_texture, Position, MyRectangle, Color.White, 0f, _origin, 1f, SpriteEffects.None, 0);
+           spriteBatch.Draw(_texture, MyRectangle, _sourceRectangle, Color.White);
+           //spriteBatch.Draw(_texture, MyRectangle, _sourceRectangle, Color.White);
+
 		}
 
 	    public void Update(GameTime time){
-            MyRectangle = new Rectangle(_currentFrame * _FrameWidth, 0, _FrameWidth, _FrameHeight);
+            
             _origin = new Vector2(MyRectangle.Width / 2, MyRectangle.Height / 2);
             if (_isInAir == false)
             {
+                fallCount++;
                 if (_keybordInput.IsJumpPressed)
                 {
                     _velocety.Y = _jumpPower;
                     _isInAir = true;
+                    fallCount = 0;
                 }
                 else
                 {
-                    _velocety.Y = 0.1f;
-                    _isInAir = true;
+                    _velocety.Y = 0.1f;              
                 }
             }
             else
@@ -92,6 +97,15 @@ namespace Sprites {
                 AnimateRight(time);
             }
 	        Position += _velocety;
+            if (fallCount > 1/_gravaty)
+            {
+                fallCount = 0;
+                _isInAir = true;
+            }
+	            
+
+            MyRectangle = new Rectangle((int)Position.X, (int)Position.Y, _FrameWidth, _FrameHeight);
+            _sourceRectangle = new Rectangle(_currentFrame * _FrameWidth, 0, _FrameWidth, _FrameHeight);
 	    }
 
 	    public void UpdatePosition()
@@ -106,10 +120,11 @@ namespace Sprites {
             {
                 _currentFrame++;
                 _timer = 0;
-                if (_currentFrame > 7 || _currentFrame < 4 || _isInAir)
-                {
-                    _currentFrame = 4;
-                }
+                
+            }
+            if (_currentFrame > 7 || _currentFrame < 4 || _isInAir)
+            {
+                _currentFrame = 4;
             }
         }
 
@@ -120,10 +135,11 @@ namespace Sprites {
             {
                 _currentFrame++;
                 _timer = 0;
-                if (_currentFrame > 3 || _isInAir)
-                {
-                    _currentFrame = 0;
-                }
+                
+            }
+            if (_currentFrame > 3 || _isInAir)
+            {
+                _currentFrame = 0;
             }
         }
 

@@ -27,4 +27,4 @@ namespace GameState {
             get;  }
 	}//end IGameState
 
-}//end namespace GameState
+}//end namespace GameStateC
