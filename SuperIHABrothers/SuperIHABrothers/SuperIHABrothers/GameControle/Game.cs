@@ -11,15 +11,25 @@
 
 using GameState;
 using GameControle;
+using Microsoft.Xna.Framework;
+
 namespace GameControle {
 	public class Game {
 
 		public GameState.IGameState m_IGameState;
 		public GameControle.ILevel m_ILevel;
+	    private KeybordInput mInput;
+        
 
 		public Game(){
 
 		}
+
+        public void Update(GameTime time)
+        {
+            mInput.Update();
+            m_ILevel.Update(time);
+        }
 
 
 

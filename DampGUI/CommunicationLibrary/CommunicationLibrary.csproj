@@ -59,6 +59,7 @@
     <Compile Include="Events\NewChatMessage.cs" />
     <Compile Include="Events\UserWentOffline.cs" />
     <Compile Include="Events\UserWentOnline.cs" />
+    <Compile Include="IEventSubscribe.cs" />
     <Compile Include="Models\Friend.cs" />
     <Compile Include="Models\Game.cs" />
     <Compile Include="IEvents.cs" />

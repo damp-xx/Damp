@@ -21,7 +21,7 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
-using SuperIHABrothers.GameState;
+using GameState;
 
 
 namespace Sprites {
@@ -38,7 +38,7 @@ namespace Sprites {
             Position = new Vector2(0,0);
             _velocety = new Vector2(0,0);
 		    _KeyInput = mKey;
-            Speed = 1;
+            Speed = 10;
         }
 
 		public void Update(GameTime time)

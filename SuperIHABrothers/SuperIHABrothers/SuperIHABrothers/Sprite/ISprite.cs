@@ -26,8 +26,9 @@ namespace Sprites {
             get; set; }
 
         Vector2 Velocity { get; set; }
-
+        bool _isInAir { get; set; }
         void Update(GameTime time);
+	    void UpdatePosition();
 	}//end ISprite
 
 }//end namespace Sprites

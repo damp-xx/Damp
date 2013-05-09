@@ -65,11 +65,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ChatView.xaml.cs">
+      <DependentUpon>ChatView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EventSubscriber.cs" />
     <Compile Include="PhotoCollectionView.xaml.cs">
       <DependentUpon>PhotoCollectionView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Services\IFriendProfileServiceAgent.cs" />
     <Compile Include="Services\MockFriendProfileServiceAgent.cs" />
+    <Compile Include="ViewModels\ChatViewModel.cs" />
     <Compile Include="ViewModels\FriendProfileViewModel.cs" />
     <Compile Include="Views\BigPictureView.xaml.cs">
       <DependentUpon>BigPictureView.xaml</DependentUpon>
@@ -94,6 +99,10 @@
     <Compile Include="Services\IFriendServiceAgent.cs" />
     <Compile Include="Locators\ViewModelLocator.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
+    <Page Include="ChatView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PhotoCollectionView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -210,10 +219,12 @@
       <Project>{9380f760-d929-4b4f-97d9-3a0ece33210c}</Project>
       <Name>CommunicationLibrary</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ConnectionLibrary\ConnectionLibrary.csproj">
+      <Project>{540F41D8-691D-45EB-AF49-9AF15D4B69F9}</Project>
+      <Name>ConnectionLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="LOGOWall\HomePic.png" />
     <Resource Include="LOGOWall\Icon.jpg" />

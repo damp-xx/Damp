@@ -13,19 +13,19 @@ using Sprites;
 namespace Collision {
 	public class PlayerEnvironmentTopEvent : IEvent {
 
-        private ISprite _playerSprite;
-        private ISprite _environmentSprite;
+        private SpritePlayer _playerSprite;
+        private SpriteEnviroment _environmentSprite;
 
 		public PlayerEnvironmentTopEvent(ISprite player, ISprite environmentSprite)
         {
-            _playerSprite = player;
-		    _environmentSprite = environmentSprite;
+            _playerSprite = (SpritePlayer)player;
+		    _environmentSprite = (SpriteEnviroment)environmentSprite;
             HandleEvent();
 		}
 
 		public void HandleEvent()
 		{
-		    //_playerSprite.IsInAir = true;
+		    //_playerSprite._isInAir = false;
 		    _playerSprite.Velocity = new Vector2(_playerSprite.Velocity.X, 0);
             _playerSprite.Position = new Vector2(_playerSprite.Position.X, _environmentSprite.MyRectangle.Bottom - _playerSprite.MyRectangle.Height);
 		}

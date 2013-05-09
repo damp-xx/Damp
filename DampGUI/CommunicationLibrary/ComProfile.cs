@@ -8,7 +8,7 @@ using DampCS;
 
 namespace CommunicationLibrary
 {
-    class ComProfile
+    public class ComProfile
     {
         public static XmlElement GetProfile()
         {
@@ -21,6 +21,7 @@ namespace CommunicationLibrary
             }
             return null;
         }
+
         /*
         public static void UpdateProfile()
         {
@@ -40,7 +41,8 @@ namespace CommunicationLibrary
            
             return "No username found";
             }
-
+            //hallo din abe
+            return null;
         }
         
 

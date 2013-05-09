@@ -1,0 +1,5 @@
+C:\Users\bardyr\Documents\Damp\DampServer\Database1\Database1\bin\Debug\Database1.dacpac
+C:\Users\bardyr\Documents\Damp\DampServer\Database1\Database1\bin\Debug\Database1.dll
+C:\Users\bardyr\Documents\Damp\DampServer\Database1\Database1\bin\Debug\Database1.pdb
+C:\Users\bardyr\Documents\Damp\DampServer\Database1\Database1\obj\Debug\Database1.dll
+C:\Users\bardyr\Documents\Damp\DampServer\Database1\Database1\obj\Debug\Database1.pdb
