@@ -19,6 +19,7 @@ namespace Sprites {
         private Vector2 _AnchorOffset;
         public Rectangle MyRectangle { get; set; }
 	    public Vector2 Velocity { get; set; }
+	    public bool _isInAir { get; set; }
 	    private IAnchor _Anchor;
         private int _FrameHeight;
         private int _FrameWidth;
@@ -37,6 +38,11 @@ namespace Sprites {
 	    public void Update(GameTime time)
 	    {
 	        throw new NotImplementedException();
+	    }
+
+	    public void UpdatePosition()
+	    {
+	       
 	    }
 
 	    public SpriteDeathAnimaiton(){

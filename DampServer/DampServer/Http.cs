@@ -101,7 +101,16 @@ namespace DampServer
          */
         public string GetHeader(string key)
         {
-            return _headers[key];
+            var d = "";
+            try
+            {
+               d =   _headers[key];
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("ASDf {0}", e.Message);
+            }
+            return d;
         }
 
         /**
@@ -160,6 +169,7 @@ namespace DampServer
             while (true)
             {
                 readLine = sr.ReadLine();
+                Console.WriteLine(readLine);
                 if (string.IsNullOrEmpty(readLine))
                 {
                     break;
@@ -182,7 +192,7 @@ namespace DampServer
          */
         private void ParsePost(TextReader sr)
         {
-            
+            Console.WriteLine("Content-Length 3: {0}", GetHeader("Content-Length"));
             var contentLenght = int.Parse( GetHeader("Content-Length"));
             Content = new Byte[contentLenght];
             var data = new char[contentLenght];
@@ -303,8 +313,19 @@ namespace DampServer
                             int read;
                             while ((read = fs.Read(buffer, 0, buffer.Length)) > 0)
                             {
+                                try
+                                {
                                 bw.Write(buffer, 0, read);
-                                bw.Flush();
+                                
+                                    bw.Flush();
+
+                                }
+                                catch (Exception e)
+                                {
+                                    
+                                    Console.WriteLine("FEJL 33 {0}", e.Message );
+                                    break;
+                                }
                             }
 
                             bw.Close();

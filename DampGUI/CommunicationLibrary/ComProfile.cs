@@ -8,7 +8,7 @@ using DampCS;
 
 namespace CommunicationLibrary
 {
-    class ComProfile
+    public class ComProfile
     {
         public static XmlElement GetProfile()
         {

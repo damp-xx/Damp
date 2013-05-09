@@ -215,6 +215,15 @@ namespace DampServer
                 case "GetGameMyAchievements":
                     leCmd = new AchievementCommand();
                     break;
+                case "UpdateScore":
+                    leCmd= new HighScore();
+                    break;
+                case "GetScore":
+                    leCmd = new HighScore();
+                    break;
+                case "AddUser":
+                    leCmd= new AddUserCommand();
+                    break;
                 default:
                     throw new CommandNotFoundException(cmd);
             }

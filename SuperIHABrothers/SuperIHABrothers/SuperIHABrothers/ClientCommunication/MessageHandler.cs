@@ -13,50 +13,68 @@ using SuperIHABrothers.Sprite;
 
 namespace ClientCommunication
 {
-	public class MessageHandler : IMessageHandler {
+    public class MessageHandler : IMessageHandler
+    {
 
-		public ISpriteContainerMessage m_ISpriteContainerMessage;
-		public IGameState m_IGameState;
-		public IMessageQueueRemove m_IMessageQueueRemove;
+        private ISpriteContainerMessage _ISpriteContainerMessage;
+        private IGameState _IGameState;
+        private IMessageQueueRemove _IMessageQueueRemove;
+        private IPlayerData _playerData;
 
-		public MessageHandler(ISpriteContainerMessage spriteContainerMessage, IGameState gameState, IMessageQueueRemove messageQueueRemove)
-		{
-		    m_ISpriteContainerMessage = spriteContainerMessage;
-		    m_IGameState = gameState;
-		    m_IMessageQueueRemove = messageQueueRemove;
+        public MessageHandler(ISpriteContainerMessage spriteContainerMessage, IGameState gameState, IMessageQueueRemove messageQueueRemove, IPlayerData playerData)
+        {
+            _ISpriteContainerMessage = spriteContainerMessage;
+            _IGameState = gameState;
+            _IMessageQueueRemove = messageQueueRemove;
+            _playerData = playerData;
 
-            Thread myNewThread = new Thread(() => HandlerThread(m_IMessageQueueRemove));
+            Thread myNewThread = new Thread(() => HandlerThread(_IMessageQueueRemove, _IGameState, _playerData, _ISpriteContainerMessage));
             myNewThread.Start();
-		}
+        }
 
         public void SetContainer(ISpriteContainerMessage mContainer)
         {
-            m_ISpriteContainerMessage = mContainer;
+            _ISpriteContainerMessage = mContainer;
         }
 
-        private void HandlerThread(IMessageQueueRemove messageQueueRemove)
+        private void HandlerThread(IMessageQueueRemove messageQueueRemove, IGameState gameState, IPlayerData playerData, ISpriteContainerMessage containerMessage)
         {
             string message = messageQueueRemove.GetMessage();
-            
+            string TypeTag = message.Substring(0, 3);
+            string Data = message.Substring(3, message.Length - 4);
+
             if (message != null)
             {
-                switch (message)
+                switch (TypeTag)
                 {
-                    case "DOL":
-                        m_IGameState.GameRunning = true;
+                    case "DOL": // Damp Online
+                        gameState.GameRunning = true;
                         break;
-                        
-                    case "DOF":
-                        m_IGameState.GameRunning = false;
+
+                    case "DOF": // Damp Offline
+                        gameState.GameRunning = false;
+                        break;
+
+                    case "CHS": // Change Highscore
+                        playerData.SetHighscore(int.Parse(Data));
+                        break;
+
+                    case "CPN": // Change Playername
+                        playerData.SetPlayerName(Data);
+                        break;
+
+                    case "NAC": // New Achiement
+                        //containerMessage.AddSprite(new SpriteAchievement());
                         break;
 
                     default:
+                        //Should never reach this place
                         break;
                 }
             }
         }
 
-	   
-	}//end MessageHandler
+
+    }//end MessageHandler
 
 }//end namespace DampCommunication
