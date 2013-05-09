@@ -61,6 +61,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddUserCommand.cs" />
+    <Compile Include="commands\HighScore.cs" />
     <Compile Include="responses\AchievementListResponse.cs" />
     <Compile Include="responses\Archivement.cs" />
     <Compile Include="commands\AchievementCommand.cs" />

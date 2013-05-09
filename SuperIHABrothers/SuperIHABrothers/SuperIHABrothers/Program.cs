@@ -20,7 +20,7 @@ namespace SuperIHABrothers
             }
             /***************************************************************/
 
-            using (Game1 game = new Game1(args[0], args[1]))
+            using (GameMain game = new GameMain(args[0], args[1]))
             {
                 game.Run();
             }
