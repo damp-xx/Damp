@@ -27,7 +27,14 @@ namespace Sprites {
 		public Sprites.ISprite _ISprite;
 	    private List<List<ISprite>> _spriteList;
         private IAnchorUpdate _anchor;
-        public List<List<ISprite>> SpriteList { get { return _spriteList; } }
+
+
+	    public void ReUpdate(Vector2 mPos)
+	    {
+	        throw new System.NotImplementedException();
+	    }
+
+	    public List<List<ISprite>> SpriteList { get { return _spriteList; } }
 
         public SpriteContainer(List<List<ISprite>> mList, IAnchorUpdate mAnchorUpdate)
         {
