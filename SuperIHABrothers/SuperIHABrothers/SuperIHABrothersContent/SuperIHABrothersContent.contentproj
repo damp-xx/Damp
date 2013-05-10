@@ -71,8 +71,13 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
+    <Compile Include="Arrow.jpg">
+      <Name>Arrow</Name>
+=======
     <Compile Include="Finish.png">
       <Name>Finish</Name>
+>>>>>>> bdda66641cfab125424399d7b165f66ae49950f1
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
