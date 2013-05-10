@@ -9,9 +9,15 @@ namespace CommunicationLibrary.Events
 {
     class FriendAccepted: IEvents
     {
+        private IEventSubscribe EventHandler;
+        public FriendAccepted(IEventSubscribe Handler)
+        {
+            EventHandler = Handler;
+        }
+
         public void Action(XmlElement Event)
         {
-            
+            EventHandler.HandleFriendAccepted(Event);
         }
     }
 }

@@ -16,7 +16,6 @@ namespace CommunicationLibrary.Events
         }
         public void Action(XmlElement Event)
         {
-            Console.WriteLine("NewChatMessage");
             string from = "";
             var xmlNode = Event.GetElementsByTagName("From").Item(0);
             if (xmlNode != null)

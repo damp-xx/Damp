@@ -54,7 +54,7 @@ namespace CommunicationLibrary
             string achievementID = "0";
             foreach (var s in AchievementsForGame)
             {
-                if (s.Value == achievementTitle) ;
+                if (s.Value == achievementTitle) 
                 achievementID = s.Key;
             }
 
