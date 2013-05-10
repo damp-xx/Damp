@@ -192,8 +192,8 @@ namespace DampServer
          */
         private void ParsePost(TextReader sr)
         {
-            Console.WriteLine("Content-Length 3: {0}", GetHeader("Content-Length"));
-            var contentLenght = int.Parse( GetHeader("Content-Length"));
+            Console.WriteLine("Content-Length 3d: {0}", GetHeader("Content-Length"));
+            var contentLenght = int.Parse( _headers["Content-Length"]);
             Content = new Byte[contentLenght];
             var data = new char[contentLenght];
             var bytes = sr.Read(data, 0, data.Length);

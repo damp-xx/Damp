@@ -12,8 +12,10 @@ namespace DampServer
         public int Code { get; set; }
         public string Message { get; set; }
         public string Command { get; set; }
-        public string From { get; set; }
+        public long From { get; set; }
         public string To { get; set; }
+
+        public string FromName { get; set; }
 
         // public T Content { get; set; }
     }
