@@ -17,7 +17,7 @@ namespace Collision
         private SpritePlayer _playerSprite;
         private SpriteEnviroment _environmentSprite;
 
-        public PlayerEnvironmentBottomEvent(ISprite player, ISprite environmentSprite)
+        public PlayerEnvironmentBottomEvent(ISprite player, ISprite environmentSprite, ISpriteContainerCollision mReUpdate)
         {
             _playerSprite = (SpritePlayer)player;
             _environmentSprite = (SpriteEnviroment)environmentSprite;
@@ -26,12 +26,13 @@ namespace Collision
 
         private void HandleEvent()
         {
-            _playerSprite._isInAir = false;
+            _playerSprite._isInAir = true;
             int height = _playerSprite.MyRectangle.Height;
             int width = _playerSprite.MyRectangle.Width;
             int x = _playerSprite.MyRectangle.X;
             _playerSprite.MyRectangle = new Rectangle(x, _environmentSprite.MyRectangle.Bottom , width, height);
             _playerSprite.Position = new Vector2(_playerSprite.Position.X, _environmentSprite.MyRectangle.Bottom );
+            _playerSprite.Velocety = new Vector2(_playerSprite.Velocety.X, 0); 
         }
 
     }//end PlayerEnvironmentBottomEvent

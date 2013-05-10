@@ -51,7 +51,8 @@ namespace DampServer.commands
                 {
                     Message = http.Query.Get("Message"),
                     To = http.Query.Get("To"),
-                    From = me.Username,
+                    From = me.UserId,
+                    FromName = me.Username,
                     Command = "ChatRecieved"
                 };
 
@@ -61,7 +62,7 @@ namespace DampServer.commands
             SqlCommand cmd2 = db.GetCommand();
 
             cmd2.CommandText =
-                "INSERT INTO Chat (sender, receiver, message, seen, time) Values(@sender, @sender, @message, @seen, getdate())";
+                "INSERT INTO Chat (sender, receiver, message, seen, time) Values(@sender, @receiver, @message, @seen, getdate())";
             cmd2.Parameters.Add("@sender", SqlDbType.BigInt).Value = me.UserId;
             cmd2.Parameters.Add("@receiver", SqlDbType.BigInt).Value = r.To;
             cmd2.Parameters.Add("@message", SqlDbType.Text).Value = r.Message;
@@ -101,6 +102,7 @@ namespace DampServer.commands
             sqlCmd.CommandText = "SELECT * FROM Chat WHERE \"receiver\" = @userid AND seen = 0";
             sqlCmd.Parameters.Add("@userid", SqlDbType.BigInt).Value = user.UserId;
 
+
             SqlDataReader r;
 
             try
@@ -117,10 +119,13 @@ namespace DampServer.commands
 
             while (r.Read())
             {
-                var from = ((long)r["sender"]).ToString(CultureInfo.InvariantCulture);
+                var from = ((long)r["sender"]);
                 var message = (string)r["message"];
                 string to = ((long) r["receiver"]).ToString(CultureInfo.InvariantCulture);
                 var date = (DateTime) r["time"];
+
+
+                var dd = UserManagement.GetUserById(from.ToString());
 
                 respons.Add(new StatusXmlResponse
                 {
@@ -128,7 +133,9 @@ namespace DampServer.commands
                     Message = message,
                     To = to,
                     Date = date,
-                    Command = "ChatReceived"
+                    Command = "ChatRecieved",
+                    FromName = dd.Username
+
                    
                 }); 
  
@@ -141,7 +148,7 @@ namespace DampServer.commands
                 cmd3.Parameters.Add("@id", SqlDbType.BigInt).Value = r["chatid"];
                 cmd3.ExecuteNonQuery();
             }
-
+            r.Close();
             db.Close();
 
             return respons;

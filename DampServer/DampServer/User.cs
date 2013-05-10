@@ -10,7 +10,7 @@ namespace DampServer
 {
     public class User : XmlResponse, IUser
     {
-        public Int64 UserId { get; set; }
+        public long UserId { get; set; }
         public string Username { get; set; }
         public List<Game> Games { get; set; }
         public List<User> Friends { get; set; }
