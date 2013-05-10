@@ -10,7 +10,7 @@
 
 
 namespace GameState {
-	public class GameStateC : IGameState, IGameStateEvent, IGameStateLevel
+	public class GameStateC : IGameState, IGameStateEvent, IGameStateLevel, IGameStateGameRunning
 	{
 	    private int _lifes;
         private static readonly object lockObject = new object();

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.IO.Pipes;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Threading;
 using Collision;
 using GameState;
@@ -22,6 +23,9 @@ namespace SuperIHABrothers
     /// </summary>
     public class Game1 : Microsoft.Xna.Framework.Game
     {
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        public static extern uint MessageBox(IntPtr hWnd, String text, String caption, uint type);
+
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         private GameControle.Game _game;
@@ -50,8 +54,7 @@ namespace SuperIHABrothers
             var gameFactory = new GameFactory();
             _game = gameFactory.GetGame(Content);
 
-            base.Initialize();
-            
+            base.Initialize();           
         }
 
         /// <summary>

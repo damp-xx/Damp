@@ -127,10 +127,13 @@
     <Compile Include="Collision\PlayerEnvironmentLeftEvent.cs" />
     <Compile Include="Collision\PlayerEnvironmentRightEvent.cs" />
     <Compile Include="Collision\PlayerEnvironmentTopEvent.cs" />
+    <Compile Include="Collision\PlayerFinishlineDetect.cs" />
+    <Compile Include="Collision\PlayerFinishlineEvent.cs" />
     <Compile Include="GameControle\FactoryLevel.cs" />
     <Compile Include="GameControle\GameFactory.cs" />
     <Compile Include="GameControle\IFactoryLevel.cs" />
     <Compile Include="GameControle\IGameFactory.cs" />
+    <Compile Include="GameState\IGameStateGameRunning.cs" />
     <Compile Include="GameState\IKeyboardUpdate.cs" />
     <Compile Include="GameState\IKeybordInput.cs" />
     <Compile Include="Collision\CollisionControl.cs" />
