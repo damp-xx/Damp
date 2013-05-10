@@ -12,18 +12,18 @@
 public class PlayerData : IPlayerData, IPlayerDataGame
 {
 
-    private int _highscore=0;
+    public int Highscore { get; set; }
     private string _playername = "No Name Specified";
 
-	public PlayerData(){
-
+	public PlayerData()
+	{
+	    Highscore = 0;
+	    GameRunning = true;
 	}
+    public bool GameRunning { get; set; }
 
 	
-	public int GetHighscore(){
 
-		return _highscore;
-	}
 
 	public string GetPlayerName(){
 
@@ -34,7 +34,7 @@ public class PlayerData : IPlayerData, IPlayerDataGame
 	/// <param name="highscore"></param>
 	public void SetHighscore(int highscore)
 	{
-	    _highscore = highscore;
+	    Highscore = highscore;
 	}
 
 	/// 

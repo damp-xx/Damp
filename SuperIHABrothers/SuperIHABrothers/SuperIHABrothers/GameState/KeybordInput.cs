@@ -11,6 +11,9 @@ namespace GameState
         private Keys _Left = Keys.Left;
         private Keys _Right = Keys.Right;
         private Keys _Jump = Keys.Space;
+        private Keys _CurserDown = Keys.Down;
+        private Keys _CurserUp = Keys.Up;
+        private Keys _Select = Keys.Enter;
 
         public bool IsLeftPressed { get; private set; }
         public bool WasLeftPressed { get; private set; }
@@ -18,6 +21,13 @@ namespace GameState
         public bool WasRightPressed { get; private set; }
         public bool IsJumpPressed { get; private set; }
         public bool WasJumpPressed { get; private set; }
+        public bool IsCurserDownPressed { get; private set; }
+        public bool IsCurserUpPressed { get; private set; }
+        public bool IsSelectPressed { get; private set; }
+        public bool WasCurserDownPressed { get; private set; }
+        public bool WasCurserUpPressed { get; private set; }
+        public bool WasSelectPressed { get; private set; }
+
 
         public KeybordInput()
         {
@@ -29,6 +39,10 @@ namespace GameState
             this.UpdateLeft();
             this.UpdateRight();
             this.UpdateJump();
+            this.UpdateCurserUp();
+            this.UpdateCurserDown();
+            this.UpdateSelect();
+            
         }
 
         private void UpdateLeft()
@@ -87,6 +101,21 @@ namespace GameState
             {
                 IsJumpPressed = false;
             }
+        }
+        private void UpdateCurserDown()
+        {
+            WasCurserDownPressed = IsCurserDownPressed;
+            IsCurserDownPressed = Keyboard.GetState().IsKeyDown(_CurserDown);
+        }
+        private void UpdateCurserUp()
+        {
+            WasCurserUpPressed = IsCurserUpPressed;
+            IsCurserUpPressed = Keyboard.GetState().IsKeyDown(_CurserUp);
+        }
+        private void UpdateSelect()
+        {
+            WasSelectPressed = IsSelectPressed;
+            IsSelectPressed = Keyboard.GetState().IsKeyDown(_Select);
         }
     }
 }

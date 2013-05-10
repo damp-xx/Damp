@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using ClientCommunication;
 using Collision;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
@@ -17,11 +18,13 @@ namespace GameControle
     {
         private ContentManager _content;
         private ICollisionControl _collisionControl;
+        
 
         public FactoryLevel(ContentManager content, ICollisionControl collisionControl)
         {
             _content = content;
             _collisionControl = collisionControl;
+            
         }
 
         public ILevel GetLevelOne(IKeybordInput _input)
@@ -75,6 +78,7 @@ namespace GameControle
 
             var _SpriteContainer = new SpriteContainer(_listLisst, mIAnchor);
             var Level = new Level1(_SpriteContainer, _SpriteContainer, _collisionControl);
+            
 
             return Level;
         }

@@ -53,7 +53,7 @@ namespace GameState {
 	    private int _score;
 	    public int Lifes { set; get; }
         int IGameStateLevel.Score { get { return _score; } set { _score = value; } }
-        int IGameState.Score { get { return _score; } }
+        int IGameState.Score { get { return _score; } set { _score = value; } }
 
 	    public void LoseLife(){
 

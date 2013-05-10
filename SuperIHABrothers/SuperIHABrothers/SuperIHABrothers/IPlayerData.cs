@@ -13,7 +13,9 @@ public interface IPlayerData  {
 
 	/// 
 	/// <param name="highscore"></param>
-	void SetHighscore(int highscore);
+    int Highscore { set; }
+
+    bool GameRunning { get; set; }
 
 	/// 
 	/// <param name="name"></param>

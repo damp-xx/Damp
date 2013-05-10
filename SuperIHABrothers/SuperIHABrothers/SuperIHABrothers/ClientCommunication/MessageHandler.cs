@@ -9,35 +9,30 @@
 
 using System.Threading;
 using GameState;
-using SuperIHABrothers.Sprite;
+
 
 namespace ClientCommunication
 {
-    public class MessageHandler : IMessageHandler
+    public class MessageHandler
     {
 
-        private ISpriteContainerMessage _ISpriteContainerMessage;
+        
         private IGameState _IGameState;
         private IMessageQueueRemove _IMessageQueueRemove;
         private IPlayerData _playerData;
 
-        public MessageHandler(ISpriteContainerMessage spriteContainerMessage, IGameState gameState, IMessageQueueRemove messageQueueRemove, IPlayerData playerData)
+        public MessageHandler( IMessageQueueRemove messageQueueRemove, IPlayerData playerData)
         {
-            _ISpriteContainerMessage = spriteContainerMessage;
-            _IGameState = gameState;
             _IMessageQueueRemove = messageQueueRemove;
             _playerData = playerData;
 
-            Thread myNewThread = new Thread(() => HandlerThread(_IMessageQueueRemove, _IGameState, _playerData, _ISpriteContainerMessage));
+            Thread myNewThread = new Thread(() => HandlerThread(_IMessageQueueRemove, _playerData));
             myNewThread.Start();
         }
 
-        public void SetContainer(ISpriteContainerMessage mContainer)
-        {
-            _ISpriteContainerMessage = mContainer;
-        }
+       
 
-        private void HandlerThread(IMessageQueueRemove messageQueueRemove, IGameState gameState, IPlayerData playerData, ISpriteContainerMessage containerMessage)
+        private void HandlerThread(IMessageQueueRemove messageQueueRemove, IPlayerData playerData)
         {
             string message = messageQueueRemove.GetMessage();
             string TypeTag = message.Substring(0, 3);
@@ -48,15 +43,15 @@ namespace ClientCommunication
                 switch (TypeTag)
                 {
                     case "DOL": // Damp Online
-                        gameState.GameRunning = true;
+                        playerData.GameRunning = true;
                         break;
 
                     case "DOF": // Damp Offline
-                        gameState.GameRunning = false;
+                        playerData.GameRunning = false;
                         break;
 
                     case "CHS": // Change Highscore
-                        playerData.SetHighscore(int.Parse(Data));
+                        playerData.Highscore = int.Parse(Data);
                         break;
 
                     case "CPN": // Change Playername
