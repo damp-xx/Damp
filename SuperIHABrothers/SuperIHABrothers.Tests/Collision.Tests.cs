@@ -26,6 +26,7 @@ namespace SuperIHABrothers.Tests
         private ICollisionDetect _mockPlayerEnvironmentDetect;
         private ICollisionDetect _mockPlayerMonsterDetect;
         private ICollisionDetect _mockMonsterEnvironmentDetect;
+        private ICollisionDetect _mockPlayerFinishlineDetect;
         private Rectangle _stubRectangle;
         
 
@@ -42,6 +43,7 @@ namespace SuperIHABrothers.Tests
             _mockPlayerEnvironmentDetect = MockRepository.GenerateMock<ICollisionDetect>();
             _mockPlayerMonsterDetect = MockRepository.GenerateMock<ICollisionDetect>();
             _mockMonsterEnvironmentDetect = MockRepository.GenerateMock<ICollisionDetect>();
+            _mockPlayerFinishlineDetect = MockRepository.GenerateMock<ICollisionDetect>();
             _stubRectangle = new Rectangle(0,0,10,10);
         
             _stubSpritePlayerList.Add(_stubSpritePlayer);
@@ -58,7 +60,7 @@ namespace SuperIHABrothers.Tests
             _stubSpriteEnvironment.Stub(x => x.MyRectangle).Return(_stubRectangle);
             _stubSpriteMonster.Stub(x => x.MyRectangle).Return(_stubRectangle);
 
-            _uutCollisionControl = new CollisionControl( _mockPlayerEnvironmentDetect, _mockPlayerMonsterDetect, _mockMonsterEnvironmentDetect);
+            _uutCollisionControl = new CollisionControl( _mockPlayerEnvironmentDetect, _mockPlayerMonsterDetect, _mockMonsterEnvironmentDetect, _mockPlayerFinishlineDetect);
             
         }
 

@@ -20,14 +20,16 @@ namespace Collision
         private ICollisionDetect _playerEnviromentDetect;
         private ICollisionDetect _playerMonsterDetect;
         private ICollisionDetect _monsterEnviromentDetect;
+        private ICollisionDetect _playerFinishlineDetect;
 
         public CollisionControl(ICollisionDetect mPlayerEnviromentDetect, ICollisionDetect mPlayerMonsterDetect,
-                                ICollisionDetect mMonsterEnvironmentDetect)
+                                ICollisionDetect mMonsterEnvironmentDetect, ICollisionDetect mPlayerFinishlineDetect)
         {
             
             _playerEnviromentDetect = mPlayerEnviromentDetect;
             _playerMonsterDetect = mPlayerMonsterDetect;
             _monsterEnviromentDetect = mMonsterEnvironmentDetect;
+            _playerFinishlineDetect = mPlayerFinishlineDetect;
         }
 
 
@@ -38,6 +40,7 @@ namespace Collision
             _spriteContainerCollision = mSpriteContainerCollision;
             CheckForPlayerCollision();
             CheckForMonsterCollision();
+            CheckForFinishCollision();
         }
 
         private void CheckForPlayerCollision()
@@ -83,11 +86,29 @@ namespace Collision
                     {
                         _monsterEnviromentDetect.Detect(_spriteContainerCollision,
                                                         _spriteContainerCollision.SpriteList[(int) listTypes.Monster][i],
-                                                        _spriteContainerCollision.SpriteList[(int) listTypes.Environment
-                                                            ][j]);
+                                                        _spriteContainerCollision.SpriteList[(int) listTypes.Environment][j]);
                     }
                 }
             }
+        }
+
+        private void CheckForFinishCollision()
+        {
+            for (int i = 0; i < _spriteContainerCollision.SpriteList[(int)listTypes.Player].Count; i++)
+            {
+                /* Checking with Evironment */
+                for (int j = 0; j < _spriteContainerCollision.SpriteList[(int)listTypes.FinishLine].Count; j++)
+                {
+                    if (_spriteContainerCollision.SpriteList[(int)listTypes.Player][i].MyRectangle.Intersects(
+                        _spriteContainerCollision.SpriteList[(int)listTypes.FinishLine][j].MyRectangle))
+                    {
+                        _playerFinishlineDetect.Detect( _spriteContainerCollision, 
+                                                        _spriteContainerCollision.SpriteList[(int)listTypes.Player][i],
+                                                        _spriteContainerCollision.SpriteList[(int)listTypes.FinishLine][j] );
+                    }
+                }
+            }
+            
         }
     }
 

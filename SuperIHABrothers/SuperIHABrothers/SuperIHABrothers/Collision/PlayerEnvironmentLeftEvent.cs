@@ -15,19 +15,25 @@ namespace Collision {
 
         private SpritePlayer _playerSprite;
         private SpriteEnviroment _environmentSprite;
+        private ISpriteContainerCollision _ReUpdate;
 
-        public PlayerEnvironmentLeftEvent(ISprite player, ISprite environmentSprite)
+        public PlayerEnvironmentLeftEvent(ISprite player, ISprite environmentSprite, ISpriteContainerCollision mReUpdate)
         {
             _playerSprite = (SpritePlayer)player;
             _environmentSprite = (SpriteEnviroment)environmentSprite;
+            _ReUpdate = mReUpdate;
             HandleEvent();
 		}
 
 		private void HandleEvent()
 		{
             _playerSprite.Velocity = new Vector2(0, _playerSprite.Velocity.Y);
-            _playerSprite.Position = new Vector2(_environmentSprite.MyRectangle.Left - _playerSprite.MyRectangle.Width, _playerSprite.Position.Y);
-            _playerSprite.MyRectangle = new Rectangle(_environmentSprite.MyRectangle.Left - _playerSprite.MyRectangle.Width, _playerSprite.MyRectangle.Y, _playerSprite.MyRectangle.Width, _playerSprite.MyRectangle.Height); 
+            float playerEnvDiff = _playerSprite.MyRectangle.Right - _environmentSprite.MyRectangle.Left;
+            float anchorX = _environmentSprite._anchor.Position.X;
+            float anchorY = _environmentSprite._anchor.Position.Y;
+            
+            _environmentSprite._anchor.Position = new Vector2(anchorX+playerEnvDiff, anchorY);
+            _ReUpdate.ReUpdate();
 		}
 
 	}//end PlayerEnvironmentLeftEvent

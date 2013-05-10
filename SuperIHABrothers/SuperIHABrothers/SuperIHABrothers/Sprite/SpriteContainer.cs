@@ -15,11 +15,11 @@ namespace Sprites {
     public enum listTypes
     {
         Background = 0,
-
         Player = 1,
         Monster = 2,
         Environment = 3,
-        DeathAnimation = 4
+        DeathAnimation = 4,
+        FinishLine = 5
     }
 	public class SpriteContainer : ISpriteContainer, ISpriteContainerCollision {
 
@@ -27,12 +27,7 @@ namespace Sprites {
 		public Sprites.ISprite _ISprite;
 	    private List<List<ISprite>> _spriteList;
         private IAnchorUpdate _anchor;
-
-
-	    public void ReUpdate(Vector2 mPos)
-	    {
-	        throw new System.NotImplementedException();
-	    }
+	    private GameTime _time;
 
 	    public List<List<ISprite>> SpriteList { get { return _spriteList; } }
 
@@ -71,6 +66,7 @@ namespace Sprites {
 	        }
 	    }
 
+
 	    public void Draw(SpriteBatch spriteBatch)
 	    {
             foreach (var _list in _spriteList)
@@ -81,6 +77,23 @@ namespace Sprites {
                 }
             }
 	    }
+
+
+        public void ReUpdate()
+        {
+            for (int i = 0; i < _spriteList.Count; i++ )
+            {
+                if (i == (int) listTypes.Player) // Because we don't want the player sprite to be updated again
+                    i++;
+
+                foreach (var sprite in _spriteList[i])
+                {
+                    sprite.Update(_time);
+                }
+            }
+        }
+
+
 	}//end SpriteContainer
 
 }//end namespace Sprites

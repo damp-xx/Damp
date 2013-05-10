@@ -24,7 +24,9 @@ namespace GameState {
 
         int Score
         {
-            get;  }
+            get; set;
+        }
+        int Lifes { get; set; }
 	}//end IGameState
 
 }//end namespace GameStateC

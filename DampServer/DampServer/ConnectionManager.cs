@@ -81,13 +81,15 @@ namespace DampServer
          */
         public void NotifyUserFriends(IConnection connection, StatusXmlResponse response)
         {
+            var userid = connection.UserProfile.UserId;
             connection.UserProfile.Friends.Select(user => GetConnectionByUserId(user.UserId))
                       .Where(con => con != null)
                       .AsParallel()
                       .ForAll(
                           con =>
                               {
-                                  response.Message = con.UserProfile.UserId.ToString(CultureInfo.InvariantCulture);
+                                  
+                                  response.Message = userid.ToString(CultureInfo.InvariantCulture);
                                   con.UserHttp.SendXmlResponse(response);
                               });
         }

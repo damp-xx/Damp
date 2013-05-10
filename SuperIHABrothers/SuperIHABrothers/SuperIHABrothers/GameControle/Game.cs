@@ -11,34 +11,188 @@ using Collision;
 using GameState;
 using GameControle;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace GameControle {
 	public class Game {
 
+        private enum menuState
+        {
+            MainMenu,
+            HighScoreMenu,
+            GameRunning,
+            GameOver
+        }
+
+	    private menuState _menuState = menuState.MainMenu;
 		private GameState.IGameState m_IGameState;
 		private GameControle.ILevel m_ILevel;
 	    private IKeybordInput mInput;
 	    private IKeyboardUpdate _keyboardUpdate;
 	    private IGameState _gameState;
+	    private int _curserCounter = 0;
+	    private int _curserMax = 1;
+	    private bool _newHighScore = false;
+	    private Texture2D _backgroundTexrure;
+	    private Rectangle _backgroundRectangle;
+	    private Texture2D _courserTexture;
+	    private Rectangle _courserRegtangle;
+	    private int _courserWidth = 50;
+	    private ContentManager _contentManager;
+	    private string _mainMenuLineOne = "StartGame";
+	    private string _mainMenuLineTwo = "HighScore";
+	    private IPlayerDataGame _playerData;
 
-		public Game(IFactoryLevel factoryLevel, IGameState gameState, IKeybordInput keyInput, IKeyboardUpdate keyboardUpdate)
+	    private SpriteFont _font;
+	    private Vector2 _linePos;
+
+		public Game(IFactoryLevel factoryLevel, IGameState gameState, IKeybordInput keyInput, IKeyboardUpdate keyboardUpdate, ContentManager mcontentManager, IPlayerDataGame mDataGame)
 		{
-		    _gameState = gameState;
+		    m_IGameState = gameState;
 		    mInput = keyInput;
 		    _keyboardUpdate = keyboardUpdate;
 		    m_ILevel = factoryLevel.GetLevelOne(mInput);
+		    _contentManager = mcontentManager;
+		    _font = _contentManager.Load<SpriteFont>("Gamefont");
+            _linePos = new Vector2(100, 100);
+		    _courserTexture = _contentManager.Load<Texture2D>("Arrow");
+		    _playerData = mDataGame;
+
 		}
 
         public void Update(GameTime time)
         {
             _keyboardUpdate.Update();
-            m_ILevel.Update(time);
+            switch (_menuState)
+            {
+                case menuState.MainMenu:
+                    MainMenuUpdate();
+                    break;
+                case menuState.GameOver:
+                    GameOverUpdate();
+                    break;
+                case menuState.GameRunning:
+                    m_ILevel.Update(time);
+                    break;
+                case menuState.HighScoreMenu:
+                    HighScoreMenuUpdate();
+                    break;
+            }
+            
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            m_ILevel.Draw(spriteBatch);
+            switch (_menuState)
+            {
+                case menuState.MainMenu:
+                    MainMenuDraw(spriteBatch);
+                    break;
+                case menuState.GameOver:
+                    GameOverDraw(spriteBatch);
+                    break;
+                case menuState.GameRunning:
+                    if (m_IGameState.Lifes > 0)
+                    {
+                        m_ILevel.Draw(spriteBatch);
+                    }
+                    else
+                    {
+                        GameOverEntry();
+                    }
+                    
+                    break;
+                case menuState.HighScoreMenu:
+                    HighScoreMenuDraw(spriteBatch);
+                    break;
+            }
+        }
+
+        private void MainMenuUpdate()
+        {
+            if (mInput.IsCurserDownPressed&&!mInput.WasCurserDownPressed)
+            {
+                _curserCounter++;
+                if (_curserCounter > _curserMax)
+                {
+                    _curserCounter = 0;
+                }
+            }
+            if (mInput.IsCurserUpPressed&&!mInput.WasCurserUpPressed)
+            {
+                _curserCounter--;
+                if (_curserCounter < 0)
+                {
+                    _curserCounter = _curserMax;
+                }
+            }
+            if (mInput.IsSelectPressed&&!mInput.WasSelectPressed)
+            {
+                switch (_curserCounter)
+                {
+                    case 0:
+                        GameRunningEntry();
+                        break;
+                    case 1:
+                        _menuState = menuState.HighScoreMenu;
+                        break;
+                }
+            }
+        }
+
+        private void MainMenuDraw(SpriteBatch spriteBatch)
+        {
+            string _mainMenuLineOne = "StartGame";
+	        string _mainMenuLineTwo = "HighScore";
+            var pos = _linePos;
+            spriteBatch.DrawString(_font, _mainMenuLineOne, pos, Color.LightGreen);
+            pos.Y += 20;
+            spriteBatch.DrawString(_font, _mainMenuLineTwo, pos, Color.LightGreen);
+            _courserRegtangle = new Rectangle((int)_linePos.X - 50 ,(int)_linePos.Y + (20*_curserCounter), _courserWidth, 20);
+            spriteBatch.Draw(_courserTexture, _courserRegtangle, Color.CornflowerBlue);
+        }
+
+        private void GameOverUpdate()
+        {
+            if (mInput.IsSelectPressed)
+            {
+                _menuState = menuState.MainMenu;
+            }
+        }
+        private void GameOverDraw(SpriteBatch spriteBatch)
+        {
+
+        }
+        private void HighScoreMenuUpdate()
+        {
+            if (mInput.IsSelectPressed&&!mInput.WasSelectPressed)
+            {
+                _menuState = menuState.MainMenu;
+            }
+
+        }
+        private void HighScoreMenuDraw(SpriteBatch spriteBatch)
+        {
+
+            string text = "HighScore: " + _playerData.Highscore.ToString();
+            var pos = _linePos;
+            string name = _playerData.GetPlayerName();
+            spriteBatch.DrawString(_font, name, pos, Color.LightGreen);
+            pos.Y += 20;
+            spriteBatch.DrawString(_font, text, pos, Color.LightGreen);
+        }
+
+        private void GameRunningEntry()
+        {
+            m_IGameState.Score = 0;
+            m_IGameState.Lifes = 3;
+            _menuState = menuState.GameRunning;
+        }
+        private void GameOverEntry()
+        {
+            
+            _menuState = menuState.GameOver;
         }
 
 

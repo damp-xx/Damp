@@ -35,7 +35,7 @@ namespace Collision
                 //player.Velocity.X > 0
                 )
             {
-                new PlayerEnvironmentLeftEvent(player, environment);
+                new PlayerEnvironmentLeftEvent(player, environment, mSpriteCollection);
             }
 
             //Right side
@@ -44,7 +44,7 @@ namespace Collision
                      //player.Velocity.X < 0
                 )
             {
-                new PlayerEnvironmentRightEvent(player, environment);
+                new PlayerEnvironmentRightEvent(player, environment, mSpriteCollection);
             }
 
             //Top side
@@ -52,13 +52,13 @@ namespace Collision
                      player.MyRectangle.Y + player.MyRectangle.Height <
                      environment.MyRectangle.Y + (environment.MyRectangle.Height / 2) ) 
             {
-                new PlayerEnvironmentTopEvent(player, environment);
+                new PlayerEnvironmentTopEvent(player, environment, mSpriteCollection);
             }
             //Bottom side
             else if (player.MyRectangle.Y <= environment.MyRectangle.Y + environment.MyRectangle.Height &&
                      player.MyRectangle.Y > environment.MyRectangle.Y + (environment.MyRectangle.Height / 2) )
             {
-                new PlayerEnvironmentBottomEvent(player, environment);
+                new PlayerEnvironmentBottomEvent(player, environment, mSpriteCollection);
             }
         }
 

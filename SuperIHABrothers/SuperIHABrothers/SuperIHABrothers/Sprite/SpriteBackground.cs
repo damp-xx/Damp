@@ -53,7 +53,7 @@ namespace Sprites {
 
 	    public void Update(GameTime time)
 	    {
-            if (_anchor.Position.X < -(_FrameWidth * 6))
+            if (_anchor.Position.X + _AnchorOffset.X * 2 < -(_FrameWidth * 6))
             {
                 _position.X = _anchor.Position.X / _distance + _AnchorOffset.X + _FrameWidth * 4;
                 _position.Y = _anchor.Position.Y / _distance + _AnchorOffset.Y;
@@ -61,14 +61,14 @@ namespace Sprites {
                 _position2.Y = _anchor.Position.Y / _distance + _AnchorOffset.Y;
             }
 
-            else if (_anchor.Position.X < -(_FrameWidth*4))
-            {
-                _position.X = _anchor.Position.X/_distance + _AnchorOffset.X + _FrameWidth*2;
+            else if (_anchor.Position.X + _AnchorOffset.X * 2 < -(_FrameWidth * 4 ))
+             {
+                 _position.X = _anchor.Position.X/_distance + _AnchorOffset.X + _FrameWidth*2;
                 _position.Y = _anchor.Position.Y/_distance + _AnchorOffset.Y;
                 _position2.X = _anchor.Position.X/_distance + _AnchorOffset.X + _FrameWidth*3;
                 _position2.Y = _anchor.Position.Y/_distance + _AnchorOffset.Y;
             }
-            else if (_anchor.Position.X < - (_FrameWidth*2))
+            else if (_anchor.Position.X + _AnchorOffset.X*2 < -(_FrameWidth * 2))
             {
                 _position.X = _anchor.Position.X/_distance + _AnchorOffset.X + _FrameWidth*2;
                 _position.Y = _anchor.Position.Y/_distance + _AnchorOffset.Y;

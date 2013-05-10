@@ -90,7 +90,7 @@ namespace DampServer.commands
 
             db.Close();
 
-            NotifyUser(new StatusXmlResponse { From = friend.UserId.ToString(),
+            NotifyUser(new StatusXmlResponse { From = friend.UserId,
             Code = 200,
             Command = "FriendRequest"}, friend.UserId);
             _client.SendXmlResponse(new StatusXmlResponse {Code = 200, Command = "AddFriend", Message = "Friend request added"});

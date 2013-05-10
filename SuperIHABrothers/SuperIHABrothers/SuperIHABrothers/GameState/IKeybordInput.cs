@@ -15,5 +15,11 @@ namespace GameState
         bool WasRightPressed { get; }
         bool IsJumpPressed { get; }
         bool WasJumpPressed { get; }
+        bool IsCurserDownPressed { get; }
+        bool IsCurserUpPressed { get; }
+        bool IsSelectPressed { get; }
+        bool WasCurserDownPressed { get; }
+        bool WasCurserUpPressed { get; }
+        bool WasSelectPressed { get; }
     }
 }

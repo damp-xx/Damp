@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Sprites;
 
-namespace SuperIHABrothers.Sprite
+namespace Sprites
 {
     public interface ISpriteContainerMessage
     {
