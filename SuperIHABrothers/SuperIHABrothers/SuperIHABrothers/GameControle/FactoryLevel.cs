@@ -6,6 +6,7 @@ using Collision;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Sprite;
 using Sprites;
 using SuperIHABrothers;
 using GameState;
@@ -70,6 +71,12 @@ namespace GameControle
            
             // Add DeathAnimation
             _list = new List<ISprite>();
+            _listLisst.Add(_list);
+
+
+            // Add Finishline
+            _list = new List<ISprite>();
+            _list.Add(new SpriteFinishLine(_content.Load<Texture2D>("Finish"), new Vector2(1200, 340), 100, 100, mIAnchor));
             _listLisst.Add(_list);
 
 

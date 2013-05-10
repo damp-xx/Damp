@@ -18,7 +18,8 @@ namespace Sprites {
         Player = 1,
         Monster = 2,
         Environment = 3,
-        DeathAnimation = 4
+        DeathAnimation = 4,
+        FinishLine = 5
     }
 	public class SpriteContainer : ISpriteContainer, ISpriteContainerCollision {
 
