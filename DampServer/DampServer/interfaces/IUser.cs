@@ -5,7 +5,7 @@ namespace DampServer.interfaces
 {
     public interface IUser
     {
-        Int64 UserId { get; set; }
+        long UserId { get; set; }
         string Username { get; set; }
         List<Game> Games { get; set; }
         List<User> Friends { get; set; }
