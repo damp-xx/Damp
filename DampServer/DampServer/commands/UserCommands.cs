@@ -148,7 +148,7 @@ namespace DampServer.commands
 
             // get user friends
             sqlCmd.CommandText =
-                "SELECT * FROM Users WHERE userid = (SELECT userid1 FROM Friends WHERE userid = @userid)";
+                "SELECT u.* FROM Users u, Friends f WHERE f.userid = @userid AND u.userid = f.userid1";
             //    sqlCmd.Parameters.Add("@userid", SqlDbType.BigInt).Value = user.UserId;
             r = sqlCmd.ExecuteReader();
 
