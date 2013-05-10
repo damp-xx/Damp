@@ -26,9 +26,10 @@ namespace Login
         private const string AccountNameElement = "AccountName";
         private string _username = "";
 
+        public EventArgs e = null;
         public delegate void LoggedIn(MainWindow m, EventArgs e);
-
         public event LoggedIn Login;
+        
 
         public MainWindow()
         {
@@ -84,14 +85,14 @@ namespace Login
 
         private void LoginButton_OnClick(object sender, RoutedEventArgs e)
         {
-            if (ComLogin.Login(Username.Text, Password.Password))
+            if (ComLogin.Login(Username.Text, Password.Password) && Login != null)
             {
+                Login(this, this.e);
                 WriteXml();
-                Login(this, new EventArgs());
             }
             else
             {
-                MessageBox.Show("Argh", "Critical Warning", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Wrong account name or password", "Critical Warning", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
