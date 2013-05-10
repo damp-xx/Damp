@@ -7,14 +7,15 @@
 ///////////////////////////////////////////////////////////
 
 
-
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace GameControle {
 	public interface ILevel  {
 
-		void Draw();
+		void Draw(SpriteBatch spriteBatch);
 
-		void Update();
+		void Update(GameTime time);
 	}//end ILevel
 
 }//end namespace GameControle

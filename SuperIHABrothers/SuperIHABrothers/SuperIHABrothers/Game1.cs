@@ -4,6 +4,8 @@ using System.IO;
 using System.IO.Pipes;
 using System.Linq;
 using System.Threading;
+using Collision;
+using GameState;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
@@ -11,6 +13,7 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using GameControle;
 
 namespace SuperIHABrothers
 {
@@ -21,7 +24,9 @@ namespace SuperIHABrothers
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-
+        private GameControle.Game _game;
+       
+       
 
         public Game1(string pipeIn, string pipeOut)
         {
@@ -41,7 +46,9 @@ namespace SuperIHABrothers
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            
+
+            var gameFactory = new GameFactory();
+            _game = gameFactory.GetGame(Content);
 
             base.Initialize();
             
@@ -81,7 +88,7 @@ namespace SuperIHABrothers
                 this.Exit();
 
             // TODO: Add your update logic here
-            
+           _game.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -96,7 +103,7 @@ namespace SuperIHABrothers
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
- 
+            _game.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
         }

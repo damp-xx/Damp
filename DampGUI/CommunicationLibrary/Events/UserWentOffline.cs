@@ -9,9 +9,15 @@ namespace CommunicationLibrary.Events
 {
     class UserWentOffline: IEvents
     {
+        private IEventSubscribe EventHandler;
+        public UserWentOffline(IEventSubscribe Handler)
+        {
+            EventHandler = Handler;
+        }
         public void Action(XmlElement Event)
         {
             
+            EventHandler.HandleUserOffline(Event);
         }
     }
 }

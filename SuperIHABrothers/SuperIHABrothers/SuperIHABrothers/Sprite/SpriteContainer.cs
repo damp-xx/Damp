@@ -14,10 +14,11 @@ using Microsoft.Xna.Framework.Graphics;
 namespace Sprites {
     public enum listTypes
     {
-        Player = 0,
-        Monster = 1,
-        Environment = 2,
-        Background = 3,
+        Background = 0,
+
+        Player = 1,
+        Monster = 2,
+        Environment = 3,
         DeathAnimation = 4
     }
 	public class SpriteContainer : ISpriteContainer, ISpriteContainerCollision {
@@ -25,11 +26,20 @@ namespace Sprites {
 		public Sprites.IAnchorUpdate _IAnchorUpdate;
 		public Sprites.ISprite _ISprite;
 	    private List<List<ISprite>> _spriteList;
-        public List<List<ISprite>> SpriteList { get { return _spriteList; } }
+        private IAnchorUpdate _anchor;
 
-        public SpriteContainer(List<List<ISprite>> mList)
+
+	    public void ReUpdate(Vector2 mPos)
+	    {
+	        throw new System.NotImplementedException();
+	    }
+
+	    public List<List<ISprite>> SpriteList { get { return _spriteList; } }
+
+        public SpriteContainer(List<List<ISprite>> mList, IAnchorUpdate mAnchorUpdate)
         {
             _spriteList = mList;
+            _anchor = mAnchorUpdate;
         }
 
 
@@ -40,24 +50,13 @@ namespace Sprites {
 
 	    public void RemoveMonster(ISprite mSprite)
 	    {
-	        throw new System.NotImplementedException();
+	        _spriteList[(int) listTypes.Monster].Remove(mSprite);
 	    }
 
 	    public void RemovePlayer(ISprite mSprite)
 	    {
-	        throw new System.NotImplementedException();
+	        _spriteList[(int) listTypes.Player].Remove(mSprite);
 	    }
-
-	    
-       
-	    private IAnchorUpdate _anchor;
-
-
-		public SpriteContainer(List<List<ISprite>> mList, IAnchorUpdate mAnchor)
-		{
-		    _spriteList = mList;
-		    _anchor = mAnchor;
-		}
 
 
 	    public void Update(GameTime time)

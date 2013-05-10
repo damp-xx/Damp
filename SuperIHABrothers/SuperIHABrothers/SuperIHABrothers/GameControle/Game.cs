@@ -7,19 +7,39 @@
 ///////////////////////////////////////////////////////////
 
 
-
-
+using Collision;
 using GameState;
 using GameControle;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+
 namespace GameControle {
 	public class Game {
 
-		public GameState.IGameState m_IGameState;
-		public GameControle.ILevel m_ILevel;
+		private GameState.IGameState m_IGameState;
+		private GameControle.ILevel m_ILevel;
+	    private IKeybordInput mInput;
+	    private IKeyboardUpdate _keyboardUpdate;
+	    private IGameState _gameState;
 
-		public Game(){
-
+		public Game(IFactoryLevel factoryLevel, IGameState gameState, IKeybordInput keyInput, IKeyboardUpdate keyboardUpdate)
+		{
+		    _gameState = gameState;
+		    mInput = keyInput;
+		    _keyboardUpdate = keyboardUpdate;
+		    m_ILevel = factoryLevel.GetLevelOne(mInput);
 		}
+
+        public void Update(GameTime time)
+        {
+            _keyboardUpdate.Update();
+            m_ILevel.Update(time);
+        }
+
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            m_ILevel.Draw(spriteBatch);
+        }
 
 
 
