@@ -25,8 +25,7 @@ namespace GameControle
         }
 
         public ILevel GetLevelOne(IKeybordInput _input)
-        {
-            
+        {        
             var pos = new Vector2(400, 10);
             var mIAnchor = new Anchor(_input);
             var mPlayer = new SpritePlayer(_content.Load<Texture2D>("burning man"), pos, 47, 44, mIAnchor, _input);
@@ -37,7 +36,7 @@ namespace GameControle
 
             // Add Background list
             _list = new List<ISprite>();
-            _list.Add(new SpriteBackground(_content.Load<Texture2D>("background"), new Vector2(0, 0), 600, 1024, mIAnchor, _content.Load<Texture2D>("background")));
+            _list.Add(new SpriteBackground(_content.Load<Texture2D>("background"), new Vector2(-1024, 0), 600, 1024, mIAnchor, _content.Load<Texture2D>("background")));
             _listLisst.Add(_list);
 
             // Add Player list 
@@ -51,14 +50,13 @@ namespace GameControle
             
             // Add Environment list
             _list = new List<ISprite>();
-            for (int i = 0; i < 6000; i += 600)
+            for (int i = 0; i < 6000; i += 600) // "Floor" environtment
             {
                 _list.Add(new SpriteEnviroment(_content.Load<Texture2D>("EnvironmentLong"), new Vector2(i, 440), 40, 600, mIAnchor));
             }
 
             int height = 400;
-            int x = 0;
-            for (int i = 500; i < 6000; i+=200 )
+            for (int i = 500; i < 5000; i+=200 )
             {
                 if (height < 50)
                     height = 400;
@@ -66,6 +64,8 @@ namespace GameControle
                 height -= 100;
             }
 
+            _list.Add(new SpriteEnviroment(_content.Load<Texture2D>("EnvironmentLong"), new Vector2(-300, 250), 240, 300, mIAnchor)); // Start "border" environment
+            _list.Add(new SpriteEnviroment(_content.Load<Texture2D>("EnvironmentLong"), new Vector2(6000, 250), 240, 300, mIAnchor)); // Stop "border" environment
            _listLisst.Add(_list);
            
             // Add DeathAnimation

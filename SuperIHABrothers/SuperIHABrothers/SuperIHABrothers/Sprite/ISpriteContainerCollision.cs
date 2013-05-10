@@ -22,6 +22,8 @@ namespace Sprites {
 
 	    void RemovePlayer(ISprite mSprite);
 
+	    void ReUpdate();
+
 		List<List<ISprite>> SpriteList{
 			get;
 		}
