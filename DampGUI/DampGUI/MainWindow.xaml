@@ -7,7 +7,7 @@
     xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
     xmlns:ei="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions"
     mc:Ignorable="d" x:Class="DampGUI.MainWindow"
-    WindowStartupLocation="CenterScreen" Icon="/LOGOWall/Icon.jpg"
+    WindowStartupLocation="CenterScreen" Icon="LOGOWall/Icon.jpg"
     Title="Damp" ResizeMode="NoResize" WindowStyle="None" WindowState="Normal"
     Style="{DynamicResource StandardWindow}"
     d:DesignWidth="1300" d:DesignHeight="900">
