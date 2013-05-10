@@ -20,7 +20,7 @@ namespace Sprites {
         public Rectangle MyRectangle { get { return _rectangle; } set { _rectangle = value; } }
 	    public Vector2 Velocity { get; set; }
 	    public bool _isInAir { get; set; }
-	    private IAnchor _anchor;
+	    public IAnchor _anchor;
         private Vector2 _AnchorOffset;
 	    private Texture2D _texture2D;
 	    private int _FrameHeight;

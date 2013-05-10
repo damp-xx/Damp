@@ -16,7 +16,7 @@ namespace Collision {
         private SpritePlayer _playerSprite;
         private SpriteEnviroment _environmentSprite;
 
-		public PlayerEnvironmentTopEvent(ISprite player, ISprite environmentSprite)
+        public PlayerEnvironmentTopEvent(ISprite player, ISprite environmentSprite, ISpriteContainerCollision mReUpdate)
         {
             _playerSprite = (SpritePlayer)player;
 		    _environmentSprite = (SpriteEnviroment)environmentSprite;
