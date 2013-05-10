@@ -1,20 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Threading;
 
 namespace DampGUI
@@ -26,8 +12,8 @@ namespace DampGUI
     {
         private PhotoCollection _photoCollection;
         private ThumbnailEventArgs eb = new ThumbnailEventArgs();
-        
-        public PhotoCollectionView( PhotoCollection aPhotoCollection)
+
+        public PhotoCollectionView(PhotoCollection aPhotoCollection)
         {
             InitializeComponent();
             _photoCollection = aPhotoCollection;
@@ -39,7 +25,7 @@ namespace DampGUI
         private double ThumbnailWidth
         {
             //grd.ActualWidth
-            get { return (600) / 4; }
+            get { return (600)/4; }
         }
 
         private void UserControl_Loaded()
@@ -52,7 +38,7 @@ namespace DampGUI
             {
                 if (photo.IsMade == false)
                 {
-                    photo.create();
+                    photo.Create();
                 }
                 AddPhotoToStack(photo, thumbWidth, setFirstItemChecked);
                 setFirstItemChecked = false;
@@ -62,35 +48,33 @@ namespace DampGUI
 
         private void AddPhotoToStack(Photo photo, double thumbWidth, bool setFirstItemChecked, bool isInsert = false)
         {
-
-            base.Dispatcher.Invoke(DispatcherPriority.ApplicationIdle,new Action(() =>
-            {
-                ThumbnailPhotoView tp = new ThumbnailPhotoView();
-                tp.ThumbnailClick += new EventHandler<ThumbnailEventArgs>(tp_ThumbnailClick);
-
-                tp.ImageSource = photo.Image;
-                tp.ImageHeight = thumbWidth / 1.3;
-                tp.ImageWidth = thumbWidth;
-                
-                
-                if (isInsert)
+            base.Dispatcher.Invoke(DispatcherPriority.ApplicationIdle, new Action(() =>
                 {
-                    photos.Children.Insert(0, tp);
-                }
-                else
-                {
-                    photos.Children.Add(tp);
-                }
-                tp.IsSelected = setFirstItemChecked;
-            }));
+                    ThumbnailPhotoView tp = new ThumbnailPhotoView();
+                    tp.ThumbnailClick += new EventHandler<ThumbnailEventArgs>(tp_ThumbnailClick);
+
+                    tp.ImageSource = photo.Image;
+                    tp.ImageHeight = thumbWidth/1.3;
+                    tp.ImageWidth = thumbWidth;
+
+
+                    if (isInsert)
+                    {
+                        photos.Children.Insert(0, tp);
+                    }
+                    else
+                    {
+                        photos.Children.Add(tp);
+                    }
+                    tp.IsSelected = setFirstItemChecked;
+                }));
         }
 
         private void tp_ThumbnailClick(object sender, ThumbnailEventArgs e)
         {
             mainPhoto.Source = e.ImageSource;
-            mainPhoto.Width = this.ActualWidth / 2.0;
+            mainPhoto.Width = this.ActualWidth/2.0;
             eb.ImageSource = e.ImageSource;
-            
         }
 
         private void mainPhoto_MouseDown(object sender, MouseButtonEventArgs e)
@@ -99,6 +83,5 @@ namespace DampGUI
             other.BigMainPhoto.Source = eb.ImageSource;
             other.Show();
         }
-
     }
 }

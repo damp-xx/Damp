@@ -3,14 +3,13 @@
 namespace DampGUI
 {
     /// <summary>
-    /// Interaction logic for FindFriendListView.xaml
+    /// Interaction logic for FriendProfileView.xaml
     /// </summary>
-    public partial class FindFriendListView : UserControl
+    public partial class FriendProfileView : UserControl
     {
-        public FindFriendListView()
+        public FriendProfileView()
         {
             InitializeComponent();
         }
-
     }
 }

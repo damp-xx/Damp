@@ -63,8 +63,6 @@
     <Compile Include="Models\Friend.cs" />
     <Compile Include="Models\Game.cs" />
     <Compile Include="IEvents.cs" />
-    <Compile Include="Models\IFriend.cs" />
-    <Compile Include="Models\IGame.cs" />
     <Compile Include="Models\IPhoto.cs" />
     <Compile Include="Models\Photo.cs" />
     <Compile Include="Program.cs" />

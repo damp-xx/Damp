@@ -1,24 +1,4 @@
-﻿/*
-  In App.xaml:
-  <Application.Resources>
-      <vm:ViewModelLocator xmlns:vm="clr-namespace:DampGUI"
-                                   x:Key="Locator" />
-  </Application.Resources>
-  
-  In the View:
-  DataContext="{Binding Source={StaticResource Locator}, Path=ViewModelName}"
-*/
-
-using System;
-using System.Linq;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Threading;
-using System.Threading.Tasks;
-using CommunicationLibrary;
-// Toolkit namespace
-
-using SimpleMvvmToolkit;
+﻿using CommunicationLibrary;
 
 namespace DampGUI
 {
@@ -68,9 +48,7 @@ namespace DampGUI
         {
             get
             {
-                IFriendServiceAgent serviceAgent = new MockFriendServiceAgent();
-                
-                return new FriendFindViewModel(serviceAgent);
+                return new FriendFindViewModel();
             }
         }
 
@@ -78,8 +56,7 @@ namespace DampGUI
         {
             get
             {
-                IGameServiceAgent serviceAgent = new MockGameServiceAgent();
-                return new GameViewModel(serviceAgent,lGames);
+                return new GameViewModel(lGames);
             }
         }
 
@@ -87,21 +64,9 @@ namespace DampGUI
         {
             get
             {
-                IFriendProfileServiceAgent serviceAgent = new MockFriendProfileServiceAgent();
-                return new FriendProfileViewModel(serviceAgent, knowfriends);
+                return new FriendProfileViewModel(knowfriends);
             }
         }
-
-        //public ChatViewModel ChatViewModel
-        //{
-        //    get
-        //    {
-                
-        //        return new ChatViewModel(knowfriends.CurrentFriend.Id);
-        //    }
-        //}
-
-
 
         public Games LoadGames()
         {

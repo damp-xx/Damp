@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using SimpleMvvmToolkit;
 
 namespace DampGUI
 {
     public class Friends : ModelBase<Friends>
     {
-        private int currentFriendIndex = -1; //skal være -1 normalt
+        private int currentFriendIndex = -1;
         private int totalFriends = 0;
         private ObservableCollection<Friend> friends = new ObservableCollection<Friend>();
 
@@ -26,18 +25,18 @@ namespace DampGUI
         {
             get
             {
-                if (CurrentFriendIndex >= 0){
-                    
+                if (CurrentFriendIndex >= 0)
+                {
                     if (friends[currentFriendIndex].Photo.IsMade == false)
                     {
                         friends[currentFriendIndex].Photo.LoadPicture();
-                        friends[currentFriendIndex].Photo.create();
+                        friends[currentFriendIndex].Photo.Create();
                     }
 
                     return friends[CurrentFriendIndex];
                 }
-                else
-                    return null;
+
+                return null;
             }
             set
             {
@@ -72,7 +71,7 @@ namespace DampGUI
     }
 
 
-    public class Friend : ModelBase<Friend>,IFriend
+    public class Friend : ModelBase<Friend>
     {
         private string name;
         private string description;
@@ -84,10 +83,7 @@ namespace DampGUI
         private Photo photo;
         private string id;
 
-        public Friend()
-        {
-            
-        }
+        public string RealName { get; set; }
 
         public Photo Photo
         {

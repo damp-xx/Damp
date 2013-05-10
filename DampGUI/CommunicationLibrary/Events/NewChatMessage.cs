@@ -22,11 +22,16 @@ namespace CommunicationLibrary.Events
             if (xmlNode != null)
                 from  = xmlNode.InnerText;
 
+            string fromTitle = "";
+            var sdd = Event.GetElementsByTagName("FromName").Item(0);
+            if (sdd != null)
+                fromTitle = sdd.InnerText;
+
             string message = "";
             var xmlNode1 = Event.GetElementsByTagName("Message").Item(0);
             if (xmlNode1 != null)
                 message = xmlNode1.InnerText;
-            ChatHandler.HandleNewChatMessage(from, message);
+            ChatHandler.HandleNewChatMessage(from, message, fromTitle);
             Console.WriteLine("NewChatMessage Done");
         }
     }

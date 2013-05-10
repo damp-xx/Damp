@@ -9,6 +9,8 @@
 
 using System.Collections.Generic;
 using Collision;
+using Microsoft.Xna.Framework;
+
 namespace Sprites {
 	public interface ISpriteContainerCollision  {
 
@@ -22,7 +24,11 @@ namespace Sprites {
 
 	    void RemovePlayer(ISprite mSprite);
 
+<<<<<<< HEAD
 	    void ReUpdate();
+=======
+	    void ReUpdate(Vector2 mPos);
+>>>>>>> 634d738f07c5e1c11ac4aef98775b186a102ba3f
 
 		List<List<ISprite>> SpriteList{
 			get;

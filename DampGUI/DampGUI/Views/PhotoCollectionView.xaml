@@ -1,14 +1,15 @@
 ﻿<UserControl x:Class="DampGUI.PhotoCollectionView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             mc:Ignorable="d" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
-    
-    <GroupBox Grid.Row="0" Grid.Column="1"  BorderThickness="2" Header="Screenshots" Foreground="#FFFFFF" Margin="5,0,0,0" VerticalContentAlignment="Center">
 
-        <Grid Name="grd" MinWidth="300" MinHeight="200" Margin="0,5,0,0" >
+    <GroupBox Grid.Row="0" Grid.Column="1" BorderThickness="2" Header="Screenshots" Foreground="#FFFFFF"
+              Margin="5,0,0,0" VerticalContentAlignment="Center">
+
+        <Grid Name="grd" MinWidth="300" MinHeight="200" Margin="0,5,0,0">
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="2.5*" />
@@ -16,16 +17,17 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Viewbox Grid.Row="0">
-                <Image Grid.Row="0" Name="mainPhoto" Stretch="Uniform"  MouseDown="mainPhoto_MouseDown" />
+                <Image Grid.Row="0" Name="mainPhoto" Stretch="Uniform" MouseDown="mainPhoto_MouseDown" />
             </Viewbox>
             <Separator Grid.Row="1" Margin="0,0,0,0" VerticalContentAlignment="Bottom" Background="#3F3F46"></Separator>
             <Border BorderThickness="1" Grid.Row="2">
                 <DockPanel>
 
-                    <ScrollViewer HorizontalScrollBarVisibility="Visible"  VerticalScrollBarVisibility="Disabled" >
+                    <ScrollViewer HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Disabled">
                         <Viewbox>
-                            <StackPanel  Name="photos" Margin="0,0,0,3" ClipToBounds="True" 
-                          Orientation="Horizontal" HorizontalAlignment="Center"></StackPanel>
+                            <StackPanel Name="photos" Margin="0,0,0,3" ClipToBounds="True"
+                                        Orientation="Horizontal" HorizontalAlignment="Center">
+                            </StackPanel>
                         </Viewbox>
                     </ScrollViewer>
                 </DockPanel>

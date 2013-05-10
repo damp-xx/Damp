@@ -9,9 +9,16 @@ namespace CommunicationLibrary.Events
 {
     class UserWentOnline: IEvents
     {
+        private IEventSubscribe EventHandler;
+        public UserWentOnline(IEventSubscribe Handler)
+        {
+            EventHandler = Handler;
+        }
         public void Action(XmlElement Event)
         {
             
+
+            EventHandler.HandleUserOnline(Event);
         }
     }
 }
