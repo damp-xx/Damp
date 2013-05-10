@@ -19,17 +19,15 @@ using Microsoft.Xna.Framework;
 namespace GameControle {
 	public class Level1 : ILevel {
 
-		public Collision.ICollisionControl MiCollisionControl;
+		private Collision.ICollisionControl MiCollisionControl;
 		private Sprites.ISpriteContainer m_ISpriteContainer;
-		public EventHandling.IEventHandlerMain m_IEventHandlerMain;
-		public GameState.IGameStateLevel m_IGameStateLevel;
-	    
 	    private ISpriteContainerCollision _spriteContainerCollision;
 
-		public Level1(ISpriteContainer mSpriteContainer, ISpriteContainerCollision mSpriteContainerCollision)
+		public Level1(ISpriteContainer mSpriteContainer, ISpriteContainerCollision mSpriteContainerCollision, ICollisionControl collisionControl)
 		{
 		    m_ISpriteContainer = mSpriteContainer;
 		    _spriteContainerCollision = mSpriteContainerCollision;
+		    MiCollisionControl = collisionControl;
 		}
 
 
@@ -45,7 +43,7 @@ namespace GameControle {
 		public void Update(GameTime time)
         {
             m_ISpriteContainer.Update(time);
-            //MiCollisionControl.Update();
+            MiCollisionControl.Update(_spriteContainerCollision);
 		}
 
 	}//end Level1

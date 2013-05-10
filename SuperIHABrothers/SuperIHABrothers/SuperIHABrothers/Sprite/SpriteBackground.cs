@@ -14,39 +14,84 @@ namespace Sprites {
 	public class SpriteBackground : ISprite {
 
         //Generel Atributes
-        public Vector2 Position { get; set; }
-        public Rectangle MyRectangle { get; set; }
+        public Vector2 Position { get { return _position; } set { _position = value; } }
+        private Vector2 _position;
+        private Vector2 _position2; 
+        private Vector2 _AnchorOffset;
+        public Rectangle MyRectangle { get { return _rectangle; } set { _rectangle = value; } }
 	    public Vector2 Velocity { get; set; }
 	    public bool _isInAir { get; set; }
-	    private IAnchor _Anchor;
+	    private IAnchor _anchor;
         private int _FrameHeight;
         private int _FrameWidth;
         private Texture2D _texture2D;
+        private Rectangle _rectangle;
+	    private Texture2D _extraTexture;
+	    private Rectangle _extraRectangle;
 
         //Moving Atributes
-        public Vector2 Velocety { get;  set; }
-	    private int _distance; //Distance form forground to the background
+        public Vector2 Velocety { get { return _velocety; } set { _velocety = value; } }
+        private Vector2 _velocety;
+	    private int _distance = 2; //Distance from foreground to the background
 
-        public SpriteBackground(Texture2D mTexture2D, int mDistance)
+        public SpriteBackground(Texture2D mTexture2D, Vector2 mAnchorOffset, int mFrameHeight, int mFrameWidth, IAnchor mAnchor, Texture2D extraTexture)
         {
-            _distance = mDistance;
+            _FrameHeight = mFrameHeight;
+            _FrameWidth = mFrameWidth;
             _texture2D = mTexture2D;
-            Position = new Vector2(0,0);
+            _extraTexture = extraTexture;
+            _AnchorOffset = mAnchorOffset;
+            _anchor = mAnchor;
         }
+
 	    public void Draw(SpriteBatch spriteBatch)
 	    {
-	        throw new System.NotImplementedException();
+            spriteBatch.Draw(_texture2D, _rectangle, Color.White);
+            spriteBatch.Draw(_extraTexture, _extraRectangle, Color.White);
 	    }
 
 
 	    public void Update(GameTime time)
 	    {
-	        
+            if (_anchor.Position.X < -(_FrameWidth * 6))
+            {
+                _position.X = _anchor.Position.X / _distance + _AnchorOffset.X + _FrameWidth * 4;
+                _position.Y = _anchor.Position.Y / _distance + _AnchorOffset.Y;
+                _position2.X = _anchor.Position.X / _distance + _AnchorOffset.X + _FrameWidth * 3;
+                _position2.Y = _anchor.Position.Y / _distance + _AnchorOffset.Y;
+            }
+
+            else if (_anchor.Position.X < -(_FrameWidth*4))
+            {
+                _position.X = _anchor.Position.X/_distance + _AnchorOffset.X + _FrameWidth*2;
+                _position.Y = _anchor.Position.Y/_distance + _AnchorOffset.Y;
+                _position2.X = _anchor.Position.X/_distance + _AnchorOffset.X + _FrameWidth*3;
+                _position2.Y = _anchor.Position.Y/_distance + _AnchorOffset.Y;
+            }
+            else if (_anchor.Position.X < - (_FrameWidth*2))
+            {
+                _position.X = _anchor.Position.X/_distance + _AnchorOffset.X + _FrameWidth*2;
+                _position.Y = _anchor.Position.Y/_distance + _AnchorOffset.Y;
+                _position2.X = _anchor.Position.X/_distance + _AnchorOffset.X + _FrameWidth;
+                _position2.Y = _anchor.Position.Y/_distance + _AnchorOffset.Y;
+            }
+	        else
+	        {
+                _position2.X = _anchor.Position.X/_distance + _AnchorOffset.X + _FrameWidth;
+	            _position2.Y = _anchor.Position.Y/_distance + _AnchorOffset.Y;
+
+	            _position.X = _anchor.Position.X/_distance + _AnchorOffset.X;
+	            _position.Y = _anchor.Position.Y/_distance + _AnchorOffset.Y;
+	        }
+
+	        MyRectangle = new Rectangle((int)Position.X, (int)Position.Y, _FrameWidth, _FrameHeight);
+            _extraRectangle = new Rectangle( (int)_position2.X, (int)_position2.Y, _FrameWidth, _FrameHeight);
 	    }
 
 	    public void UpdatePosition()
 	    {
-	        
+            MyRectangle = new Rectangle((int)Position.X, (int)Position.Y, _FrameWidth, _FrameHeight);
+            _extraRectangle = new Rectangle((int)_position2.X, (int)_position2.Y, _FrameWidth, _FrameHeight);
 	    }
 	}//end SpriteBackground
 

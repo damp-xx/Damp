@@ -14,10 +14,11 @@ using Microsoft.Xna.Framework.Graphics;
 namespace Sprites {
     public enum listTypes
     {
-        Player = 0,
-        Monster = 1,
-        Environment = 2,
-        Background = 3,
+        Background = 0,
+
+        Player = 1,
+        Monster = 2,
+        Environment = 3,
         DeathAnimation = 4
     }
 	public class SpriteContainer : ISpriteContainer, ISpriteContainerCollision {

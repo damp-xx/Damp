@@ -65,23 +65,24 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="PhotoCollectionView.xaml.cs">
+    <Compile Include="Views\ChatView.xaml.cs">
+      <DependentUpon>ChatView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EventSubscriber.cs" />
+    <Compile Include="Views\PhotoCollectionView.xaml.cs">
       <DependentUpon>PhotoCollectionView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Services\IFriendProfileServiceAgent.cs" />
-    <Compile Include="Services\MockFriendProfileServiceAgent.cs" />
+    <Compile Include="ViewModels\ChatViewModel.cs" />
     <Compile Include="ViewModels\FriendProfileViewModel.cs" />
     <Compile Include="Views\BigPictureView.xaml.cs">
       <DependentUpon>BigPictureView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="FriendProfileView.xaml.cs">
+    <Compile Include="Views\FriendProfileView.xaml.cs">
       <DependentUpon>FriendProfileView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\GameControlView.xaml.cs">
       <DependentUpon>GameControlView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Services\MockGameServiceAgent.cs" />
-    <Compile Include="Services\IGameServiceAgent.cs" />
     <Compile Include="Views\ThumbnailPhotoView.xaml.cs">
       <DependentUpon>ThumbnailPhotoView.xaml</DependentUpon>
     </Compile>
@@ -90,11 +91,13 @@
       <DependentUpon>FindFriendListView.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\FriendFindViewModel.cs" />
-    <Compile Include="Services\MockFriendServiceAgent.cs" />
-    <Compile Include="Services\IFriendServiceAgent.cs" />
     <Compile Include="Locators\ViewModelLocator.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
-    <Page Include="PhotoCollectionView.xaml">
+    <Page Include="Views\ChatView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PhotoCollectionView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -102,7 +105,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="FriendProfileView.xaml">
+    <Page Include="Views\FriendProfileView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -196,6 +199,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="app.config" />
     <Resource Include="Styles\BAUERG.TTF" />
@@ -210,9 +214,13 @@
       <Project>{9380f760-d929-4b4f-97d9-3a0ece33210c}</Project>
       <Name>CommunicationLibrary</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ConnectionLibrary\ConnectionLibrary.csproj">
+      <Project>{540F41D8-691D-45EB-AF49-9AF15D4B69F9}</Project>
+      <Name>ConnectionLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\" />
+    <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="LOGOWall\HomePic.png" />

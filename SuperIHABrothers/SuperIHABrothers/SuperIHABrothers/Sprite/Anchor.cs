@@ -38,7 +38,7 @@ namespace Sprites {
             Position = new Vector2(0,0);
             _velocety = new Vector2(0,0);
 		    _KeyInput = mKey;
-            Speed = 10;
+            Speed = -3;
         }
 
 		public void Update(GameTime time)

@@ -28,6 +28,7 @@ namespace CommunicationLibrary
                         {
                             Id = x. GetElementsByTagName("UserId").Item(0).InnerText,
                             Name = x.GetElementsByTagName("Username").Item(0).InnerText,
+                            RealName = x.GetElementsByTagName("Username").Item(0).InnerText,
                             Description = x.GetElementsByTagName("Email").Item(0).InnerText,
                             AchivementsComplete = new ObservableCollection<string> {"Test"},
                         
@@ -39,7 +40,7 @@ namespace CommunicationLibrary
                     var item = x.GetElementsByTagName("Country").Item(0);
                     if (item != null)
                         k.Country = item.InnerText;
-                    var node = x.GetElementsByTagName("Gender").Item(0);
+                    var node = x.GetElementsByTagName("UserId").Item(0);
                     if (node != null)
                         k.Gender = node.InnerText;
                     var xmlNode1 = x.GetElementsByTagName("Language").Item(0);
@@ -58,11 +59,11 @@ namespace CommunicationLibrary
            // return null;
         }
 
-        public static bool SendChatMessage(string message)
+        public static bool SendChatMessage(string message, string to)
         {
             var client = new DampServerClient(ComLogin._ComIp);
-            var ResultFromServerXml = client.SendRequest("ChatSend", new Dictionary<string, string>{{"Message", message}}, ComLogin._ComToken);
-
+            var ResultFromServerXml = client.SendRequest("Chat", new Dictionary<string, string>{{"Message", message},{"To", to}}, ComLogin._ComToken);
+            Console.WriteLine(ResultFromServerXml.InnerXml);
             if (ResultFromServerXml.Name.Equals("Status"))
             {
                 var xmlNode = ResultFromServerXml.GetElementsByTagName("Code").Item(0);
@@ -136,18 +137,34 @@ namespace CommunicationLibrary
                 
                 foreach (XmlElement x in ResultFromServerXml.GetElementsByTagName("User") )
                 {
+
                     Friend k = new Friend
                     {
                         Id = x.GetElementsByTagName("UserId").Item(0).InnerText,
                         Name = x.GetElementsByTagName("Username").Item(0).InnerText,
-                        Description = "Email",
+                        Description = x.GetElementsByTagName("Email").Item(0).InnerText,
                         AchivementsComplete = new ObservableCollection<string> { "Test" },
-                        City = "Aarhus",
-                        Country = "Denmark",
-                        Gender = "Male",
-                        Language = "Male",
-                        Photo = new Photo("")
+
                     };
+
+                    var xmlNode = x.GetElementsByTagName("City").Item(0);
+                    if (xmlNode != null)
+                        k.City = xmlNode.InnerText;
+                    var item = x.GetElementsByTagName("Country").Item(0);
+                    if (item != null)
+                        k.Country = item.InnerText;
+                    var node = x.GetElementsByTagName("Gender").Item(0);
+                    if (node != null)
+                        k.Gender = node.InnerText;
+                    var xmlNode1 = x.GetElementsByTagName("Language").Item(0);
+                    if (xmlNode1 != null)
+                        k.Language = xmlNode1.InnerText;
+                    var item1 = x.GetElementsByTagName("Photo").Item(0);
+                    if (item1 != null)
+                        k.Photo = new Photo("Https://" + ComLogin._ComIp + ":1337/Download?AuthToken=" +
+                                            ComLogin._ComToken + "&Object=" +
+                                            item1.InnerText);
+
                     FriendList.Add(k);
                 }
 

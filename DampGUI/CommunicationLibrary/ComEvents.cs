@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 using CommunicationLibrary.Events;
 using ConnectionLibrary;
@@ -12,6 +8,7 @@ namespace CommunicationLibrary
 {
     public class ComEvents : IEventParser
     {
+        private static IEventSubscribe _eventHandler;
         public static void Listen()
         {
             var client = new DampServerClient(ComLogin._ComIp);
@@ -29,10 +26,11 @@ namespace CommunicationLibrary
                 switch (Event.GetElementsByTagName("Command").Item(0).InnerText)
                 {
                     case "UserWentOnline":
-                        command = new UserWentOnline();
+                        command = new UserWentOnline(_eventHandler);
                         break;
                     case "UserWentOffline":
-                        command = new UserWentOffline();
+                        command = new UserWentOffline(_eventHandler);
+                        
                         break;
                     case "FriendRequest":
                         command = new FriendRequest();
@@ -41,7 +39,7 @@ namespace CommunicationLibrary
                         command = new FriendAccepted();
                         break;
                     case "ChatRecieved":
-                        command = new NewChatMessage();
+                        command = new NewChatMessage(_eventHandler);
                         break;
                     default:
                         Console.WriteLine("Error parseing Event: {0}", Event.InnerXml);
@@ -49,13 +47,18 @@ namespace CommunicationLibrary
                 }
                 try
                 {
-                    command.Action(Event);
+                    if (command != null) command.Action(Event);
                 }
-                catch (NullReferenceException NEx)
+                catch (NullReferenceException nEx)
                 {
                     Console.WriteLine("Event not recogniced ....");
                 }
             }
+        }
+
+        public static void EventSubscrie(IEventSubscribe subscriber)
+        {
+            _eventHandler = subscriber;
         }
     }
 }

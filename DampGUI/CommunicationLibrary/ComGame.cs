@@ -89,8 +89,7 @@ namespace CommunicationLibrary
                             Developer = x.GetElementsByTagName("Developer").Item(0).InnerText,
                             Mode = x.GetElementsByTagName("Mode").Item(0).InnerText,
                             Language = x.GetElementsByTagName("Language").Item(0).InnerText,
-                            AchivementsGame =
-                            ComAchievement.GetAchievement(x.GetElementsByTagName("Id").Item(0).InnerText),
+                            AchivementsGame = ComAchievement.GetAllAchievementForGame(x.GetElementsByTagName("Id").Item(0).InnerText),
                         };
                     List<string> PhotoAdd = new List<string>();
                     foreach (XmlElement xxx in x.GetElementsByTagName("Picture"))

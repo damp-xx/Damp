@@ -26,7 +26,8 @@ namespace Collision {
 		private void HandleEvent()
 		{
             _playerSprite.Velocity = new Vector2(0, _playerSprite.Velocity.Y);
-            _playerSprite.Position = new Vector2(_environmentSprite.MyRectangle.Left - _playerSprite.MyRectangle.Width, _playerSprite.Position.Y); // Moving the player "out" from the environment
+            _playerSprite.Position = new Vector2(_environmentSprite.MyRectangle.Left - _playerSprite.MyRectangle.Width, _playerSprite.Position.Y);
+            _playerSprite.MyRectangle = new Rectangle(_environmentSprite.MyRectangle.Left - _playerSprite.MyRectangle.Width, _playerSprite.MyRectangle.Y, _playerSprite.MyRectangle.Width, _playerSprite.MyRectangle.Height); 
 		}
 
 	}//end PlayerEnvironmentLeftEvent

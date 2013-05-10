@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace GameState
 {
-    public class KeybordInput: IKeybordInput
+    public class KeybordInput: IKeybordInput, IKeyboardUpdate
     {
         private Keys _Left = Keys.Left;
         private Keys _Right = Keys.Right;
@@ -81,7 +81,11 @@ namespace GameState
             }
             if (Keyboard.GetState().IsKeyDown(_Jump))
             {
-                
+                IsJumpPressed = true;
+            }
+            else
+            {
+                IsJumpPressed = false;
             }
         }
     }

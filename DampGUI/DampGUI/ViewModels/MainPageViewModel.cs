@@ -2,35 +2,36 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Windows.Input;
+using System.Windows.Threading;
 using SimpleMvvmToolkit;
-
-// Toolkit namespace
 
 namespace DampGUI
 {
+    public struct KKK
+    {
+        public IDispatcher dd;
+        public ObservableCollection<Friend> friends;
+    }
+
     /// <summary>
     ///     This class contains properties that a View can data bind to.
-    ///     <para>
-    ///         Use the <strong>mvvmprop</strong> snippet to add bindable properties to this ViewModel.
-    ///     </para>
     /// </summary>
     public class MainPageViewModel : ViewModelBase<MainPageViewModel>
     {
-        // Default ctor
-
-        // TODO: Add events to notify the view or obtain data from the view
         public event EventHandler<NotificationEventArgs<Exception>> ErrorNotice;
+        public Dispatcher dispatcher;
+        public static KKK k;
         private Games games;
         private Friends knowFriends;
         private ObservableCollection<string> allGames = new ObservableCollection<string>();
-        private ObservableCollection<string> allFriends = new ObservableCollection<string>();
+        private ObservableCollection<Friend> allFriends = new ObservableCollection<Friend>();
 
-        // Add properties using the mvvmprop code snippet
         public MainPageViewModel(Games aGames, Friends aFriends)
         {
             games = aGames;
             knowFriends = aFriends;
+            k = new KKK {dd = Dispatcher, friends = LFriends};
+
 
             for (int i = 0; i < games.TotalGames; i++)
             {
@@ -40,14 +41,12 @@ namespace DampGUI
 
             for (int i = 0; i < knowFriends.TotalFriends; i++)
             {
-                lFriends.Add(knowFriends.Get(i).Name);
-                allFriends.Add(knowFriends.Get(i).Name);
+                lFriends.Add(knowFriends.Get(i));
+                allFriends.Add(knowFriends.Get(i));
             }
         }
 
-        // TODO: Add methods that will be called by the view
-
-        public void Button()
+        public void ShowFriendSearch()
         {
             Content = new FindFriendListView();
         }
@@ -70,9 +69,7 @@ namespace DampGUI
         public int IndexGame
         {
             get { return _indexGame; }
-            set { _indexGame = value;
-            
-            }
+            set { _indexGame = value; }
         }
 
         public void GotFocus()
@@ -111,7 +108,6 @@ namespace DampGUI
                     }
                 }
             }
-
         }
 
         private ObservableCollection<string> lGames = new ObservableCollection<string>();
@@ -125,7 +121,6 @@ namespace DampGUI
                 NotifyPropertyChanged(vm => vm.LGames);
             }
         }
-
 
         public List<string> FindGames(string aName)
         {
@@ -169,50 +164,25 @@ namespace DampGUI
         }
 
         /////////////////////////////////Friends
-        public List<string> FindFriends(string aName)
+        public List<Friend> FindFriends(string aName)
         {
             char[] name = aName.ToLower().ToCharArray();
 
-            List<string> resultList = new List<string>();
+            List<Friend> resultList = new List<Friend>();
             resultList.Clear();
-            string strName;
-            bool check = false;
             foreach (var friend in allFriends)
             {
-                strName = friend.ToLower();
-                char[] FName = strName.ToCharArray();
-
-                for (int i = 0; i <= (name.Length - 1); i++)
-                {
-                    if (name.Length <= FName.Length || !(name.Length > FName.Length))
-                    {
-                        if (name[i] == FName[i])
-                        {
-                            check = true;
-                        }
-                        else
-                        {
-                            check = false;
-                            break;
-                        }
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
-                if (check || name.Length == 0)
+                if (friend.Name.ToLower().IndexOf(aName.ToLower()) == 0)
                 {
                     resultList.Add(friend);
-                    check = false;
                 }
             }
             return resultList;
         }
 
-        private ObservableCollection<string> lFriends = new ObservableCollection<string>();
+        private ObservableCollection<Friend> lFriends = new ObservableCollection<Friend>();
 
-        public ObservableCollection<string> LFriends
+        public ObservableCollection<Friend> LFriends
         {
             get { return lFriends; }
             set
@@ -238,11 +208,11 @@ namespace DampGUI
 
         private string _friendListName;
 
-        public string FriendListName
+        public Friend FriendListName
         {
             set
             {
-                _friendListName = value;
+                _friendListName = value.Name;
                 FindIndexFriend(_indexFriend);
                 OnPropertyChanged("FriendListName");
             }
@@ -266,8 +236,6 @@ namespace DampGUI
                 }
             }
         }
-
-        // TODO: Optionally add callback methods for async calls to the service agent
 
         private string _searchGameName;
 
@@ -305,11 +273,27 @@ namespace DampGUI
             LGames = new ObservableCollection<string>(foundGames);
         }
 
-        ///friends
+        public void ChatButton()
+        {
+            if (knowFriends.CurrentFriend != null)
+            {
+                if (!EventSubscriber.ChatIdentyfier.ContainsKey(knowFriends.CurrentFriend.Id))
+                {
+                    var chat = new ChatView(knowFriends.CurrentFriend.Id);
+                   // Console.WriteLine("id sendet::::::" + knowFriends.CurrentFriend.Id);
+
+                    EventSubscriber.NewChat(knowFriends.CurrentFriend.Id, chat);
+                    chat.Show();
+                }
+                else
+                    EventSubscriber.ChatIdentyfier[knowFriends.CurrentFriend.Id].Focus();
+            }
+        }
+
         public void SearchFriends()
         {
             var foundFriends = this.FindFriends(SearchFriendName);
-            LFriends = new ObservableCollection<string>(foundFriends);
+            LFriends = new ObservableCollection<Friend>(foundFriends);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

@@ -22,4 +22,4 @@ namespace GameState {
 		}
 	}//end IGameStateLevel
 
-}//end namespace GameState
+}//end namespace GameStateC

@@ -1,65 +1,80 @@
 ﻿<Window
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:my="clr-namespace:DampGUI"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
-        xmlns:ei="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions"
-        mc:Ignorable="d" x:Class="DampGUI.MainWindow"
-     WindowStartupLocation="CenterScreen" Icon="/LOGOWall/Icon.jpg"
-        Title="Damp" ResizeMode="NoResize"  WindowStyle="None"  WindowState="Normal"
-        Style="{DynamicResource StandardWindow}"
-        d:DesignWidth="1300" d:DesignHeight="900"
-        >
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:my="clr-namespace:DampGUI"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+    xmlns:ei="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions"
+    mc:Ignorable="d" x:Class="DampGUI.MainWindow"
+    WindowStartupLocation="CenterScreen" Icon="/LOGOWall/Icon.jpg"
+    Title="Damp" ResizeMode="NoResize" WindowStyle="None" WindowState="Normal"
+    Style="{DynamicResource StandardWindow}"
+    d:DesignWidth="1300" d:DesignHeight="900">
     <Window.Resources>
-        <ResourceDictionary Source="/Styles/Styles.xaml"/>
+        <ResourceDictionary Source="/Styles/Styles.xaml" />
     </Window.Resources>
 
     <Window.DataContext>
-        <Binding Path="MainPageViewModel" Source="{StaticResource Locator}"/>
+        <Binding Path="MainPageViewModel" Source="{StaticResource Locator}" />
     </Window.DataContext>
 
     <DockPanel>
 
-        <Grid x:Name="TopBar" DockPanel.Dock="Top" SnapsToDevicePixels="True" Margin="0,0,0,0"   MouseDown="Drag_OnMouseDown" IsHitTestVisible="True">
+        <Grid x:Name="TopBar" DockPanel.Dock="Top" SnapsToDevicePixels="True" Margin="0,0,0,0"
+              MouseDown="Drag_OnMouseDown" IsHitTestVisible="True">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
 
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Column="0" Content="Home" x:Name="HomeButton"   FontSize="28" Margin="10,0,0,0" Style="{StaticResource LinkButton}"> 
-              
+            <Button Grid.Column="0" Content="Home" x:Name="HomeButton" FontSize="28" Margin="10,0,0,0"
+                    Style="{StaticResource LinkButton}">
             </Button>
-            <Button Grid.Column="1" Content="Profile" x:Name="ProfileButton"   FontSize="28" Margin="30,0,0,0" Style="{StaticResource LinkButton}" >
-            </Button>
-            <Button Grid.Column="2" Content="Find friends" x:Name="FindFriendsButton" FontSize="28" Margin="30,0,0,0" Style="{StaticResource LinkButton}" >
+            <Button Grid.Column="1" Content="Chat" x:Name="ProfileButton" FontSize="28" Margin="30,0,0,0"
+                    Style="{StaticResource LinkButton}">
+
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Click">
                         <ei:CallMethodAction
-                      TargetObject="{Binding}"
-                      MethodName="Button"/>
+                            TargetObject="{Binding}"
+                            MethodName="ChatButton" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+
+            </Button>
+            <Button Grid.Column="2" Content="Find friends" x:Name="FindFriendsButton" FontSize="28" Margin="30,0,0,0"
+                    Style="{StaticResource LinkButton}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <ei:CallMethodAction
+                            TargetObject="{Binding}"
+                            MethodName="ShowFriendSearch" />
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
 
             </Button>
             <!--<Button Grid.Column="3" Content="Settings" x:Name="SettingsButton" FontSize="28" Margin="30,0,0,0" Style="{StaticResource LinkButton}" />-->
 
-            <Rectangle Grid.Column="4" Fill="Transparent" IsHitTestVisible="True" Stretch="Fill"/>
+            <Rectangle Grid.Column="4" Fill="Transparent" IsHitTestVisible="True" Stretch="Fill" />
 
             <DockPanel Grid.Column="5">
-                <Button DockPanel.Dock="Right" x:Name="Close" Click="Close_OnClick"  VerticalContentAlignment="Center" Width="35" FontSize="20" Content="X" Style="{StaticResource CloseButton}"/>
-                <Button DockPanel.Dock="Right" x:Name="MinimizeNormal"   VerticalContentAlignment="Center" Width="35" FontSize="20" Margin="0,0,3,0" Content="M" Click="MaximizeNormal_Click" />
-                <Button DockPanel.Dock="Right" x:Name="Minimize" VerticalContentAlignment="Center" Width="35" FontSize="20" FontWeight="UltraBold"  Margin="0,0,3,0" Content="_" Click="Minimize_OnClick"/>
+                <Button DockPanel.Dock="Right" x:Name="Close" Click="Close_OnClick" VerticalContentAlignment="Center"
+                        Width="35" FontSize="20" Content="X" Style="{StaticResource CloseButton}" />
+                <Button DockPanel.Dock="Right" x:Name="MinimizeNormal" VerticalContentAlignment="Center" Width="35"
+                        FontSize="20" Margin="0,0,3,0" Content="M" Click="MaximizeNormal_Click" />
+                <Button DockPanel.Dock="Right" x:Name="Minimize" VerticalContentAlignment="Center" Width="35"
+                        FontSize="20" FontWeight="UltraBold" Margin="0,0,3,0" Content="_" Click="Minimize_OnClick" />
             </DockPanel>
 
 
         </Grid>
-        <Separator DockPanel.Dock="Top" Background="#3F3F46"/>
+        <Separator DockPanel.Dock="Top" Background="#3F3F46" />
         <!--<StatusBar Height="23" DockPanel.Dock="Bottom" Background="{Binding SelectedItem.Tag, ElementName=cmbAlarm}">
             <StatusBarItem>
                 <StackPanel Orientation="Horizontal">
@@ -71,83 +86,84 @@
         <GroupBox DockPanel.Dock="Left" Header="Games" Margin="0,0,3,0">
             <Grid Margin="5" VerticalAlignment="Top" Width="150">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <TextBox FontSize="16" Grid.Row="0" Margin="5" Style="{StaticResource SearchTextBox}"
                          Text="{Binding Path=SearchGameName, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="TextChanged">
                             <ei:CallMethodAction
-                      TargetObject="{Binding}"
-                      MethodName="SearchGames"/>
+                                TargetObject="{Binding}"
+                                MethodName="SearchGames" />
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
-                    
+
                 </TextBox>
-                <ListView x:Name="GameListView"  Grid.Row="1" ItemsSource="{Binding Path=LGames}" SelectedIndex="{Binding Path=IndexGame }" SelectedItem="{Binding Path=GameListName}">
-                    
+                <ListView x:Name="GameListView" Grid.Row="1" ItemsSource="{Binding Path=LGames}"
+                          SelectedIndex="{Binding Path=IndexGame }" SelectedItem="{Binding Path=GameListName}">
+
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="SelectionChanged">
                             <ei:CallMethodAction
-                      TargetObject="{Binding}"
-                      MethodName="ChangeGame"/>
+                                TargetObject="{Binding}"
+                                MethodName="ChangeGame" />
                         </i:EventTrigger>
-                        
+
                         <i:EventTrigger EventName="GotFocus">
                             <ei:CallMethodAction
                                 TargetObject="{Binding}"
-                      MethodName="GotFocus"/>
+                                MethodName="GotFocus" />
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
-                    
+
                 </ListView>
             </Grid>
         </GroupBox>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
-                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-           <!-- <my:FindFriendListView/> -->
 
-            <ContentControl x:Name="ContentCtrl" Margin="0,10,0,0" Content="{Binding Path=Content}"/>
+            <ContentControl x:Name="ContentCtrl" Margin="0,10,0,0" Content="{Binding Path=Content}" />
             <GroupBox Grid.Column="1" Header="Friends" Margin="3,0,0,0">
-                <Grid  Width="150" >
+                <Grid Width="150">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                     <TextBox FontSize="16" Grid.Row="0" Margin="5" Style="{StaticResource SearchTextBox}"
                              Text="{Binding Path=SearchFriendName, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="TextChanged">
                                 <ei:CallMethodAction
-                      TargetObject="{Binding}"
-                      MethodName="SearchFriends"/>
+                                    TargetObject="{Binding}"
+                                    MethodName="SearchFriends" />
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
 
                     </TextBox>
                     <ListView x:Name="FriendListView" Grid.Row="1"
-                              ItemsSource="{Binding Path=LFriends}" SelectedIndex="{Binding Path=IndexFriend }" 
+                              ItemsSource="{Binding Path=LFriends}" DisplayMemberPath="Name"
+                              SelectedIndex="{Binding Path=IndexFriend }"
                               SelectedItem="{Binding Path=FriendListName}">
-                        
+
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="SelectionChanged">
                                 <ei:CallMethodAction
-                      TargetObject="{Binding}"
-                      MethodName="ChangeFriend"/>
+                                    TargetObject="{Binding}"
+                                    MethodName="ChangeFriend" />
                             </i:EventTrigger>
-                            
+
                             <i:EventTrigger EventName="GotFocus">
                                 <ei:CallMethodAction
-                      TargetObject="{Binding}"
-                      MethodName="GotFocusF"/>
+                                    TargetObject="{Binding}"
+                                    MethodName="GotFocusF" />
                             </i:EventTrigger>
 
                         </i:Interaction.Triggers>
-                        
+
                     </ListView>
                 </Grid>
             </GroupBox>
