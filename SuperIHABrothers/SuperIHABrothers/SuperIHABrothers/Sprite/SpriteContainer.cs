@@ -18,7 +18,8 @@ namespace Sprites {
         Player = 1,
         Monster = 2,
         Environment = 3,
-        DeathAnimation = 4
+        DeathAnimation = 4,
+        FinishLine = 5
     }
 	public class SpriteContainer : ISpriteContainer, ISpriteContainerCollision {
 
@@ -26,16 +27,7 @@ namespace Sprites {
 		public Sprites.ISprite _ISprite;
 	    private List<List<ISprite>> _spriteList;
         private IAnchorUpdate _anchor;
-<<<<<<< HEAD
 	    private GameTime _time;
-=======
-
-
-	    public void ReUpdate(Vector2 mPos)
-	    {
-	        throw new System.NotImplementedException();
-	    }
->>>>>>> 634d738f07c5e1c11ac4aef98775b186a102ba3f
 
 	    public List<List<ISprite>> SpriteList { get { return _spriteList; } }
 
