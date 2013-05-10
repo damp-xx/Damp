@@ -65,6 +65,7 @@ namespace Sprites {
 
 	    public void Update(GameTime time){
             MyRectangle = new Rectangle(_currentFrame * _FrameWidth, 0, _FrameWidth, _FrameHeight);
+            
             _origin = new Vector2(MyRectangle.Width / 2, MyRectangle.Height / 2);
             if (_isInAir == false)
             {

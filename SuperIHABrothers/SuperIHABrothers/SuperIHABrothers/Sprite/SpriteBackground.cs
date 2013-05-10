@@ -15,7 +15,6 @@ namespace Sprites {
 
         //Generel Atributes
         public Vector2 Position { get; set; }
-        private Vector2 _AnchorOffset;
         public Rectangle MyRectangle { get; set; }
 	    public Vector2 Velocity { get; set; }
 	    public bool _isInAir { get; set; }
@@ -25,13 +24,14 @@ namespace Sprites {
         private Texture2D _texture2D;
 
         //Moving Atributes
-        public Vector2 Velocety { get { return _velocety; } set { _velocety = value; } }
-        private Vector2 _velocety;
+        public Vector2 Velocety { get;  set; }
 	    private int _distance; //Distance form forground to the background
 
-        public SpriteBackground()
+        public SpriteBackground(Texture2D mTexture2D, int mDistance)
         {
-
+            _distance = mDistance;
+            _texture2D = mTexture2D;
+            Position = new Vector2(0,0);
         }
 	    public void Draw(SpriteBatch spriteBatch)
 	    {
@@ -41,7 +41,7 @@ namespace Sprites {
 
 	    public void Update(GameTime time)
 	    {
-	        throw new System.NotImplementedException();
+	        
 	    }
 
 	    public void UpdatePosition()
