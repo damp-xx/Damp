@@ -17,7 +17,7 @@ namespace GameState {
 			set;
 		}
 
-		bool GameRunning{
+		bool IsGameRunning{
 			get;
 			set;
 		}
@@ -27,6 +27,7 @@ namespace GameState {
             get; set;
         }
         int Lifes { get; set; }
+
 	}//end IGameState
 
 }//end namespace GameStateC

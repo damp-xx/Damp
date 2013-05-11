@@ -19,8 +19,11 @@ namespace Sprites {
         Monster = 2,
         Environment = 3,
         DeathAnimation = 4,
-        FinishLine = 5
+        FinishLine = 5,
+        CD = 6,
+        Font = 7
     }
+
 	public class SpriteContainer : ISpriteContainer, ISpriteContainerCollision {
 
 		public Sprites.IAnchorUpdate _IAnchorUpdate;

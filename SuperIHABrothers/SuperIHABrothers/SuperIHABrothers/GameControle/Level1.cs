@@ -19,8 +19,8 @@ using Microsoft.Xna.Framework;
 namespace GameControle {
 	public class Level1 : ILevel {
 
-		private Collision.ICollisionControl MiCollisionControl;
-		private Sprites.ISpriteContainer m_ISpriteContainer;
+		private ICollisionControl MiCollisionControl;
+		private ISpriteContainer m_ISpriteContainer;
 	    private ISpriteContainerCollision _spriteContainerCollision;
 
 		public Level1(ISpriteContainer mSpriteContainer, ISpriteContainerCollision mSpriteContainerCollision, ICollisionControl collisionControl)

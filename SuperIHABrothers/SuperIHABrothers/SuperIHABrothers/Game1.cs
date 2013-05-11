@@ -39,6 +39,7 @@ namespace SuperIHABrothers
 
         public Game1(string pipeIn, string pipeOut)
         {
+
             graphics = new GraphicsDeviceManager(this);          
             Content.RootDirectory = "Content";
 
@@ -65,12 +66,13 @@ namespace SuperIHABrothers
             // TODO: Add your initialization logic here
             try
             {
-                var mQueue = new MessageQueue();
+                var mQueue = new MessageQueueR();
                 var _playerData = new PlayerData();
                 messageHandler = new MessageHandler(mQueue, _playerData);
                 clientCommunication = new GameClientCommunication(_pipeIn, _pipeOut, mQueue);
+                var messageConstructor = new MessageConstructor(clientCommunication);
                 var gameFactory = new GameFactory();
-                _game = gameFactory.GetGame(Content, _playerData);
+                _game = gameFactory.GetGame(Content, _playerData, messageConstructor);
             }
             catch (Exception e)
             {
@@ -123,7 +125,9 @@ namespace SuperIHABrothers
             }
             catch (Exception e)
             {
-                MessageBox(new IntPtr(0), e.Message, "MessageBox title", 0);
+                //MessageBox(new IntPtr(0), e.Message, "MessageBox title", 0);
+                if (e.Message == "Game Exits")
+                    Exit();
             }
            
 

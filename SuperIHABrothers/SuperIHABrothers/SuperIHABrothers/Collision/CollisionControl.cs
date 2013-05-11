@@ -21,17 +21,20 @@ namespace Collision
         private ICollisionDetect _playerMonsterDetect;
         private ICollisionDetect _monsterEnviromentDetect;
         private ICollisionDetect _playerFinishlineDetect;
+        private ICollisionDetect _playerCDDetect;
 
         public CollisionControl(ICollisionDetect mPlayerEnviromentDetect, ICollisionDetect mPlayerMonsterDetect,
-                                ICollisionDetect mMonsterEnvironmentDetect, ICollisionDetect mPlayerFinishlineDetect)
+                                ICollisionDetect mMonsterEnvironmentDetect, ICollisionDetect mPlayerFinishlineDetect,
+                                ICollisionDetect playerCDDetect)
         {
             
             _playerEnviromentDetect = mPlayerEnviromentDetect;
             _playerMonsterDetect = mPlayerMonsterDetect;
             _monsterEnviromentDetect = mMonsterEnvironmentDetect;
             _playerFinishlineDetect = mPlayerFinishlineDetect;
+            _playerCDDetect = playerCDDetect;
         }
-
+        
 
         /// 
         /// <param name="mSprites"></param>
@@ -68,6 +71,19 @@ namespace Collision
                         _playerEnviromentDetect.Detect(_spriteContainerCollision,
                                                        _spriteContainerCollision.SpriteList[(int) listTypes.Player][i],
                                                        _spriteContainerCollision.SpriteList[(int) listTypes.Environment][j]);
+                    }
+                }
+
+
+                /* Checking with CD */
+                for (int j = 0; j < _spriteContainerCollision.SpriteList[(int)listTypes.CD].Count; j++)
+                {
+                    if (_spriteContainerCollision.SpriteList[(int)listTypes.Player][i].MyRectangle.Intersects(
+                        _spriteContainerCollision.SpriteList[(int)listTypes.CD][j].MyRectangle))
+                    {
+                        _playerCDDetect.Detect(_spriteContainerCollision,
+                                                       _spriteContainerCollision.SpriteList[(int)listTypes.Player][i],
+                                                       _spriteContainerCollision.SpriteList[(int)listTypes.CD][j]);
                     }
                 }
             }

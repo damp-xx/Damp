@@ -7,6 +7,7 @@
 ///////////////////////////////////////////////////////////
 
 
+using System;
 using System.Threading;
 using GameState;
 
@@ -15,9 +16,6 @@ namespace ClientCommunication
 {
     public class MessageHandler
     {
-
-        
-        private IGameState _IGameState;
         private IMessageQueueRemove _IMessageQueueRemove;
         private IPlayerData _playerData;
 
@@ -34,12 +32,13 @@ namespace ClientCommunication
 
         private void HandlerThread(IMessageQueueRemove messageQueueRemove, IPlayerData playerData)
         {
-            string message = messageQueueRemove.GetMessage();
-            string TypeTag = message.Substring(0, 3);
-            string Data = message.Substring(3, message.Length - 4);
+            string message  = messageQueueRemove.GetMessage();        
 
             if (message != null)
             {
+                string TypeTag = message.Substring(0, 3);
+                string Data = message.Substring(3, message.Length - 4);
+
                 switch (TypeTag)
                 {
                     case "DOL": // Damp Online

@@ -94,6 +94,7 @@
     <Reference Include="System">
       <Private>False</Private>
     </Reference>
+    <Reference Include="System.Messaging" />
     <Reference Include="System.Xml">
       <Private>False</Private>
     </Reference>
@@ -117,11 +118,13 @@
     <Compile Include="ClientCommunication\IMessageQueueRemove.cs" />
     <Compile Include="ClientCommunication\MessageConstructor.cs" />
     <Compile Include="ClientCommunication\MessageHandler.cs" />
-    <Compile Include="ClientCommunication\MessageQueue.cs" />
+    <Compile Include="ClientCommunication\MessageQueueR.cs" />
+    <Compile Include="Collision\PlayerCDEvent.cs" />
     <Compile Include="Collision\CollisionControlFactory.cs" />
     <Compile Include="Collision\ICollisionControlFactory.cs" />
     <Compile Include="Collision\IEvent.cs" />
     <Compile Include="Collision\MonsterDeathEvent.cs" />
+    <Compile Include="Collision\PlayerCDDetect.cs" />
     <Compile Include="Collision\PlayerDeathEvent.cs" />
     <Compile Include="Collision\PlayerEnvironmentBottomEvent.cs" />
     <Compile Include="Collision\PlayerEnvironmentLeftEvent.cs" />
@@ -169,12 +172,14 @@
     <Compile Include="Sprite\ISpriteContainerCollision.cs" />
     <Compile Include="Sprite\ISpriteContainerMessage.cs" />
     <Compile Include="Sprite\SpriteBackground.cs" />
+    <Compile Include="Sprite\SpriteCD.cs" />
     <Compile Include="Sprite\SpriteContainer.cs" />
     <Compile Include="Sprite\SpriteDeathAnimaiton.cs" />
     <Compile Include="Sprite\SpriteEnvironment.cs" />
     <Compile Include="Sprite\SpriteFinishLine.cs" />
     <Compile Include="Sprite\SpriteMonster.cs" />
     <Compile Include="Sprite\SpritePlayer.cs" />
+    <Compile Include="Sprite\SpriteScore.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />

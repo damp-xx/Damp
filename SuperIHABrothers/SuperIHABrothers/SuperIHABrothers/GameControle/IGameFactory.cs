@@ -9,6 +9,6 @@ namespace GameControle
 {
     public interface IGameFactory
     {
-        Game GetGame(ContentManager content, IPlayerDataGame mDataGame);
+        Game GetGame(ContentManager content, IPlayerDataGame mDataGame, IMessageConstructor messageConstructor);
     }
 }

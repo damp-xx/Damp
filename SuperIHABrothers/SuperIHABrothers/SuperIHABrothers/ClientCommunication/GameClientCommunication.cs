@@ -36,7 +36,8 @@ namespace ClientCommunication
                 myNewThread.Start();
             }
             else
-                throw new Exception("Could not connnect to game");
+                //throw new Exception("Could not connnect to game");
+                return;
         }
 
 

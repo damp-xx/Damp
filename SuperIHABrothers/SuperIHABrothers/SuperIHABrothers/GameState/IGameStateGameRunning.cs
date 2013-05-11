@@ -7,6 +7,6 @@ namespace GameState
 {
     public interface IGameStateGameRunning
     {
-        bool GameRunning { get; set; }
+        bool IsGameRunning { get; set; }
     }
 }

@@ -19,7 +19,7 @@ namespace Collision
 
         private void HandleEvent()
         {
-            _gameState.GameRunning = false;
+            _gameState.IsGameRunning = false;
         }
     }
 }

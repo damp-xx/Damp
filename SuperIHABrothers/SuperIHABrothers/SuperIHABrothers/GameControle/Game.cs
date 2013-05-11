@@ -7,6 +7,8 @@
 ///////////////////////////////////////////////////////////
 
 
+using System;
+using ClientCommunication;
 using Collision;
 using GameState;
 using GameControle;
@@ -26,13 +28,12 @@ namespace GameControle {
         }
 
 	    private menuState _menuState = menuState.MainMenu;
-		private GameState.IGameState m_IGameState;
-		private GameControle.ILevel m_ILevel;
+		private IGameState m_IGameState;
+		private ILevel m_ILevel;
 	    private IKeybordInput mInput;
 	    private IKeyboardUpdate _keyboardUpdate;
-	    private IGameState _gameState;
 	    private int _curserCounter = 0;
-	    private int _curserMax = 1;
+	    private int _curserMax = 2;
 	    private bool _newHighScore = false;
 	    private Texture2D _backgroundTexrure;
 	    private Rectangle _backgroundRectangle;
@@ -40,14 +41,13 @@ namespace GameControle {
 	    private Rectangle _courserRegtangle;
 	    private int _courserWidth = 50;
 	    private ContentManager _contentManager;
-	    private string _mainMenuLineOne = "StartGame";
-	    private string _mainMenuLineTwo = "HighScore";
 	    private IPlayerDataGame _playerData;
+	    private IMessageConstructor _messageConstructor;
 
 	    private SpriteFont _font;
 	    private Vector2 _linePos;
 
-		public Game(IFactoryLevel factoryLevel, IGameState gameState, IKeybordInput keyInput, IKeyboardUpdate keyboardUpdate, ContentManager mcontentManager, IPlayerDataGame mDataGame)
+		public Game(IFactoryLevel factoryLevel, IGameState gameState, IKeybordInput keyInput, IKeyboardUpdate keyboardUpdate, ContentManager mcontentManager, IPlayerDataGame mDataGame, IMessageConstructor messageConstructor)
 		{
 		    m_IGameState = gameState;
 		    mInput = keyInput;
@@ -58,6 +58,7 @@ namespace GameControle {
             _linePos = new Vector2(100, 100);
 		    _courserTexture = _contentManager.Load<Texture2D>("Arrow");
 		    _playerData = mDataGame;
+		    _messageConstructor = messageConstructor;
 
 		}
 
@@ -73,7 +74,11 @@ namespace GameControle {
                     GameOverUpdate();
                     break;
                 case menuState.GameRunning:
-                    m_ILevel.Update(time);
+                    if (m_IGameState.IsGameRunning)
+                        m_ILevel.Update(time);
+                    if (m_IGameState.Lifes == 0 || !m_IGameState.IsGameRunning)
+                        GameOverEntry();
+                    
                     break;
                 case menuState.HighScoreMenu:
                     HighScoreMenuUpdate();
@@ -137,19 +142,24 @@ namespace GameControle {
                     case 1:
                         _menuState = menuState.HighScoreMenu;
                         break;
+                    case 2:
+                        throw new Exception("Game Exits");
                 }
             }
         }
 
         private void MainMenuDraw(SpriteBatch spriteBatch)
         {
-            string _mainMenuLineOne = "StartGame";
+            string _mainMenuLineOne = "Start Game";
 	        string _mainMenuLineTwo = "HighScore";
+            string _mainMenuLineThree = "Exit Game";
             var pos = _linePos;
-            spriteBatch.DrawString(_font, _mainMenuLineOne, pos, Color.LightGreen);
+            spriteBatch.DrawString(_font, _mainMenuLineOne, pos, Color.DarkBlue);
             pos.Y += 20;
-            spriteBatch.DrawString(_font, _mainMenuLineTwo, pos, Color.LightGreen);
-            _courserRegtangle = new Rectangle((int)_linePos.X - 50 ,(int)_linePos.Y + (20*_curserCounter), _courserWidth, 20);
+            spriteBatch.DrawString(_font, _mainMenuLineTwo, pos, Color.DarkBlue);
+            pos.Y += 20;
+            spriteBatch.DrawString(_font, _mainMenuLineThree, pos, Color.DarkBlue);
+            _courserRegtangle = new Rectangle((int)_linePos.X - 60 ,(int)_linePos.Y + (20*_curserCounter), _courserWidth, 20);
             spriteBatch.Draw(_courserTexture, _courserRegtangle, Color.CornflowerBlue);
         }
 
@@ -178,9 +188,9 @@ namespace GameControle {
             string text = "HighScore: " + _playerData.Highscore.ToString();
             var pos = _linePos;
             string name = _playerData.GetPlayerName();
-            spriteBatch.DrawString(_font, name, pos, Color.LightGreen);
+            spriteBatch.DrawString(_font, name, pos, Color.DarkBlue);
             pos.Y += 20;
-            spriteBatch.DrawString(_font, text, pos, Color.LightGreen);
+            spriteBatch.DrawString(_font, text, pos, Color.DarkBlue);
         }
 
         private void GameRunningEntry()
@@ -188,10 +198,15 @@ namespace GameControle {
             m_IGameState.Score = 0;
             m_IGameState.Lifes = 3;
             _menuState = menuState.GameRunning;
+            m_IGameState.IsGameRunning = true;
         }
         private void GameOverEntry()
         {
-            
+            if (_playerData.Highscore < m_IGameState.Score)
+            {
+                _playerData.Highscore = m_IGameState.Score;
+                //_messageConstructor.NewHighscore(_playerData.Highscore.ToString());
+            }
             _menuState = menuState.GameOver;
         }
 

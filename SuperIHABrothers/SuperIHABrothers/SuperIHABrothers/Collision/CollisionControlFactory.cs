@@ -9,24 +9,15 @@ namespace Collision
 {
     class CollisionControlFactory : ICollisionControlFactory
     {
-        public CollisionControl GetCollisonControl()
+        public CollisionControl GetCollisonControl( GameStateC gameState)
         {
             PlayerEnviromentDetect PE_Detect = new PlayerEnviromentDetect();
             PlayerMonsterDetect PM_Detect = new PlayerMonsterDetect();
             MonsterEnviromentDetect ME_Detect = new MonsterEnviromentDetect();
-            
-            
-            
-            /********************************' HAVE TO BE CHANGED!!!! **********************************/
-            GameStateC gameState = new GameStateC();
             PlayerFinishlineDetect PF_Detect = new PlayerFinishlineDetect(gameState);
+            PlayerCDDetect PC_Detect = new PlayerCDDetect(gameState);
 
-
-
-
-
-
-            CollisionControl returnElementCC = new CollisionControl(PE_Detect, PM_Detect, ME_Detect, PF_Detect);
+            CollisionControl returnElementCC = new CollisionControl(PE_Detect, PM_Detect, ME_Detect, PF_Detect, PC_Detect);
             return returnElementCC;
         }
     }

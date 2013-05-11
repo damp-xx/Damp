@@ -14,44 +14,47 @@ namespace GameState {
 	{
 	    private int _lifes;
         private static readonly object lockObject = new object();
+	    private bool _isGameRunning = false;
+	    private int _gameLevel;
 		public GameStateC(){
 
 		}
 
-
 		/// 
 		/// <param name="mScore"></param>
-		public void AddScore(int mScore){
-
+		public void AddScore(int mScore)
+		{
+		    _score += mScore;
 		}
 
 		public int GameLevel{
 			get{
-				return GameLevel;
+				return _gameLevel;
 			}
 			set{
-				GameLevel = value;
+				_gameLevel = value;
 			}
 		}
 
-		public bool GameRunning{
+		public bool IsGameRunning{
 			get{
-			    lock (lockObject)
+			    lock (this)
 			    {
-                    return GameRunning;
+                    return _isGameRunning;
 			    }			
 			}
             set
             {
-                lock (lockObject)
+                lock (this)
                 {
-                    GameRunning = value;
+                    _isGameRunning = value;
                 }
             }
 		}
 
 	    private int _score;
 	    public int Lifes { set; get; }
+        
         int IGameStateLevel.Score { get { return _score; } set { _score = value; } }
         int IGameState.Score { get { return _score; } set { _score = value; } }
 
