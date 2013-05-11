@@ -9,8 +9,10 @@ namespace CommunicationLibrary
 {
     public interface IEventSubscribe
     {
-        void HandleNewChatMessage(string unknown, string @from, string message);
+        void HandleNewChatMessage(string from, string message, string fromTitle);
         void HandleUserOnline(XmlElement Event);
         void HandleUserOffline(XmlElement Event);
+        void HandleFriendRequest(XmlElement Event);
+        void HandleFriendAccepted(XmlElement Event);
     }
 }

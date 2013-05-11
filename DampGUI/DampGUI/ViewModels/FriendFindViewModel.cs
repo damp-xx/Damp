@@ -96,7 +96,7 @@ namespace DampGUI
                                                           MessageBoxImage.Question);
                 if (result == MessageBoxResult.Yes)
                 {
-                    ComFriend.AddFriend(allUsers.CurrentFriend.Id);
+                    ComFriend.AddFriend(FriendSearchList.CurrentFriend.Id);
                 }
             }
         }

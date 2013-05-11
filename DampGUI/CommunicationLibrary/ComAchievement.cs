@@ -54,7 +54,7 @@ namespace CommunicationLibrary
             string achievementID = "0";
             foreach (var s in AchievementsForGame)
             {
-                if (s.Value == achievementTitle) ;
+                if (s.Value == achievementTitle) 
                 achievementID = s.Key;
             }
 
@@ -88,6 +88,35 @@ namespace CommunicationLibrary
                 return TempAchievement;
             }
             return null;
+        }
+
+        public static bool UpdateHighscore(string gameId, string score)
+        {
+            var client = new DampServerClient(ComLogin._ComIp);
+            var ResultFromServerXml = client.SendRequest("UpdateScore", new Dictionary<string, string> { { "GameId", gameId }, { "Score", score } }, ComLogin._ComToken);
+
+            if (ResultFromServerXml.Name.Equals("Status"))
+            {
+                var xmlNode = ResultFromServerXml.GetElementsByTagName("Code").Item(0);
+
+                if (xmlNode.InnerText == "200")
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public static bool GetHighscore(string gameId)
+        {
+            var client = new DampServerClient(ComLogin._ComIp);
+            var ResultFromServerXml = client.SendRequest("GetScore", new Dictionary<string, string> { { "GameId", gameId } }, ComLogin._ComToken);
+
+            if (ResultFromServerXml.Name.Equals("Score"))
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

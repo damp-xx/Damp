@@ -136,9 +136,19 @@ namespace DampCS
             catch (Exception e)
             {
             //     Console.WriteLine("Exp: {0}", e.Message);           
-            }    
+            }
+            StreamWriter sw;
+            try
+            {
+                sw = new StreamWriter(stream) {AutoFlush = true};
+            }
+            catch (Exception)
+            {
+                
+                Console.WriteLine("Server down please contact admin");
+                return null;
+            }
             
-            var sw = new StreamWriter(stream) {AutoFlush = true};
             string qq = HttpUtility.UrlPathEncode("/" + query);
             //Console.WriteLine("SENT GET: {0}", qq);
 
@@ -169,26 +179,35 @@ namespace DampCS
 
             while (true)
             {
-                string l = sr.ReadLine();
-
-                if (l == null)
+                try
                 {
-                    Console.WriteLine("Error no input in string");
-                    return null;
+                    string l = sr.ReadLine();
+
+                    if (l == null)
+                    {
+                        Console.WriteLine("Error no input in string");
+                        return null;
+                    }
+                    if (l.Equals("")) break;
+
+                    string[] ll;
+                    char[] splitDelimiter = { Convert.ToChar(":") };
+                    //  Console.WriteLine(l);
+                    ll = l.Split(splitDelimiter, 2);
+
+                    if (ll[0].Equals("Content-Length"))
+                    {
+                        contentLenght = int.Parse(ll[1]);
+                    }
+
+                    if (ll[0].Equals("Content-Type")) contentType = ll[1];
                 }
-                if (l.Equals("")) break;
-
-                string[] ll;
-                char[] splitDelimiter = { Convert.ToChar(":") };
-                //  Console.WriteLine(l);
-                ll = l.Split(splitDelimiter, 2);
-
-                if (ll[0].Equals("Content-Length"))
+                catch (IOException)
                 {
-                    contentLenght = int.Parse(ll[1]);
+                    
+                    Console.WriteLine("Server lost connection");
+                    Environment.Exit(-1);
                 }
-
-                if (ll[0].Equals("Content-Type")) contentType = ll[1];
             }
 
             var data = new char[contentLenght];

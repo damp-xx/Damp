@@ -9,9 +9,22 @@ namespace CommunicationLibrary.Events
 {
     class FriendRequest: IEvents
     {
+        private IEventSubscribe EventHandler;
+
+        public FriendRequest(IEventSubscribe Handler)
+        {
+            EventHandler = Handler;
+        }
+
         public void Action(XmlElement Event)
         {
-            Console.WriteLine("Friendrequest from: {0} please accept or decline this", Event.GetElementsByTagName("From").Item(0).InnerText);
+            string requestId = "";
+            var xmlNode = Event.GetElementsByTagName("From").Item(0);
+            if (xmlNode != null)
+                requestId = xmlNode.InnerText;
+
+            if(ComFriend.AcceptFriend(requestId));
+                EventHandler.HandleFriendRequest(Event);
         }
     }
 }

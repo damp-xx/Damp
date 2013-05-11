@@ -33,10 +33,10 @@ namespace CommunicationLibrary
                         
                         break;
                     case "FriendRequest":
-                        command = new FriendRequest();
+                        command = new FriendRequest(_eventHandler);
                         break;
                     case "FriendAccepted":
-                        command = new FriendAccepted();
+                        command = new FriendAccepted(_eventHandler);
                         break;
                     case "ChatRecieved":
                         command = new NewChatMessage(_eventHandler);
