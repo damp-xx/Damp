@@ -32,38 +32,41 @@ namespace ClientCommunication
 
         private void HandlerThread(IMessageQueueRemove messageQueueRemove, IPlayerData playerData)
         {
-            string message  = messageQueueRemove.GetMessage();        
-
-            if (message != null)
+            for (;;)
             {
-                string TypeTag = message.Substring(0, 3);
-                string Data = message.Substring(3, message.Length - 4);
+                string message = messageQueueRemove.GetMessage();
 
-                switch (TypeTag)
-                {
-                    case "DOL": // Damp Online
-                        playerData.GameRunning = true;
-                        break;
+                if (message != null)
+                    {
+                    string TypeTag = message.Substring(0, 3);
+                    string Data = message.Substring(4, message.Length - 4);
 
-                    case "DOF": // Damp Offline
-                        playerData.GameRunning = false;
-                        break;
+                    switch (TypeTag)
+                    {
+                        case "DOL": // Damp Online
+                            playerData.GameRunning = true;
+                            break;
 
-                    case "CHS": // Change Highscore
-                        playerData.Highscore = int.Parse(Data);
-                        break;
+                        case "DOF": // Damp Offline
+                            playerData.GameRunning = false;
+                            break;
 
-                    case "CPN": // Change Playername
-                        playerData.SetPlayerName(Data);
-                        break;
+                        case "CHS": // Change Highscore
+                            playerData.Highscore = int.Parse(Data);
+                            break;
 
-                    case "NAC": // New Achiement
-                        //containerMessage.AddSprite(new SpriteAchievement());
-                        break;
+                        case "CPN": // Change Playername
+                            playerData.SetPlayerName(Data);
+                            break;
 
-                    default:
-                        //Should never reach this place
-                        break;
+                        case "NAC": // New Achiement
+                            //containerMessage.AddSprite(new SpriteAchievement());
+                            break;
+
+                        default:
+                            //Should never reach this place
+                            break;
+                    }
                 }
             }
         }

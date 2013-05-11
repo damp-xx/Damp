@@ -28,7 +28,7 @@ namespace ClientCommunication
 
         public void NewHighscore(string highscore)
         {
-            _communication.Send("NHS" + highscore);
+            _communication.Send("NHS:" + highscore);
         }
     }
 }

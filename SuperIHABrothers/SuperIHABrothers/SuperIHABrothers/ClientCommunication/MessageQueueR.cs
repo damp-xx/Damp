@@ -33,12 +33,8 @@ namespace ClientCommunication
                     return null;
                 }
 
-                //receivedString = _messageQueue.Receive().ToString();
-
-                
-            }
-            
-            
+                //receivedString = _messageQueue.Receive().ToString();               
+            }            
         }
 
         /// 

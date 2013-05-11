@@ -205,8 +205,9 @@ namespace GameControle {
             if (_playerData.Highscore < m_IGameState.Score)
             {
                 _playerData.Highscore = m_IGameState.Score;
-                //_messageConstructor.NewHighscore(_playerData.Highscore.ToString());
+                _messageConstructor.NewHighscore(_playerData.Highscore.ToString());                
             }
+            _messageConstructor.Achievement("Level 1 - Completed");
             _menuState = menuState.GameOver;
         }
 

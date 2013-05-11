@@ -17,11 +17,11 @@ namespace ClientCommunication
 {
     public class GameClientCommunication : IClientCommunication_Game
     {
-
         private IMessageQueueAdd _messageQueue;
 
         private PipeStream pipeClientIn;
         private PipeStream pipeClientOut;
+        private StreamWriter _streamWriter;
 
         public GameClientCommunication(string pipeIn, string pipeOut, IMessageQueueAdd messageQueue)
         {
@@ -34,6 +34,7 @@ namespace ClientCommunication
 
                 Thread myNewThread = new Thread(() => RecieverThread(pipeClientIn, _messageQueue));
                 myNewThread.Start();
+                _streamWriter = new StreamWriter(pipeClientOut);
             }
             else
                 //throw new Exception("Could not connnect to game");
@@ -45,35 +46,28 @@ namespace ClientCommunication
         /// <param name="message"></param>
         public void Send(string message)
         {
-            Thread myNewThread = new Thread(() => SenderThread(pipeClientOut, message));
+            Thread myNewThread = new Thread(() => SenderThread(pipeClientOut, message, _streamWriter));
             myNewThread.Start();
         }
 
 
         private void RecieverThread(PipeStream pipeClientIn, IMessageQueueAdd mMessageQueue)
         {
+            StreamReader sr = new StreamReader(pipeClientIn);
             for (;;)
             {
-                using (StreamReader sr = new StreamReader(pipeClientIn))
-                {
-                    string receivedString;
-                    if ((receivedString = sr.ReadLine()) != null)
-                        mMessageQueue.InsertMessage(receivedString);
-                }
+                string receivedString = sr.ReadLine();
+                mMessageQueue.InsertMessage(receivedString);
             }
         }
 
 
-        private void SenderThread(PipeStream pipeClientOut, string message)
+        private void SenderThread(PipeStream pipeClientOut, string message, StreamWriter sWriter)
         {
-            using (StreamWriter sw = new StreamWriter(pipeClientOut))
-            {
-                sw.AutoFlush = true;
-                sw.WriteLine(message);
-                pipeClientOut.WaitForPipeDrain();
-            }
+            sWriter.AutoFlush = true;
+            sWriter.WriteLine(message);
+            pipeClientOut.WaitForPipeDrain();
         }
-
     }
 
 //end GameClientCommunication
