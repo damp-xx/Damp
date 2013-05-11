@@ -46,8 +46,11 @@ namespace ClientCommunication
         /// <param name="message"></param>
         public void Send(string message)
         {
-            Thread myNewThread = new Thread(() => SenderThread(pipeClientOut, message, _streamWriter));
-            myNewThread.Start();
+            lock (this)
+            {
+                Thread NewThread = new Thread(() => SenderThread(pipeClientOut, message, _streamWriter));
+                NewThread.Start();
+            }
         }
 
 
@@ -64,9 +67,12 @@ namespace ClientCommunication
 
         private void SenderThread(PipeStream pipeClientOut, string message, StreamWriter sWriter)
         {
-            sWriter.AutoFlush = true;
-            sWriter.WriteLine(message);
-            pipeClientOut.WaitForPipeDrain();
+            lock (this)
+            {
+                sWriter.AutoFlush = true;
+                sWriter.WriteLine(message);
+                pipeClientOut.WaitForPipeDrain();
+            }
         }
     }
 
