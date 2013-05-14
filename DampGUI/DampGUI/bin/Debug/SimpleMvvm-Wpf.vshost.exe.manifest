@@ -49,7 +49,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>idjM9pbyBT6WmnRXIMg9fqmZZwY+C3XRnMMVKCOHI3Q=</dsig:DigestValue>
+        <dsig:DigestValue>eDpQRlB2zTRrEzckRq4wI4HTCqt2wRa9xlxds8Yf518=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -210,14 +210,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SimpleMvvm-Wpf.exe" size="526336">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SimpleMvvm-Wpf.exe" size="525312">
       <assemblyIdentity name="SimpleMvvm-Wpf" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>eUAhSQIHlmpCZMTmgwEC5XpHbLtMUsmsNApHKhjjs9k=</dsig:DigestValue>
+        <dsig:DigestValue>DlCbi3jhnWMUKmx6lgGRM8mdOu3NwCS1XatwPAEcWFw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
