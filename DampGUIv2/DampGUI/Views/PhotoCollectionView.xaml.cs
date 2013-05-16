@@ -10,10 +10,10 @@ namespace DampGUI
     /// </summary>
     public partial class PhotoCollectionView : UserControl
     {
-        private PhotoCollection _photoCollection;
+        private IPhotoCollection _photoCollection;
         private ThumbnailEventArgs eb = new ThumbnailEventArgs();
 
-        public PhotoCollectionView(PhotoCollection aPhotoCollection)
+        public PhotoCollectionView(IPhotoCollection aPhotoCollection)
         {
             InitializeComponent();
             _photoCollection = aPhotoCollection;
@@ -46,7 +46,7 @@ namespace DampGUI
             }
         }
 
-        private void AddPhotoToStack(Photo photo, double thumbWidth, bool setFirstItemChecked, bool isInsert = false)
+        private void AddPhotoToStack(IPhoto photo, double thumbWidth, bool setFirstItemChecked, bool isInsert = false)
         {
             base.Dispatcher.Invoke(DispatcherPriority.ApplicationIdle, new Action(() =>
                 {

@@ -16,7 +16,7 @@ namespace DampGUI
 
         public event EventHandler<NotificationEventArgs<Exception>> ErrorNotice;
 
-        public Games Games { get; set; }
+        public IGames Games { get; set; }
 
         public int GrdViewWidth
 
@@ -24,7 +24,7 @@ namespace DampGUI
             get { return GrdViewWidth; }
         }
 
-        public Game CurrentGame
+        public IGame CurrentGame
         {
             get
             {

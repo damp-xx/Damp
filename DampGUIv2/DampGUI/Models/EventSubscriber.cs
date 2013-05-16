@@ -31,7 +31,7 @@ namespace DampGUI
             else
             {
                 Console.WriteLine("from unknown");
-                MainWindow.dd.dd.BeginInvoke(new Action(delegate()
+                MainWindow._MWDispatcher.MwDispatcher.BeginInvoke(new Action(delegate()
                     {
                         var d = new ChatView(from);
                         d.Show();
@@ -43,13 +43,13 @@ namespace DampGUI
 
         public void HandleUserOnline(XmlElement Event)
         {
-            MainPageViewModel.k.dd.BeginInvoke(new Action(delegate()
+            MainPageViewModel.MpvmDispatcherclassDispatcher.MpvmDispatcher.BeginInvoke(new Action(delegate()
                 {
                     var userid = Event.GetElementsByTagName("Message").Item(0).InnerText;
 
-                    MainPageViewModel.k.dd.BeginInvoke(new Action(delegate()
+                    MainPageViewModel.MpvmDispatcherclassDispatcher.MpvmDispatcher.BeginInvoke(new Action(delegate()
                     {
-                        foreach (var friend in MainPageViewModel.k.friends.Where(friend => friend.Id.Equals(userid)))
+                        foreach (var friend in MainPageViewModel.MpvmDispatcherclassDispatcher.friends.Where(friend => friend.Id.Equals(userid)))
                         {
                             friend.Name = "(Online) " + friend.RealName;
                             break;
@@ -62,13 +62,13 @@ namespace DampGUI
 
         public void HandleUserOffline(XmlElement Event)
         {
-            MainPageViewModel.k.dd.BeginInvoke(new Action(delegate()
+            MainPageViewModel.MpvmDispatcherclassDispatcher.MpvmDispatcher.BeginInvoke(new Action(delegate()
             {
                 var userid = Event.GetElementsByTagName("Message").Item(0).InnerText;
 
-                MainPageViewModel.k.dd.BeginInvoke(new Action(delegate()
+                MainPageViewModel.MpvmDispatcherclassDispatcher.MpvmDispatcher.BeginInvoke(new Action(delegate()
                 {
-                    foreach (var friend in MainPageViewModel.k.friends.Where(friend => friend.Id.Equals(userid)))
+                    foreach (var friend in MainPageViewModel.MpvmDispatcherclassDispatcher.friends.Where(friend => friend.Id.Equals(userid)))
                     {
                         friend.Name = friend.RealName;
                         break;
@@ -80,14 +80,14 @@ namespace DampGUI
         }
         public void HandleFriendRequest(XmlElement Event)
         {
-            MainPageViewModel.k.dd.BeginInvoke(new Action(delegate()
+            MainPageViewModel.MpvmDispatcherclassDispatcher.MpvmDispatcher.BeginInvoke(new Action(delegate()
             {
                 var userid = Event.GetElementsByTagName("From").Item(0).InnerText;
 
-                MainPageViewModel.k.dd.BeginInvoke(new Action(delegate()
+                MainPageViewModel.MpvmDispatcherclassDispatcher.MpvmDispatcher.BeginInvoke(new Action(delegate()
                 {
                     Friend friend = ComFriend.GetUser(userid);
-                    MainPageViewModel.k.friends.Add(friend);
+                    MainPageViewModel.MpvmDispatcherclassDispatcher.friends.Add(friend);
                 }));
 
 
@@ -95,14 +95,14 @@ namespace DampGUI
         }
         public void HandleFriendAccepted(XmlElement Event)
         {
-            MainPageViewModel.k.dd.BeginInvoke(new Action(delegate()
+            MainPageViewModel.MpvmDispatcherclassDispatcher.MpvmDispatcher.BeginInvoke(new Action(delegate()
             {
                 var userid = Event.GetElementsByTagName("From").Item(0).InnerText;
 
-                MainPageViewModel.k.dd.BeginInvoke(new Action(delegate()
+                MainPageViewModel.MpvmDispatcherclassDispatcher.MpvmDispatcher.BeginInvoke(new Action(delegate()
                     {
                         Friend friend = ComFriend.GetUser(userid);
-                        MainPageViewModel.k.friends.Add(friend);
+                        MainPageViewModel.MpvmDispatcherclassDispatcher.friends.Add(friend);
                     }));
 
 

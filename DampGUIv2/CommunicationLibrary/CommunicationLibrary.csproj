@@ -61,10 +61,18 @@
     <Compile Include="Events\UserWentOnline.cs" />
     <Compile Include="IEventSubscribe.cs" />
     <Compile Include="Models\Friend.cs" />
+    <Compile Include="Models\Friends.cs" />
     <Compile Include="Models\Game.cs" />
     <Compile Include="IEvents.cs" />
+    <Compile Include="Models\Games.cs" />
+    <Compile Include="Models\IFriend.cs" />
+    <Compile Include="Models\IFriends.cs" />
+    <Compile Include="Models\IGame.cs" />
+    <Compile Include="Models\IGames.cs" />
     <Compile Include="Models\IPhoto.cs" />
+    <Compile Include="Models\IPhotoCollection.cs" />
     <Compile Include="Models\Photo.cs" />
+    <Compile Include="Models\PhotoCollection.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

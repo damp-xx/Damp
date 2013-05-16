@@ -8,16 +8,16 @@ namespace DampGUI
     /// </summary>
     public class FriendProfileViewModel : ViewModelBase<FriendProfileViewModel>
     {
-        public FriendProfileViewModel(Friends aFriends)
+        public FriendProfileViewModel(IFriends aFriends)
         {
             KnowFriends = aFriends;
         }
 
         public event EventHandler<NotificationEventArgs<Exception>> ErrorNotice;
 
-        public Friends KnowFriends { get; set; }
+        public IFriends KnowFriends { get; set; }
 
-        public Friend CurrentFriend
+        public IFriend CurrentFriend
         {
             get
             {

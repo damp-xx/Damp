@@ -7,9 +7,9 @@ namespace DampGUI
     /// </summary>
     public partial class GameControlView : UserControl
     {
-        private PhotoCollection _photoCollection;
+        private IPhotoCollection _photoCollection;
 
-        public GameControlView(PhotoCollection aPhotoCollection)
+        public GameControlView(IPhotoCollection aPhotoCollection)
         {
             InitializeComponent();
             _photoCollection = aPhotoCollection;

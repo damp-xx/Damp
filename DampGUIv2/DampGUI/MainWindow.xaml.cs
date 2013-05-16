@@ -5,9 +5,9 @@ using CommunicationLibrary;
 
 namespace DampGUI
 {
-    public struct DSD
+    public struct MainWindowDispatcher
     {
-        public Dispatcher dd;
+        public Dispatcher MwDispatcher;
     }
 
     /// <summary>
@@ -16,16 +16,16 @@ namespace DampGUI
     public partial class MainWindow : Window
     {
         private bool normalWindow = true;
-        public static DSD dd;
+        public static MainWindowDispatcher _MWDispatcher;
 
         public MainWindow()
         {
             InitializeComponent();
             this.Width = System.Windows.SystemParameters.PrimaryScreenWidth/1.2;
             this.Height = System.Windows.SystemParameters.PrimaryScreenHeight/1.2;
-            dd = new DSD
+            _MWDispatcher = new MainWindowDispatcher
                 {
-                    dd = Dispatcher
+                    MwDispatcher = Dispatcher
                 };
             ComEvents.Listen();
         }

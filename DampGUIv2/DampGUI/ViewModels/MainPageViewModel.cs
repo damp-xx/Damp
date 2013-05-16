@@ -7,10 +7,10 @@ using SimpleMvvmToolkit;
 
 namespace DampGUI
 {
-    public struct KKK
+    public struct MainPageViewModelDispatcher
     {
-        public IDispatcher dd;
-        public ObservableCollection<Friend> friends;
+        public IDispatcher MpvmDispatcher;
+        public ObservableCollection<IFriend> friends;
     }
 
     /// <summary>
@@ -20,17 +20,17 @@ namespace DampGUI
     {
         public event EventHandler<NotificationEventArgs<Exception>> ErrorNotice;
         public Dispatcher dispatcher;
-        public static KKK k;
-        private Games games;
-        private Friends knowFriends;
+        public static MainPageViewModelDispatcher MpvmDispatcherclassDispatcher;
+        private IGames games;
+        private IFriends knowFriends;
         private ObservableCollection<string> allGames = new ObservableCollection<string>();
-        private ObservableCollection<Friend> allFriends = new ObservableCollection<Friend>();
+        private ObservableCollection<IFriend> allFriends = new ObservableCollection<IFriend>();
 
-        public MainPageViewModel(Games aGames, Friends aFriends)
+        public MainPageViewModel(IGames aGames, IFriends aFriends)
         {
             games = aGames;
             knowFriends = aFriends;
-            k = new KKK {dd = Dispatcher, friends = LFriends};
+            MpvmDispatcherclassDispatcher = new MainPageViewModelDispatcher {MpvmDispatcher = Dispatcher, friends = LFriends};
 
 
             for (int i = 0; i < games.TotalGames; i++)
@@ -164,11 +164,11 @@ namespace DampGUI
         }
 
         /////////////////////////////////Friends
-        public List<Friend> FindFriends(string aName)
+        public List<IFriend> FindFriends(string aName)
         {
             char[] name = aName.ToLower().ToCharArray();
 
-            List<Friend> resultList = new List<Friend>();
+            List<IFriend> resultList = new List<IFriend>();
             resultList.Clear();
             foreach (var friend in allFriends)
             {
@@ -180,9 +180,9 @@ namespace DampGUI
             return resultList;
         }
 
-        private ObservableCollection<Friend> lFriends = new ObservableCollection<Friend>();
+        private ObservableCollection<IFriend> lFriends = new ObservableCollection<IFriend>();
 
-        public ObservableCollection<Friend> LFriends
+        public ObservableCollection<IFriend> LFriends
         {
             get { return lFriends; }
             set
@@ -208,7 +208,7 @@ namespace DampGUI
 
         private string _friendListName;
 
-        public Friend FriendListName
+        public IFriend FriendListName
         {
             set
             {
@@ -293,7 +293,7 @@ namespace DampGUI
         public void SearchFriends()
         {
             var foundFriends = this.FindFriends(SearchFriendName);
-            LFriends = new ObservableCollection<Friend>(foundFriends);
+            LFriends = new ObservableCollection<IFriend>(foundFriends);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
