@@ -4,7 +4,7 @@ using System.Xml.Serialization;
 
 #endregion
 
-namespace DampServer
+namespace DampServer.responses
 {
     [XmlRoot(ElementName = "Status")]
     public class StatusXmlResponse : XmlResponse

@@ -12,7 +12,9 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Threading;
+using DampServer.commands;
 using DampServer.interfaces;
+using DampServer.responses;
 
 namespace DampServer
 {
@@ -157,6 +159,12 @@ namespace DampServer
             };
 
             NotifyUserFriends(con, xmlRes);
+
+            var fc = new FriendCommand();
+            foreach (var d in       fc.Notify(con.UserProfile))
+            {
+                con.UserHttp.SendXmlResponse(d);
+            }
 
             if (!_connections.TryAdd(con.GetHashCode(), con))
             {

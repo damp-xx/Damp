@@ -7,7 +7,7 @@ namespace DampServer
 {
     class Notifier
     {
-        private List<INotify> commands = new List<INotify>
+        private readonly List<INotify> _commands = new List<INotify>
             {
                 new ChatCommand()
             };
@@ -24,7 +24,7 @@ namespace DampServer
 
             while (true)
             {
-                foreach (INotify command in commands)
+                foreach (INotify command in _commands)
                 {
                     foreach (IConnection onlineUser in connectionManager.GetOnlineUsers())
                     {
@@ -38,6 +38,8 @@ namespace DampServer
                 Thread.Sleep(1000);
             }
 
+// ReSharper disable FunctionNeverReturns
         }
+// ReSharper restore FunctionNeverReturns
     }
 }

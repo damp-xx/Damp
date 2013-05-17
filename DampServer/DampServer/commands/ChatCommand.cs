@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Globalization;
 using DampServer.exceptions;
 using DampServer.interfaces;
+using DampServer.responses;
 
 #endregion
 
@@ -33,7 +34,6 @@ namespace DampServer.commands
                 throw new InvalidHttpRequestException("Missing argurments!");
             }
 
-            // @TODO needs verification
             IConnection receiver = null;
             try
             {
@@ -125,7 +125,7 @@ namespace DampServer.commands
                 var date = (DateTime) r["time"];
 
 
-                var dd = UserManagement.GetUserById(from.ToString());
+                var dd = UserManagement.GetUserById(from.ToString(CultureInfo.InvariantCulture));
 
                 respons.Add(new StatusXmlResponse
                 {
