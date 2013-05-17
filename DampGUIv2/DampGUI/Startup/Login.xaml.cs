@@ -23,7 +23,6 @@ namespace WpfApplication1
     public partial class MainWindow : Window
     {
         private Login.MainWindow W = new Login.MainWindow();
-        private DampGUI.MainWindow M = new DampGUI.MainWindow();
         public MainWindow()
         {
             this.Close();
@@ -34,6 +33,7 @@ namespace WpfApplication1
 
         private void LoginListener(object sender, EventArgs e)
         {
+            DampGUI.MainWindow M = new DampGUI.MainWindow();
             W.Close();
             M.Show();
         }
