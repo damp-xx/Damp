@@ -7,7 +7,7 @@
 ///////////////////////////////////////////////////////////
 
 
-using SuperIHABrothers.Sprite;
+using Sprites;
 
 namespace ClientCommunication
 {

@@ -10,7 +10,7 @@ namespace SuperIHABrothers
         /// </summary>
         static void Main(string[] args)
         {
-            
+            //throw new Exception("Starting Program");
             /****************** ONLY FOR TESTING **************************/
             if (args.Length < 1)
             {

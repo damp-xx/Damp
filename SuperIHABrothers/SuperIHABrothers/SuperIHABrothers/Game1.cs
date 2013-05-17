@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.IO.Pipes;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Threading;
 using Collision;
 using GameState;
@@ -14,27 +15,44 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using GameControle;
+using ClientCommunication;
 
 namespace SuperIHABrothers
 {
     /// <summary>
     /// This is the main type for your game
     /// </summary>
+    /// 
     public class Game1 : Microsoft.Xna.Framework.Game
     {
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        public static extern uint MessageBox(IntPtr hWnd, String text, String caption, uint type);
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         private GameControle.Game _game;
-       
-       
+
+        private GameClientCommunication clientCommunication;
+        private MessageHandler messageHandler;
+        private string _pipeIn;
+        private string _pipeOut;
+        
 
         public Game1(string pipeIn, string pipeOut)
         {
+
             graphics = new GraphicsDeviceManager(this);          
             Content.RootDirectory = "Content";
 
-           // clientCommunication = new GameClientCommunication();
-           // clientCommunication.Connect(pipeIn, pipeOut);
+            _pipeIn = pipeIn;
+            _pipeOut = pipeOut;
+
+            //throw new Exception("Before handler");
+            //messageHandler = new MessageHandler(mQueue, _playerData);
+            //clientCommunication = new GameClientCommunication(pipeIn, pipeOut, mQueue);
+            //var gameFactory = new GameFactory();
+            //_game = gameFactory.GetGame(Content, _playerData);
+
+
         }
 
         /// <summary>
@@ -46,10 +64,23 @@ namespace SuperIHABrothers
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            try
+            {
+                var mQueue = new MessageQueueR();
+                var _playerData = new PlayerData();
+                messageHandler = new MessageHandler(mQueue, _playerData);
+                clientCommunication = new GameClientCommunication(_pipeIn, _pipeOut, mQueue);
+                var messageConstructor = new MessageConstructor(clientCommunication);
+                var gameFactory = new GameFactory();
+                _game = gameFactory.GetGame(Content, _playerData, messageConstructor);
+            }
+            catch (Exception e)
+            {
 
-            var gameFactory = new GameFactory();
-            _game = gameFactory.GetGame(Content);
-
+                MessageBox(new IntPtr(0), e.Message, "MessageBox title", 0);
+            }
+            
+            
             base.Initialize();
             
         }
@@ -88,7 +119,17 @@ namespace SuperIHABrothers
                 this.Exit();
 
             // TODO: Add your update logic here
-           _game.Update(gameTime);
+            try
+            {
+                _game.Update(gameTime);
+            }
+            catch (Exception e)
+            {
+                //MessageBox(new IntPtr(0), e.Message, "MessageBox title", 0);
+                if (e.Message == "Game Exits")
+                    this.Exit();
+            }
+           
 
             base.Update(gameTime);
         }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Xml;
 using CommunicationLibrary;
 
@@ -46,21 +47,67 @@ namespace DampGUI
                 {
                     var userid = Event.GetElementsByTagName("Message").Item(0).InnerText;
 
-                    foreach (Friend friend in MainPageViewModel.k.friends)
+                    MainPageViewModel.k.dd.BeginInvoke(new Action(delegate()
                     {
-                        if (friend.Id.Equals(userid))
+                        foreach (var friend in MainPageViewModel.k.friends.Where(friend => friend.Id.Equals(userid)))
                         {
-                            friend.Name = "Online " + friend.RealName;
+                            friend.Name = "(Online) " + friend.RealName;
                             break;
                         }
-                    }
+                    }));
+
+                 
                 }));
         }
 
         public void HandleUserOffline(XmlElement Event)
         {
-        }
+            MainPageViewModel.k.dd.BeginInvoke(new Action(delegate()
+            {
+                var userid = Event.GetElementsByTagName("Message").Item(0).InnerText;
 
+                MainPageViewModel.k.dd.BeginInvoke(new Action(delegate()
+                {
+                    foreach (var friend in MainPageViewModel.k.friends.Where(friend => friend.Id.Equals(userid)))
+                    {
+                        friend.Name = friend.RealName;
+                        break;
+                    }
+                }));
+
+
+            }));
+        }
+        public void HandleFriendRequest(XmlElement Event)
+        {
+            MainPageViewModel.k.dd.BeginInvoke(new Action(delegate()
+            {
+                var userid = Event.GetElementsByTagName("From").Item(0).InnerText;
+
+                MainPageViewModel.k.dd.BeginInvoke(new Action(delegate()
+                {
+                    Friend friend = ComFriend.GetUser(userid);
+                    MainPageViewModel.k.friends.Add(friend);
+                }));
+
+
+            }));
+        }
+        public void HandleFriendAccepted(XmlElement Event)
+        {
+            MainPageViewModel.k.dd.BeginInvoke(new Action(delegate()
+            {
+                var userid = Event.GetElementsByTagName("From").Item(0).InnerText;
+
+                MainPageViewModel.k.dd.BeginInvoke(new Action(delegate()
+                    {
+                        Friend friend = ComFriend.GetUser(userid);
+                        MainPageViewModel.k.friends.Add(friend);
+                    }));
+
+
+            }));
+        }
 
         public static void NewChat(string from, ChatView Instance)
         {

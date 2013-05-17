@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ClientCommunication
 {
-    interface IMessageConstructor
+    public interface IMessageConstructor
     {
         void StartUp();
         void Achievement(string message);

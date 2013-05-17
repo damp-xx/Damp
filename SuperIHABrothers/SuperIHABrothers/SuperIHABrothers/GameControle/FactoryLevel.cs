@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using ClientCommunication;
 using Collision;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Sprite;
 using Sprites;
 using SuperIHABrothers;
 using GameState;
@@ -17,11 +19,15 @@ namespace GameControle
     {
         private ContentManager _content;
         private ICollisionControl _collisionControl;
+        private GameStateC _gameState;
+        
 
-        public FactoryLevel(ContentManager content, ICollisionControl collisionControl)
+        public FactoryLevel(ContentManager content, ICollisionControl collisionControl, GameStateC gameState)
         {
             _content = content;
             _collisionControl = collisionControl;
+            _gameState = gameState;
+
         }
 
         public ILevel GetLevelOne(IKeybordInput _input)
@@ -73,9 +79,31 @@ namespace GameControle
             _listLisst.Add(_list);
 
 
+            // Add Finishline
+            _list = new List<ISprite>();
+            _list.Add(new SpriteFinishLine(_content.Load<Texture2D>("Finish"), new Vector2(2000, 340), 100, 100, mIAnchor));
+            _listLisst.Add(_list);
+
+            // Add CD's
+            _list = new List<ISprite>();
+            int heightCD = 350;
+            for (int i = 520; i < 5000; i += 200)
+            {
+                if (heightCD < 50)
+                    heightCD = 350;
+                _list.Add(new SpriteCD(_content.Load<Texture2D>("cd_small"), new Vector2(i, heightCD), 30, 30, mIAnchor));
+                _list.Add(new SpriteCD(_content.Load<Texture2D>("cd_small"), new Vector2(i+80, heightCD), 30, 30, mIAnchor));
+                heightCD -= 100;
+            }
+            _listLisst.Add(_list);
+
+            // Add Font
+            _list = new List<ISprite>();
+            _list.Add(new SpriteScore(_content.Load<SpriteFont>("ScoreFont"), new Vector2(10, 10), _gameState));
+            _listLisst.Add(_list);
+
             var _SpriteContainer = new SpriteContainer(_listLisst, mIAnchor);
             var Level = new Level1(_SpriteContainer, _SpriteContainer, _collisionControl);
-
             return Level;
         }
     }

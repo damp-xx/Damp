@@ -63,9 +63,8 @@ namespace Sprites {
         public void Draw(SpriteBatch spriteBatch)
         {
            spriteBatch.Draw(_texture, MyRectangle, _sourceRectangle, Color.White);
-           //spriteBatch.Draw(_texture, MyRectangle, _sourceRectangle, Color.White);
-
 		}
+
 
 	    public void Update(GameTime time){
             

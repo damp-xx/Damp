@@ -7,69 +7,66 @@
 ///////////////////////////////////////////////////////////
 
 
+using System;
 using System.Threading;
 using GameState;
-using SuperIHABrothers.Sprite;
+
 
 namespace ClientCommunication
 {
-    public class MessageHandler : IMessageHandler
+    public class MessageHandler
     {
-
-        private ISpriteContainerMessage _ISpriteContainerMessage;
-        private IGameState _IGameState;
         private IMessageQueueRemove _IMessageQueueRemove;
         private IPlayerData _playerData;
 
-        public MessageHandler(ISpriteContainerMessage spriteContainerMessage, IGameState gameState, IMessageQueueRemove messageQueueRemove, IPlayerData playerData)
+        public MessageHandler( IMessageQueueRemove messageQueueRemove, IPlayerData playerData)
         {
-            _ISpriteContainerMessage = spriteContainerMessage;
-            _IGameState = gameState;
             _IMessageQueueRemove = messageQueueRemove;
             _playerData = playerData;
 
-            Thread myNewThread = new Thread(() => HandlerThread(_IMessageQueueRemove, _IGameState, _playerData, _ISpriteContainerMessage));
+            Thread myNewThread = new Thread(() => HandlerThread(_IMessageQueueRemove, _playerData));
             myNewThread.Start();
         }
 
-        public void SetContainer(ISpriteContainerMessage mContainer)
-        {
-            _ISpriteContainerMessage = mContainer;
-        }
+       
 
-        private void HandlerThread(IMessageQueueRemove messageQueueRemove, IGameState gameState, IPlayerData playerData, ISpriteContainerMessage containerMessage)
+        private void HandlerThread(IMessageQueueRemove messageQueueRemove, IPlayerData playerData)
         {
-            string message = messageQueueRemove.GetMessage();
-            string TypeTag = message.Substring(0, 3);
-            string Data = message.Substring(3, message.Length - 4);
-
-            if (message != null)
+            for (;;)
             {
-                switch (TypeTag)
-                {
-                    case "DOL": // Damp Online
-                        gameState.GameRunning = true;
-                        break;
+                string message = messageQueueRemove.GetMessage();
 
-                    case "DOF": // Damp Offline
-                        gameState.GameRunning = false;
-                        break;
+                if (message != null)
+                    {
+                    string TypeTag = message.Substring(0, 3);
+                    string Data = message.Substring(4, message.Length - 4);
 
-                    case "CHS": // Change Highscore
-                        playerData.SetHighscore(int.Parse(Data));
-                        break;
+                    switch (TypeTag)
+                    {
+                        case "DOL": // Damp Online
+                            playerData.GameRunning = true;
+                            break;
 
-                    case "CPN": // Change Playername
-                        playerData.SetPlayerName(Data);
-                        break;
+                        case "DOF": // Damp Offline
+                            playerData.GameRunning = false;
+                            break;
 
-                    case "NAC": // New Achiement
-                        //containerMessage.AddSprite(new SpriteAchievement());
-                        break;
+                        case "CHS": // Change Highscore
+                            playerData.Highscore = int.Parse(Data);
+                            break;
 
-                    default:
-                        //Should never reach this place
-                        break;
+                        case "CPN": // Change Playername
+                            playerData.SetPlayerName(Data);
+                            break;
+
+                        case "NAC": // New Achiement
+                            //containerMessage.AddSprite(new SpriteAchievement());
+                            break;
+
+                        default:
+                            //Should never reach this place
+                            break;
+                    }
                 }
             }
         }

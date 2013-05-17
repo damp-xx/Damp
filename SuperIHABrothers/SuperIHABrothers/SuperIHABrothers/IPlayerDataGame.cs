@@ -11,7 +11,6 @@
 
 public interface IPlayerDataGame  {
 
-	int GetHighscore();
-
+    int Highscore { get; set; }
 	string GetPlayerName();
 }//end IPlayerDataGame
