@@ -10,12 +10,22 @@ namespace DampGUI
     /// </summary>
     public partial class ThumbnailPhotoView : UserControl
     {
+        /**
+         * ThumbnailPhotoView
+         * 
+         * @brief Creates the ThumbnailPhotoView 
+         */
         public ThumbnailPhotoView()
         {
             InitializeComponent();
         }
 
-
+        /**
+         * ImageSource
+         * 
+         * @brief ImageSource Property 
+         * @param set(ImageSource);
+         */
         public ImageSource ImageSource
         {
             set
@@ -24,12 +34,24 @@ namespace DampGUI
                 this.Tag = value;
             }
         }
-
+        /**
+         * ImageWidth
+         * 
+         * @brief ImageWidth Property 
+         * @param set(double); 
+         * @return 
+         */
         public double ImageWidth
         {
             set { this.Width = value; }
         }
 
+        /**
+         * ImageHeight
+         * 
+         * @brief ImageHeight Property 
+         * @param set(double); 
+         */
         public double ImageHeight
         {
             set { this.Height = value; }
@@ -37,6 +59,13 @@ namespace DampGUI
 
         public event EventHandler<ThumbnailEventArgs> ThumbnailClick;
 
+        /**
+         * RadioButton_Checked
+         * 
+         * @brief this function activates the thumbnailevent
+         * @param object sender, RoutedEventArgs e
+         * @return 
+         */
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
             if (ThumbnailClick != null)
@@ -45,6 +74,13 @@ namespace DampGUI
             }
         }
 
+        /**
+         * IsSelected
+         * 
+         * @brief IsSelected Property
+         * @param set(bool);
+         * @return get(bool);
+         */
         public bool IsSelected
         {
             set { rdo.IsChecked = value; }
@@ -52,8 +88,18 @@ namespace DampGUI
         }
     }
 
+    /// <summary>
+    /// ThumbnailEventArgs class is used when you make a thumbnail, as an event
+    /// </summary>
     public class ThumbnailEventArgs : EventArgs
     {
+        /**
+         * ImageSource
+         * 
+         * @brief ImageSource Property 
+         * @param set(ImageSource);
+         * @return get(ImageSource);
+         */
         public ImageSource ImageSource { get; set; }
     }
 }
