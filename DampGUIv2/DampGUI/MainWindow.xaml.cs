@@ -18,6 +18,11 @@ namespace DampGUI
         private bool normalWindow = true;
         public static MainWindowDispatcher _MWDispatcher;
 
+        /**
+         * MainWindow
+         * 
+         * @brief Creates the MainWindow 
+         */
         public MainWindow()
         {
             InitializeComponent();
@@ -30,18 +35,35 @@ namespace DampGUI
             ComEvents.Listen();
         }
 
-
+        /**
+       * Drag_OnMouseDown
+       * 
+       * @brief makes it possible to drag the MainWindow around 
+       * @param object sender, MouseButtonEventArgs e
+       */
         private void Drag_OnMouseDown(object sender, MouseButtonEventArgs e)
         {
             DragMove();
             e.Handled = false;
         }
 
+        /**
+         * Close_OnClick
+         * 
+         * @brief makes it possible to close the MainWindow 
+         * @param object sender, RoutedEventArgs e
+         */
         private void Close_OnClick(object sender, RoutedEventArgs e)
         {
             Close();
         }
 
+        /**
+          * MaximizeNormal_Click
+          * 
+          * @brief makes it possible to Maximize and Normalize the MainWindow 
+          * @param object sender, RoutedEventArgs e
+          */
         private void MaximizeNormal_Click(object sender, RoutedEventArgs e)
         {
             if (normalWindow)
@@ -72,7 +94,12 @@ namespace DampGUI
             }
         }
 
-
+        /**
+         * Minimize_OnClick
+         * 
+         * @brief makes it possible to Minimize the MainWindow 
+         * @param object sender, RoutedEventArgs e
+         */
         private void Minimize_OnClick(object sender, RoutedEventArgs e)
         {
             WindowState = WindowState.Minimized;
