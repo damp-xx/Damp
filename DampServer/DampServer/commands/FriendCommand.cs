@@ -1,12 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Globalization;
 using DampServer.interfaces;
 using DampServer.responses;
 
 namespace DampServer.commands
 {
-    class FriendCommand : IServerCommand
+    class FriendCommand : IServerCommand, INotify
     {
         public bool NeedsAuthcatication { get; private set; }
         public bool IsPersistant { get; private set; }
@@ -20,7 +22,7 @@ namespace DampServer.commands
 
         public bool CanHandleCommand(string cmd)
         {
-            throw new NotImplementedException();
+            return false;
         }
 
         public void Execute(ICommandArgument http, string cmd = null)
@@ -47,8 +49,6 @@ namespace DampServer.commands
         {
             var db = new Database();
 
-            // @TODO CHECK IF USER EXISTS!
-
             if(string.IsNullOrEmpty(_client.Query.Get("Friend")))
             {
                 _client.SendXmlResponse(new ErrorXmlResponse {Message = "Missing argurments!"});
@@ -72,7 +72,6 @@ namespace DampServer.commands
             var sqlCmd = db.GetCommand();
             var user = UserManagement.GetUserByAuthToken(_client.Query.Get("AuthToken"));
 
-            // @TODO MAKE SURE I CAN ONLY HAVE ONE FRIEND REQUEST
             sqlCmd.CommandText = "INSERT INTO FriendRequests (\"User\", \"Friend\") VALUES (@userid, @friendid)";
             sqlCmd.Parameters.Add("@userid", SqlDbType.BigInt).Value = user.UserId;
             sqlCmd.Parameters.Add("@friendid", SqlDbType.BigInt).Value = friend.UserId;
@@ -90,17 +89,27 @@ namespace DampServer.commands
 
             db.Close();
 
-            NotifyUser(new StatusXmlResponse { From = friend.UserId,
-            Code = 200,
-            Command = "FriendRequest"}, friend.UserId);
-            _client.SendXmlResponse(new StatusXmlResponse {Code = 200, Command = "AddFriend", Message = "Friend request added"});
+            NotifyUser(new StatusXmlResponse
+                {
+                    Code = 200,
+                    Command = "FriendRequest",
+                    To = friend.UserId.ToString(CultureInfo.InvariantCulture),
+                    From = user.UserId
+                }, friend.UserId);
+
+            _client.SendXmlResponse(new StatusXmlResponse
+                {
+                    Code = 200,
+                    Command = "AddFriend",
+                    Message = "Friend request added",
+                    To = friend.UserId.ToString(CultureInfo.InvariantCulture),
+                    From = user.UserId
+                });
 
         }
 
         private void HandleAcceptFriend()
         {
-            Int64 friendid;
-            
             if (string.IsNullOrEmpty(_client.Query.Get("Friend")))
             {
                 _client.SendXmlResponse(new ErrorXmlResponse
@@ -109,13 +118,11 @@ namespace DampServer.commands
                     });
                 return;
             }
-            else
-            {
-                friendid = Int64.Parse(_client.Query.Get("Friend"));
-            }
+
+            long friendid = Int64.Parse(_client.Query.Get("Friend"));
 
 
-            Database db = new Database();
+            var db = new Database();
 
             db.Open();
 
@@ -146,7 +153,15 @@ namespace DampServer.commands
                         Message = "Friend Accepted!"
                     });
 
-                NotifyUser(new StatusXmlResponse {Code = 200, Command = "FriendAccepted", Message = friendid.ToString()}, friendid);
+                NotifyUser(
+                    new StatusXmlResponse
+                        {
+                            Code = 200,
+                            To = friendid.ToString(CultureInfo.InvariantCulture),
+                            Command = "FriendAccepted",
+                            Message = friendid.ToString(CultureInfo.InvariantCulture),
+                            From = UserManagement.GetUserByAuthToken(_client.Query.Get("AuthToken")).UserId
+                        }, friendid);
             }
             else
             {
@@ -173,11 +188,11 @@ namespace DampServer.commands
 
             long frindid = long.Parse(_client.Query.Get("Friend"));
 
-            Database db = new Database();
+            var db = new Database();
 
             db.Open();
 
-            SqlCommand cmd = db.GetCommand();
+            var cmd = db.GetCommand();
 
             cmd.CommandText = "DELETE FROM Friends WHERE userid = @userid AND userid1 = @friendid";
             cmd.Parameters.Add("@userid", SqlDbType.BigInt).Value =
@@ -196,7 +211,7 @@ namespace DampServer.commands
                 });
         }
 
-        private void NotifyUser(XmlResponse xml, long userid)
+        private void NotifyUser(StatusXmlResponse xml, long userid)
         {
             IConnection receiver = null;
             try
@@ -216,10 +231,86 @@ namespace DampServer.commands
             }
             else
             {
-                Console.WriteLine("ChatCommand: User not online, logging chat");
+                var db = new Database();
+
+                db.Open();
+
+                var sqlCmd = db.GetCommand();
+
+                if (string.IsNullOrEmpty(xml.Message)) xml.Message = "";
+                if (string.IsNullOrEmpty(xml.To)) xml.To = "0";
+
+               
+
+                sqlCmd.Parameters.Add("@userid", SqlDbType.BigInt).Value = userid;
+                sqlCmd.Parameters.Add("@code", SqlDbType.Int).Value = xml.Code;
+                sqlCmd.Parameters.Add("@fff", SqlDbType.BigInt).Value = xml.From;
+                sqlCmd.Parameters.Add("@bbb", SqlDbType.BigInt).Value = long.Parse(xml.To);
+                sqlCmd.Parameters.Add("@message", SqlDbType.NVarChar).Value = xml.Message;
+                sqlCmd.Parameters.Add("@command", SqlDbType.NVarChar).Value = xml.Command;
+
+                // get user
+                sqlCmd.CommandText = "INSERT INTO Notifications ([from], [to], userid, message, command, code)" +
+                                     " VALUES(@fff, @bbb, @userid, @message, @command, @code)";
+
+                sqlCmd.ExecuteNonQuery();
+
+
+                var r = sqlCmd.ExecuteReader();
+
+         
+                r.Close();
+                db.Close();
             }
 
 
+        }
+
+        public List<XmlResponse> Notify(IUser user)
+        {
+            var db = new Database();
+
+            db.Open();
+
+            SqlCommand sqlCmd = db.GetCommand();
+
+            // get user
+            sqlCmd.CommandText = "SELECT * FROM Notifications WHERE userid = @userid ";
+
+            sqlCmd.Parameters.Add("@userid", SqlDbType.BigInt).Value = user.UserId;
+
+            SqlDataReader r = sqlCmd.ExecuteReader();
+            var responses = new List<XmlResponse>();
+
+            if (r.HasRows)
+            {
+                while (r.Read())
+                {
+                    responses.Add(new StatusXmlResponse
+                        {
+                            Code = (int) r["code"],
+                            Command = (string) r["command"],
+                            From = (long)r["from"],
+                            To = ((long)r["to"]).ToString(CultureInfo.InvariantCulture),
+                            Message = (string)r["message"]
+                        });
+
+                    var db2 = new Database();
+                    db2.Open();
+
+                    var sql = db2.GetCommand();
+                    sql.CommandText = "DELETE FROM Notifications WHERE id = @id";
+                    sql.Parameters.Add("@id", SqlDbType.BigInt).Value = (long) r["id"];
+                    sql.ExecuteNonQuery();
+                    db2.Close();
+
+                }
+            }   
+         
+            r.Close();
+            db.Close();
+
+            return responses;
         }
     }
 }

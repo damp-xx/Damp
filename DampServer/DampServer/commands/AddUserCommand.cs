@@ -3,6 +3,7 @@
 using System;
 using System.Data;
 using DampServer.interfaces;
+using DampServer.responses;
 
 #endregion
 

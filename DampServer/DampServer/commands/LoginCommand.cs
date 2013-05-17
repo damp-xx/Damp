@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Security.Cryptography;
 using System.Text;
 using DampServer.interfaces;
+using DampServer.responses;
 
 #endregion
 
@@ -31,8 +32,6 @@ namespace DampServer.commands
 
         public void Execute(ICommandArgument http, string cmd = null)
         {
-            // @TODO PROPER VALIDATION
-
             if (string.IsNullOrEmpty(http.Query.Get("Username")) || string.IsNullOrEmpty(http.Query.Get("Password")))
             {
                 http.SendXmlResponse(new ErrorXmlResponse {Message = "Missing arguments #1112!"});
@@ -42,7 +41,7 @@ namespace DampServer.commands
             string username = http.Query.Get("Username");
             string password = http.Query.Get("Password");
 
-            Database db = new Database();
+            var db = new Database();
             
             db.Open();
     
@@ -52,7 +51,7 @@ namespace DampServer.commands
             sqlCmd.Parameters.Add("@username", SqlDbType.NVarChar).Value = http.Query.Get("Username");
             sqlCmd.Parameters.Add("@password", SqlDbType.NVarChar).Value = http.Query.Get("Password");
 
-            SqlDataReader r = null;
+            SqlDataReader r;
 
             try
             {
@@ -69,14 +68,13 @@ namespace DampServer.commands
 
             if (r.HasRows)
             {
-                // @TODO PROPER HASHING!!
-                SHA1CryptoServiceProvider sha1 = new SHA1CryptoServiceProvider();
+                var sha1 = new SHA1CryptoServiceProvider();
                 byte[] hash = sha1.ComputeHash(Encoding.UTF8.GetBytes(username + password));
                 string delimitedHexHash = BitConverter.ToString(hash);
                 string hexHash = delimitedHexHash.Replace("-", "");
 
 
-                Database db2 = new Database();
+                var db2 = new Database();
                 db2.Open();
                 SqlCommand sqlCmdUpdate = db2.GetCommand();
                 sqlCmdUpdate.CommandText = "UPDATE Users SET authToken = @authToken WHERE userid = @userid";

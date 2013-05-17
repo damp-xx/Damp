@@ -1,6 +1,4 @@
 ﻿#region
-
-using System;
 using System.Collections.Generic;
 using DampServer.interfaces;
 
@@ -22,5 +20,6 @@ namespace DampServer
         public string Description { get; set; }
         public string Photo { get; set; }
         public string Gender { get; set; }
+        public string Score { get; set; }
     }
 }
