@@ -34,7 +34,7 @@ namespace DampGUI
         {
             get
             {
-                ComLogin.Login("jens", "jens");
+                ComLogin.Login("bardyr", "mormor");
                
                 LoadGames();
                 LoadKnowFriend();
