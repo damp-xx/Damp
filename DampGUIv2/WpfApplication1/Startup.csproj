@@ -98,10 +98,6 @@
       <Project>{8cf77eb6-3593-4010-b4a5-8e33b144b2a4}</Project>
       <Name>DampGUI</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Login\Login\Login.csproj">
-      <Project>{b1b7c59a-647c-4d2e-b1e1-0d18547f43a8}</Project>
-      <Name>Login</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

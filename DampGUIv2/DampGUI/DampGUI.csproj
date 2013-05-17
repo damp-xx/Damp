@@ -107,6 +107,9 @@
     <Compile Include="Login\RetrieveAccount.xaml.cs">
       <DependentUpon>RetrieveAccount.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Startup\Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ChatView.xaml.cs">
       <DependentUpon>ChatView.xaml</DependentUpon>
     </Compile>
@@ -140,6 +143,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Login\RetrieveAccount.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Startup\Login.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -252,6 +259,7 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="Startup\App.config" />
     <Resource Include="Styles\BAUERG.TTF" />
     <None Include="DampGUI_TemporaryKey.pfx" />
     <None Include="Login\packages.config" />

@@ -85,9 +85,15 @@ namespace Login
 
         private void LoginButton_OnClick(object sender, RoutedEventArgs e)
         {
-            if (ComLogin.Login(Username.Text, Password.Password) && Login != null)
+            var logincheck = ComLogin.Login(Username.Text, Password.Password);
+
+            if (logincheck && Login != null)
             {
                 Login(this, this.e);
+                WriteXml();
+            }
+            else if(logincheck)
+            {
                 WriteXml();
             }
             else
