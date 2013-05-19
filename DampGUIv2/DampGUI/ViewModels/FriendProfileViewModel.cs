@@ -8,6 +8,12 @@ namespace DampGUI
     /// </summary>
     public class FriendProfileViewModel : ViewModelBase<FriendProfileViewModel>
     {
+        /**
+        *  FriendProfileViewModel
+        * 
+        * @brief this constructor sets IFriends up
+        * @param IFriends aFriends	 
+        */
         public FriendProfileViewModel(IFriends aFriends)
         {
             KnowFriends = aFriends;
@@ -15,8 +21,22 @@ namespace DampGUI
 
         public event EventHandler<NotificationEventArgs<Exception>> ErrorNotice;
 
+        /**
+         *  KnowFriends
+         * 
+         * @brief this property is used by CurrentFriend property
+         * @param set(IFriends)	 
+         * @return get(IFriends)
+         */
         public IFriends KnowFriends { get; set; }
 
+        /**
+         *  CurrentFriend
+         * 
+         * @brief this property gets the currentfriend, binded to all data
+         * @param set(IFriend)	 
+         * @return get(IFriend)
+         */
         public IFriend CurrentFriend
         {
             get
@@ -27,13 +47,6 @@ namespace DampGUI
                 }
                 return null;
             }
-        }
-
-        // Helper method to notify View of an error
-        private void NotifyError(string message, Exception error)
-        {
-            // Notify view of an error
-            Notify(ErrorNotice, new NotificationEventArgs<Exception>(message, error));
         }
     }
 }

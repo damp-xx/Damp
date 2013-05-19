@@ -8,22 +8,37 @@ namespace DampGUI
     /// </summary>
     public class GameViewModel : ViewModelBase<GameViewModel>
     {
+        /**
+         *  GameViewModel
+         * 
+         * @brief constructor for GameViewModel
+         * @param Games aGames	 
+         */
+
         public GameViewModel(Games aGames)
         {
             Games = aGames;
-            PlayIns = "Play";
+            PlayIns = "Play";//skal sættes efter tilstand
         }
 
         public event EventHandler<NotificationEventArgs<Exception>> ErrorNotice;
 
+        /**
+         *  Games
+         * 
+         * @brief property for Games 
+         * @param set(IGames)	 
+         * @return get(IGames)
+         */
         public IGames Games { get; set; }
 
-        public int GrdViewWidth
-
-        {
-            get { return GrdViewWidth; }
-        }
-
+        /**
+         *  CurrentGame
+         * 
+         * @brief this property gets the currentGame, binded to all data
+         * @param set(IGame)	 
+         * @return get(IGame)
+         */
         public IGame CurrentGame
         {
             get
@@ -35,24 +50,23 @@ namespace DampGUI
             }
         }
 
+        /**
+         *  PlayIns
+         * 
+         * @brief this property is binded to play button
+         * @param set(string)	 
+         * @return get(string)
+         */
         public string PlayIns { get; set; }
 
+        /**
+         *  Playbutton
+         * 
+         * @brief this function starts the selected game, binded to button click event
+         */
         public void Playbutton()
         {
             //ToDO: Pierre skal sætte sin play func ind
-            if (true)
-            {
-            }
-            else
-            {
-            }
-        }
-
-        // Helper method to notify View of an error
-        private void NotifyError(string message, Exception error)
-        {
-            // Notify view of an error
-            Notify(ErrorNotice, new NotificationEventArgs<Exception>(message, error));
         }
     }
 }
