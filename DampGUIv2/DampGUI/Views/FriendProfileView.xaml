@@ -54,7 +54,7 @@
                             Canvas.Left="7"
                             Canvas.Top="35"
                             HorizontalAlignment="Stretch"
-                            Text="{Binding Path=CurrentFriend.Description}"
+                            Text="{Binding Path= CurrentFriend.Description}"
                             AcceptsReturn="True"
                             TextWrapping="Wrap"
                             VerticalScrollBarVisibility="Auto"

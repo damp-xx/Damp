@@ -117,7 +117,6 @@
     <Compile Include="Views\PhotoCollectionView.xaml.cs">
       <DependentUpon>PhotoCollectionView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\ChatViewModel.cs" />
     <Compile Include="ViewModels\FriendProfileViewModel.cs" />
     <Compile Include="Views\BigPictureView.xaml.cs">
       <DependentUpon>BigPictureView.xaml</DependentUpon>

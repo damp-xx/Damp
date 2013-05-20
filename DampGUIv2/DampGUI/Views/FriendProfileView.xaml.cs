@@ -7,6 +7,11 @@ namespace DampGUI
     /// </summary>
     public partial class FriendProfileView : UserControl
     {
+        /**
+     * FriendProfileView
+     * 
+     * @brief Is the constructor for FriendProfileView 
+     */
         public FriendProfileView()
         {
             InitializeComponent();

@@ -12,12 +12,18 @@ namespace DampGUI
     /// </summary>
     public class FriendFindViewModel : ViewModelBase<FriendFindViewModel>
     {
-        private Friends allUsers;
-
+        
         public event EventHandler<NotificationEventArgs<Exception>> ErrorNotice;
 
         private ObservableCollection<string> _friendList = new ObservableCollection<string>();
 
+        /**
+         *  FriendList
+         * 
+         * @brief  this is a property that is connected to the listview
+         * @param set(ObservableCollection<string>)
+         * @return get(ObservableCollection<string>)
+         */
         public ObservableCollection<string> FriendList
         {
             get
@@ -34,8 +40,15 @@ namespace DampGUI
             }
         }
 
-        private Friends _friendSearchList = new Friends();
 
+        private Friends _friendSearchList = new Friends();
+        /**
+         *  FriendSearchList
+         * 
+         * @brief  this is a property that is used by the FriendList Property 
+         * @param set(Friends)
+         * @return get(Friends)
+         */
         public Friends FriendSearchList
         {
             get { return _friendSearchList; }
@@ -49,6 +62,13 @@ namespace DampGUI
 
         private int _indexFriend = 0;
 
+        /**
+         *  IndexFriend
+         * 
+         * @brief  this is a property that is used to indicate the index of the list 
+         * @param set(int)
+         * @return get(int)
+         */
         public int IndexFriend
         {
             get { return _indexFriend; }
@@ -57,6 +77,13 @@ namespace DampGUI
 
         private string _friendListName;
 
+        /**
+         *  FriendListName
+         * 
+         * @brief  this is a property that is used to get the selected friends name, and it is binded to the listview
+         * @param set(string)
+         * @return get(string)
+         */
         public string FriendListName
         {
             set
@@ -67,6 +94,12 @@ namespace DampGUI
             }
         }
 
+        /**
+         *  FindIndexFriend
+         * 
+         * @brief this function is used to set the current friend.
+         * @param int aIndex
+         */
         public void FindIndexFriend(int aIndex)
         {
             if (_friendListName != null)
@@ -86,6 +119,13 @@ namespace DampGUI
             }
         }
 
+        /**
+         *  AddFriend
+         * 
+         * @brief this function is binded to a button click event, and adds a friend to your friend list
+         * @param 
+         * @return
+         */
         public void AddFriend()
         {
             if (FriendSearchList.CurrentFriend != null)
@@ -101,39 +141,37 @@ namespace DampGUI
             }
         }
 
+        /**
+         *  SearchFriends
+         * 
+         * @brief this function is binded to a textchanged event, and is used to find users
+         */
         public void SearchFriends()
         {
-            var foundFriends = ComFriend.SearchUser(_name);
-
-
+            var foundFriends = ComFriend.SearchUser(Name);
             FriendSearchList = foundFriends;
         }
 
-        private string _name;
-
-        public string Name
-        {
-            get { return _name; }
-            set
-            {
-                _name = value;
-                OnPropertyChanged("SearchGameName");
-            }
-        }
+        /**
+        *  Name
+        * 
+        * @brief this property is used binded to the search text
+        * @param set(string)	 
+        * @return get(string)
+        */
+        public string Name { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
-
+        /**
+         *  OnPropertyChanged
+         * 
+         * @brief this function creates an event when a property is changed
+         * @param string propertyName	 
+         */
         public void OnPropertyChanged(string propertyName)
         {
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        // Helper method to notify View of an error
-        private void NotifyError(string message, Exception error)
-        {
-            // Notify view of an error
-            Notify(ErrorNotice, new NotificationEventArgs<Exception>(message, error));
         }
     }
 }

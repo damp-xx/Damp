@@ -9,12 +9,39 @@ namespace DampGUI
 {
     public class Photo : IPhoto
     {
+        /**
+          *  Image
+          * 
+          * @brief this property is used to get set the final picture
+          * @param set(BitmapImage)
+          * @return get(BitmapImage)
+          */
         public BitmapImage Image { get; set; }
         private BitmapImage image = new BitmapImage();
+
+        /**
+          *  Url
+          * 
+          * @brief this property is used to get set the url 
+          * @param set(string)
+          * @return get(string)
+          */
         public string Url { get; set; }
 
+        /**
+          *  IsMade
+          * 
+          * @brief this property is used to check if the picture is made or not 
+          * @param set(bool)
+          * @return get(bool)
+          */
         public bool IsMade { get; set; }
 
+        /**
+          *  Photo
+          * 
+          * @brief this Constructor sets the Url and sets the IsMade to false
+          */
         public Photo(string _url)
         {
             IsMade = false;
@@ -24,7 +51,11 @@ namespace DampGUI
 
         private MemoryStream memoryStream = new MemoryStream();
 
-
+        /**
+          *  LoadPicture
+          * 
+          * @brief this function gets the picture form the url 
+          */
         public void LoadPicture()
         {
             int BytesToRead = 100;
@@ -49,7 +80,11 @@ namespace DampGUI
             }
         }
 
-
+        /**
+          *  Create
+          * 
+          * @brief this function creates the final picture in a GUI thread 
+          */
         public void Create()
         {
             image.BeginInit();
@@ -62,11 +97,16 @@ namespace DampGUI
             IsMade = true;
         }
 
+        /**
+          *  InitiateSSLTrust
+          * 
+          * @brief this function Change SSL checks so that all checks pass          * @param set(bool)
+          */
         public static void InitiateSSLTrust()
         {
             try
             {
-                //Change SSL checks so that all checks pass
+                
                 ServicePointManager.ServerCertificateValidationCallback =
                     new RemoteCertificateValidationCallback(
                         delegate { return true; }
