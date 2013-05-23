@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{9380F760-D929-4B4F-97D9-3A0ECE33210C}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CommunicationLibrary</RootNamespace>
     <AssemblyName>CommunicationLibrary</AssemblyName>
@@ -73,7 +73,6 @@
     <Compile Include="Models\IPhotoCollection.cs" />
     <Compile Include="Models\Photo.cs" />
     <Compile Include="Models\PhotoCollection.cs" />
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

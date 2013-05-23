@@ -22,11 +22,6 @@ namespace CommunicationLibrary
             return null;
         }
 
-        /*
-        public static void UpdateProfile()
-        {
-            //TO DO implment update user profile
-        }*/
 
         public static string GetProfileName()
         {

@@ -23,7 +23,7 @@ namespace CommunicationLibrary.Events
             if (xmlNode != null)
                 requestId = xmlNode.InnerText;
 
-            if(ComFriend.AcceptFriend(requestId));
+            if(ComFriend.AcceptFriend(requestId))
                 EventHandler.HandleFriendRequest(Event);
         }
     }

@@ -49,7 +49,7 @@ namespace CommunicationLibrary
                 {
                     if (command != null) command.Action(Event);
                 }
-                catch (NullReferenceException nEx)
+                catch (NullReferenceException)
                 {
                     Console.WriteLine("Event not recogniced ....");
                 }

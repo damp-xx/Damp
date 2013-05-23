@@ -166,7 +166,7 @@ namespace Login
                 }
             }
             //on exception, delete file
-            catch (XmlException e)
+            catch (XmlException)
             {
                 File.Delete(ConfPath);
             }
@@ -201,7 +201,7 @@ namespace Login
                     }
                     xmlCfg.Save(ConfPath);
                 }
-                catch (XmlException e)
+                catch (XmlException)
                 {
                     File.Delete(ConfPath);
                     CreateConfXml();
