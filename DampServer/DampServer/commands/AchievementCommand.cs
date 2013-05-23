@@ -10,14 +10,15 @@ namespace DampServer.commands
     public class AchievementCommand : IServerCommand
     {
         private ICommandArgument _client;
-        public bool NeedsAuthcatication { get; private set; }
-        public bool IsPersistant { get; private set; }
 
         public AchievementCommand()
         {
             NeedsAuthcatication = true;
             IsPersistant = false;
         }
+
+        public bool NeedsAuthcatication { get; private set; }
+        public bool IsPersistant { get; private set; }
 
         public bool CanHandleCommand(string cmd)
         {
@@ -79,10 +80,10 @@ namespace DampServer.commands
                     gl.Achievement.Add(new Archivement
                         {
                             Title = (string) r["title"],
-                            Description = (string)r["description"],
-                            Icon = (string)r["picturePath"],
+                            Description = (string) r["description"],
+                            Icon = (string) r["picturePath"],
                             GameId = (long) r["gameid"],
-                            ArcheivementId = (long)r["archeivementid"]
+                            ArcheivementId = (long) r["archeivementid"]
                         });
                 }
             r.Close();
@@ -97,9 +98,9 @@ namespace DampServer.commands
             if (string.IsNullOrEmpty(_client.Query.Get("UserId")) || string.IsNullOrEmpty(_client.Query.Get("GameId")))
             {
                 _client.SendXmlResponse(new ErrorXmlResponse
-                {
-                    Message = "Missing argurments!"
-                });
+                    {
+                        Message = "Missing argurments!"
+                    });
 
                 return;
             }
@@ -117,7 +118,6 @@ namespace DampServer.commands
             cmd.Parameters.Add("@gameid", SqlDbType.BigInt).Value = _client.Query.Get("GameId");
 
 
-
             SqlDataReader r = cmd.ExecuteReader();
 
             AchievementListResponse gl = new AchievementListResponse();
@@ -127,13 +127,13 @@ namespace DampServer.commands
                 while (r.Read())
                 {
                     gl.Achievement.Add(new Archivement
-                    {
-                        Title = (string)r["title"],
-                        Description = (string)r["description"],
-                        Icon = (string)r["picturePath"],
-                        GameId = (long)r["gameid"],
-                        ArcheivementId = (long)r["archeivementid"]
-                    });
+                        {
+                            Title = (string) r["title"],
+                            Description = (string) r["description"],
+                            Icon = (string) r["picturePath"],
+                            GameId = (long) r["gameid"],
+                            ArcheivementId = (long) r["archeivementid"]
+                        });
                 }
             r.Close();
             db.Close();
@@ -146,9 +146,9 @@ namespace DampServer.commands
             if (string.IsNullOrEmpty(_client.Query.Get("UserId")))
             {
                 _client.SendXmlResponse(new ErrorXmlResponse
-                {
-                    Message = "Missing argurments!"
-                });
+                    {
+                        Message = "Missing argurments!"
+                    });
 
                 return;
             }
@@ -174,13 +174,13 @@ namespace DampServer.commands
                 while (r.Read())
                 {
                     gl.Achievement.Add(new Archivement
-                    {
-                        Title = (string)r["title"],
-                        Description = (string)r["description"],
-                        Icon = (string)r["picturePath"],
-                        GameId = (long)r["gameid"],
-                        ArcheivementId = (long)r["archeivementid"]
-                    });
+                        {
+                            Title = (string) r["title"],
+                            Description = (string) r["description"],
+                            Icon = (string) r["picturePath"],
+                            GameId = (long) r["gameid"],
+                            ArcheivementId = (long) r["archeivementid"]
+                        });
                 }
             r.Close();
             db.Close();
@@ -193,9 +193,9 @@ namespace DampServer.commands
             if (string.IsNullOrEmpty(_client.Query.Get("GameId")))
             {
                 _client.SendXmlResponse(new ErrorXmlResponse
-                {
-                    Message = "Missing argurments!"
-                });
+                    {
+                        Message = "Missing argurments!"
+                    });
 
                 return;
             }
@@ -221,13 +221,13 @@ namespace DampServer.commands
                 while (r.Read())
                 {
                     gl.Achievement.Add(new Archivement
-                    {
-                        Title = (string)r["title"],
-                        Description = (string)r["description"],
-                        Icon = (string)r["picturePath"],
-                        GameId = (long)r["gameid"],
-                        ArcheivementId = (long)r["archeivementid"]
-                    });
+                        {
+                            Title = (string) r["title"],
+                            Description = (string) r["description"],
+                            Icon = (string) r["picturePath"],
+                            GameId = (long) r["gameid"],
+                            ArcheivementId = (long) r["archeivementid"]
+                        });
                 }
             r.Close();
             db.Close();
@@ -266,13 +266,13 @@ namespace DampServer.commands
                 while (r.Read())
                 {
                     gl.Achievement.Add(new Archivement
-                    {
-                        Title = (string)r["title"],
-                        Description = (string)r["description"],
-                        Icon = (string)r["picturePath"],
-                        GameId = (long)r["gameid"],
-                        ArcheivementId = (long)r["archeivementid"]
-                    });
+                        {
+                            Title = (string) r["title"],
+                            Description = (string) r["description"],
+                            Icon = (string) r["picturePath"],
+                            GameId = (long) r["gameid"],
+                            ArcheivementId = (long) r["archeivementid"]
+                        });
                 }
             r.Close();
             db.Close();
@@ -315,13 +315,13 @@ namespace DampServer.commands
                 while (r.Read())
                 {
                     gl.Achievement.Add(new Archivement
-                    {
-                        Title = (string)r["title"],
-                        Description = (string)r["description"],
-                        Icon = (string)r["picturePath"],
-                        GameId = (long)r["gameid"],
-                        ArcheivementId = (long)r["archeivementid"]
-                    });
+                        {
+                            Title = (string) r["title"],
+                            Description = (string) r["description"],
+                            Icon = (string) r["picturePath"],
+                            GameId = (long) r["gameid"],
+                            ArcheivementId = (long) r["archeivementid"]
+                        });
                 }
             r.Close();
             db.Close();

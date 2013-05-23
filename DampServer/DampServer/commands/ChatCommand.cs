@@ -21,6 +21,66 @@ namespace DampServer.commands
             IsPersistant = false;
         }
 
+        public List<XmlResponse> Notify(IUser user)
+        {
+            Database db = new Database();
+            db.Open();
+
+            SqlCommand sqlCmd = db.GetCommand();
+
+            sqlCmd.CommandText = "SELECT * FROM Chat WHERE \"receiver\" = @userid AND seen = 0";
+            sqlCmd.Parameters.Add("@userid", SqlDbType.BigInt).Value = user.UserId;
+
+
+            SqlDataReader r;
+
+            try
+            {
+                r = sqlCmd.ExecuteReader();
+            }
+            catch (InvalidOperationException e)
+            {
+                Logger.Log(e.Message);
+                return null;
+            }
+
+            List<XmlResponse> respons = new List<XmlResponse>();
+
+            while (r.Read())
+            {
+                long from = ((long) r["sender"]);
+                string message = (string) r["message"];
+                string to = ((long) r["receiver"]).ToString(CultureInfo.InvariantCulture);
+                DateTime date = (DateTime) r["time"];
+
+
+                User dd = UserManagement.GetUserById(from.ToString(CultureInfo.InvariantCulture));
+
+                respons.Add(new StatusXmlResponse
+                    {
+                        From = from,
+                        Message = message,
+                        To = to,
+                        Date = date,
+                        Command = "ChatRecieved",
+                        FromName = dd.Username
+                    });
+
+                Database db2 = new Database();
+                db2.Open();
+
+                SqlCommand cmd3 = db2.GetCommand();
+
+                cmd3.CommandText = "UPDATE Chat SET seen = 1 WHERE chatid = @id";
+                cmd3.Parameters.Add("@id", SqlDbType.BigInt).Value = r["chatid"];
+                cmd3.ExecuteNonQuery();
+            }
+            r.Close();
+            db.Close();
+
+            return respons;
+        }
+
         public bool CanHandleCommand(string s)
         {
             return s.Equals("Chat");
@@ -47,7 +107,7 @@ namespace DampServer.commands
 
             User me = UserManagement.GetUserByAuthToken(http.Query.Get("AuthToken"));
 
-            var r = new StatusXmlResponse
+            StatusXmlResponse r = new StatusXmlResponse
                 {
                     Message = http.Query.Get("Message"),
                     To = http.Query.Get("To"),
@@ -56,7 +116,7 @@ namespace DampServer.commands
                     Command = "ChatRecieved"
                 };
 
-            var db = new Database();
+            Database db = new Database();
             db.Open();
 
             SqlCommand cmd2 = db.GetCommand();
@@ -91,67 +151,5 @@ namespace DampServer.commands
 
         public bool NeedsAuthcatication { get; private set; }
         public bool IsPersistant { get; private set; }
-
-        public List<XmlResponse> Notify(IUser user)
-        {
-            var db = new Database();
-            db.Open();
-
-            var sqlCmd = db.GetCommand();
-
-            sqlCmd.CommandText = "SELECT * FROM Chat WHERE \"receiver\" = @userid AND seen = 0";
-            sqlCmd.Parameters.Add("@userid", SqlDbType.BigInt).Value = user.UserId;
-
-
-            SqlDataReader r;
-
-            try
-            {
-                r = sqlCmd.ExecuteReader();
-            }
-            catch (InvalidOperationException e)
-            {
-                Logger.Log(e.Message);
-                return null;
-            }
-
-            var respons = new List<XmlResponse>();
-
-            while (r.Read())
-            {
-                var from = ((long)r["sender"]);
-                var message = (string)r["message"];
-                string to = ((long) r["receiver"]).ToString(CultureInfo.InvariantCulture);
-                var date = (DateTime) r["time"];
-
-
-                var dd = UserManagement.GetUserById(from.ToString(CultureInfo.InvariantCulture));
-
-                respons.Add(new StatusXmlResponse
-                {
-                    From =  from,
-                    Message = message,
-                    To = to,
-                    Date = date,
-                    Command = "ChatRecieved",
-                    FromName = dd.Username
-
-                   
-                }); 
- 
-                var db2 = new Database();
-                db2.Open();
-
-                SqlCommand cmd3 = db2.GetCommand();
-
-                cmd3.CommandText = "UPDATE Chat SET seen = 1 WHERE chatid = @id";
-                cmd3.Parameters.Add("@id", SqlDbType.BigInt).Value = r["chatid"];
-                cmd3.ExecuteNonQuery();
-            }
-            r.Close();
-            db.Close();
-
-            return respons;
-        }
     }
 }

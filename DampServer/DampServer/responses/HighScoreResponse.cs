@@ -7,6 +7,6 @@ namespace DampServer.responses
     public class HighScoreResponse : XmlResponse
     {
         public int GameId { get; set; }
-        public List<User> UserScores { get; set; } 
+        public List<User> UserScores { get; set; }
     }
 }
