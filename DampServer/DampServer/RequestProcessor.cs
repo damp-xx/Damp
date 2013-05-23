@@ -216,10 +216,13 @@ namespace DampServer
                     leCmd = new AchievementCommand();
                     break;
                 case "UpdateScore":
-                    leCmd= new HighScore();
+                    leCmd= new HighScoreCommand();
                     break;
                 case "GetScore":
-                    leCmd = new HighScore();
+                    leCmd = new HighScoreCommand();
+                    break;
+                case "GetHighScore":
+                    leCmd = new HighScoreCommand();
                     break;
                 case "AddUser":
                     leCmd= new AddUserCommand();

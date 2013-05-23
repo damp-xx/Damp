@@ -3,7 +3,6 @@
 using System;
 using System.Net;
 using System.Net.Sockets;
-using DampServer;
 
 #endregion
 
@@ -30,7 +29,9 @@ namespace DampServer
             while (true)
             {
                 var s = _tcp.AcceptTcpClient();
+// ReSharper disable ObjectCreationAsStatement
                 new RequestProcessor(s);
+// ReSharper restore ObjectCreationAsStatement
 
             }
 // ReSharper disable FunctionNeverReturns

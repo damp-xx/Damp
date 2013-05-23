@@ -4,16 +4,28 @@
 winexe
 C#
 .cs
+<<<<<<< HEAD
 C:\Users\Filip\Dropbox\IHA Docs\4. Semester\PRJ4\Damp\DampGUI\Login\Login\obj\Debug\
+=======
+F:\Dropbox\IHA\PRJ4\Damp\DampGUI\Login\Login\obj\Debug\
+>>>>>>> db01ffa9ec533ede8b8daae172d0262af9552711
 Login
 none
 false
 DEBUG;TRACE
+<<<<<<< HEAD
 C:\Users\Filip\Dropbox\IHA Docs\4. Semester\PRJ4\Damp\DampGUI\Login\Login\App.xaml
 12-403558992
 
 14-729682716
 191494801344
+=======
+F:\Dropbox\IHA\PRJ4\Damp\DampGUI\Login\Login\App.xaml
+12-403558992
+
+14-1213542901
+19-623909000
+>>>>>>> db01ffa9ec533ede8b8daae172d0262af9552711
 RetrieveAccount.xaml;Styles\ButtonStyle.xaml;Styles\GroupboxStyle.xaml;Styles\LabelStyle.xaml;Styles\ListViewStyle.xaml;MainWindow.xaml;Styles\MenuStyle.xaml;Styles\Resources.xaml;Styles\ScrollBarStyle.xaml;Styles\Styles.xaml;Styles\TextBoxStyle.xaml;Styles\WindowStyle.xaml;
 
 True

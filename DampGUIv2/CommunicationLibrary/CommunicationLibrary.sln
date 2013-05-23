@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommunicationLibrary", "CommunicationLibrary.csproj", "{9380F760-D929-4B4F-97D9-3A0ECE33210C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommunicationLibraryTest", "..\CommunicationLibraryTest\CommunicationLibraryTest.csproj", "{0D11E983-F138-4850-BB78-C09A7485DCA5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectionLibrary", "..\ConnectionLibrary\ConnectionLibrary.csproj", "{540F41D8-691D-45EB-AF49-9AF15D4B69F9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9380F760-D929-4B4F-97D9-3A0ECE33210C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9380F760-D929-4B4F-97D9-3A0ECE33210C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9380F760-D929-4B4F-97D9-3A0ECE33210C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9380F760-D929-4B4F-97D9-3A0ECE33210C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D11E983-F138-4850-BB78-C09A7485DCA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D11E983-F138-4850-BB78-C09A7485DCA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D11E983-F138-4850-BB78-C09A7485DCA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D11E983-F138-4850-BB78-C09A7485DCA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{540F41D8-691D-45EB-AF49-9AF15D4B69F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{540F41D8-691D-45EB-AF49-9AF15D4B69F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{540F41D8-691D-45EB-AF49-9AF15D4B69F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{540F41D8-691D-45EB-AF49-9AF15D4B69F9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
