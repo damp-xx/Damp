@@ -46,7 +46,6 @@
     <Compile Include="DampServerClient.cs" />
     <Compile Include="IDampServerClient.cs" />
     <Compile Include="IEventParser.cs" />
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

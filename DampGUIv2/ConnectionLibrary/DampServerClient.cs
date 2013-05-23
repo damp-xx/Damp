@@ -16,7 +16,6 @@ namespace DampCS
     {
         private readonly string _host;
         private readonly int _port;
-        public bool IsAuthenticated { get; private set; }
         private string _ComToken = null;
         private readonly static object _lock = new object();
         private IEventParser HandleParse;
@@ -45,10 +44,7 @@ namespace DampCS
         {
             _port = port;
             _host = host;
-            IsConnected = false;
         }
-
-        public bool IsConnected { get; private set; }
 
         public bool Login(string username, string password, out string _authToken)
         {
@@ -133,7 +129,7 @@ namespace DampCS
             {
                 stream.AuthenticateAsClient("*");
             }
-            catch (Exception e)
+            catch (Exception)
             {
             //     Console.WriteLine("Exp: {0}", e.Message);           
             }

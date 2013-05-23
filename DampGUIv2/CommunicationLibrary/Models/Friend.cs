@@ -3,7 +3,9 @@ using SimpleMvvmToolkit;
 
 namespace DampGUI
 {
-
+    /// <summary>
+    /// This class contains properties that a Friend have
+    /// </summary>
     public class Friend : ModelBase<Friend>, IFriend
     {
         public string RealName { get; set; }

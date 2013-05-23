@@ -26,8 +26,16 @@ namespace DampGUI
         private ObservableCollection<string> allGames = new ObservableCollection<string>();
         private ObservableCollection<IFriend> allFriends = new ObservableCollection<IFriend>();
 
+        /**
+         *  MainPageViewModel
+         * 
+         * @brief constructor that sets up the GUI, loads friend and games in 
+         * @param IGames aGames, IFriends aFriends	 
+         */
         public MainPageViewModel(IGames aGames, IFriends aFriends)
         {
+            IndexFriend = 0;
+            IndexGame = 0;
             games = aGames;
             knowFriends = aFriends;
             MpvmDispatcherclassDispatcher = new MainPageViewModelDispatcher {MpvmDispatcher = Dispatcher, friends = LFriends};
@@ -46,6 +54,11 @@ namespace DampGUI
             }
         }
 
+        /**
+         *  ShowFriendSearch
+         * 
+         * @brief sets the FindFriendListView as the center usercontrol 
+         */
         public void ShowFriendSearch()
         {
             Content = new FindFriendListView();
@@ -53,6 +66,13 @@ namespace DampGUI
 
         private object _content;
 
+        /**
+         *  Content
+         * 
+         * @brief property binded to the center usercontrol 
+         * @param set(object)	 
+         * @return get(object)
+         */
         public object Content
         {
             get { return _content; }
@@ -62,35 +82,52 @@ namespace DampGUI
                 NotifyPropertyChanged(vm => vm.Content);
             }
         }
+        /**
+         *  IndexGame
+         * 
+         * @brief property to get game index 
+         * @param set(int)	 
+         * @return get(int)
+         */
+        public int IndexGame { get; set; }
 
-        //games.CurrentIndex
-        private int _indexGame = 0;
-
-        public int IndexGame
-        {
-            get { return _indexGame; }
-            set { _indexGame = value; }
-        }
-
+        /**
+         *  GotFocus
+         * 
+         * @brief function that is triggered when the game list has focus 
+         */
         public void GotFocus()
         {
-            findIndex(IndexGame);
+            FindIndex(IndexGame);
             ChangeGame();
         }
 
         private string gameListName;
 
+        /**
+          *  GameListName
+          * 
+          * @brief this is a property that is used to get the selected games name, and it is binded to the listview
+          * @param set(string)
+          * @return get(string)
+          */
         public string GameListName
         {
             set
             {
                 gameListName = value;
-                findIndex(_indexGame);
+                FindIndex(IndexGame);
                 OnPropertyChanged("GameListName");
             }
         }
 
-        public void findIndex(int aIndex)
+        /**
+         *  FindIndex
+         * 
+         * @brief this function is used to set the current game.
+         * @param int aIndex
+         */
+        public void FindIndex(int aIndex)
         {
             if (gameListName != null)
             {
@@ -112,6 +149,13 @@ namespace DampGUI
 
         private ObservableCollection<string> lGames = new ObservableCollection<string>();
 
+        /**
+         *  LGames
+         * 
+         * @brief this is a property that is connected to the listview
+         * @param set(ObservableCollection<string>)
+         * @return get(ObservableCollection<string>)
+         */
         public ObservableCollection<string> LGames
         {
             get { return lGames; }
@@ -122,6 +166,14 @@ namespace DampGUI
             }
         }
 
+
+        /**
+         *  FindGames
+         * 
+         * @brief this function search games and returns a list of all found games
+         * @param string aName
+         * @return List<string>
+         */
         public List<string> FindGames(string aName)
         {
             char[] name = aName.ToLower().ToCharArray();
@@ -163,7 +215,16 @@ namespace DampGUI
             return resultList;
         }
 
-        /////////////////////////////////Friends
+        ////////////////Friends
+
+
+        /**
+         *  FindFriends
+         * 
+         * @brief this function search friends and returns a list of all found friends
+         * @param string aName
+         * @return List<IFriend>
+         */
         public List<IFriend> FindFriends(string aName)
         {
             char[] name = aName.ToLower().ToCharArray();
@@ -182,6 +243,13 @@ namespace DampGUI
 
         private ObservableCollection<IFriend> lFriends = new ObservableCollection<IFriend>();
 
+        /**
+         *  LFriends
+         * 
+         * @brief this is a property that is connected to the listview
+         * @param set(ObservableCollection<IFriend>)
+         * @return get(ObservableCollection<IFriend>)
+         */
         public ObservableCollection<IFriend> LFriends
         {
             get { return lFriends; }
@@ -192,32 +260,50 @@ namespace DampGUI
             }
         }
 
+        /**
+ *  GotFocusF
+ * 
+ * @brief function that is triggered when the friend list has focus 
+ */
         public void GotFocusF()
         {
             FindIndexFriend(IndexFriend);
             ChangeFriend();
         }
 
-        private int _indexFriend = 0;
-
-        public int IndexFriend
-        {
-            get { return _indexFriend; }
-            set { _indexFriend = value; }
-        }
+        /**
+         *  IndexFriend
+         * 
+         * @brief property to get friend index 
+         * @param set(int)	 
+         * @return get(int)
+         */
+        public int IndexFriend { get; set; }
 
         private string _friendListName;
-
+        /**
+          *  FriendListName
+          * 
+          * @brief this is a property that is used to get the selected Friend name, and it is binded to the listview
+          * @param set(IFriend)
+          * @return get(IFriend)
+          */
         public IFriend FriendListName
         {
             set
             {
                 _friendListName = value.Name;
-                FindIndexFriend(_indexFriend);
+                FindIndexFriend(IndexFriend);
                 OnPropertyChanged("FriendListName");
             }
         }
 
+        /**
+         *  FindIndex
+         * 
+         * @brief this function is used to set the current friend.
+         * @param int aIndex
+         */
         public void FindIndexFriend(int aIndex)
         {
             if (_friendListName != null)
@@ -238,7 +324,13 @@ namespace DampGUI
         }
 
         private string _searchGameName;
-
+        /**
+        *  SearchGameName
+        * 
+        * @brief this property is used binded to the search game text
+        * @param set(string)	 
+        * @return get(string)
+        */
         public string SearchGameName
         {
             get { return _searchGameName; }
@@ -250,7 +342,13 @@ namespace DampGUI
         }
 
         private string _searchFriendName;
-
+        /**
+        *  SearchFriendName
+        * 
+        * @brief this property is used binded to the search friend text
+        * @param set(string)	 
+        * @return get(string)
+        */
         public string SearchFriendName
         {
             get { return _searchFriendName; }
@@ -261,18 +359,32 @@ namespace DampGUI
             }
         }
 
+        /**
+         *  ChangeGame
+         * 
+         * @brief sets the GameControlView as the center usercontrol 
+         */
         public void ChangeGame()
         {
             if (games.CurrentGame != null)
                 Content = new GameControlView(games.CurrentGame.PhotoCollection);
         }
-
+        /**
+         *  SearchGames
+         * 
+         * @brief this function searches the games
+         */
         public void SearchGames()
         {
             var foundGames = this.FindGames(SearchGameName);
             LGames = new ObservableCollection<string>(foundGames);
         }
 
+        /**
+         *  ChatButton
+         * 
+         * @brief this function starts up the ChatView with the selected friend
+         */
         public void ChatButton()
         {
             if (knowFriends.CurrentFriend != null)
@@ -290,6 +402,11 @@ namespace DampGUI
             }
         }
 
+        /**
+         *  SearchFriends
+         * 
+         * @brief this function searches the friends
+         */
         public void SearchFriends()
         {
             var foundFriends = this.FindFriends(SearchFriendName);
@@ -298,23 +415,28 @@ namespace DampGUI
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+        /**
+         *  ChangeFriend
+         * 
+         * @brief sets the FriendProfileView as the center usercontrol 
+         */
         public void ChangeFriend()
         {
             if (knowFriends.CurrentFriend != null)
                 Content = new FriendProfileView();
         }
 
+        /**
+         *  OnPropertyChanged
+         * 
+         * @brief this function creates an event when a property is changed
+         * @param string propertyName	 
+         */
         public void OnPropertyChanged(string propertyName)
         {
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        // Helper method to notify View of an error
-        private void NotifyError(string message, Exception error)
-        {
-            // Notify view of an error
-            Notify(ErrorNotice, new NotificationEventArgs<Exception>(message, error));
-        }
     }
 }
