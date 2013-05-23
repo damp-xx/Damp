@@ -64,7 +64,7 @@ namespace GTCcomLib
                 }
                 return true;
             }
-            catch (IOException e)
+            catch (IOException)
             {
                 return false;
             }
@@ -81,7 +81,7 @@ namespace GTCcomLib
                 }
                 return true;
             }
-            catch (IOException e)
+            catch (IOException)
             {
                 return false;
             }

@@ -4,7 +4,9 @@ using System.Linq;
 
 namespace DampGUI
 {
-   
+    /// <summary>
+    /// This class contains properties that a Game have
+    /// </summary>
     public class Game: IGame
     {
         public ObservableCollection<string> AchivementsGame { get; set; }

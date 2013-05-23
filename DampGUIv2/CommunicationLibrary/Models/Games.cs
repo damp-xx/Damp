@@ -15,17 +15,37 @@ namespace DampGUI
         private int totalGames = 0;
         private ObservableCollection<IGame> games = new ObservableCollection<IGame>();
 
+        /**
+          *  Add
+          * 
+          * @brief this function Add the Game to the ObservableCollection
+          * @param IGame aGame
+          */
         public void Add(IGame aGame)
         {
             totalGames++;
             games.Add(aGame);
         }
 
+        /**
+          *  Get
+          * 
+          * @brief this function get the game at the selected index(i)
+          * @param int i
+          * @return IGame
+          */
         public IGame Get(int i)
         {
             return games[i];
         }
 
+        /**
+        *  CurrentGame
+        * 
+        * @brief this is a property that gets the current game
+        * @param set(IGame)
+        * @return get(IGame)
+        */
         public IGame CurrentGame
         {
             get
@@ -56,6 +76,13 @@ namespace DampGUI
             }
         }
 
+        /**
+          *  CurrentIndex
+          * 
+          * @brief this is a property gets the current games index
+          * @param set(int)
+          * @return get(int)
+          */
         public int CurrentIndex
         {
             get { return currentIndex; }
@@ -70,6 +97,13 @@ namespace DampGUI
             }
         }
 
+        /**
+          *  TotalGames
+          * 
+          * @brief this is a property that gets the total number of games
+          * @param set(int)
+          * @return get(int)
+          */
         public int TotalGames
         {
             get { return totalGames; }
