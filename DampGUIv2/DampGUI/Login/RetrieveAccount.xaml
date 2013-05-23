@@ -59,7 +59,8 @@
                 VerticalAlignment="Center"
                 HorizontalAlignment="Left"
                 Margin="0,0,0,0"
-                Width="95"/>
+                Width="95"
+                Click="SubmitButton_OnClick"/>
             <Button
                 x:Name="CancelButton"
                 Margin="105,0,0,0"

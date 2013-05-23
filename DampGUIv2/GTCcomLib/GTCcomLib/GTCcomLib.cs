@@ -1,46 +1,40 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Pipes;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
+using CommunicationLibrary;
 
 namespace GTCcomLib
 {
     public class GTCcomLib
     {
         private Process _gameClient = new Process();
-        private AnonymousPipeServerStream _gameStreamOut = new AnonymousPipeServerStream(PipeDirection.Out, HandleInheritability.Inheritable);
-        private AnonymousPipeServerStream _gameStreamIn = new AnonymousPipeServerStream(PipeDirection.In, HandleInheritability.Inheritable);
-        private StreamWriter _sw;
-        private StreamReader _sr;
+        private AnonymousPipeServerStream _gameStreamOut = null;
+        private AnonymousPipeServerStream _gameStreamIn = null;
+        private Thread _messageThread;
         private bool _stopGameTask;
 
         public GTCcomLib(string gamePath)
         {
+            _gameStreamIn = new AnonymousPipeServerStream(PipeDirection.In, HandleInheritability.Inheritable);
+            _gameStreamOut = new AnonymousPipeServerStream(PipeDirection.Out, HandleInheritability.Inheritable);
             _gameClient.StartInfo.FileName = gamePath;
-            _gameClient.StartInfo.Arguments = _gameStreamIn.GetClientHandleAsString() + " " +
-                                              _gameStreamOut.GetClientHandleAsString();
+            _gameClient.StartInfo.Arguments = _gameStreamOut.GetClientHandleAsString() + " " +
+                                              _gameStreamIn.GetClientHandleAsString();
             _gameClient.StartInfo.UseShellExecute = false;
             _gameClient.EnableRaisingEvents = true;
-            _gameClient.Exited += new EventHandler(GameExited);
-
-            _sw = new StreamWriter(_gameStreamOut);
-            _sr = new StreamReader(_gameStreamIn);
+            _gameClient.Exited += new EventHandler(GameExited);   
         }
 
         public void RunGame()
         {
+            _stopGameTask = false;
+            _messageThread = new Thread(MessageTask);
             _gameClient.Start();
+            _messageThread.Start();
             _gameStreamIn.DisposeLocalCopyOfClientHandle();
             _gameStreamOut.DisposeLocalCopyOfClientHandle();
-
-            _stopGameTask = false;
-
-            Task.Factory.StartNew(MessageTask);
         }
 
         public void StopGame()
@@ -48,37 +42,20 @@ namespace GTCcomLib
             _gameClient.Kill();
         }
 
-        private void GameExited(object sender, System.EventArgs e)
+        private void GameExited(object sender, EventArgs e)
         {
             _stopGameTask = true;
+            _gameStreamIn.Close();
+            _gameStreamOut.Close();
         }
 
-        public bool SendMessage(string type)
+        public bool SendMessage(string type, string data = "")
         {
+            var sw = new StreamWriter(_gameStreamOut);
+            sw.AutoFlush = true;
             try
             {
-                using (var sw = new StreamWriter(_gameStreamOut))
-                {
-                    sw.AutoFlush = true;
-                    sw.WriteLine(type +";");
-                }
-                return true;
-            }
-            catch (IOException e)
-            {
-                return false;
-            }
-        }
-        
-        public bool SendMessage(string type, string data)
-        {
-            try
-            {
-                using (_sw)
-                {
-                    _sw.AutoFlush = true;
-                    _sw.WriteLine(type +";" +data);
-                }
+              sw.WriteLine(type + ":" + data);
                 return true;
             }
             catch (IOException e)
@@ -89,9 +66,12 @@ namespace GTCcomLib
 
         private void MessageTask()
         {
+            var sr = new StreamReader(_gameStreamIn);
             while (_stopGameTask != true)
             {
-                HandleMessage(_sr.ReadLine());
+                string message = sr.ReadLine();
+                if(message != null)
+                    HandleMessage(message);
             }
         }
 
@@ -100,8 +80,10 @@ namespace GTCcomLib
             switch (message.Substring(0,3))
             {
                 case "GHS":
+                    SendMessage("CHS",ComAchievement.GetHighscore())
                     return true;
                 case "GPN":
+                    SendMessage("CPN",ComProfile.GetProfileName());
                     return true;
                 case "ACH":
                     return true;

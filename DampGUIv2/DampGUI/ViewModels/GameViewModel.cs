@@ -1,5 +1,7 @@
 ﻿using System;
+using System.IO;
 using SimpleMvvmToolkit;
+using GTCcomLib;
 
 namespace DampGUI
 {
@@ -40,8 +42,13 @@ namespace DampGUI
         public void Playbutton()
         {
             //ToDO: Pierre skal sætte sin play func ind
+
             if (true)
             {
+                string gameString =
+                    @"C:\Users\Pierre\Dropbox\Sem4_group6\SuperIHABrothers\Game\Debug\SuperIHABrothers.exe";
+                var gameClient = new GTCcomLib.GTCcomLib(gameString);
+                gameClient.RunGame();
             }
             else
             {

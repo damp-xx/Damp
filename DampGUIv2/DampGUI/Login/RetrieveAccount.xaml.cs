@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using CommunicationLibrary;
 
 namespace Login
 {
@@ -27,6 +28,11 @@ namespace Login
         }
 
         private void CancelButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            ReturnToMain();
+        }
+
+        private void ReturnToMain()
         {
             Owner.Left = this.Left;
             Owner.Top = this.Top;
@@ -49,6 +55,19 @@ namespace Login
         {
             if(_cancelButtonClicked ==false)
                 Owner.Close();
+        }
+
+        private void SubmitButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (ComLogin.ForogtAccount(RetrieveText.Text))
+            {
+                MessageBox.Show("Confirmation E-mail send", "", MessageBoxButton.OK, MessageBoxImage.Information);
+                ReturnToMain();
+            }
+            else
+            {
+                MessageBox.Show("E-mail Address not recognized", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

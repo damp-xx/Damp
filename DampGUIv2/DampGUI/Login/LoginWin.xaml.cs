@@ -85,10 +85,12 @@ namespace Login
 
         private void LoginButton_OnClick(object sender, RoutedEventArgs e)
         {
-            if (ComLogin.Login(Username.Text, Password.Password) && Login != null)
+            if (ComLogin.Login(Username.Text, Password.Password))
             {
-                Login(this, this.e);
+                var M = new DampGUI.MainWindow();
+                M.Show();
                 WriteXml();
+                this.Close();
             }
             else
             {
@@ -114,7 +116,7 @@ namespace Login
         {
             try
             {
-                System.Diagnostics.Process.Start("http://google.com");
+                System.Diagnostics.Process.Start("http://10.20.255.127/create_account.html?");
             }
             catch (Exception ex)
             {
