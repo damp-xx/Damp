@@ -29,8 +29,10 @@ namespace DampStub
 
             pipeClient.Start();
 
+
             Console.ReadLine();
 
+            
             /*********** Sending a playerName **********************/
             StreamWriter sw = new StreamWriter(pipeServerOut);
             {
@@ -52,8 +54,7 @@ namespace DampStub
             string receivedStringAch = sr.ReadLine();
             Console.WriteLine(receivedStringAch);
             /*********************************************************************/
-
-
+            
             Console.ReadLine();
         }
     }
