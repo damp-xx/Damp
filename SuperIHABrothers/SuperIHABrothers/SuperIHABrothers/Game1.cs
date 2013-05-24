@@ -77,7 +77,7 @@ namespace SuperIHABrothers
                 {
                     //MessageBox(new IntPtr(0), e.Message, "MessageBox title", 0);
                     if (e.Message == "Game Exits")
-                        Environment.Exit(-1);
+                        Environment.Exit(0);
                         this.Exit();
                 }
 
@@ -138,9 +138,11 @@ namespace SuperIHABrothers
             {
                 //MessageBox(new IntPtr(0), e.Message, "MessageBox title", 0);
                 if (e.Message == "Game Exits")
-                    Environment.Exit(-1);
+                {
+                    Environment.Exit(0);
                     this.Exit();
-                    
+                }
+
             }
            
 
