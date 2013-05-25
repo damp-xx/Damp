@@ -12,6 +12,6 @@ namespace DampGUI
         IGame Get(int i);
         IGame CurrentGame { get; set; }
         int CurrentIndex { get; set; }
-        int TotalGames { get; set; }
+        int TotalGames { get; }
     }
 }

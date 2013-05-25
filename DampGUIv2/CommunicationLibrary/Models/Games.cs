@@ -101,17 +101,11 @@ namespace DampGUI
           *  TotalGames
           * 
           * @brief this is a property that gets the total number of games
-          * @param set(int)
           * @return get(int)
           */
         public int TotalGames
         {
             get { return totalGames; }
-            set
-            {
-                totalGames = value;
-                NotifyPropertyChanged(vm => vm.totalGames);
-            }
         }
 
     }
