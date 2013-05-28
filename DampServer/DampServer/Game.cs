@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Xml.Serialization;
-using DampServer;
 
 namespace DampServer
 {
@@ -9,9 +8,10 @@ namespace DampServer
         public string Title { get; set; }
         public string Description { get; set; }
         public long Id { get; set; }
-        
+
         [XmlElement("Picture")]
         public List<string> Pictures { get; set; }
+
         public string Genre { get; set; }
         public int RecommendedAge { get; set; }
         public string Developer { get; set; }

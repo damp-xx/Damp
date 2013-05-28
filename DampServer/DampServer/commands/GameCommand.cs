@@ -17,17 +17,18 @@ using DampServer.responses;
 
 namespace DampServer.commands
 {
-    class GameCommand : IServerCommand
+    internal class GameCommand : IServerCommand
     {
         private ICommandArgument _client;
-        public bool NeedsAuthcatication { get; private set; }
-        public bool IsPersistant { get; private set; }
-       
+
         public GameCommand()
         {
             NeedsAuthcatication = true;
             IsPersistant = false;
         }
+
+        public bool NeedsAuthcatication { get; private set; }
+        public bool IsPersistant { get; private set; }
 
         public bool CanHandleCommand(string cmd)
         {
@@ -66,9 +67,9 @@ namespace DampServer.commands
             if (string.IsNullOrEmpty(_client.Query.Get("Id")))
             {
                 _client.SendXmlResponse(new ErrorXmlResponse
-                {
-                    Message = "Missing arguments"
-                });
+                    {
+                        Message = "Missing arguments"
+                    });
 
                 return;
             }
@@ -99,27 +100,27 @@ namespace DampServer.commands
                 cmd2.CommandText = "INSERT INTO GameLibaray (gameid, userid) VALUES (@gameid, @userid)";
                 cmd2.Parameters.Add("@gameid", SqlDbType.BigInt).Value = _client.Query.Get("Id");
                 cmd2.Parameters.Add("@userid", SqlDbType.BigInt).Value = user.UserId;
-                
+
                 cmd2.ExecuteNonQuery();
 
                 db2.Close();
 
 
                 _client.SendXmlResponse(new StatusXmlResponse
-                {
-                    Code = 200,
-                    Command = "BuyGame",
-                    Message = "Game Baught"
-                });
+                    {
+                        Code = 200,
+                        Command = "BuyGame",
+                        Message = "Game Baught"
+                    });
             }
             else
             {
                 _client.SendXmlResponse(new StatusXmlResponse
-                {
-                    Code = 404,
-                    Command = "BuyGame",
-                    Message = "Can't find game"
-                });
+                    {
+                        Code = 404,
+                        Command = "BuyGame",
+                        Message = "Can't find game"
+                    });
             }
 
             r.Close();
@@ -130,7 +131,7 @@ namespace DampServer.commands
         {
             if (string.IsNullOrEmpty(_client.Query.Get("Id")))
             {
-                _client.SendXmlResponse( new ErrorXmlResponse
+                _client.SendXmlResponse(new ErrorXmlResponse
                     {
                         Message = "Missing arguments"
                     });
@@ -163,8 +164,9 @@ namespace DampServer.commands
                     {
                         Command = "GetGame",
                         Code = 200,
-                        Message = @"https://10.20.255.127:1337/GameDownload?authToken=" + _client.Query.Get("AuthToken") +
-                                  "&Id=" + ((long) r["gameid"])
+                        Message =
+                            @"https://10.20.255.127:1337/GameDownload?authToken=" + _client.Query.Get("AuthToken") +
+                            "&Id=" + ((long) r["gameid"])
                     });
             }
             else
@@ -215,7 +217,7 @@ namespace DampServer.commands
                         Id = (long) r["gameid"],
                         Title = (string) r["title"],
                         Description = (string) r["description"],
-     // @TODO FIX                   Picture = (string) r["picture"]
+                        // @TODO FIX                   Picture = (string) r["picture"]
                     };
 
                 _client.SendXmlResponse(g);
@@ -229,8 +231,8 @@ namespace DampServer.commands
                         Message = "Can't find game"
                     });
             }
-      
-        
+
+
             r.Close();
             db.Close();
         }
@@ -243,7 +245,7 @@ namespace DampServer.commands
                     {
                         Message = "Missing argurments!33!"
                     });
-                
+
                 return;
             }
 
@@ -265,12 +267,12 @@ namespace DampServer.commands
                 while (r.Read())
                 {
                     gl.Games.Add(new Game
-                    {
-                        Id = (long)r["gameid"],
-                        Title = (string)r["title"],
-                        Description = (string)r["description"],
-                    // @TODO FIX    Picture = (string)r["picture"]
-                    });
+                        {
+                            Id = (long) r["gameid"],
+                            Title = (string) r["title"],
+                            Description = (string) r["description"],
+                            // @TODO FIX    Picture = (string)r["picture"]
+                        });
                 }
             r.Close();
             db.Close();
@@ -295,28 +297,28 @@ namespace DampServer.commands
             if (r.HasRows)
                 while (r.Read())
                 {
-                    var gg = new Game
-                    {
-                        Id = (long)r["gameid"],
-                        Title = (string)r["title"],
-                        Description = (string)r["description"],
-                        Developer = (string) r["developer"],
-                        Genre = (string) r["genre"],
-                        RecommendedAge = (int)r["recommendedage"],
-                        Language = (string) r["language"],
-                        Mode = (string) r["mode"]
-                    };
+                    Game gg = new Game
+                        {
+                            Id = (long) r["gameid"],
+                            Title = (string) r["title"],
+                            Description = (string) r["description"],
+                            Developer = (string) r["developer"],
+                            Genre = (string) r["genre"],
+                            RecommendedAge = (int) r["recommendedage"],
+                            Language = (string) r["language"],
+                            Mode = (string) r["mode"]
+                        };
 
                     gg.Pictures = new List<string>();
 
-                    var db4 = new Database();
+                    Database db4 = new Database();
                     db4.Open();
-                    var sql4 = db4.GetCommand();
+                    SqlCommand sql4 = db4.GetCommand();
 
                     sql4.CommandText = "SELECT * FROM GamePictures WHERE gameid = @gameid";
                     sql4.Parameters.Add("@gameid", SqlDbType.BigInt).Value = gg.Id;
 
-                    var rd = sql4.ExecuteReader();
+                    SqlDataReader rd = sql4.ExecuteReader();
 
                     if (rd.HasRows)
                     {
@@ -336,7 +338,6 @@ namespace DampServer.commands
 
         private void HandleMyGames()
         {
-
             User user = UserManagement.GetUserByAuthToken(_client.Query.Get("AuthToken"));
 
             Database db = new Database();
@@ -354,15 +355,15 @@ namespace DampServer.commands
             GameListResponse gl = new GameListResponse();
             gl.Games = new List<Game>();
 
-            if(r.HasRows)
+            if (r.HasRows)
                 while (r.Read())
                 {
                     gl.Games.Add(new Game
                         {
                             Id = (long) r["gameid"],
                             Title = (string) r["title"],
-                            Description = (string)r["description"],
-                        // @TODO FIX    Picture = (string) r["picture"]
+                            Description = (string) r["description"],
+                            // @TODO FIX    Picture = (string) r["picture"]
                         });
                 }
             r.Close();

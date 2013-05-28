@@ -18,7 +18,6 @@ namespace DampServer
             try
             {
                 _tcp.Start();
-
             }
             catch (SocketException e)
             {
@@ -28,11 +27,10 @@ namespace DampServer
 
             while (true)
             {
-                var s = _tcp.AcceptTcpClient();
+                TcpClient s = _tcp.AcceptTcpClient();
 // ReSharper disable ObjectCreationAsStatement
                 new RequestProcessor(s);
 // ReSharper restore ObjectCreationAsStatement
-
             }
 // ReSharper disable FunctionNeverReturns
         }

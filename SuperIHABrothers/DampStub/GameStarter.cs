@@ -29,14 +29,16 @@ namespace DampStub
 
             pipeClient.Start();
 
+
             Console.ReadLine();
 
+            
             /*********** Sending a playerName **********************/
             StreamWriter sw = new StreamWriter(pipeServerOut);
             {
                 sw.AutoFlush = true;
                 // Send a 'sync message' and wait for client to receive it.
-                sw.WriteLine("CPN:Filip Is Awesome");
+                sw.WriteLine("CPN:Filip V");
                 sw.WriteLine("CHS:5");
                 pipeServerOut.WaitForPipeDrain();
             }
@@ -52,8 +54,7 @@ namespace DampStub
             string receivedStringAch = sr.ReadLine();
             Console.WriteLine(receivedStringAch);
             /*********************************************************************/
-
-
+            
             Console.ReadLine();
         }
     }

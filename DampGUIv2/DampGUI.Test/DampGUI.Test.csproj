@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0D11E983-F138-4850-BB78-C09A7485DCA5}</ProjectGuid>
+    <ProjectGuid>{9488C606-72D1-4004-AE52-4B27C7242774}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CommunicationLibraryTest</RootNamespace>
-    <AssemblyName>CommunicationLibraryTest</AssemblyName>
+    <RootNamespace>DampGUI.Test</RootNamespace>
+    <AssemblyName>DampGUI.Test</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,15 +30,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="nunit.framework, Version=2.6.2.12296, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\NUnit 2.6.2\bin\nunit.framework.dll</HintPath>
-    </Reference>
-    <Reference Include="Rhino.Mocks">
-      <HintPath>..\Rhino.Mocks.dll</HintPath>
-    </Reference>
-    <Reference Include="SimpleMvvmToolkit-Common, Version=4.0.0.0, Culture=neutral, PublicKeyToken=20fad5ed49a0c3b4, processorArchitecture=MSIL" />
-    <Reference Include="SimpleMvvmToolkit-WPF, Version=4.0.0.0, Culture=neutral, PublicKeyToken=20fad5ed49a0c3b4, processorArchitecture=MSIL" />
+    <Reference Include="nunit.framework, Version=2.6.2.12296, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -48,20 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ComAchievementTest.cs" />
-    <Compile Include="ComFriendTest.cs" />
-    <Compile Include="ComGameTest.cs" />
-    <Compile Include="ComLoginTest.cs" />
-    <Compile Include="ComProfileTest.cs" />
-    <Compile Include="FriendsTest.cs" />
-    <Compile Include="GamesTest.cs" />
+    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CommunicationLibrary\CommunicationLibrary.csproj">
-      <Project>{9380F760-D929-4B4F-97D9-3A0ECE33210C}</Project>
-      <Name>CommunicationLibrary</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
