@@ -37,7 +37,7 @@ namespace ClientCommunication
                 _streamWriter = new StreamWriter(pipeClientOut);
             }
             else
-                //throw new Exception("Could not connnect to game");
+                throw new Exception("Wasn't started from Damp");
                 return;
         }
 

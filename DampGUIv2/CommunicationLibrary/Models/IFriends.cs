@@ -12,6 +12,6 @@ namespace DampGUI
         IFriend Get(int i);
         IFriend CurrentFriend { get; set; }
         int CurrentFriendIndex { get; set; }
-        int TotalFriends { get; set; }
+        int TotalFriends { get; }
     }
 }

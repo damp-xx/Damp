@@ -95,17 +95,11 @@ namespace DampGUI
           *  TotalFriends
           * 
           * @brief this is a property that gets the total number of friends
-          * @param set(int)
           * @return get(int)
           */
         public int TotalFriends
         {
             get { return totalFriends; }
-            set
-            {
-                totalFriends = value;
-                NotifyPropertyChanged(vm => vm.TotalFriends);
-            }
         }
     }
 
