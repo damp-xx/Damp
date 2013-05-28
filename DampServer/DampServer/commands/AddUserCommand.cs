@@ -1,3 +1,11 @@
+/**
+ * @file   	AddUserCommand.cs
+ * @author 	Bardur Simonsen, 11841
+ * @date   	April, 2013
+ * @brief  	This file implements the achivements command for the request processor
+ * @section	LICENSE GPL 
+ */
+
 #region
 
 using System;
@@ -10,6 +18,11 @@ using DampServer.responses;
 
 namespace DampServer.commands
 {
+    /**
+     * AddUserCommand
+     * 
+    * @brief Command class that handles adding users to the system
+    */
     public class AddUserCommand : IServerCommand
     {
         private ICommandArgument _http;
@@ -41,6 +54,11 @@ namespace DampServer.commands
         public bool NeedsAuthcatication { get; private set; }
         public bool IsPersistant { get; private set; }
 
+        /**
+          * HandleAddUser
+          *
+          * @brief Handles AddUser
+          */
         private void HandleAddUser()
         {
             if (string.IsNullOrEmpty(_http.Query.Get("FirstName")) || string.IsNullOrEmpty(_http.Query.Get("LastName")) ||

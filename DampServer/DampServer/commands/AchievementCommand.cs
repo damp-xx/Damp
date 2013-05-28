@@ -1,4 +1,12 @@
-﻿using System;
+﻿/**
+ * @file   	AchivementsCommand.cs
+ * @author 	Bardur Simonsen, 11841
+ * @date   	April, 2013
+ * @brief  	This file implements the achivements command for the request processor
+ * @section	LICENSE GPL 
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -7,6 +15,11 @@ using DampServer.responses;
 
 namespace DampServer.commands
 {
+    /**
+     * AchievementCommand
+     * 
+    * @brief Command class that handles achivements
+    */
     public class AchievementCommand : IServerCommand
     {
         private ICommandArgument _client;
@@ -18,6 +31,7 @@ namespace DampServer.commands
         }
 
         public bool NeedsAuthcatication { get; private set; }
+
         public bool IsPersistant { get; private set; }
 
         public bool CanHandleCommand(string cmd)
@@ -25,6 +39,11 @@ namespace DampServer.commands
             throw new NotImplementedException();
         }
 
+        /**
+          * Execute
+          *
+          * @brief this function is executed by the request processor
+          */
         public void Execute(ICommandArgument http, string cmd = null)
         {
             _client = http;
@@ -55,6 +74,11 @@ namespace DampServer.commands
             }
         }
 
+        /**
+          * HandleGetAllMyAchievement
+          *
+          * @brief Handles GetAllMyAchievement
+          */
         private void HandleGetAllMyAchievement()
         {
             User user = UserManagement.GetUserByAuthToken(_client.Query.Get("AuthToken"));
@@ -92,7 +116,11 @@ namespace DampServer.commands
             _client.SendXmlResponse(gl);
         }
 
-        // @TODO MAKE SO YOU CAN ONLY SEE FRIENDS ARCHIVEMENTS
+        /**
+          * HandleGetUserArhivements
+          *
+          * @brief Handles GetUserArhivements
+          */
         private void HandleGetUserArhivements()
         {
             if (string.IsNullOrEmpty(_client.Query.Get("UserId")) || string.IsNullOrEmpty(_client.Query.Get("GameId")))
@@ -141,6 +169,11 @@ namespace DampServer.commands
             _client.SendXmlResponse(gl);
         }
 
+        /**
+         * HandleGetAllUserArhivements
+         *
+         * @brief Handles GetAllUserAchivements
+         */
         private void HandleGetAllUserArhivements()
         {
             if (string.IsNullOrEmpty(_client.Query.Get("UserId")))
@@ -188,6 +221,11 @@ namespace DampServer.commands
             _client.SendXmlResponse(gl);
         }
 
+        /**
+         * HandleGetArhivementsForGame
+         *
+         * @brief Handles GetArhivementsForGame
+         */
         private void HandleGetArhivementsForGame()
         {
             if (string.IsNullOrEmpty(_client.Query.Get("GameId")))
@@ -235,6 +273,11 @@ namespace DampServer.commands
             _client.SendXmlResponse(gl);
         }
 
+        /**
+         * HandleAchievementSearch
+         *
+         * @brief Handles AchievementSearch
+         */
         private void HandleAchievementSearch()
         {
             if (string.IsNullOrEmpty(_client.Query.Get("Query")))
@@ -280,6 +323,11 @@ namespace DampServer.commands
             _client.SendXmlResponse(gl);
         }
 
+        /**
+         * HandleGetGameMyAchievement
+         *
+         * @brief Handles GetGameMyAchievement
+         */
         private void HandleGetGameMyAchievement()
         {
             if (string.IsNullOrEmpty(_client.Query.Get("GameId")))
@@ -329,6 +377,11 @@ namespace DampServer.commands
             _client.SendXmlResponse(gl);
         }
 
+        /**
+         * HandleAddAchievement
+         *
+         * @brief Handles AddAchievement
+         */
         private void HandleAddAchievement()
         {
             if (string.IsNullOrEmpty(_client.Query.Get("AchievementId")))

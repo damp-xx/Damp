@@ -1,4 +1,12 @@
-﻿#region
+﻿/**
+ * @file   	AchivementsCommand.cs
+ * @author 	Bardur Simonsen, 11841
+ * @date   	April, 2013
+ * @brief  	This file implements the achivements command for the request processor
+ * @section	LICENSE GPL 
+ */
+
+#region
 
 using System;
 using System.Collections.Generic;
@@ -13,6 +21,11 @@ using DampServer.responses;
 
 namespace DampServer.commands
 {
+    /**
+     * ChatCommand
+     * 
+    * @brief Command class that handles chats
+    */
     public class ChatCommand : IServerCommand, INotify
     {
         public ChatCommand()
@@ -21,6 +34,11 @@ namespace DampServer.commands
             IsPersistant = false;
         }
 
+        /**
+          * Notify
+          *
+          * @brief helper function for Notification system
+          */
         public List<XmlResponse> Notify(IUser user)
         {
             Database db = new Database();

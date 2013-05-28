@@ -1,5 +1,5 @@
 ﻿/**
- * @file   	RequestProcessor.cpp
+ * @file   	RequestProcessor.cs
  * @author 	Bardur Simonsen, 11841
  * @date   	April, 2013
  * @brief  	This file implements the command processor for DAMP Server
@@ -22,7 +22,6 @@ namespace DampServer
     /**
     * @brief RequestProcessor Constructor
     */
-
     public class RequestProcessor
     {
         private readonly TcpClient _socket;
@@ -139,7 +138,6 @@ namespace DampServer
          * @param string cmd cmd to handle
          * @return IServerCommand object that handles the given command
          */
-
         public static IServerCommand CreateCommand(string cmd)
         {
             IServerCommand leCmd;
