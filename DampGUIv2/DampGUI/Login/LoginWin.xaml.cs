@@ -1,58 +1,51 @@
 ﻿using System;
-using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Forms;
 using System.Windows.Input;
 using System.Xml;
 using CommunicationLibrary;
 using MessageBox = System.Windows.MessageBox;
 
-
-namespace Login
+namespace DampGUI.Login
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class LoginWindow : Window
     {
-        XmlDocument xmlCfg = new XmlDocument();
         private const string ConfPath = "loginConfig.xml";
-        private bool _rememberLogin = false;
-        private bool _autoLogin = false;
+        private XmlConfig Config;
         private const string LoginConfNode = "LoginConfig";
         private const string RememberAccountElement = "RememberAccount";
         private const string AutoLoginElement = "AutoLogin";
         private const string AccountNameElement = "AccountName";
-        private string _username = "";
 
-        public EventArgs e = null;
-        public delegate void LoggedIn(MainWindow m, EventArgs e);
-        public event LoggedIn Login;
-        
-
-        public MainWindow()
+        public LoginWindow()
         {
-            if (File.Exists(ConfPath))
-            {
-                ReadConfXml();
-            }
+            Config = new XmlConfig(ConfPath)
+                {
+                    AccountnameElementString = AccountNameElement,
+                    AutologinElementString = AutoLoginElement,
+                    ConfigNodeString = LoginConfNode,
+                    RememberAccountElementString = RememberAccountElement
+                };
+
 
             InitializeComponent();
-
-            if (!_rememberLogin)
+            if (!Config.ReadConfig())
             {
                 AutoLoginCheck.IsEnabled = false;
                 AutoLoginCheck.IsChecked = false;
-                RememberLoginCheck.IsChecked = _rememberLogin;
+                RememberLoginCheck.IsChecked = false;
+                Username.Focus();
             }
             else
             {
-                RememberLoginCheck.IsChecked = _rememberLogin;
-                AutoLoginCheck.IsChecked = _autoLogin;
+                RememberLoginCheck.IsChecked = Config.RememberAccountIsChecked;
+                Username.Text = Config.Accountname;
+                AutoLoginCheck.IsChecked = Config.AutologinIsChecked;
+                Password.Focus();
             }
-            Username.Text = _username;
-            Username.Focus();
         }
 
         private void RememberCheckOn(object sender, RoutedEventArgs e)
@@ -68,7 +61,7 @@ namespace Login
 
         private void Password_OnTextInput(object sender, RoutedEventArgs routedEventArgs)
         {
-            if(Username.Text != "")
+            if (Username.Text != "")
                 LoginButton.IsEnabled = !Password.Password.Equals("");
         }
 
@@ -87,20 +80,24 @@ namespace Login
         {
             if (ComLogin.Login(Username.Text, Password.Password))
             {
-                var M = new DampGUI.MainWindow();
-                M.Show();
-                WriteXml();
-                this.Close();
+                var m = new MainWindow();
+                Config.Accountname = Username.Text;
+                Config.AutologinIsChecked = AutoLoginCheck.IsChecked.Value;
+                Config.RememberAccountIsChecked = RememberLoginCheck.IsChecked.Value;
+                Config.SaveConfFile();
+                m.Show();
+                Close();
             }
             else
             {
-                MessageBox.Show("Wrong account name or password", "Critical Warning", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Wrong account name or password", "Critical Warning", MessageBoxButton.OK,
+                                MessageBoxImage.Error);
             }
         }
 
         private void Logo_OnMouseDown(object sender, MouseButtonEventArgs e)
         {
-            this.DragMove();
+            DragMove();
         }
 
         private void RetrieveButton_OnClick(object sender, RoutedEventArgs e)
@@ -109,7 +106,7 @@ namespace Login
             w.Owner = this;
             w.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             w.Show();
-            this.Hide();
+            Hide();
         }
 
         private void CreateButton_OnClick(object sender, RoutedEventArgs e)
@@ -121,97 +118,6 @@ namespace Login
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
-            }
-        }
-
-        private void CreateConfXml()
-        {
-            XmlNode rootNode = xmlCfg.CreateElement("XML");
-            xmlCfg.AppendChild(rootNode);
-
-            XmlNode configNode = xmlCfg.CreateElement(LoginConfNode);
-            var configElement = xmlCfg.CreateElement(RememberAccountElement);
-            configElement.InnerText = RememberLoginCheck.IsChecked.Value.ToString();
-
-            configNode.AppendChild(configElement);
-            configElement = xmlCfg.CreateElement(AccountNameElement);
-            if (RememberLoginCheck.IsChecked.Value == true)
-                configElement.InnerText = Username.Text;
-            else
-                configElement.InnerText = "";
-
-            configNode.AppendChild(configElement);
-
-            configElement = xmlCfg.CreateElement(AutoLoginElement);
-            configElement.InnerText = AutoLoginCheck.IsChecked.Value.ToString();
-            configNode.AppendChild(configElement);
-            rootNode.AppendChild(configNode);
-
-            xmlCfg.Save(ConfPath);
-        }
-
-        private void ReadConfXml()
-        {
-            try
-            {
-                xmlCfg.Load(ConfPath);
-                XmlElement root = xmlCfg.DocumentElement;
-
-                if (root != null)
-                {
-                    bool.TryParse(root.GetElementsByTagName(RememberAccountElement).Item(0).InnerText, out _rememberLogin);
-                    bool.TryParse(root.GetElementsByTagName(AutoLoginElement).Item(0).InnerText, out _autoLogin);
-                    if (_rememberLogin == true)
-                    {
-                        _username = root.GetElementsByTagName(AccountNameElement).Item(0).InnerText;
-                    }
-                }
-            }
-            //on exception, delete file
-            catch (XmlException)
-            {
-                File.Delete(ConfPath);
-            }
-        }
-
-        private void WriteXml()
-        {
-            if (File.Exists(ConfPath))
-            {
-                try
-                {
-                    xmlCfg.Load(ConfPath);
-                    XmlElement root = xmlCfg.DocumentElement;
-
-                    if (root != null)
-                    {
-                        root.GetElementsByTagName(RememberAccountElement).Item(0).InnerText =
-                            RememberLoginCheck.IsChecked.Value.ToString();
-                        root.GetElementsByTagName(AutoLoginElement).Item(0).InnerText =
-                            AutoLoginCheck.IsChecked.Value.ToString();
-
-                        if (RememberLoginCheck.IsChecked.Value == true)
-                        {
-                            root.GetElementsByTagName(AccountNameElement).Item(0).InnerText = Username.Text;
-                        }
-                        else
-                        {
-                            root.GetElementsByTagName(AccountNameElement).Item(0).InnerText = "";
-                            //XmlNode node = root.GetElementsByTagName(AccountNameElement).Item(0);
-                            //node.ParentNode.RemoveChild(node);
-                        }
-                    }
-                    xmlCfg.Save(ConfPath);
-                }
-                catch (XmlException)
-                {
-                    File.Delete(ConfPath);
-                    CreateConfXml();
-                }
-            }
-            else
-            {
-                CreateConfXml();
             }
         }
     }

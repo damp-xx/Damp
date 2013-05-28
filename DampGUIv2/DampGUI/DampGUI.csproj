@@ -108,6 +108,7 @@
     <Compile Include="Login\RetrieveAccount.xaml.cs">
       <DependentUpon>RetrieveAccount.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Login\XmlConfig.cs" />
     <Compile Include="Views\ChatView.xaml.cs">
       <DependentUpon>ChatView.xaml</DependentUpon>
     </Compile>

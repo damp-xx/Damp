@@ -1,27 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using CommunicationLibrary;
 
-namespace Login
+namespace DampGUI.Login
 {
     /// <summary>
     /// Interaction logic for RetrieveAccount.xaml
     /// </summary>
     public partial class RetrieveAccount : Window
     {
-        private bool _cancelButtonClicked = false;
+        private bool _cancelButtonClicked;
         public RetrieveAccount()
         {
             InitializeComponent();
@@ -34,16 +24,16 @@ namespace Login
 
         private void ReturnToMain()
         {
-            Owner.Left = this.Left;
-            Owner.Top = this.Top;
+            Owner.Left = Left;
+            Owner.Top = Top;
             Owner.Show();
             _cancelButtonClicked = true;
-            this.Close();
+            Close();
         }
 
         private void Logo_OnMouseDown(object sender, MouseButtonEventArgs e)
         {
-            this.DragMove();
+            DragMove();
         }
 
         private void RetrieveText_OnTextChanged(object sender, TextChangedEventArgs e)

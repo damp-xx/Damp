@@ -80,7 +80,6 @@ namespace GTCcomLib
             switch (message.Substring(0,3))
             {
                 case "GHS":
-                    SendMessage("CHS",ComAchievement.GetHighscore())
                     return true;
                 case "GPN":
                     SendMessage("CPN",ComProfile.GetProfileName());
