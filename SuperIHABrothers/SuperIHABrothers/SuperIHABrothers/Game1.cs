@@ -69,7 +69,18 @@ namespace SuperIHABrothers
                 var mQueue = new MessageQueueR();
                 var _playerData = new PlayerData();
                 messageHandler = new MessageHandler(mQueue, _playerData);
-                clientCommunication = new GameClientCommunication(_pipeIn, _pipeOut, mQueue);
+                try
+                {
+                    clientCommunication = new GameClientCommunication(_pipeIn, _pipeOut, mQueue);
+                }
+                catch (Exception e)
+                {
+                    //MessageBox(new IntPtr(0), e.Message, "MessageBox title", 0);
+                    if (e.Message == "Game Exits")
+                        Environment.Exit(0);
+                        this.Exit();
+                }
+
                 var messageConstructor = new MessageConstructor(clientCommunication);
                 var gameFactory = new GameFactory();
                 _game = gameFactory.GetGame(Content, _playerData, messageConstructor);
@@ -127,7 +138,11 @@ namespace SuperIHABrothers
             {
                 //MessageBox(new IntPtr(0), e.Message, "MessageBox title", 0);
                 if (e.Message == "Game Exits")
+                {
+                    Environment.Exit(0);
                     this.Exit();
+                }
+
             }
            
 

@@ -33,6 +33,7 @@ namespace DampGUI
                     MwDispatcher = Dispatcher
                 };
             ComEvents.Listen();
+            Application.Current.MainWindow = this;
         }
 
         /**

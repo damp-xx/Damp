@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Windows;
 using System.Windows.Threading;
 using SimpleMvvmToolkit;
 
@@ -393,8 +394,8 @@ namespace DampGUI
                 {
                     var chat = new ChatView(knowFriends.CurrentFriend.Id);
                    // Console.WriteLine("id sendet::::::" + knowFriends.CurrentFriend.Id);
-
                     EventSubscriber.NewChat(knowFriends.CurrentFriend.Id, chat);
+                    chat.Owner = Application.Current.MainWindow;
                     chat.Show();
                 }
                 else

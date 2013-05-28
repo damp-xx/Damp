@@ -3,16 +3,16 @@ using DampServer.interfaces;
 
 namespace DampServer.commands
 {
-    class UploadGameCommand : IServerCommand
+    internal class UploadGameCommand : IServerCommand
     {
-        public bool NeedsAuthcatication { get; private set; }
-        public bool IsPersistant { get; private set; }
-
         public UploadGameCommand()
         {
             NeedsAuthcatication = false;
             IsPersistant = false;
         }
+
+        public bool NeedsAuthcatication { get; private set; }
+        public bool IsPersistant { get; private set; }
 
         public bool CanHandleCommand(string cmd)
         {
@@ -21,12 +21,11 @@ namespace DampServer.commands
 
         public void Execute(ICommandArgument http, string cmd = null)
         {
-           // WriteTofile();
+            // WriteTofile();
         }
 
         private void WriteTofile(Byte[] content)
         {
-            
         }
     }
 }

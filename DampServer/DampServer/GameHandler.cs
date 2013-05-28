@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.IO;
 using System.Security.Cryptography;
 using System.Xml;
@@ -16,13 +17,12 @@ namespace DampServer
 {
     public class GameHandler
     {
-        public Game Game { get; private set; }
-        private readonly List<ZipEntry> _files = new List<ZipEntry>();
-        private readonly string _filefolder;
         private const string GamesFolder = "Games/";
         private const string GamePreFix = "TmpGames/";
+        private readonly string _filefolder;
         private readonly string _filename;
         private readonly string _filepath;
+        private readonly List<ZipEntry> _files = new List<ZipEntry>();
         private readonly ZipEntry _manifest;
         private ZipInputStream _zipStream;
 
@@ -31,7 +31,7 @@ namespace DampServer
             // add prefix
             _filepath = GamePreFix + file_;
             _filename = Path.GetFileName(file_);
-            
+
             // path is the exactated folder, filename minus .zip
             if (_filename != null) _filefolder = GamePreFix + _filename.Substring(0, _filename.Length - 4) + "/";
 
@@ -45,8 +45,8 @@ namespace DampServer
                 return;
             }
 
-            var s = _files.Find(zipEntry => zipEntry.Name.IndexOf("manifest.xml", StringComparison.Ordinal)>0);
-          
+            ZipEntry s = _files.Find(zipEntry => zipEntry.Name.IndexOf("manifest.xml", StringComparison.Ordinal) > 0);
+
             if (s == null)
             {
                 Console.WriteLine("Can't find manifest file");
@@ -55,28 +55,24 @@ namespace DampServer
 
             _manifest = s;
             ParseManifest(s);
-     
-            
+
 
             try
             {
                 if (File.Exists(GamesFolder))
                 {
                     File.Move(_filepath, GamesFolder + _filename);
-                    
                 }
                 else
                 {
                     Directory.CreateDirectory(GamesFolder);
                     File.Move(_filepath, GamesFolder + _filename);
-
                 }
 
                 _filepath = GamesFolder + _filename;
             }
             catch (OperationAbortedException e)
             {
-                
                 Console.WriteLine("Exception GameHandler 1: {0}", e.Message);
                 return;
             }
@@ -87,27 +83,28 @@ namespace DampServer
             }
             catch (Exception e)
             {
-                Console.WriteLine("GameHandler Exception 3: {0}",e.Message);
+                Console.WriteLine("GameHandler Exception 3: {0}", e.Message);
             }
 
 
             InsertGameIntoDb(Game);
         }
 
-      
+        public Game Game { get; private set; }
+
 
         private void InsertGameIntoDb(Game game)
         {
-            var db = new Database();
+            Database db = new Database();
             db.Open();
 
-            var sqlCmd = db.GetCommand();
+            SqlCommand sqlCmd = db.GetCommand();
             sqlCmd.CommandText = "INSERT INTO Games (title, description, path,picture,genre,recommendedage,developer)" +
                                  "VALUES (@title, @description,@path,@picture,@genre,@recommendedage,@developer)";
             sqlCmd.Parameters.Add("@title", SqlDbType.NVarChar).Value = game.Title;
             sqlCmd.Parameters.Add("@description", SqlDbType.Text).Value = game.Description;
             sqlCmd.Parameters.Add("@path", SqlDbType.NVarChar).Value = _filepath;
-     // @TODO FIX      sqlCmd.Parameters.Add("@picture", SqlDbType.NVarChar).Value = game.Picture;
+            // @TODO FIX      sqlCmd.Parameters.Add("@picture", SqlDbType.NVarChar).Value = game.Picture;
             sqlCmd.Parameters.Add("@genre", SqlDbType.NVarChar).Value = game.Genre;
             sqlCmd.Parameters.Add("@recommendedage", SqlDbType.Int).Value = game.RecommendedAge;
             sqlCmd.Parameters.Add("@developer", SqlDbType.NVarChar).Value = game.Developer;
@@ -118,9 +115,9 @@ namespace DampServer
 
         private void ParseManifest(ZipEntry entry)
         {
-            var xDoc = new XmlDocument();
-            xDoc.Load(GamePreFix+entry.Name);
-            var element = xDoc.DocumentElement;
+            XmlDocument xDoc = new XmlDocument();
+            xDoc.Load(GamePreFix + entry.Name);
+            XmlElement element = xDoc.DocumentElement;
 
             if (element != null)
                 foreach (XmlElement e in element)
@@ -143,11 +140,11 @@ namespace DampServer
         {
             foreach (XmlElement element in xmlElement)
             {
-                using (var cryptoProvider = new SHA1CryptoServiceProvider())
+                using (SHA1CryptoServiceProvider cryptoProvider = new SHA1CryptoServiceProvider())
                 {
                     string hash = BitConverter
-                            .ToString(cryptoProvider.ComputeHash(File.OpenRead(_filefolder+element.InnerText)));
-                   // Console.WriteLine(hash.Replace("-", ""));
+                        .ToString(cryptoProvider.ComputeHash(File.OpenRead(_filefolder + element.InnerText)));
+                    // Console.WriteLine(hash.Replace("-", ""));
 
                     if (!hash.Replace("-", "").Equals(element.GetAttribute("hash").ToUpper()))
                     {
@@ -164,19 +161,16 @@ namespace DampServer
 
         private Game ParseGame(XmlElement element)
         {
-            var serializer = new XmlSerializer(typeof(Game));
-            var g = (Game)serializer.Deserialize(new StringReader(element.OuterXml));
+            XmlSerializer serializer = new XmlSerializer(typeof (Game));
+            Game g = (Game) serializer.Deserialize(new StringReader(element.OuterXml));
             g.Path = _filefolder;
             Console.WriteLine(g);
             return g;
-
         }
 
         private void Extract(string file)
         {
-            
-
-            var fileHandler = File.OpenRead(file);
+            FileStream fileHandler = File.OpenRead(file);
             Directory.SetCurrentDirectory(GamePreFix);
             using (_zipStream = new ZipInputStream(fileHandler))
             {
@@ -199,7 +193,7 @@ namespace DampServer
                     {
                         using (FileStream streamWriter = File.Create(theEntry.Name))
                         {
-                            var data = new byte[2048];
+                            byte[] data = new byte[2048];
                             while (true)
                             {
                                 int size = _zipStream.Read(data, 0, data.Length);
@@ -220,7 +214,6 @@ namespace DampServer
 
             fileHandler.Close();
             Directory.SetCurrentDirectory("../");
-
         }
     }
 }

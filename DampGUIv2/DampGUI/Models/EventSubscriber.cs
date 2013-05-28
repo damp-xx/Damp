@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows;
 using System.Xml;
 using CommunicationLibrary;
 
@@ -34,6 +35,7 @@ namespace DampGUI
                 MainWindow._MWDispatcher.MwDispatcher.BeginInvoke(new Action(delegate()
                     {
                         var d = new ChatView(from);
+                        d.Owner = Application.Current.MainWindow;
                         d.Show();
                         d.SendData(fromTitle + ": " + message);
                         ChatIdentyfier.Add(from, d);

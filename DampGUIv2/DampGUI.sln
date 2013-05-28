@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectionLibrary", "Connec
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GTCcomLib", "GTCcomLib\GTCcomLib\GTCcomLib.csproj", "{5C3C98CC-D14C-46B8-9784-7B1A6C647D53}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DampGUI.Test", "DampGUI.Test\DampGUI.Test.csproj", "{9488C606-72D1-4004-AE52-4B27C7242774}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -71,6 +73,16 @@ Global
 		{5C3C98CC-D14C-46B8-9784-7B1A6C647D53}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{5C3C98CC-D14C-46B8-9784-7B1A6C647D53}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{5C3C98CC-D14C-46B8-9784-7B1A6C647D53}.Release|x86.ActiveCfg = Release|Any CPU
+		{9488C606-72D1-4004-AE52-4B27C7242774}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9488C606-72D1-4004-AE52-4B27C7242774}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9488C606-72D1-4004-AE52-4B27C7242774}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{9488C606-72D1-4004-AE52-4B27C7242774}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{9488C606-72D1-4004-AE52-4B27C7242774}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9488C606-72D1-4004-AE52-4B27C7242774}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9488C606-72D1-4004-AE52-4B27C7242774}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9488C606-72D1-4004-AE52-4B27C7242774}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{9488C606-72D1-4004-AE52-4B27C7242774}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{9488C606-72D1-4004-AE52-4B27C7242774}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -30,13 +30,10 @@ namespace DampServer
 
                 user = new User {Username = ((string) r["username"]), UserId = ((Int64) r["userid"])};
                 r.Close();
-                
-
-                
             }
             else throw new UserNotFoundException();
 
-            
+
             // @TODO FIX tHIS 
             cmd.CommandText =
                 "SELECT U.userid as userid, U.username as username FROM Users U INNER JOIN Friends F ON F.userid1 = U.userid WHERE F.userid = @userid";
@@ -52,18 +49,18 @@ namespace DampServer
                     user.Friends.Add(new User {Username = (string) r["username"], UserId = (long) r["userid"]});
                 }
             }
-             
+
 
             r.Close();
             db.Close();
 
             return user;
         }
-    
+
 
         public static User GetUserById(string _id)
         {
-            var id = int.Parse(_id);
+            int id = int.Parse(_id);
 
             Database db = new Database();
             db.Open();
@@ -90,7 +87,7 @@ namespace DampServer
             db.Close();
             throw new UserNotFoundException();
         }
-}
+    }
 
     public class UserNotFoundException : Exception
     {
