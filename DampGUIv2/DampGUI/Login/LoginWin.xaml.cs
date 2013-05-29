@@ -1,8 +1,16 @@
-﻿using System;
+﻿/**
+ * @file   	LoginWin.xaml.cs
+ * @author 	Pierre-Emil Zachariasen, 11833
+ * @date   	April, 2013
+ * @brief  	This file implements the login window for the GUI
+ * @section	LICENSE GPL 
+ */
+
+
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Xml;
 using CommunicationLibrary;
 using MessageBox = System.Windows.MessageBox;
 
@@ -19,7 +27,9 @@ namespace DampGUI.Login
         private const string RememberAccountElement = "RememberAccount";
         private const string AutoLoginElement = "AutoLogin";
         private const string AccountNameElement = "AccountName";
-
+        /**
+        * @brief Constructor for loginWindow
+        */
         public LoginWindow()
         {
             Config = new XmlConfig(ConfPath)
@@ -48,34 +58,50 @@ namespace DampGUI.Login
             }
         }
 
+        /**
+        * @brief Evenhandler for Remember Account Checkbox ON
+        */
+
         private void RememberCheckOn(object sender, RoutedEventArgs e)
         {
             AutoLoginCheck.IsEnabled = true;
         }
-
+        
+        /**
+        * @brief Evenhandler for Remember Account Checkbox OFF
+        */
         private void RememberCheckOff(object sender, RoutedEventArgs e)
         {
             AutoLoginCheck.IsEnabled = false;
             AutoLoginCheck.IsChecked = false;
         }
 
+        /**
+        * @brief Eventhandler for Password input
+        */
         private void Password_OnTextInput(object sender, RoutedEventArgs routedEventArgs)
         {
             if (Username.Text != "")
                 LoginButton.IsEnabled = !Password.Password.Equals("");
         }
-
+        /**
+        * @brief Evenhandler for Username text input
+        */
         private void Username_OnTextChanged(object sender, TextChangedEventArgs e)
         {
             if (Password.Password != "")
                 LoginButton.IsEnabled = !Username.Text.Equals("");
         }
-
+        /**
+        * @brief Evenhandler for Cancel Button click, closes program
+        */
         private void CancelButton_OnClick(object sender, RoutedEventArgs e)
         {
             Close();
         }
-
+        /**
+        * @brief Eventhandler for login button
+        */
         private void LoginButton_OnClick(object sender, RoutedEventArgs e)
         {
             if (ComLogin.Login(Username.Text, Password.Password))
@@ -95,11 +121,16 @@ namespace DampGUI.Login
             }
         }
 
+        /**
+        * @brief Evenhandler for Mouse Down on Logo
+        */
         private void Logo_OnMouseDown(object sender, MouseButtonEventArgs e)
         {
             DragMove();
         }
-
+        /**
+        * @brief Evenhandler for Retrieve Account click, opens new window, hides login window
+        */
         private void RetrieveButton_OnClick(object sender, RoutedEventArgs e)
         {
             Window w = new RetrieveAccount();
@@ -108,7 +139,9 @@ namespace DampGUI.Login
             w.Show();
             Hide();
         }
-
+        /**
+        * @brief Evenhandler for Create Account button, opens webbrowser
+        */
         private void CreateButton_OnClick(object sender, RoutedEventArgs e)
         {
             try
