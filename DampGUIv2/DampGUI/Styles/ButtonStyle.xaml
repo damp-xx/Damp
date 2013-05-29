@@ -39,7 +39,7 @@
         </Setter>
     </Style>
 
-    <Style x:Key="LinkButton" TargetType="Button">
+    <Style x:Key="MenuButton" TargetType="Button">
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Foreground" Value="{StaticResource LinkButtonForeground}" />
         <Setter Property="FontFamily" Value="/Styles/#Bauer"></Setter>

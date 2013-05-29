@@ -6,15 +6,15 @@ namespace DampGUI
     /// <summary>
     /// This class contains properties that a View can data bind to.
     /// </summary>
-    public class FriendProfileViewModel : ViewModelBase<FriendProfileViewModel>
+    public class ProfileViewModel : ViewModelBase<ProfileViewModel>
     {
         /**
-        *  FriendProfileViewModel
+        *  ProfileViewModel
         * 
         * @brief this constructor sets IFriends up
         * @param IFriends aFriends	 
         */
-        public FriendProfileViewModel(IFriends aFriends)
+        public ProfileViewModel(IFriends aFriends)
         {
             KnowFriends = aFriends;
         }

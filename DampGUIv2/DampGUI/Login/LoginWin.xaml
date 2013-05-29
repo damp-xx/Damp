@@ -52,6 +52,7 @@
             VerticalAlignment="Center"
             HorizontalAlignment="Left"
             Width="200"
+            Style="{StaticResource LoginTextBox}"
             TextChanged="Username_OnTextChanged"/>
         <Label
             Grid.Column="0"
@@ -103,12 +104,13 @@
             Click="LoginButton_OnClick"/>
         <Button
             x:Name="CancelButton"
-            Content="Cancel" 
+            Content="MenuButton"
+            Style="{StaticResource MenuButton}"
             Grid.Column="1"
             Grid.Row="4"
             HorizontalAlignment="Left" 
             Margin="105,0,0,0" 
-            Width="95"
+            Width="195"
             IsCancel="True"
             Click="CancelButton_OnClick"/>
         <Separator

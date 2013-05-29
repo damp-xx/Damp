@@ -116,12 +116,12 @@
     <Compile Include="Views\PhotoCollectionView.xaml.cs">
       <DependentUpon>PhotoCollectionView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\FriendProfileViewModel.cs" />
+    <Compile Include="ViewModels\ProfileViewModel.cs" />
     <Compile Include="Views\BigPictureView.xaml.cs">
       <DependentUpon>BigPictureView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\FriendProfileView.xaml.cs">
-      <DependentUpon>FriendProfileView.xaml</DependentUpon>
+    <Compile Include="Views\ProfileView.xaml.cs">
+      <DependentUpon>ProfileView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\GameControlView.xaml.cs">
       <DependentUpon>GameControlView.xaml</DependentUpon>
@@ -156,7 +156,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\FriendProfileView.xaml">
+    <Page Include="Views\ProfileView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
