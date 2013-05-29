@@ -104,13 +104,12 @@
             Click="LoginButton_OnClick"/>
         <Button
             x:Name="CancelButton"
-            Content="MenuButton"
-            Style="{StaticResource MenuButton}"
+            Content="Cancel"
             Grid.Column="1"
             Grid.Row="4"
             HorizontalAlignment="Left" 
             Margin="105,0,0,0" 
-            Width="195"
+            Width="95"
             IsCancel="True"
             Click="CancelButton_OnClick"/>
         <Separator
