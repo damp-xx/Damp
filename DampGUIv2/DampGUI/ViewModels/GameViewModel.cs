@@ -46,7 +46,7 @@ namespace DampGUI
             if (true)
             {
                 string gameString =
-                    @"..\..\..\SuperIHABrothers\Game\Debug\SuperIHABrothers.exe";
+                    @"..\..\..\SuperIHABrothers\SuperIHABrothers.exe";
                 var gameClient = new GTCcomLib.GTCcomLib(gameString);
                 gameClient.RunGame();
                 gameClient.SendMessage("CPN", "Barge");
