@@ -28,7 +28,6 @@ namespace CommunicationLibrary
             return null;
         }
 
-
         public static ObservableCollection<string> GetMyAchievementForGame(string GameId)
         {
             ObservableCollection<string> TempAchievement = new ObservableCollection<string>();
