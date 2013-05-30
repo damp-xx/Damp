@@ -20,6 +20,7 @@ using System.Web;
 using System.Xml.Serialization;
 using DampServer.exceptions;
 using DampServer.interfaces;
+using Microsoft.Win32;
 
 #endregion
 
@@ -29,13 +30,134 @@ namespace DampServer
      * Http
      * @brief A class to handle all HTTP communication
      */
+
     public class Http : ICommandArgument
     {
+        private static readonly X509Certificate ServerCertificate = new X509Certificate2("server.pfx", "");
         private readonly Dictionary<string, string> _headers = new Dictionary<string, string>();
         private readonly Dictionary<string, string> _headersToSend = new Dictionary<string, string>();
         private readonly SslStream _network;
         private readonly TcpClient _socket;
-        private static readonly X509Certificate ServerCertificate = new X509Certificate2("server.pfx", "");
+
+        /**
+         * Http
+         * 
+         * @brief Constructor
+         * @param TcpClient A TcpClient connected to a client
+         */
+
+        public Http(TcpClient s)
+        {
+            _socket = s;
+            _network = new SslStream(_socket.GetStream(), true);
+
+            try
+            {
+                _network.AuthenticateAsServer(ServerCertificate, false, SslProtocols.Tls, false);
+            }
+            catch (Exception e)
+            {
+                Logger.Log(e.Message);
+                return;
+            }
+
+            // SSL Authenticated
+            if (_network.IsAuthenticated)
+
+                ParseGet();
+        }
+
+        public Byte[] Content { get; private set; }
+        public string Type { get; private set; }
+        public string Path { get; private set; }
+        public string HttpVersion { get; private set; }
+        public long Length { get; private set; }
+        public string Status { get; private set; }
+
+        public bool IsConnected
+        {
+            get { return SocketConnected(_socket.Client); }
+        }
+
+        public NameValueCollection Query { get; set; }
+
+        public void SendXmlResponse(XmlResponse obj)
+        {
+            lock (this)
+            {
+                XmlSerializer serializer = new XmlSerializer(obj.GetType());
+                MemoryStream ns = new MemoryStream();
+                serializer.Serialize(ns, obj);
+
+                Length = ns.Length;
+                Type = "text/xml";
+                Status = "200 OK";
+
+                SendResponseHeader();
+
+                if (!_network.CanWrite) return;
+
+                try
+                {
+                    _network.Write(ns.GetBuffer(), 0, (int) ns.Length);
+                    _network.Flush();
+                }
+                catch (Exception e)
+                {
+                    Logger.Log(e.Message);
+                }
+            }
+        }
+
+        public void SendFileResponse(string filename)
+        {
+            try
+            {
+                lock (this)
+                {
+                    using (FileStream fs = File.OpenRead(filename))
+                    {
+                        Length = fs.Length;
+                        Type = GetMimeType(filename);
+                        // AddHeader("Content-disposition", "attachment; filename=" + filename);
+                        Status = "200 OK";
+
+                        SendResponseHeader();
+
+                        byte[] buffer = new byte[64*1024];
+                        using (BinaryWriter bw = new BinaryWriter(_network))
+                        {
+                            int read;
+                            while ((read = fs.Read(buffer, 0, buffer.Length)) > 0)
+                            {
+                                try
+                                {
+                                    bw.Write(buffer, 0, read);
+
+                                    bw.Flush();
+                                }
+                                catch (Exception e)
+                                {
+                                    Console.WriteLine("FEJL 33 {0}", e.Message);
+                                    break;
+                                }
+                            }
+
+                            bw.Close();
+                        }
+
+                        fs.Close();
+                    }
+                }
+            }
+            catch (FileNotFoundException e)
+            {
+                SendXmlResponse(new ErrorXmlResponse
+                    {
+                        Message = e.Message
+                    });
+            }
+        }
 
         private bool SocketConnected(Socket s)
         {
@@ -48,63 +170,17 @@ namespace DampServer
         }
 
         /**
-         * IsConnected
-         * 
-         * @brief The property display if the client is connected to the HTTP/TCP Socket
-         */
-        public bool IsConnected
-        {
-            get { return SocketConnected(_socket.Client); }
-        }
-
-        /**
-         * Http
-         * 
-         * @brief Constructor
-         * @param TcpClient A TcpClient connected to a client
-         */
-        public Http(TcpClient s)
-        {
-            _socket = s;
-            _network = new SslStream(_socket.GetStream(),true);
-
-            try
-            {
-                _network.AuthenticateAsServer(ServerCertificate, false, SslProtocols.Tls, false);
-            }
-            catch (Exception e)
-            {
-                
-                Logger.Log(e.Message);
-                return;
-                
-            }
-
-            // SSL Authenticated
-            if (_network.IsAuthenticated)
-
-            ParseGet();
-        }
-
-        public Byte[] Content { get; private set; }
-        public string Type { get; private set; }
-        public string Path { get; private set; }
-        public string HttpVersion { get; private set; }
-        public long Length { get; private set; }
-        public string Status { get; private set; }
-        public NameValueCollection Query { get;  set; }
-
-        /**
          * GetHeader
          * 
          * @brief Method to get a HTTP Header
          */
+
         public string GetHeader(string key)
         {
-            var d = "";
+            string d = "";
             try
             {
-               d =   _headers[key];
+                d = _headers[key];
             }
             catch (Exception e)
             {
@@ -118,6 +194,7 @@ namespace DampServer
          * 
          * @brief Method to add a HTTP header to the HTTP response
          */
+
         public void AddHeader(string name, string value)
         {
             _headersToSend.Add(name, value);
@@ -128,9 +205,10 @@ namespace DampServer
          * 
          * @brief private method to parse HTTP GET requests
          */
+
         private void ParseGet()
         {
-            var sr = new StreamReader(new BufferedStream(_network));
+            StreamReader sr = new StreamReader(new BufferedStream(_network));
 
             // @TODO WTF, WHY IS THIS NEEDED WITH PUTTY!
             // sr.ReadLine();
@@ -190,18 +268,19 @@ namespace DampServer
          * 
          * @brief private method to parse HTTP POST requests
          */
+
         private void ParsePost(TextReader sr)
         {
             Console.WriteLine("Content-Length 3d: {0}", GetHeader("Content-Length"));
-            var contentLenght = int.Parse( _headers["Content-Length"]);
+            int contentLenght = int.Parse(_headers["Content-Length"]);
             Content = new Byte[contentLenght];
-            var data = new char[contentLenght];
-            var bytes = sr.Read(data, 0, data.Length);
+            char[] data = new char[contentLenght];
+            int bytes = sr.Read(data, 0, data.Length);
 
             Console.WriteLine("Received: {0}", contentLenght);
 
-            if (bytes != contentLenght) Console.WriteLine("WTF RECEIVED BYTES NOT THOSE EXPECTED!! REC: {0}. EXC: {1}", bytes, contentLenght);
- 
+            if (bytes != contentLenght)
+                Console.WriteLine("WTF RECEIVED BYTES NOT THOSE EXPECTED!! REC: {0}. EXC: {1}", bytes, contentLenght);
         }
 
         /**
@@ -209,39 +288,13 @@ namespace DampServer
          * 
          * @brief method to send a XML response object to the client
          */
-        public void SendXmlResponse(XmlResponse obj)
-        {
-            lock (this)
-            {
-                var serializer = new XmlSerializer(obj.GetType());
-                var ns = new MemoryStream();
-                serializer.Serialize(ns, obj);
-
-                Length = ns.Length;
-                Type = "text/xml";
-                Status = "200 OK";
-
-                SendResponseHeader();
-
-                if (!_network.CanWrite) return;
-
-                try
-                {
-                    _network.Write(ns.GetBuffer(), 0, (int) ns.Length);
-                    _network.Flush();
-                }
-                catch (Exception e)
-                {
-                    Logger.Log(e.Message);
-                }
-            }
-        }
 
         /**
          * SendResponseHeader
          * 
          * @brief private helper method to send standard HTTP headers
          */
+
         private void SendResponseHeader()
         {
             StreamWriter sw;
@@ -252,7 +305,6 @@ namespace DampServer
             }
             catch (ArgumentException e)
             {
-                
                 Logger.Log(e.Message);
                 return;
             }
@@ -273,14 +325,14 @@ namespace DampServer
             catch (Exception e)
             {
                 Logger.Log(e.Message);
-            }           
+            }
         }
 
         private string GetMimeType(string fileName)
         {
             string mimeType = "application/unknown";
             string ext = System.IO.Path.GetExtension(fileName).ToLower();
-            Microsoft.Win32.RegistryKey regKey = Microsoft.Win32.Registry.ClassesRoot.OpenSubKey(ext);
+            RegistryKey regKey = Registry.ClassesRoot.OpenSubKey(ext);
             if (regKey != null && regKey.GetValue("Content Type") != null)
                 mimeType = regKey.GetValue("Content Type").ToString();
             return mimeType;
@@ -291,57 +343,5 @@ namespace DampServer
          * 
          * @brief send a file to the client
          */
-        public void SendFileResponse(string filename)
-        {
-            try
-            {
-                lock (this)
-                {
-
-                    using (FileStream fs = File.OpenRead(filename))
-                    {
-                        Length = fs.Length;
-                        Type = GetMimeType(filename);
-                       // AddHeader("Content-disposition", "attachment; filename=" + filename);
-                        Status = "200 OK";
-
-                        SendResponseHeader();
-
-                        var buffer = new byte[64*1024];
-                        using (var bw = new BinaryWriter(_network))
-                        {
-                            int read;
-                            while ((read = fs.Read(buffer, 0, buffer.Length)) > 0)
-                            {
-                                try
-                                {
-                                bw.Write(buffer, 0, read);
-                                
-                                    bw.Flush();
-
-                                }
-                                catch (Exception e)
-                                {
-                                    
-                                    Console.WriteLine("FEJL 33 {0}", e.Message );
-                                    break;
-                                }
-                            }
-
-                            bw.Close();
-                        }
-
-                        fs.Close();
-                    }
-                }
-            }
-            catch (FileNotFoundException e)
-            {
-                SendXmlResponse(new ErrorXmlResponse
-                    {
-                        Message = e.Message
-                    });
-            }
-        }
     }
 }

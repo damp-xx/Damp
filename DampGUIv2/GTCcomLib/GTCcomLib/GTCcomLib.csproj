@@ -42,6 +42,12 @@
     <Compile Include="GTCcomLib.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\CommunicationLibrary\CommunicationLibrary.csproj">
+      <Project>{9380f760-d929-4b4f-97d9-3a0ece33210c}</Project>
+      <Name>CommunicationLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

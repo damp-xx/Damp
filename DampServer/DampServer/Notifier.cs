@@ -5,7 +5,7 @@ using DampServer.interfaces;
 
 namespace DampServer
 {
-    class Notifier
+    internal class Notifier
     {
         private readonly List<INotify> _commands = new List<INotify>
             {
@@ -14,7 +14,7 @@ namespace DampServer
 
         public Notifier()
         {
-            var newThread = new Thread(Run);
+            Thread newThread = new Thread(Run);
             newThread.Start();
         }
 
@@ -40,6 +40,7 @@ namespace DampServer
 
 // ReSharper disable FunctionNeverReturns
         }
+
 // ReSharper restore FunctionNeverReturns
     }
 }

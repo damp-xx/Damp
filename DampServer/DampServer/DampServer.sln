@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DampServer", "DampServer.cs
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DampServerTest", "..\DampServerTest\DampServerTest.csproj", "{550DDAC4-8C47-490F-9184-9D93A5273EEA}"
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "DampDatabase", "..\DampDatabase\DampDatabase.sqlproj", "{D0ECE3E4-7DF5-4DF0-8098-1F11EEB2860D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,12 @@ Global
 		{550DDAC4-8C47-490F-9184-9D93A5273EEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{550DDAC4-8C47-490F-9184-9D93A5273EEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{550DDAC4-8C47-490F-9184-9D93A5273EEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0ECE3E4-7DF5-4DF0-8098-1F11EEB2860D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0ECE3E4-7DF5-4DF0-8098-1F11EEB2860D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0ECE3E4-7DF5-4DF0-8098-1F11EEB2860D}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{D0ECE3E4-7DF5-4DF0-8098-1F11EEB2860D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0ECE3E4-7DF5-4DF0-8098-1F11EEB2860D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0ECE3E4-7DF5-4DF0-8098-1F11EEB2860D}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

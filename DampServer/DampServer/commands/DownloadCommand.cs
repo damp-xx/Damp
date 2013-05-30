@@ -23,7 +23,7 @@ namespace DampServer.commands
                 return;
             }
 
-            http.SendFileResponse(@"../../public/"+http.Query.Get("Object"));
+            http.SendFileResponse(@"../../public/" + http.Query.Get("Object"));
         }
 
         public bool NeedsAuthcatication { get; private set; }

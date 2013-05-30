@@ -1,5 +1,4 @@
-﻿
-namespace DampServer
+﻿namespace DampServer
 {
     public class Archivement : XmlResponse
     {

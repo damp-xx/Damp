@@ -1,4 +1,4 @@
-﻿<Window x:Class="Login.RetrieveAccount"
+﻿<Window x:Class="DampGUI.Login.RetrieveAccount"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="DAMP - Retrieve Account" Height="320" Width="425"
@@ -45,6 +45,7 @@
                 Grid.Column="1"
                 Grid.Row="0"
                 Width="200"
+                Style="{StaticResource LoginTextBox}"
                 VerticalAlignment="Center"
                 HorizontalAlignment="Left"
                 TextChanged="RetrieveText_OnTextChanged"
@@ -59,7 +60,8 @@
                 VerticalAlignment="Center"
                 HorizontalAlignment="Left"
                 Margin="0,0,0,0"
-                Width="95"/>
+                Width="95"
+                Click="SubmitButton_OnClick"/>
             <Button
                 x:Name="CancelButton"
                 Margin="105,0,0,0"

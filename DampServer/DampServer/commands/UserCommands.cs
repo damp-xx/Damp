@@ -28,22 +28,44 @@ namespace DampServer.commands
             return cmd.Equals("GetUserByAuthToken") || (cmd.Equals("GetMyUser"));
         }
 
+        public void Execute(ICommandArgument http, string cmd)
+        {
+            _http = http;
+
+            switch (cmd)
+            {
+                case "GetMyUser":
+                    HandleGetMyUser();
+                    break;
+                case "GetUser":
+                    HandleGetUser();
+                    break;
+                case "ForgottenPassword":
+                    HandleForgotPassword();
+                    break;
+                case "FriendSearch":
+                    HandleFriendSearch();
+                    break;
+                case "AddUser":
+                    HandleAddUser();
+                    break;
+            }
+        }
+
+        public bool NeedsAuthcatication { get; private set; }
+        public bool IsPersistant { get; private set; }
+
         private void HandleGetUser()
         {
-
-
-           
             if (string.IsNullOrEmpty(_http.Query.Get("UserId")))
             {
-                _http.SendXmlResponse(new ErrorXmlResponse { Message = "Invalid arguments #12" });
+                _http.SendXmlResponse(new ErrorXmlResponse {Message = "Invalid arguments #12"});
                 return;
             }
-          
-            var user = GetUser(int.Parse(_http.Query.Get("UserId")));
+
+            User user = GetUser(int.Parse(_http.Query.Get("UserId")));
 
             _http.SendXmlResponse(user);
-            
-            
         }
 
         private void HandleFriendSearch()
@@ -65,7 +87,7 @@ namespace DampServer.commands
             SqlCommand cmd = db.GetCommand();
 
             cmd.CommandText = "SELECT * FROM Users WHERE username LIKE @query";
-            cmd.Parameters.Add("@query", SqlDbType.NVarChar).Value = _http.Query.Get("Query")+"%";
+            cmd.Parameters.Add("@query", SqlDbType.NVarChar).Value = _http.Query.Get("Query") + "%";
 
             SqlDataReader reader = cmd.ExecuteReader();
 
@@ -76,7 +98,7 @@ namespace DampServer.commands
             {
                 while (reader.Read())
                 {
-                    var  user = GetUser((long) reader["userid"]);
+                    User user = GetUser((long) reader["userid"]);
                     user.Friends = null;
                     f.Users.Add(user);
                 }
@@ -108,21 +130,20 @@ namespace DampServer.commands
             if (r.HasRows)
             {
                 r.Read();
-                user.Username = (string)r["username"];
-                user.Email = (string)r["email"];
+                user.Username = (string) r["username"];
+                user.Email = (string) r["email"];
                 if (!(r["description"] is DBNull))
                     user.Description = (string) r["description"];
                 if (!(r["gender"] is DBNull))
-                    user.Gender = (string)r["gender"];
+                    user.Gender = (string) r["gender"];
                 if (!(r["photo"] is DBNull))
-                    user.Photo = (string)r["photo"];
+                    user.Photo = (string) r["photo"];
                 if (!(r["city"] is DBNull))
-                    user.City = (string)r["city"];
+                    user.City = (string) r["city"];
                 if (!(r["country"] is DBNull))
-                    user.Country = (string)r["country"];
+                    user.Country = (string) r["country"];
                 if (!(r["language"] is DBNull))
-                    user.Language = (string)r["language"];
-
+                    user.Language = (string) r["language"];
             }
             r.Close();
 
@@ -136,11 +157,11 @@ namespace DampServer.commands
                 while (r.Read())
                 {
                     Game g = new Game
-                    {
-                        Description = r["description"] as string,
-                        Title = (string)r["title"],
-                        Id = (long)r["gameid"]
-                    };
+                        {
+                            Description = r["description"] as string,
+                            Title = (string) r["title"],
+                            Id = (long) r["gameid"]
+                        };
 
                     user.Games.Add(g);
                 }
@@ -156,7 +177,6 @@ namespace DampServer.commands
             if (r.HasRows)
                 while (r.Read())
                 {
-
                     User u = new User
                         {
                             Username = (string) r["username"],
@@ -165,20 +185,19 @@ namespace DampServer.commands
                         };
 
                     if (!(r["description"] is DBNull))
-                        u.Description = (string)r["description"];
+                        u.Description = (string) r["description"];
                     if (!(r["gender"] is DBNull))
-                        u.Gender = (string)r["gender"];
+                        u.Gender = (string) r["gender"];
                     if (!(r["photo"] is DBNull))
-                        u.Photo = (string)r["photo"];
+                        u.Photo = (string) r["photo"];
                     if (!(r["city"] is DBNull))
-                        u.City = (string)r["city"];
+                        u.City = (string) r["city"];
                     if (!(r["country"] is DBNull))
-                        u.Country = (string)r["country"];
+                        u.Country = (string) r["country"];
                     if (!(r["language"] is DBNull))
-                        u.Language = (string)r["language"];
-                    
-                    user.Friends.Add(u);
+                        u.Language = (string) r["language"];
 
+                    user.Friends.Add(u);
                 }
             r.Close();
 
@@ -189,14 +208,13 @@ namespace DampServer.commands
 
         private User GetUser(string authtoken)
         {
-            var user = UserManagement.GetUserByAuthToken(authtoken);
+            User user = UserManagement.GetUserByAuthToken(authtoken);
             return GetUser(user.UserId);
         }
 
         private void HandleGetMyUser()
         {
-     
-            _http.SendXmlResponse(GetUser(_http.Query.Get("AuthToken")));               
+            _http.SendXmlResponse(GetUser(_http.Query.Get("AuthToken")));
         }
 
         private void HandleForgotPassword()
@@ -218,60 +236,36 @@ namespace DampServer.commands
             sqlCmd.Parameters.Add("@email", SqlDbType.NVarChar).Value = _http.Query.Get("Email");
             SqlDataReader r = sqlCmd.ExecuteReader();
 
-           if (r.HasRows)
-           {
-               MailMessage mail = new MailMessage("you@damp.com", _http.Query.Get("Email"));
-               SmtpClient client = new SmtpClient();
-               client.Port = 25;
-               client.DeliveryMethod = SmtpDeliveryMethod.Network;
-               client.UseDefaultCredentials = false;
-               client.Host = "smtp.iha.dk";
-               mail.Subject = "this is a test email.";
-               mail.Body = "this is my test email body";
-               client.Send(mail);
-
-               _http.SendXmlResponse(new StatusXmlResponse
-                   {
-                       Code = 200,
-                       Command = "ForgottenPassword",
-                       Message = "Email sent"
-                   });
-           }
-           else
-           {
-               _http.SendXmlResponse(new StatusXmlResponse
-               {
-                   Code = 404,
-                   Command = "ForgottenPassword",
-                   Message = "Email not found"
-               });
-           }
-
-            r.Close();            
-        }
-
-        public void Execute(ICommandArgument http, string cmd)
-        {
-            _http = http;
-
-            switch (cmd)
+            if (r.HasRows)
             {
-                case "GetMyUser":
-                    HandleGetMyUser();
-                    break;
-                case "GetUser":
-                    HandleGetUser();
-                    break;
-                case "ForgottenPassword":
-                    HandleForgotPassword();
-                    break;
-                case "FriendSearch":
-                    HandleFriendSearch();
-                    break;
-                case "AddUser":
-                    HandleAddUser();
-                    break;
+                MailMessage mail = new MailMessage("you@damp.com", _http.Query.Get("Email"));
+                SmtpClient client = new SmtpClient();
+                client.Port = 25;
+                client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                client.UseDefaultCredentials = false;
+                client.Host = "smtp.iha.dk";
+                mail.Subject = "this is a test email.";
+                mail.Body = "this is my test email body";
+                client.Send(mail);
+
+                _http.SendXmlResponse(new StatusXmlResponse
+                    {
+                        Code = 200,
+                        Command = "ForgottenPassword",
+                        Message = "Email sent"
+                    });
             }
+            else
+            {
+                _http.SendXmlResponse(new StatusXmlResponse
+                    {
+                        Code = 404,
+                        Command = "ForgottenPassword",
+                        Message = "Email not found"
+                    });
+            }
+
+            r.Close();
         }
 
         private void HandleAddUser()
@@ -282,7 +276,6 @@ namespace DampServer.commands
                 string.IsNullOrEmpty(_http.Query.Get("UserName")) || string.IsNullOrEmpty(_http.Query.Get("Password")) ||
                 string.IsNullOrEmpty(_http.Query.Get("Email")))
             {
-                
             }
 
 
@@ -292,10 +285,6 @@ namespace DampServer.commands
                     Command = "AddUser",
                     Message = "User added"
                 });
-
         }
-
-        public bool NeedsAuthcatication { get; private set; }
-        public bool IsPersistant { get; private set; }
     }
 }

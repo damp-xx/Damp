@@ -10,10 +10,10 @@ namespace DampServer
     {
         private static void Main(string[] args)
         {
-            var notify = new Notifier();
-             var s = new SocketHandler();
+            Notifier notify = new Notifier();
+            SocketHandler s = new SocketHandler();
 
-           // var gameHandler = new GameHandler("cs11.zip");
+            // var gameHandler = new GameHandler("cs11.zip");
 
 
             Console.Read();

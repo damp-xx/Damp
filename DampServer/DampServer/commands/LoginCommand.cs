@@ -41,10 +41,10 @@ namespace DampServer.commands
             string username = http.Query.Get("Username");
             string password = http.Query.Get("Password");
 
-            var db = new Database();
-            
+            Database db = new Database();
+
             db.Open();
-    
+
             SqlCommand sqlCmd = db.GetCommand();
 
             sqlCmd.CommandText = "SELECT TOP 1 * FROM Users WHERE username LIKE @username AND password LIKE @password";
@@ -68,18 +68,18 @@ namespace DampServer.commands
 
             if (r.HasRows)
             {
-                var sha1 = new SHA1CryptoServiceProvider();
+                SHA1CryptoServiceProvider sha1 = new SHA1CryptoServiceProvider();
                 byte[] hash = sha1.ComputeHash(Encoding.UTF8.GetBytes(username + password));
                 string delimitedHexHash = BitConverter.ToString(hash);
                 string hexHash = delimitedHexHash.Replace("-", "");
 
 
-                var db2 = new Database();
+                Database db2 = new Database();
                 db2.Open();
                 SqlCommand sqlCmdUpdate = db2.GetCommand();
                 sqlCmdUpdate.CommandText = "UPDATE Users SET authToken = @authToken WHERE userid = @userid";
                 sqlCmdUpdate.Parameters.Add("@authToken", SqlDbType.NVarChar).Value = hexHash;
-                sqlCmdUpdate.Parameters.Add("@userid", SqlDbType.BigInt).Value =(long) r["userid"];
+                sqlCmdUpdate.Parameters.Add("@userid", SqlDbType.BigInt).Value = (long) r["userid"];
 
                 sqlCmdUpdate.ExecuteNonQuery();
                 db2.Close();

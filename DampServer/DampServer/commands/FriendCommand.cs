@@ -8,10 +8,8 @@ using DampServer.responses;
 
 namespace DampServer.commands
 {
-    class FriendCommand : IServerCommand, INotify
+    internal class FriendCommand : IServerCommand, INotify
     {
-        public bool NeedsAuthcatication { get; private set; }
-        public bool IsPersistant { get; private set; }
         private ICommandArgument _client;
 
         public FriendCommand()
@@ -19,6 +17,55 @@ namespace DampServer.commands
             NeedsAuthcatication = true;
             IsPersistant = false;
         }
+
+        public List<XmlResponse> Notify(IUser user)
+        {
+            Database db = new Database();
+
+            db.Open();
+
+            SqlCommand sqlCmd = db.GetCommand();
+
+            // get user
+            sqlCmd.CommandText = "SELECT * FROM Notifications WHERE userid = @userid ";
+
+            sqlCmd.Parameters.Add("@userid", SqlDbType.BigInt).Value = user.UserId;
+
+            SqlDataReader r = sqlCmd.ExecuteReader();
+            List<XmlResponse> responses = new List<XmlResponse>();
+
+            if (r.HasRows)
+            {
+                while (r.Read())
+                {
+                    responses.Add(new StatusXmlResponse
+                        {
+                            Code = (int) r["code"],
+                            Command = (string) r["command"],
+                            From = (long) r["from"],
+                            To = ((long) r["to"]).ToString(CultureInfo.InvariantCulture),
+                            Message = (string) r["message"]
+                        });
+
+                    Database db2 = new Database();
+                    db2.Open();
+
+                    SqlCommand sql = db2.GetCommand();
+                    sql.CommandText = "DELETE FROM Notifications WHERE id = @id";
+                    sql.Parameters.Add("@id", SqlDbType.BigInt).Value = (long) r["id"];
+                    sql.ExecuteNonQuery();
+                    db2.Close();
+                }
+            }
+
+            r.Close();
+            db.Close();
+
+            return responses;
+        }
+
+        public bool NeedsAuthcatication { get; private set; }
+        public bool IsPersistant { get; private set; }
 
         public bool CanHandleCommand(string cmd)
         {
@@ -40,16 +87,14 @@ namespace DampServer.commands
                 case "RemoveFriend":
                     HandleRemoveFriend();
                     break;
-                   
-
             }
         }
 
         private void HandleAddFriend()
         {
-            var db = new Database();
+            Database db = new Database();
 
-            if(string.IsNullOrEmpty(_client.Query.Get("Friend")))
+            if (string.IsNullOrEmpty(_client.Query.Get("Friend")))
             {
                 _client.SendXmlResponse(new ErrorXmlResponse {Message = "Missing argurments!"});
                 return;
@@ -59,18 +104,18 @@ namespace DampServer.commands
 
             try
             {
-                 friend = UserManagement.GetUserById(_client.Query.Get("Friend"));
+                friend = UserManagement.GetUserById(_client.Query.Get("Friend"));
             }
             catch (UserNotFoundException)
             {
-               _client.SendXmlResponse(new ErrorXmlResponse {Message = "Friend not found!"});
+                _client.SendXmlResponse(new ErrorXmlResponse {Message = "Friend not found!"});
                 return;
             }
 
             db.Open();
 
-            var sqlCmd = db.GetCommand();
-            var user = UserManagement.GetUserByAuthToken(_client.Query.Get("AuthToken"));
+            SqlCommand sqlCmd = db.GetCommand();
+            User user = UserManagement.GetUserByAuthToken(_client.Query.Get("AuthToken"));
 
             sqlCmd.CommandText = "INSERT INTO FriendRequests (\"User\", \"Friend\") VALUES (@userid, @friendid)";
             sqlCmd.Parameters.Add("@userid", SqlDbType.BigInt).Value = user.UserId;
@@ -83,7 +128,7 @@ namespace DampServer.commands
             catch (InvalidOperationException e)
             {
                 Logger.Log(e.Message);
-                _client.SendXmlResponse(new ErrorXmlResponse { Message = "Internal Server Error!! #2321114" });
+                _client.SendXmlResponse(new ErrorXmlResponse {Message = "Internal Server Error!! #2321114"});
                 return;
             }
 
@@ -105,7 +150,6 @@ namespace DampServer.commands
                     To = friend.UserId.ToString(CultureInfo.InvariantCulture),
                     From = user.UserId
                 });
-
         }
 
         private void HandleAcceptFriend()
@@ -122,7 +166,7 @@ namespace DampServer.commands
             long friendid = Int64.Parse(_client.Query.Get("Friend"));
 
 
-            var db = new Database();
+            Database db = new Database();
 
             db.Open();
 
@@ -130,7 +174,7 @@ namespace DampServer.commands
 
             // get user
             sqlCmd.CommandText = "SELECT * FROM FriendRequests WHERE \"User\" = @userid AND Friend = @friendid";
-            
+
             sqlCmd.Parameters.Add("@userid", SqlDbType.BigInt).Value =
                 UserManagement.GetUserByAuthToken(_client.Query.Get("AuthToken")).UserId;
 
@@ -173,7 +217,8 @@ namespace DampServer.commands
                     });
             }
 
-            db.Close();        }
+            db.Close();
+        }
 
         private void HandleRemoveFriend()
         {
@@ -188,11 +233,11 @@ namespace DampServer.commands
 
             long frindid = long.Parse(_client.Query.Get("Friend"));
 
-            var db = new Database();
+            Database db = new Database();
 
             db.Open();
 
-            var cmd = db.GetCommand();
+            SqlCommand cmd = db.GetCommand();
 
             cmd.CommandText = "DELETE FROM Friends WHERE userid = @userid AND userid1 = @friendid";
             cmd.Parameters.Add("@userid", SqlDbType.BigInt).Value =
@@ -231,16 +276,15 @@ namespace DampServer.commands
             }
             else
             {
-                var db = new Database();
+                Database db = new Database();
 
                 db.Open();
 
-                var sqlCmd = db.GetCommand();
+                SqlCommand sqlCmd = db.GetCommand();
 
                 if (string.IsNullOrEmpty(xml.Message)) xml.Message = "";
                 if (string.IsNullOrEmpty(xml.To)) xml.To = "0";
 
-               
 
                 sqlCmd.Parameters.Add("@userid", SqlDbType.BigInt).Value = userid;
                 sqlCmd.Parameters.Add("@code", SqlDbType.Int).Value = xml.Code;
@@ -256,61 +300,12 @@ namespace DampServer.commands
                 sqlCmd.ExecuteNonQuery();
 
 
-                var r = sqlCmd.ExecuteReader();
+                SqlDataReader r = sqlCmd.ExecuteReader();
 
-         
+
                 r.Close();
                 db.Close();
             }
-
-
-        }
-
-        public List<XmlResponse> Notify(IUser user)
-        {
-            var db = new Database();
-
-            db.Open();
-
-            SqlCommand sqlCmd = db.GetCommand();
-
-            // get user
-            sqlCmd.CommandText = "SELECT * FROM Notifications WHERE userid = @userid ";
-
-            sqlCmd.Parameters.Add("@userid", SqlDbType.BigInt).Value = user.UserId;
-
-            SqlDataReader r = sqlCmd.ExecuteReader();
-            var responses = new List<XmlResponse>();
-
-            if (r.HasRows)
-            {
-                while (r.Read())
-                {
-                    responses.Add(new StatusXmlResponse
-                        {
-                            Code = (int) r["code"],
-                            Command = (string) r["command"],
-                            From = (long)r["from"],
-                            To = ((long)r["to"]).ToString(CultureInfo.InvariantCulture),
-                            Message = (string)r["message"]
-                        });
-
-                    var db2 = new Database();
-                    db2.Open();
-
-                    var sql = db2.GetCommand();
-                    sql.CommandText = "DELETE FROM Notifications WHERE id = @id";
-                    sql.Parameters.Add("@id", SqlDbType.BigInt).Value = (long) r["id"];
-                    sql.ExecuteNonQuery();
-                    db2.Close();
-
-                }
-            }   
-         
-            r.Close();
-            db.Close();
-
-            return responses;
         }
     }
 }
