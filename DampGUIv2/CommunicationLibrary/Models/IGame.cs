@@ -24,5 +24,7 @@ namespace DampGUI
          string Developer { get; set; }
 
          string Mode { get; set; }
+
+         string GameId { get; set; }
     }
 }

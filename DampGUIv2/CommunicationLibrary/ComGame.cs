@@ -83,6 +83,7 @@ namespace CommunicationLibrary
 
                     Game k = new Game
                         {
+                            GameId = x.GetElementsByTagName("Id").Item(0).InnerText,
                             Title = x.GetElementsByTagName("Title").Item(0).InnerText,
                             Description = x.GetElementsByTagName("Description").Item(0).InnerText,
                             Genre = x.GetElementsByTagName("Genre").Item(0).InnerText,
@@ -125,18 +126,10 @@ namespace CommunicationLibrary
         public static XmlElement GetGame(string GameID)
         {
             var client = new DampServerClient(ComLogin._ComIp);
-            var ResultFromServerXml = client.SendRequest("GetGames", new Dictionary<string, string> {{"Id", GameID}},
+            var ResultFromServerXml = client.SendRequest("GetGame", new Dictionary<string, string> {{"Id", GameID}},
                                                          ComLogin._ComToken);
-
-            if (ResultFromServerXml.Name.Equals("Status"))
-            {
-                var xmlNode = ResultFromServerXml.GetElementsByTagName("Code").Item(0);
-
-                if (xmlNode.InnerText == "200")
-                {
+ 
                     return ResultFromServerXml;
-                }
-            }
             return null;
         }
     }
