@@ -424,7 +424,7 @@ namespace DampGUI
         public void ChangeFriend()
         {
             if (knowFriends.CurrentFriend != null)
-                Content = new ProfileView();
+                Content = new FriendProfileView();
         }
 
         /**

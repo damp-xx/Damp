@@ -60,11 +60,11 @@ namespace DampGUI
             }
         }
 
-        public ProfileViewModel ProfileViewModel
+        public FriendProfileViewModel FriendProfileViewModel
         {
             get
             {
-                return new ProfileViewModel(knowfriends);
+                return new FriendProfileViewModel(knowfriends);
             }
         }
 

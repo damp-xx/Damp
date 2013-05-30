@@ -22,6 +22,7 @@ namespace CommunicationLibrary
             return null;
         }
 
+
         public static string GetProfileName()
         {
             var client = new DampServerClient(ComLogin._ComIp);

@@ -45,7 +45,6 @@
                 Grid.Column="1"
                 Grid.Row="0"
                 Width="200"
-                Style="{StaticResource LoginTextBox}"
                 VerticalAlignment="Center"
                 HorizontalAlignment="Left"
                 TextChanged="RetrieveText_OnTextChanged"
