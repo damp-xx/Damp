@@ -38,8 +38,8 @@ namespace DampStub
             {
                 sw.AutoFlush = true;
                 // Send a 'sync message' and wait for client to receive it.
-                sw.WriteLine("CPN:Filip V");
-                sw.WriteLine("CHS:5");
+                sw.WriteLine("CPN:Anders Hvirvelkær");
+                sw.WriteLine("CHS:10000");
                 pipeServerOut.WaitForPipeDrain();
             }
             /*********************************************************************/

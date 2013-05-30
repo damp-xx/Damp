@@ -102,17 +102,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Login\ILoginMethod.cs" />
-    <Compile Include="Login\Login.cs" />
     <Compile Include="Login\LoginWin.xaml.cs">
       <DependentUpon>LoginWin.xaml</DependentUpon>
     </Compile>
     <Compile Include="Login\RetrieveAccount.xaml.cs">
       <DependentUpon>RetrieveAccount.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Startup\Login.xaml.cs">
-      <DependentUpon>Login.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="Login\XmlConfig.cs" />
     <Compile Include="Views\ChatView.xaml.cs">
       <DependentUpon>ChatView.xaml</DependentUpon>
     </Compile>
@@ -120,12 +116,12 @@
     <Compile Include="Views\PhotoCollectionView.xaml.cs">
       <DependentUpon>PhotoCollectionView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\FriendProfileViewModel.cs" />
+    <Compile Include="ViewModels\ProfileViewModel.cs" />
     <Compile Include="Views\BigPictureView.xaml.cs">
       <DependentUpon>BigPictureView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\FriendProfileView.xaml.cs">
-      <DependentUpon>FriendProfileView.xaml</DependentUpon>
+    <Compile Include="Views\ProfileView.xaml.cs">
+      <DependentUpon>ProfileView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\GameControlView.xaml.cs">
       <DependentUpon>GameControlView.xaml</DependentUpon>
@@ -148,10 +144,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Startup\Login.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Views\ChatView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -164,7 +156,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\FriendProfileView.xaml">
+    <Page Include="Views\ProfileView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -261,7 +253,6 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="app.config" />
-    <None Include="Startup\App.config" />
     <Resource Include="Styles\BAUERG.TTF" />
     <None Include="DampGUI_TemporaryKey.pfx" />
     <None Include="Login\packages.config" />
@@ -279,6 +270,10 @@
     <ProjectReference Include="..\ConnectionLibrary\ConnectionLibrary.csproj">
       <Project>{540F41D8-691D-45EB-AF49-9AF15D4B69F9}</Project>
       <Name>ConnectionLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GTCcomLib\GTCcomLib\GTCcomLib.csproj">
+      <Project>{5c3c98cc-d14c-46b8-9784-7b1a6c647d53}</Project>
+      <Name>GTCcomLib</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
