@@ -76,7 +76,7 @@ namespace DampGUI
                 string gameString = installPath + @"\" + executableFile;
                 var gameClient = new GTCcomLib.GTCcomLib(gameString);
                 gameClient.RunGame();
-                gameClient.SendMessage("CPN", "Barge");
+                gameClient.SendMessage("CPN", ComProfile.GetProfileName());
             }
             else if (PlayIns == "Install")
             {
